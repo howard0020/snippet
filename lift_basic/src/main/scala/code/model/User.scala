@@ -13,8 +13,12 @@ object User extends User with MetaMegaProtoUser[User] {
   override def screenWrap = Full(<lift:surround with="default" at="content">
 			       <lift:bind /></lift:surround>)
   // define the order fields will appear in forms and output
-  override def fieldOrder = List(id, firstName, lastName, email,
-  locale, timezone, password, textArea)
+  override def fieldOrder = List(id, firstName, lastName, username, email,
+  locale, timezone, password)
+  
+  override def signupFields = List(username, email, password)
+
+  override def editFields = List(username, email,password)
 
   // comment this line out to require email validations
   override def skipEmailValidation = true
@@ -27,10 +31,14 @@ class User extends MegaProtoUser[User] {
   def getSingleton = User // what's the "meta" server
 
   // define an additional field for a personal essay
-  object textArea extends MappedTextarea(this, 2048) {
-    override def textareaRows  = 10
-    override def textareaCols = 50
-    override def displayName = "Personal Essay"
+//  object textArea extends MappedTextarea(this, 2048) {
+//    override def textareaRows  = 10
+//    override def textareaCols = 50
+//    override def displayName = "Personal Essay"
+//  }  
+  
+  object username extends MappedString(this,32){
+    override def displayName = "User Name" 
   }
 }
 
