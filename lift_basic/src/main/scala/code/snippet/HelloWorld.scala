@@ -28,6 +28,12 @@ class HelloWorld {
 }
 class B {
 	def snippet (xhtml : NodeSeq)  ={
-		xhtml.bind("AAAA","text" -> "hahaha")
+	//	xhtml.bind("AAAA","text" -> "hahaha")
+		bind("AAAA",xhtml,"text" -> "ahhahaha")
  	}
+ }
+class C {
+	def snippet ="#text *" #> "hhe4heheh" & "#dddd" #>  "hehehe2"
+	
+	def snippet2 = "#dddd" #> "hehehe2"
  }

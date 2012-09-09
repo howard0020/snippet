@@ -1,0 +1,4 @@
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://173.239.45.59:3306/websolut_snippet
+db.user=websolut_snippet
+db.password=52012345
