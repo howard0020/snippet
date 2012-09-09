@@ -3,9 +3,14 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <title>Home</title>
+    <script type="text/javascript"
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" id="jquery">
+ </script>
   </head>
   <body class="lift:content_id=main">
     <div id="main" class="lift:surround?with=default;at=content">
+    <script id="JSMain" class="lift:B.JS" type="text/javascript" charset="utf-8">
+    </script>
       <h2>Welcome to your project!</h2>
       <p>
 	<span class="lift:helloWorld.howdy">
@@ -14,9 +19,20 @@
       </p>
  <p>
       		<lift:B.snippet>text:
-      			<AAAA:text />
+      			<AAAA:text> 123 </AAAA:text>
       			
       		</lift:B.snippet>
+      		
+   			<div class="lift:C.snippet">te222xt:
+      			<div id="text" ></div>
+      			<p>asdasd</p>
+      			<span id="dddd" />
+      		</div>
+      		<p>Date: <input type="text" id="datepicker"></p>
+      		<div class="lift:C.snippet2">teksd
+      			
+      		<span id="dddd"/>	
+      		</div>
       	</p>
     </div>
   </body>
