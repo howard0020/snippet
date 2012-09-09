@@ -8,6 +8,10 @@ import java.util.Date
 import code.lib._
 import Helpers._
 import net.liftweb.util.BindPlus._
+import net.liftweb.http.js._
+import net.liftweb.http.js.JE._
+
+
 
 class HelloWorld {
   lazy val date: Box[Date] = DependencyFactory.inject[Date] // inject the date
@@ -31,6 +35,10 @@ class B {
 	//	xhtml.bind("AAAA","text" -> "hahaha")
 		bind("AAAA",xhtml,"text" -> "ahhahaha")
  	}
+	def JS = "#JSMain *" #> JsRaw("$(document).ready(function() {" +
+			"$( \"#datepicker\" ).datepicker();" +
+			" });")
+
  }
 class C {
 	def snippet ="#text *" #> "hhe4heheh" & "#dddd" #>  "hehehe2"
