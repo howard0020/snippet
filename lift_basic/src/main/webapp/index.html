@@ -3,9 +3,17 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <title>Home</title>
+    <script type="text/javascript"
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" id="jquery">
+ </script>
   </head>
   <body class="lift:content_id=main">
     <div id="main" class="lift:surround?with=default;at=content">
+    <script id="JSMain"  type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+			$( "#datepicker" ).datepicker();
+			 });
+    </script>
       <h2>Welcome to your project!</h2>
       <p>
 	<span class="lift:helloWorld.howdy">
@@ -23,6 +31,7 @@
       			<p>asdasd</p>
       			<span id="dddd" />
       		</div>
+      		<p>Date: <input type="text" id="datepicker"></p>
       		<div class="lift:C.snippet2">teksd
       			
       		<span id="dddd"/>	
