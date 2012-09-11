@@ -12,39 +12,47 @@
   	<script type="text/javascript" src="../scripts/shBrushScala.js"></script>
 	<script type="text/javascript" src="../scripts/shBrushJScript.js"></script>	<script type="text/javascript" src="scripts/shBrushJava.js"></script>	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
 	<link type="text/css" rel="stylesheet" href="../CSS/SyntaxHighlighter/shCoreDefault.css"/>
-  	<link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"></link>
+  	<link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"/>
+  	<link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
     <script type="text/javascript">
      SyntaxHighlighter.all()
 	</script>
   </head>
   <body>
     <div class="container">
-      <div class="column span-12 last" style="text-align: right">
-        <h1 class="alt">app<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"></h1>
-      </div>
-
+      <div class="column span-24">
+<!-- Begin ------------- Logo - Banner -->
+        <div class="column span-8">
+        	<span style="font-size: 20pt; color:Gray">Snippet</span>
+        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
+        </div>
+ <!-- End ------------ Logo - Banner -->
+ <!-- Begin ------------ Menu -->
+      <div class="column span-15" id="cssmenu">
+	  	<span class="lift:Menu.builder"></span>
+	  </div>
+<!-- End ------------ Menu -->
+	 </div>
       <hr>
 
-      <div class="column span-6 colborder sidebar">
-        <hr class="space" >
-
-	<span class="lift:Menu.builder"></span>
-
-        <div class="lift:Msgs?showAll=true"></div>
+      <div>
+<!-- Begin ------------ Error Message -->
+      	<div class="lift:Msgs?showAll=true"></div>
         <hr class="space" />
       </div>
-
-      <div class="column span-17 last">
-        <div id="content">The main content will get bound here</div>
+<!-- Begin ------------ Main Content -->
+      <div class="column span-24 last">
+      	<div id="content">The main content will get bound here</div>
       </div>
-
-      <hr />
+<!-- End ------------ Main Content -->
+     <hr />
+<!-- Begin ------------ Footer -->
       <div class="column span-23 last" style="text-align: center">
         <h4 class="alt">
-          <a href="http://www.liftweb.net"><i>Lift</i></a> 
-	  is Copyright 2007-2011 WorldWide Conferencing, LLC.
-	  Distributed under an Apache 2.0 License.</h4>
+          <a href="http://www.websolutionstest.com"><i>Snippet</i></a> 
+	  is Copyright 2012. </h4>
       </div>
+<!-- End ------------ Footer -->
     </div>
   </body>
 </html>
