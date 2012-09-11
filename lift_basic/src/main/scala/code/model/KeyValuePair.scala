@@ -8,7 +8,7 @@ class KeyValuePair extends LongKeyedMapper[KeyValuePair]{
 	object id extends MappedLongIndex(this)
 	object key extends MappedString(this, 100)
 	//This field has to be UTF-8 in order to store chinese
-	object value extends MappedText(this)
+	object value extends MappedTextarea(this,2048)
 	object published extends MappedBoolean(this)
 
 }

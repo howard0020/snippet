@@ -8,7 +8,9 @@ object KeyValuePairCreator extends LiftScreen{
 	object keyvalue extends ScreenVar(KeyValuePair.create)
   	override def screenTop = <b>Key Value Pair Creation</b>
   	  
-    addFields(()=>keyvalue.is)
+    addFields(()=>keyvalue.is.value)
+    addFields(()=>keyvalue.is.key)
+    addFields(()=>keyvalue.is.published)
     
     
     
