@@ -4,41 +4,52 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <title class="lift:Menu.title">App: </title>
-    <style class="lift:CSS.blueprint"></style>
-    <style class="lift:CSS.fancyType"></style>
+   
 	<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
-  <link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"></link>
-
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+  	<script type="text/javascript" src="../scripts/shBrushScala.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushJScript.js"></script>	<script type="text/javascript" src="scripts/shBrushJava.js"></script>	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+	<link type="text/css" rel="stylesheet" href="../CSS/SyntaxHighlighter/shCoreDefault.css"/>
+  	<link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"/>
+  	<link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
+  	<link rel="stylesheet" type="text/css" href="../CSS/Default/example.css" />
+    <script type="text/javascript">
+     SyntaxHighlighter.all()
+	</script>
   </head>
-  <body>
-    <div class="container">
-      <div class="column span-12 last" style="text-align: right">
-        <h1 class="alt">app<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"></h1>
-      </div>
-
-      <hr>
-
-      <div class="column span-6 colborder sidebar">
-        <hr class="space" >
-
-	<span class="lift:Menu.builder"></span>
-
-        <div class="lift:Msgs?showAll=true"></div>
-        <hr class="space" />
-      </div>
-
-      <div class="column span-17 last">
-        <div id="content">The main content will get bound here</div>
-      </div>
-
-      <hr />
-      <div class="column span-23 last" style="text-align: center">
-        <h4 class="alt">
-          <a href="http://www.liftweb.net"><i>Lift</i></a> 
-	  is Copyright 2007-2011 WorldWide Conferencing, LLC.
-	  Distributed under an Apache 2.0 License.</h4>
-      </div>
-    </div>
+  <body> 
+	  <div id="wrapper">
+	    <div  id="header-wrapper">
+	        <div id="logo">
+	        	<div id="LogoAsText"><a href="#">Snippet </a></div>
+	        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
+	        </div>
+	        <div id="Menu">
+		        <div id="cssmenu">
+			  		<span class="lift:Menu.builder"></span>
+			  	</div>
+		  	</div>
+	      </div>
+	      <div id="content-wrapper">
+		      <div id="left-content-wrapper"></div>
+		      
+		      <div id="CenterContent">
+		      	<div id = "ErrorMessagePlaceHolder">
+		      		<div class="lift:Msgs?showAll=true"></div>
+		      	</div>
+		      	<div id="main-content-wrapper">
+					<div id="content">The main content will get bound here</div>
+				</div>
+		      </div>
+		      
+		      <div id="right-content-wrapper"></div>
+	      </div>
+	      
+	      <div id="footer-wrapper">
+	          <a href="http://www.websolutionstest.com">Snippet</a> is Copyright 2012.
+	      </div>
+	    
+	</div>
   </body>
 </html>

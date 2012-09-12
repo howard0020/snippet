@@ -40,5 +40,7 @@ class User extends MegaProtoUser[User] {
   object username extends MappedString(this,32){
     override def displayName = "User Name" 
   }
+  
+  //def post = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
 }
 
