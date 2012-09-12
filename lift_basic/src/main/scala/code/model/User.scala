@@ -41,6 +41,6 @@ class User extends MegaProtoUser[User] {
     override def displayName = "User Name" 
   }
   
-  def post = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
+  //def post = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
 }
 

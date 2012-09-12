@@ -4,8 +4,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <title class="lift:Menu.title">App: </title>
-    <style class="lift:CSS.blueprint"></style>
-    <style class="lift:CSS.fancyType"></style>
+   
 	<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="../scripts/shCore.js"></script>
@@ -14,45 +13,43 @@
 	<link type="text/css" rel="stylesheet" href="../CSS/SyntaxHighlighter/shCoreDefault.css"/>
   	<link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"/>
   	<link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
+  	<link rel="stylesheet" type="text/css" href="../CSS/Default/example.css" />
     <script type="text/javascript">
      SyntaxHighlighter.all()
 	</script>
   </head>
-  <body>
-    <div class="container">
-      <div class="column span-24">
-<!-- Begin ------------- Logo - Banner -->
-        <div class="column span-8">
-        	<span style="font-size: 20pt; color:Gray">Snippet</span>
-        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
-        </div>
- <!-- End ------------ Logo - Banner -->
- <!-- Begin ------------ Menu -->
-      <div class="column span-15" id="cssmenu">
-	  	<span class="lift:Menu.builder"></span>
-	  </div>
-<!-- End ------------ Menu -->
-	 </div>
-      <hr>
-
-      <div>
-<!-- Begin ------------ Error Message -->
-      	<div class="lift:Msgs?showAll=true"></div>
-        <hr class="space" />
-      </div>
-<!-- Begin ------------ Main Content -->
-      <div class="column span-24 last">
-      	<div id="content">The main content will get bound here</div>
-      </div>
-<!-- End ------------ Main Content -->
-     <hr />
-<!-- Begin ------------ Footer -->
-      <div class="column span-23 last" style="text-align: center">
-        <h4 class="alt">
-          <a href="http://www.websolutionstest.com"><i>Snippet</i></a> 
-	  is Copyright 2012. </h4>
-      </div>
-<!-- End ------------ Footer -->
-    </div>
+  <body> 
+	  <div id="wrapper">
+	    <div  id="header-wrapper">
+	        <div id="logo">
+	        	<div id="LogoAsText"><a href="#">Snippet </a></div>
+	        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
+	        </div>
+	        <div id="Menu">
+		        <div id="cssmenu">
+			  		<span class="lift:Menu.builder"></span>
+			  	</div>
+		  	</div>
+	      </div>
+	      <div id="content-wrapper">
+		      <div id="left-content-wrapper"></div>
+		      
+		      <div id="CenterContent">
+		      	<div id = "ErrorMessagePlaceHolder">
+		      		<div class="lift:Msgs?showAll=true"></div>
+		      	</div>
+		      	<div id="main-content-wrapper">
+					<div id="content">The main content will get bound here</div>
+				</div>
+		      </div>
+		      
+		      <div id="right-content-wrapper"></div>
+	      </div>
+	      
+	      <div id="footer-wrapper">
+	          <a href="http://www.websolutionstest.com">Snippet</a> is Copyright 2012.
+	      </div>
+	    
+	</div>
   </body>
 </html>

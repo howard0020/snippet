@@ -1,0 +1,156 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	background-color:#CCC;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-size: 14px;
+	color: #787878;
+}
+
+#wrapper {
+	display:block;
+	width: 1000px;
+	margin: 0px auto;
+}
+
+/* Header */
+
+
+#header-wrapper {
+	display:block;
+	width: 900px;
+	margin: 0 auto;
+}
+
+/* Content Wrapper*/
+#content-wrapper{
+	padding: 15px;
+	display:block;
+	font-size: 10px;
+	background-color: white;
+	border-radius:15px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
+}
+
+#footer-wrapper{
+	font-size: 8px;
+}
+/* Logo */
+
+#logo {
+	display:inline-block;
+	color: #FFFFFF;
+}
+#LogoAsText{
+	text-transform: lowercase;
+	font-size: 3.0em;
+	color: white;
+}
+#LogoAsText a{
+	text-decoration: none;
+	color: white;
+}
+
+#Menu{
+	display: inline-block;
+	float:right;
+	color: #FFFFFF;
+}
+
+
+#cssmenu{
+}
+
+#cssmenu ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	position:relative;
+	display:block;
+	height:36px;
+	text-transform:uppercase;
+	font-size:10px;
+	font-weight:bold;
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+}
+
+#cssmenu li{
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+	}
+#cssmenu ul li span {
+	display:block;
+	float:left;
+	color:white;
+	text-decoration:none;
+	font-weight:bold;
+	padding:12px 20px 0 20px;
+	height:24px;
+}
+#cssmenu li a{
+	display:block;
+	float:left;
+	color:Gray;
+	text-decoration:none;
+	font-weight:bold;
+	padding:12px 20px 0 20px;
+	height:24px;
+	}
+#cssmenu li a:hover{
+	color: white;
+	
+
+	}
+
+
+.liDivBox li{
+	text-decoration:none;
+	margin:0,0,20,0;
+	padding:0;
+	color:Black;
+	
+	}
+.liDivBox ul li{
+	text-decoration:none;
+	display:block;
+	padding:12px 20px 0 20px;
+	width: 250px;
+	height: 150px;
+	float:left;
+	overflow:hidden;
+}
+.liDivBox ul li div .key{
+	color:DarkGray;
+}
+.liDivBox li:hover{
+	color:LightGray;
+}
+
+.liDivBox ul li .ExpandableDiv {
+	display:block;
+	float:left;
+	color:Black;
+	text-decoration:none;
+	padding:12px 20px 0 20px;
+	width: 500px;
+	height: 350px;
+}
+
+
+.edit_error_class {
+  display: block;
+  color: red;
+}
+
+.height-30{
+	height:30px;
+	background:black;
+	margin-right:0;
+}
