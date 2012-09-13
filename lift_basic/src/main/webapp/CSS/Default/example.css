@@ -5,9 +5,12 @@ Released for free under a Creative Commons Attribution 2.5 License
 */
 
 body {
+	
+}
+.BodyGrayAndWhiteStyle{
 	background-color:#CCC;
 	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-	font-size: 14px;
+	font-size: 10px;
 	color: #787878;
 }
 
@@ -30,7 +33,6 @@ body {
 #content-wrapper{
 	padding: 15px;
 	display:block;
-	font-size: 10px;
 	background-color: white;
 	border-radius:15px;
 	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
@@ -47,7 +49,7 @@ body {
 }
 #LogoAsText{
 	text-transform: lowercase;
-	font-size: 3.0em;
+	font-size: 28px;
 	color: white;
 }
 #LogoAsText a{
@@ -66,24 +68,18 @@ body {
 }
 
 #cssmenu ul{
-	margin:0;
-	padding:0;
 	list-style-type:none;
 	width:auto;
 	position:relative;
 	display:block;
 	height:36px;
 	text-transform:uppercase;
-	font-size:10px;
 	font-weight:bold;
-	font-family:Helvetica,Arial,Verdana,sans-serif;
 }
 
 #cssmenu li{
 	display:block;
 	float:left;
-	margin:0;
-	padding:0;
 	}
 #cssmenu ul li span {
 	display:block;
@@ -101,8 +97,8 @@ body {
 	text-decoration:none;
 	font-weight:bold;
 	padding:12px 20px 0 20px;
-	height:24px;
-	}
+}
+
 #cssmenu li a:hover{
 	color: white;
 	
@@ -153,4 +149,15 @@ body {
 	height:30px;
 	background:black;
 	margin-right:0;
+}
+
+
+
+/*User login and sign up CSS*/
+
+form[action="/user_mgt/login"]{
+	background:#ebf4fb;
+}
+form[action="/user_mgt/login"] table tbody tr:first-child{
+	border:solid 1px black;	
 }
