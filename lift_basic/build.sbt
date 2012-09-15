@@ -10,9 +10,13 @@ retrieveManaged := true
  
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
+resolvers += "Omniauth repo" at "https://repository-liftmodules.forge.cloudbees.com/release"
+
+
 libraryDependencies ++= {
        val liftVersion = "2.4"
        Seq(
+			   "net.liftmodules" %% "omniauth" % "2.4-0.5",
 	           "mysql" % "mysql-connector-java" % "5.1.21",
 			   "net.liftweb" %% "lift-wizard" % liftVersion % "compile->default",
                "net.liftweb" %% "lift-webkit" % liftVersion % "compile",

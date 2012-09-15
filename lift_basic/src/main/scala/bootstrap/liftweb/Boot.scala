@@ -3,15 +3,14 @@ package bootstrap.liftweb
 import net.liftweb._
 import util._
 import Helpers._
-
 import common._
 import http._
 import sitemap._
 import Loc._
 import mapper._
-
 import code.model._
-
+import omniauth.lib._
+import omniauth.Omniauth
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -34,23 +33,24 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-
     Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair,CodeSnippet)
 
     // where to search snippet
     LiftRules.addToPackages("code")
-
-    // Build SiteMap
-    def sitemap = SiteMap(
-      Menu.i("Home") / "index" >> User.AddUserMenusAfter, // the simple way to declare a menu
+    val entries = List(
+     Menu.i("Home") / "index" >> User.AddUserMenusAfter, // the simple way to declare a menu
 
       // more complex because this menu allows anything in the
       // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
-	       "All Snippet")))
+      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "All Snippet"))) :::
+    Omniauth.sitemap
+  
+    
+    // Build SiteMap
+    def sitemap = SiteMap(entries:_*)
 
     def sitemapMutators = User.sitemapMutator
-
+    Omniauth.init
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
     LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
@@ -78,5 +78,9 @@ class Boot {
 
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
+    
+ 
+
+    
   }
 }
