@@ -7,6 +7,15 @@ body{
 	
 }
 
+/*All Div that should have no space near them, and allow other div to be near*/
+#header-wrapper, #content-wrapper, #left-content-wrapper, #right-content-wrapper, #CenterContent,
+#main-content-wrapper, #main, {
+	display:inline-block;
+}
+
+
+
+
 body a{
 	text-decoration: none;
 	
@@ -23,30 +32,44 @@ body a{
 
 #wrapper {
 	display:block;
-	width: 1000px;
-	margin: 0px auto;
 }
 
 /* Header */
 
 
 #header-wrapper {
-	display:block;
-	width: 750px;
-	margin: 0 auto;
+	background-color: #DADADA;
+	border: 1px solid #BABAC0;
+	padding: 3px;
 }
-
+#header{
+	width: 850px;
+	margin: 0px auto;
+}
 /* Content Wrapper*/
 #content-wrapper{
-	padding: 15px;
-	display:block;
-	background-color: white;
-	/*border-radius:15px;
+	width:750px;
+	margin: 0px auto;
+}
+#left-content-wrapper{
+	
+}
+#right-content-wrapper{
+	
+}
+#CenterContent{
+	/*background-color: white;
+	border-radius:15px;
 	-moz-border-radius:25px; /* Firefox 3.6 and earlier */*/
+}
+#main-content-wrapper{
+}
+#main{
 }
 
 #footer-wrapper{
-	font-size: 8px;
+	display:block;
+	clear:both;
 }
 #footer-text{
 	margin-left: 30px;
@@ -176,23 +199,47 @@ form[action="/user_mgt/login"] table tbody tr:first-child td{
 /*POST*/
 
 .post_wrapper{
-	display:block;
+	display:inline-block;
+	
 }
 .post_content{
-	max-width: 300px !important;
+	/* Border: 2px solid black !important; */
+	margin: 2px;
+	padding: 15px;
+	/* display:inline-block !important; */
+	float:left;
+	vertical-align: top;
+	background-color: white;
+	overflow:hidden !important;
+}
+.post_collapse{
+	/* max-width: 300px !important;
 	max-height: 300px !important;
 	overflow:hidden !important;
-	display:inline-block !important;
-	Border: 2px solid black !important;
-	margin: 2px;
-	padding: 5px;
+	font-size:10px !important; */
 }
 .post_content h2{
-	display: inline;
+	display: block;
 }
-.syntaxhighlighter{
-	display: inline-block;
+/* .post_content p{
+	display:block;
+} */
+/*  .post_content div{
+	display:inline-block;
+}  */
+ .post_content .syntaxhighlighter .gutter{
+	display:none;
+}  
+ .post_content .syntaxhighlighter .code{
+ 	width:auto !important;
+}  
+.post_content .syntaxhighlighter{
+	/*display: inline-block;
 	max-width: 300px !important;
-	max-height: 300px !important;
+	max-height: 300px !important;*/
 	overflow:hidden !important;
+	
 }
+.post_content .toolbar{
+	display: none;
+	
