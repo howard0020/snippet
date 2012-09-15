@@ -3,15 +3,22 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
+body{
+	
+}
 
-body {
+body a{
+	text-decoration: none;
 	
 }
 .BodyGrayAndWhiteStyle{
-	background-color:#CCC;
+	/*background-color:#CCC;*/
+	background-color: #EDEDED;
 	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-	font-size: 10px;
+	font-size: 12px;
 	color: #787878;
+	background-image:url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif');
+	
 }
 
 #wrapper {
@@ -25,7 +32,7 @@ body {
 
 #header-wrapper {
 	display:block;
-	width: 900px;
+	width: 750px;
 	margin: 0 auto;
 }
 
@@ -34,12 +41,15 @@ body {
 	padding: 15px;
 	display:block;
 	background-color: white;
-	border-radius:15px;
-	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
+	/*border-radius:15px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */*/
 }
 
 #footer-wrapper{
 	font-size: 8px;
+}
+#footer-text{
+	margin-left: 30px;
 }
 /* Logo */
 
@@ -61,18 +71,19 @@ body {
 	display: inline-block;
 	float:right;
 	color: #FFFFFF;
+	margin-bottom: 10px;
 }
 
 
 #cssmenu{
+	display: inline-block;
 }
 
 #cssmenu ul{
+	font-family: "Droid Sans",Arial,sans-serif;
 	list-style-type:none;
 	width:auto;
-	position:relative;
 	display:block;
-	height:36px;
 	text-transform:uppercase;
 	font-weight:bold;
 }
@@ -87,8 +98,7 @@ body {
 	color:white;
 	text-decoration:none;
 	font-weight:bold;
-	padding:12px 20px 0 20px;
-	height:24px;
+	padding:0px 20px 0 0;
 }
 #cssmenu li a{
 	display:block;
@@ -96,14 +106,12 @@ body {
 	color:Gray;
 	text-decoration:none;
 	font-weight:bold;
-	padding:12px 20px 0 20px;
+	padding:0px 20px 0 0;
 }
 
 #cssmenu li a:hover{
 	color: white;
-	
-
-	}
+}
 
 
 .liDivBox li{
@@ -155,9 +163,12 @@ body {
 
 /*User login and sign up CSS*/
 
-form[action="/user_mgt/login"]{
+form[action="/user_mgt/login"] table, form[action="/user_mgt/sign_up"] table, 
+form[action="/user_mgt/lost_password"] table{
 	background:#ebf4fb;
 }
-form[action="/user_mgt/login"] table tbody tr:first-child{
-	border:solid 1px black;	
+form[action="/user_mgt/login"] table tbody tr:first-child td{
+	border-bottom: 	1px solid black;
+	text-align: center;
 }
+         
