@@ -171,4 +171,28 @@ form[action="/user_mgt/login"] table tbody tr:first-child td{
 	border-bottom: 	1px solid black;
 	text-align: center;
 }
-         
+
+
+/*POST*/
+
+.post_wrapper{
+	display:block;
+}
+.post_content{
+	max-width: 300px !important;
+	max-height: 300px !important;
+	overflow:hidden !important;
+	display:inline-block !important;
+	Border: 2px solid black !important;
+	margin: 2px;
+	padding: 5px;
+}
+.post_content h2{
+	display: inline;
+}
+.syntaxhighlighter{
+	display: inline-block;
+	max-width: 300px !important;
+	max-height: 300px !important;
+	overflow:hidden !important;
+}
