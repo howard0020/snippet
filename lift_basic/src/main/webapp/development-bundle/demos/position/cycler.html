@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>jQuery UI Position - Default functionality</title>
-	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
-	<script src="../../jquery-1.8.0.js"></script>
-	<script src="../../ui/jquery.ui.core.js"></script>
-	<script src="../../ui/jquery.ui.widget.js"></script>
-	<script src="../../ui/jquery.ui.position.js"></script>
-	<link rel="stylesheet" href="../demos.css">
-    <style>
-   	html, body {
-   		margin: 0;
-		padding: 0
-   	}
-    </style>
-	<script>
+<meta charset="utf-8">
+<title>jQuery UI Position - Default functionality</title>
+<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
+<script src="../../jquery-1.8.0.js"></script>
+<script src="../../ui/jquery.ui.core.js"></script>
+<script src="../../ui/jquery.ui.widget.js"></script>
+<script src="../../ui/jquery.ui.position.js"></script>
+<link rel="stylesheet" href="../demos.css">
+<style>
+html,body {
+	margin: 0;
+	padding: 0
+}
+</style>
+<script>
 	$(function() {
 		// TODO refactor into a widget and get rid of these plugin methods
 		$.fn.position2 = function( options ) {
@@ -101,25 +101,29 @@
 </head>
 <body>
 
-<div class="demo">
+	<div class="demo">
 
-<img src="images/earth.jpg" width="458" height="308" />
-<img src="images/flight.jpg" width="512" height="307" />
-<img src="images/rocket.jpg" width="300" height="353" />
+		<img src="images/earth.jpg" width="458" height="308" /> <img
+			src="images/flight.jpg" width="512" height="307" /> <img
+			src="images/rocket.jpg" width="300" height="353" /> <a id="previous"
+			href="#">Previous</a> <a id="next" href="#">Next</a>
 
-<a id="previous" href="#">Previous</a>
-<a id="next" href="#">Next</a>
-
-</div><!-- End demo -->
-
+	</div>
+	<!-- End demo -->
 
 
-<div class="demo-description">
-<p>A prototype for the <a href="http://wiki.jqueryui.com/Photoviewer">Photoviewer</a> using Position to place images at the center, left and right and cycle them.
-<br/>Use the links at the top to cycle, or click on the images on the left and right.
-<br/>Note how the images are repositioned when resizing the window.
-<br/>Warning: Doesn't currently work inside the demo viewer; open in a new window instead!</p>
-</div><!-- End demo-description -->
+
+	<div class="demo-description">
+		<p>
+			A prototype for the <a href="http://wiki.jqueryui.com/Photoviewer">Photoviewer</a>
+			using Position to place images at the center, left and right and
+			cycle them. <br />Use the links at the top to cycle, or click on the
+			images on the left and right. <br />Note how the images are
+			repositioned when resizing the window. <br />Warning: Doesn't
+			currently work inside the demo viewer; open in a new window instead!
+		</p>
+	</div>
+	<!-- End demo-description -->
 
 </body>
 </html>

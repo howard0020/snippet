@@ -53,7 +53,9 @@ class Boot {
     def sitemap = SiteMap(entries:_*)
 
     def sitemapMutators = User.sitemapMutator
+    
     Omniauth.init
+    
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
     LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
