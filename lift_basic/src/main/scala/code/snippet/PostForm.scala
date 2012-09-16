@@ -11,8 +11,10 @@ object PostForm extends LiftScreen{
  
   
 def finish(){
-    Snippet.is.Author(User.currentUser)
+    Snippet.is.Author(User.currentUser.get)
     Snippet.save()
+   // User.currentUser.get.AllPost
+  //  System.out.print("123123" + User.currentUser.get.AllPost)
 	  //S.notice("Adding Value: " + keyvalue.value)
 	}
 }

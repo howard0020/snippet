@@ -9,7 +9,9 @@
 	<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="../scripts/shCore.js"></script>
   	<script type="text/javascript" src="../scripts/shBrushScala.js"></script>
-	<script type="text/javascript" src="../scripts/shBrushJScript.js"></script>	<script type="text/javascript" src="scripts/shBrushJava.js"></script>	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushJScript.js"></script>	
+	<script type="text/javascript" src="scripts/shBrushJava.js"></script>	
+	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
 	<link type="text/css" rel="stylesheet" href="../CSS/SyntaxHighlighter/shCoreDefault.css"/>
   	<link type="text/css" href="../CSS/redmond/jquery-ui-1.8.23.custom.css" rel="Stylesheet"/>
   	<link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
@@ -18,20 +20,47 @@
      SyntaxHighlighter.all()
 	</script>
   </head>
-  <body> 
+  <body class="BodyGrayAndWhiteStyle"> 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '146178378859457', // App ID
+      channelUrl : '//http://localhost:8080/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
 	  <div id="wrapper">
 	    <div  id="header-wrapper">
-	        <div id="logo">
-	        	<div id="LogoAsText"><a href="#">Snippet </a></div>
-	        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
-	        </div>
-	        <div id="Menu">
-		        <div id="cssmenu">
-			  		<span class="lift:Menu.builder"></span>
+		    <div id="header">
+		        <div id="logo">
+		        	<div id="LogoAsText"><a href="#">Snippet </a></div>
+		        	<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/>
+		        </div>
+		        <div id="Menu">
+			        <div id="cssmenu">
+				  		<span class="lift:Menu.builder"></span>
+				  	</div>
 			  	</div>
-		  	</div>
+		    </div>
 	      </div>
 	      <div id="content-wrapper">
+	      	<div id="fb-root"></div>
+	    	<div class="fb-login-button">Login with Facebook</div>
 		      <div id="left-content-wrapper"></div>
 		      
 		      <div id="CenterContent">
@@ -41,15 +70,20 @@
 		      	<div id="main-content-wrapper">
 					<div id="content">The main content will get bound here</div>
 				</div>
+				
 		      </div>
 		      
 		      <div id="right-content-wrapper"></div>
+		      
+		   <div id="footer-wrapper">
+	      	<div id="footer-text">
+	      		<a href="http://www.websolutionstest.com">Snippet</a> is Copyright 2012.
+	      	</div>
+	          
 	      </div>
-	      
-	      <div id="footer-wrapper">
-	          <a href="http://www.websolutionstest.com">Snippet</a> is Copyright 2012.
 	      </div>
 	    
+
 	</div>
   </body>
 </html>
