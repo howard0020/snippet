@@ -42,7 +42,10 @@ class Boot {
 
       // more complex because this menu allows anything in the
       // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "All Snippet"))) :::
+     
+      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet")),
+      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      ) :::
     Omniauth.sitemap
   
     
@@ -50,7 +53,9 @@ class Boot {
     def sitemap = SiteMap(entries:_*)
 
     def sitemapMutators = User.sitemapMutator
+    
     Omniauth.init
+    
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
     LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))

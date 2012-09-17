@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-    <title>Home</title>
-    <script type="text/javascript"
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" id="jquery">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>Home</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	id="jquery">
  </script>
-  </head>
-  <body class="lift:content_id=main">
-    <div id="main" class="lift:surround?with=default;at=content">
-    <script id="JSMain"  type="text/javascript" charset="utf-8">
+<script type="text/javascript">
+    	$(".post_content").click(function(e) 
+			 { 
+			 	var className = $(this).attr("class"); 
+			 	if (className.indexOf("post_collapse") != -1) 
+			 		{$(this).attr("class", "post_content")} 
+			 	else 
+			 		{$(this).attr("class", "post_content post_collapse") } 
+		})
+    </script>
+</head>
+<body class="lift:content_id=main">
+	<div id="main" class="lift:surround?with=default;at=content">
+
+
+		<script id="JSMain" type="text/javascript" charset="utf-8">
     $(document).ready(function() {
 			$( "#datepicker" ).datepicker();
+			 
+			 
+			$(".post_content").click(function(e) 
+			 { 
+			 	var className = $(this).attr("class"); 
+			 	if (className.indexOf("post_collapse") != -1) 
+			 		{$(this).attr("class", "post_content")} 
+			 	else 
+			 		{$(this).attr("class", "post_content post_collapse") } 
 			 });
+		});
+		
     </script>
+		<!-- 
       <h2>Welcome to your project!</h2>
       <p>
 	<span class="lift:helloWorld.howdy">
@@ -36,7 +61,9 @@
       			
       		<span id="dddd"/>	
       		</div>
-      		<pre class="brush: js">
+-->
+		<!--  		
+<pre class="brush: js">
 function foo()
 {
 }
@@ -57,21 +84,35 @@ libraryDependencies ++= {
        )
 }
 </pre>
-<div class="post_wrapper">
-	<div class="lift:Post.Content">
-		<P>Post</P>
-		<content:code>
-			<div class="post_content"><content:text></content:text></div>
-		</content:code>
+-->
+		<div class="post_wrapper">
+			<div class="lift:Post.Content">
+
+				<content:code>
+					<div class="post_content post_collapse">
+						<content:text></content:text>
+					</div>
+				</content:code>
+			</div>
+			</p>
+			<p>Current Omniauth info</p>
+			<div class="lift:OmniauthUtil.info"></div>
+			<div>
+				<a href='/auth/twitter/signin'>Sign in with Twitter</a>
+			</div>
+			<div>
+				<a href='/auth/facebook/signin'>Sign in with facebook</a>
+			</div>
+			<div>
+				<a href='/auth/github/signin'>Sign in with github</a>
+			</div>
+			<div class="lift:SignUp.FacebookNormal"></div>
+			<div class="lift:SignUp.FacebookNormalDark"></div>
+			<div class="lift:SignUp.FacebookLarge"></div>
+			<div class="lift:SignUp.FacebookLargeDark"></div>
+
+		</div>
 	</div>
-      	</p>
-      	 <p>Current Omniauth info</p>
-    <div class="lift:OmniauthUtil.info" ></div>
-    <div><a href='/auth/twitter/signin'>Sign in with Twitter</a></div>
-    <div><a href='/auth/facebook/signin'>Sign in with facebook</a></div>
-    <div><a href='/auth/github/signin'>Sign in with github</a></div>
-    </div>
-</div>
-  </body>
+</body>
 </html>
 

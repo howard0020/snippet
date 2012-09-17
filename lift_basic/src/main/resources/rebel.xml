@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.zeroturnaround.com"
+	xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
 	<classpath>
-		<dir name="C:/Users/howard/snippet/snippet/lift_basic/target/scala-2.9.1/classes">
+		<dir
+			name="C:/Users/howard/snippet/snippet/lift_basic/target/scala-2.9.1/classes">
 		</dir>
-		<dir name="C:/Users/howard/snippet/snippet/lift_basic/target/scala-2.9.1/test-classes">
+		<dir
+			name="C:/Users/howard/snippet/snippet/lift_basic/target/scala-2.9.1/test-classes">
 		</dir>
 		<dir name="C:/Users/howard/snippet/snippet/lift_basic/bin">
 		</dir>

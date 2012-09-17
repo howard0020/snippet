@@ -3,196 +3,262 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
-body{
+body {
 	
 }
 
-body a{
-	text-decoration: none;
-	
+/*All Div that should have no space near them, and allow other div to be near*/
+#header-wrapper
+,
+#content-wrapper
+,
+#left-content-wrapper
+,
+#right-content-wrapper
+,
+#CenterContent
+,
+#main-content-wrapper
+,
+#main
+,
+{
+display
+:inline-block
+;
+
+
 }
-.BodyGrayAndWhiteStyle{
-	/*background-color:#CCC;*/
+body a {
+	text-decoration: none;
+}
+
+.BodyGrayAndWhiteStyle { /*background-color:#CCC;*/
 	background-color: #EDEDED;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
 	color: #787878;
-	background-image:url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif');
-	
+	background-image:
+		url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif');
 }
 
 #wrapper {
-	display:block;
-	width: 1000px;
-	margin: 0px auto;
+	display: block;
 }
 
 /* Header */
-
-
 #header-wrapper {
-	display:block;
-	width: 750px;
-	margin: 0 auto;
+	background-color: #DADADA;
+	border: 1px solid #BABAC0;
+	padding: 3px;
 }
 
+#header {
+	width: 850px;
+	margin: 0px auto;
+}
 /* Content Wrapper*/
-#content-wrapper{
-	padding: 15px;
-	display:block;
-	background-color: white;
-	/*border-radius:15px;
-	-moz-border-radius:25px; /* Firefox 3.6 and earlier */*/
+#content-wrapper {
+	width: 750px;
+	margin: 0px auto;
 }
 
-#footer-wrapper{
-	font-size: 8px;
+#left-content-wrapper {
+	
 }
-#footer-text{
+
+#right-content-wrapper {
+	
+}
+
+#CenterContent { /*background-color: white;
+	border-radius:15px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */ */
+	
+}
+
+#main-content-wrapper {
+	
+}
+
+#main {
+	
+}
+
+#footer-wrapper {
+	display: block;
+	clear: both;
+}
+
+#footer-text {
 	margin-left: 30px;
 }
 /* Logo */
-
 #logo {
-	display:inline-block;
+	display: inline-block;
 	color: #FFFFFF;
 }
-#LogoAsText{
+
+#LogoAsText {
 	text-transform: lowercase;
 	font-size: 28px;
 	color: white;
 }
-#LogoAsText a{
+
+#LogoAsText a {
 	text-decoration: none;
 	color: white;
 }
 
-#Menu{
+#Menu {
 	display: inline-block;
-	float:right;
+	float: right;
 	color: #FFFFFF;
 	margin-bottom: 10px;
 }
 
-
-#cssmenu{
+#cssmenu {
 	display: inline-block;
 }
 
-#cssmenu ul{
-	font-family: "Droid Sans",Arial,sans-serif;
-	list-style-type:none;
-	width:auto;
-	display:block;
-	text-transform:uppercase;
-	font-weight:bold;
+#cssmenu ul {
+	font-family: "Droid Sans", Arial, sans-serif;
+	list-style-type: none;
+	width: auto;
+	display: block;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
-#cssmenu li{
-	display:block;
-	float:left;
-	}
+#cssmenu li {
+	display: block;
+	float: left;
+}
+
 #cssmenu ul li span {
-	display:block;
-	float:left;
-	color:white;
-	text-decoration:none;
-	font-weight:bold;
-	padding:0px 20px 0 0;
-}
-#cssmenu li a{
-	display:block;
-	float:left;
-	color:Gray;
-	text-decoration:none;
-	font-weight:bold;
-	padding:0px 20px 0 0;
+	display: block;
+	float: left;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0px 20px 0 0;
 }
 
-#cssmenu li a:hover{
+#cssmenu li a {
+	display: block;
+	float: left;
+	color: Gray;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0px 20px 0 0;
+}
+
+#cssmenu li a:hover {
 	color: white;
 }
 
+.liDivBox li {
+	text-decoration: none;
+	margin: 0, 0, 20, 0;
+	padding: 0;
+	color: Black;
+}
 
-.liDivBox li{
-	text-decoration:none;
-	margin:0,0,20,0;
-	padding:0;
-	color:Black;
-	
-	}
-.liDivBox ul li{
-	text-decoration:none;
-	display:block;
-	padding:12px 20px 0 20px;
+.liDivBox ul li {
+	text-decoration: none;
+	display: block;
+	padding: 12px 20px 0 20px;
 	width: 250px;
 	height: 150px;
-	float:left;
-	overflow:hidden;
+	float: left;
+	overflow: hidden;
 }
-.liDivBox ul li div .key{
-	color:DarkGray;
+
+.liDivBox ul li div .key {
+	color: DarkGray;
 }
-.liDivBox li:hover{
-	color:LightGray;
+
+.liDivBox li:hover {
+	color: LightGray;
 }
 
 .liDivBox ul li .ExpandableDiv {
-	display:block;
-	float:left;
-	color:Black;
-	text-decoration:none;
-	padding:12px 20px 0 20px;
+	display: block;
+	float: left;
+	color: Black;
+	text-decoration: none;
+	padding: 12px 20px 0 20px;
 	width: 500px;
 	height: 350px;
 }
 
-
 .edit_error_class {
-  display: block;
-  color: red;
+	display: block;
+	color: red;
 }
 
-.height-30{
-	height:30px;
-	background:black;
-	margin-right:0;
+.height-30 {
+	height: 30px;
+	background: black;
+	margin-right: 0;
 }
-
-
 
 /*User login and sign up CSS*/
-
-form[action="/user_mgt/login"] table, form[action="/user_mgt/sign_up"] table, 
-form[action="/user_mgt/lost_password"] table{
-	background:#ebf4fb;
+form[action="/user_mgt/login"] table,form[action="/user_mgt/sign_up"] table,form[action="/user_mgt/lost_password"] table
+	{
+	background: #ebf4fb;
 }
-form[action="/user_mgt/login"] table tbody tr:first-child td{
-	border-bottom: 	1px solid black;
+
+form[action="/user_mgt/login"] table tbody tr:first-child td {
+	border-bottom: 1px solid black;
 	text-align: center;
 }
 
-
 /*POST*/
-
-.post_wrapper{
-	display:block;
-}
-.post_content{
-	max-width: 300px !important;
-	max-height: 300px !important;
-	overflow:hidden !important;
-	display:inline-block !important;
-	Border: 2px solid black !important;
-	margin: 2px;
-	padding: 5px;
-}
-.post_content h2{
-	display: inline;
-}
-.syntaxhighlighter{
+.post_wrapper {
 	display: inline-block;
-	max-width: 300px !important;
+}
+
+.post_content { /* Border: 2px solid black !important; */
+	margin: 2px;
+	padding: 15px;
+	/* display:inline-block !important; */
+	float: left;
+	vertical-align: top;
+	background-color: white;
+	overflow: hidden !important;
+}
+
+.post_collapse { /* max-width: 300px !important;
 	max-height: 300px !important;
 	overflow:hidden !important;
+	font-size:10px !important; */
+	
+}
+
+.post_content h2 {
+	display: block;
+}
+/* .post_content p{
+	display:block;
+} */
+/*  .post_content div{
+	display:inline-block;
+}  */
+.post_content .syntaxhighlighter .gutter {
+	display: none;
+}
+
+.post_content .syntaxhighlighter .code {
+	width: auto !important;
+}
+
+.post_content .syntaxhighlighter { /*display: inline-block;
+	max-width: 300px !important;
+	max-height: 300px !important;*/
+	overflow: hidden !important;
+}
+
+.post_content .toolbar {
+	display: none;
 }

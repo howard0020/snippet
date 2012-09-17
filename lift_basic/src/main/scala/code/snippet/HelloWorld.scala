@@ -12,8 +12,25 @@ import net.liftweb.http.js._
 import net.liftweb.http.js.JE._
 import code.model.User
 import code.model.CodeSnippet
-
-
+import omniauth.Omniauth
+import dispatch._
+import xml.{Text, NodeSeq}
+import oauth._
+import oauth.OAuth._
+import xml.{Text, NodeSeq}
+import omniauth.Omniauth
+import dispatch._
+import oauth.{Token, Consumer}
+import oauth._
+import oauth.OAuth._
+import xml.{Text, NodeSeq}
+import net.liftweb.common.{Full, Empty, Box}
+import net.liftweb.http._
+import net.liftweb.util.Props
+import net.liftweb.sitemap.{Menu, Loc, SiteMap}
+import Loc._
+import omniauth.AuthInfo
+import net.liftweb.json._
 
 class HelloWorld {
   lazy val date: Box[Date] = DependencyFactory.inject[Date] // inject the date
@@ -31,6 +48,19 @@ class HelloWorld {
     
  // def B (xhtml : NodeSeq) : NodeSeq = 
   //  bind("B",  xhtml, "text" -> Text("B text replaced!"))
+    
+  def ProfileImage : String = {
+     val accessToken = Omniauth.currentAuth.get.token
+      val tempRequest = :/("graph.facebook.com").secure / "me" <<? Map("access_token" -> accessToken)
+      try{
+         val json = Omniauth.http(tempRequest >- JsonParser.parse)
+        	 val uid =  (json \ "id")
+        	 val text = (json \ "id").extractOpt[String]
+        			 
+      }catch{
+        case _ =>""
+      }
+  }  
 }
 class B {
 	def snippet (xhtml : NodeSeq)  ={
