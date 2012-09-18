@@ -19,17 +19,4 @@ import omniauth.AuthInfo
 
 class SnippetFacebookProvider(clientId:String, secret:String) extends FacebookProvider(clientId,secret){
   
-	    def profileImage : String = {
-	 
-	 val tempRequest = :/("graph.facebook.com").secure / "me" <<? Map("access_token" -> Omniauth.currentAuth.get.token)
-	  try{
-		  val json = Omniauth.http(tempRequest >- JsonParser.parse)
-
-		  (json \ "link").extract[String] + "/picture"
-    		  
-         }catch {
-         case _ => ""
-         }
-	}
-	
 }

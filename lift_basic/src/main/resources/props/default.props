@@ -6,3 +6,4 @@ omniauth.facebooksecret=bcb245f8b307621ece3f8de1adc45d8b
 omniauth.facebookkey=146178378859457
 omniauth.baseurl=http://localhost:8080/
 omniauth.successurl=http://localhost:8080/
+omniauth.failureurl=http://localhost:8080/

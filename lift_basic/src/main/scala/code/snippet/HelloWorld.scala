@@ -34,7 +34,7 @@ import net.liftweb.json._
 
 class HelloWorld {
   lazy val date: Box[Date] = DependencyFactory.inject[Date] // inject the date
-
+  implicit val formats = net.liftweb.json.DefaultFormats
   // replace the contents of the element with id "time" with the date
   def howdy = "#time *" #> "asdasd"
 
@@ -50,13 +50,16 @@ class HelloWorld {
   //  bind("B",  xhtml, "text" -> Text("B text replaced!"))
     
   def ProfileImage : String = {
+     Omniauth.currentAuth match {
+       case Full(user) => 
+     }
      val accessToken = Omniauth.currentAuth.get.token
       val tempRequest = :/("graph.facebook.com").secure / "me" <<? Map("access_token" -> accessToken)
       try{
-         val json = Omniauth.http(tempRequest >- JsonParser.parse)
-        	 val uid =  (json \ "id")
-        	 val text = (json \ "id").extractOpt[String]
-        			 
+          	val json = Omniauth.http(tempRequest >- JsonParser.parse)
+          	val text = "https://graph.facebook.com/" + (json \ "id").extractOpt[String] + "/picture"
+        	
+        	  ""
       }catch{
         case _ =>""
       }

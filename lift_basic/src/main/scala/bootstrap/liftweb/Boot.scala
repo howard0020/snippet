@@ -11,6 +11,7 @@ import mapper._
 import code.model._
 import omniauth.lib._
 import omniauth.Omniauth
+import code.Facebook.SnippetFacebookProvider
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -47,14 +48,18 @@ class Boot {
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       ) :::
     Omniauth.sitemap
-  
+    val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr("")
+        ,Props.get(FacebookProvider.providerPropertySecret).openOr(""))
+        
+    //init Omniauth with defaul providers
+    Omniauth.initWithProviders(List(SnippetProvider))
     
     // Build SiteMap
     def sitemap = SiteMap(entries:_*)
 
     def sitemapMutators = User.sitemapMutator
     
-    Omniauth.init
+    
     
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
