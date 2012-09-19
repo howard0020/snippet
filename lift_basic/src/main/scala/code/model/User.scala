@@ -4,6 +4,7 @@ package model
 import net.liftweb.mapper._
 import net.liftweb.util._
 import net.liftweb.common._
+import net.liftweb.http.S
 
 /**
  * The singleton that has methods for accessing the database
@@ -22,6 +23,17 @@ object User extends User with MetaMegaProtoUser[User] {
 
   // comment this line out to require email validations
   override def skipEmailValidation = true
+  
+  override def loginXhtml = {
+    (<form method="post" action={S.uri}><table><tr><td
+              colspan="2">{S.??("log.in")}</td></tr>
+          <tr><td>{userNameFieldString}</td><td><user:email /></td></tr>
+          <tr><td>{S.??("password")}</td><td><user:password /></td></tr>
+          <tr><td><a href={lostPasswordPath.mkString("/", "/", "")}
+                >{S.??("recover.password")}</a></td><td><user:submit /></td></tr>
+                <tr><td></td><td><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></td></tr></table>
+     </form>)
+  }
 }
 
 /**
@@ -39,5 +51,7 @@ class User extends MegaProtoUser[User] {
   }
   
   def AllPost = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
+  
+  def findUser(email : String) = User.find(By(User.email,email))
 }
 
