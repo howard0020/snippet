@@ -36,8 +36,11 @@ class HelloWorld {
   lazy val date: Box[Date] = DependencyFactory.inject[Date] // inject the date
   implicit val formats = net.liftweb.json.DefaultFormats
   // replace the contents of the element with id "time" with the date
+  
+  
   def howdy = "#time *" #> "asdasd"
 
+  
   /*
    lazy val date: Date = DependencyFactory.time.vend // create the date via factory
 
