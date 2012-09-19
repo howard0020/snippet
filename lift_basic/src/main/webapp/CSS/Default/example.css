@@ -135,7 +135,7 @@ body a {
 	float: left;
 }
 
-#cssmenu ul li span {
+#cssmenu li span {
 	display: block;
 	float: left;
 	color: white;
@@ -157,40 +157,6 @@ body a {
 	color: white;
 }
 
-.liDivBox li {
-	text-decoration: none;
-	margin: 0, 0, 20, 0;
-	padding: 0;
-	color: Black;
-}
-
-.liDivBox ul li {
-	text-decoration: none;
-	display: block;
-	padding: 12px 20px 0 20px;
-	width: 250px;
-	height: 150px;
-	float: left;
-	overflow: hidden;
-}
-
-.liDivBox ul li div .key {
-	color: DarkGray;
-}
-
-.liDivBox li:hover {
-	color: LightGray;
-}
-
-.liDivBox ul li .ExpandableDiv {
-	display: block;
-	float: left;
-	color: Black;
-	text-decoration: none;
-	padding: 12px 20px 0 20px;
-	width: 500px;
-	height: 350px;
-}
 
 .edit_error_class {
 	display: block;
