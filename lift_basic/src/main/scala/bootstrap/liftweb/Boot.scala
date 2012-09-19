@@ -44,18 +44,23 @@ class Boot {
       // more complex because this menu allows anything in the
       // /static path to be visible
      
-      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet")),
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet"))
+      //Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       ) :::
     Omniauth.sitemap
+    
+    
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr("")
         ,Props.get(FacebookProvider.providerPropertySecret).openOr(""))
         
     //init Omniauth with defaul providers
     Omniauth.initWithProviders(List(SnippetProvider))
     
+    //Adding CRUDify CodeSnippet into menu
+    val crudifyCodeSnippet:List[Menu] = CodeSnippet.menus
+    val MenuCombine = entries ++ crudifyCodeSnippet
     // Build SiteMap
-    def sitemap = SiteMap(entries:_*)
+    def sitemap = SiteMap(MenuCombine:_*)
 
     def sitemapMutators = User.sitemapMutator
     
