@@ -28,4 +28,5 @@ class UserSnippet {
 	
 	def CurrentUserIcon = "#userIcon [src]" #> UserIcon
 	
+	def loginForm = User.login
 }
