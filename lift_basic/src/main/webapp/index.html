@@ -36,7 +36,7 @@
 		});
 		
     </script>
-    	<div class="post_wrapper">
+<!--     	<div class="post_wrapper">
 			<div class="lift:Post.Content">
 				<content:code>
 					<div class="post_content post_collapse">
@@ -45,7 +45,13 @@
 				</content:code>
 			</div>
 			</p>			
-			</div>
+			</div> -->
+			<lift:comet type="PostActor" name="none" >
+  			 <div><ul>
+     	 <Post:messages></Post:messages>
+   			</ul></div>
+  		 <Post:input></Post:input>
+			</lift:comet>
 		</div>
 
 </body>
