@@ -112,13 +112,20 @@ body a {
 
 #Menu {
 	display: inline-block;
-	float: right;
 	color: #FFFFFF;
-	margin-bottom: 10px;
+}
+#Profile{
+	width: 750px;
+	margin: 0px auto;
+	align: right;
+}
+#Profile img{
+	width: 32px;
+	height:32px;
 }
 
+
 #cssmenu {
-	display: inline-block;
 }
 
 #cssmenu ul {
