@@ -11,8 +11,6 @@ import net.liftweb.common.Failure
 import net.liftweb.util._
 import net.liftweb.util.BindHelpers
 import net.liftweb.util.BindPlus._
-
-
 import scala.xml.{NodeSeq, Text}
 import net.liftweb.util._
 import net.liftweb.common._
@@ -43,42 +41,49 @@ import net.liftweb.sitemap.{Menu, Loc, SiteMap}
 import Loc._
 import omniauth.AuthInfo
 import net.liftweb.json._
+import code.snippet.PostForm
 
 class PostActor extends CometActor with CometListener {
-    implicit val formats = net.liftweb.json.DefaultFormats
-    
-		def Content(xhtml : NodeSeq)  = {
-		val user = User.currentUser
-		val posts = user match {
-		  case Full(user) => user.AllPost
-		  case Empty =>  CodeSnippet.findAll()
-		  case Failure(msg,_,_) => List()
-		  
-		}
-		System.out.println("======>"+posts)
-		def bindText(template : NodeSeq) : NodeSeq =
-		{
-		  posts.flatMap{ case (code) => bind("content",template,"text" -> scala.xml.Unparsed(code.content.get))}
-		  
-		}
-		bind("content",xhtml,"code"->bindText _)
-	}
+//    implicit val formats = net.liftweb.json.DefaultFormats
+//    
+//		def Content(xhtml : NodeSeq)  = {
+//		val user = User.currentUser
+//		val posts = user match {
+//		  case Full(user) => user.AllPost
+//		  case Empty =>  CodeSnippet.findAll()
+//		  case Failure(msg,_,_) => List()
+//		  
+//		}
+//		System.out.println("======>"+posts)
+//		def bindText(template : NodeSeq) : NodeSeq =
+//		{
+//		  posts.flatMap{ case (code) => bind("content",template,"text" ->  scala.xml.Unparsed(code.content.get).toString())}
+//		  
+//		}
+//		bind("content",xhtml,"code"->bindText _)
+//	}
   
+//	private var posts : List[CodeSnippet] = Nil
 	private var posts : List[CodeSnippet] = Nil
+	
 	def registerWith = PostServer
 	
 	private def renderMessages = <div>{posts.reverse.map(m => <li>{m.content}</li>)}</div>
 	
-  	def render = 	bind("Post","messages" -> renderMessages)
+  	  def render = 	bind("chat","input" -> SHtml.ajaxForm(SHtml.text("",sendMessage _)), "messages" -> renderMessages)
   
-    private def sendMessage(msg: String) = PostServer ! CodeSnippet.create.content.set(msg)
+ private def sendMessage(msg: String) ={
+  	    val snippet = CodeSnippet.create
+  	    snippet.content.set(msg)
+  	    snippet.save
+  	    PostServer ! snippet
+  	  } 
     
 	override def lowPriority = {
-	case msg:List[CodeSnippet] => {
-		posts ::: msg
-		reRender(false)
+	case msg:List[CodeSnippet] => posts = msg;
+		reRender()
 	}
-  }
+  
 }
 
 object PostServer extends LiftActor with ListenerManager {

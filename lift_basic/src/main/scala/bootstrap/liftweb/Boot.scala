@@ -44,8 +44,8 @@ class Boot {
       // more complex because this menu allows anything in the
       // /static path to be visible
      
-      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet"))
-      //Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet")),
+      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       ) :::
     Omniauth.sitemap
     

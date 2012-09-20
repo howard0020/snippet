@@ -6,6 +6,7 @@ import net.liftweb.sitemap.Loc
 import net.liftweb.sitemap.Loc.If
 import net.liftweb.http.RedirectResponse
 
+
 class CodeSnippet extends LongKeyedMapper[CodeSnippet]
 {
 	def getSingleton = CodeSnippet
@@ -29,6 +30,8 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")))
 	  }
 	  override def createMenuName = "New Snippet"
+	    
+
 	  //override def showAllMenuLocParams = LocGroup("admin") :: Nil
 	 /*override def createMenuLocParams = LocGroup("admin") :: Nil*/
 }
