@@ -97,7 +97,8 @@ class Post
 		System.out.println("======>"+posts)
 		def bindText(template : NodeSeq) : NodeSeq =
 		{
-		  posts.flatMap{ case (code) => bind("content",template,"text" -> scala.xml.Unparsed(code.content.get).toString())}
+		  posts.flatMap{ case (code) => bind("content",template,"text" 
+		      -> scala.xml.Unparsed(code.content.get))}
 		  
 		}
 		bind("content",xhtml,"code"->bindText _)
