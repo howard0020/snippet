@@ -13,7 +13,7 @@ object PostForm extends LiftScreen{
   
 def finish(){
     Snippet.is.Author(User.currentUser.get)
-    Snippet.is.save()
+    Snippet.is.save
     PostServer ! Snippet.is
    // User.currentUser.get.AllPost
   //  System.out.print("123123" + User.currentUser.get.AllPost)

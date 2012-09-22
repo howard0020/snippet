@@ -34,7 +34,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair,CodeSnippet)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair,CodeSnippet, Tag)
 
     // where to search snippet
     LiftRules.addToPackages("code")
@@ -59,7 +59,8 @@ class Boot {
     //Adding CRUDify CodeSnippet into menu
     val crudifyCodeSnippet:List[Menu] = CodeSnippet.menus
     val userMenu:List[Menu] = User.menus
-    val MenuCombine = entries ++ crudifyCodeSnippet ++ userMenu
+    val tagMenu:List[Menu] = Tag.menus
+    val MenuCombine = entries ++ crudifyCodeSnippet ++ userMenu ++ tagMenu
     // Build SiteMap
     def sitemap = SiteMap(MenuCombine:_*)
 
