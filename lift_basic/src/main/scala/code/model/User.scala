@@ -5,6 +5,7 @@ import net.liftweb.mapper._
 import net.liftweb.util._
 import net.liftweb.common._
 import net.liftweb.http.S
+import net.liftweb.sitemap.Loc.LocGroup
 
 /**
  * The singleton that has methods for accessing the database
@@ -34,6 +35,8 @@ object User extends User with MetaMegaProtoUser[User] {
                 <tr><td></td><td><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></td></tr></table>
      </form>)
   }
+  
+  override def globalUserLocParams = LocGroup("UserMenu")::super.globalUserLocParams
 }
 
 /**

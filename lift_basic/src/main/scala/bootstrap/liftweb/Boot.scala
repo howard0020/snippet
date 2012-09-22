@@ -39,13 +39,13 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
     val entries = List(
-     Menu.i("Home") / "index" >> User.AddUserMenusAfter, // the simple way to declare a menu
+     Menu.i("Home") / "index" >> LocGroup("General"),// the simple way to declare a menu
 
       // more complex because this menu allows anything in the
       // /static path to be visible
      
-      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet")),
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General")))
+     // Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       ) :::
     Omniauth.sitemap
     
@@ -58,17 +58,19 @@ class Boot {
     
     //Adding CRUDify CodeSnippet into menu
     val crudifyCodeSnippet:List[Menu] = CodeSnippet.menus
-    val MenuCombine = entries ++ crudifyCodeSnippet
+    val userMenu:List[Menu] = User.menus
+    val MenuCombine = entries ++ crudifyCodeSnippet ++ userMenu
     // Build SiteMap
     def sitemap = SiteMap(MenuCombine:_*)
 
-    def sitemapMutators = User.sitemapMutator
+    //def sitemapMutators = User.sitemapMutator
     
     
     
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
-    LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
+    //LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
+    LiftRules.setSiteMapFunc(() => sitemap)
 
     // Use jQuery 1.4
     LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQuery14Artifacts

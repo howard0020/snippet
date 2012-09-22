@@ -124,11 +124,14 @@ body a {
 	height:32px;
 }
 
-
-#cssmenu {
+#LoginMenu{
+	display: inline-block;
 }
 
-#cssmenu ul {
+.cssmenu {
+}
+
+.cssmenu ul {
 	font-family: "Droid Sans", Arial, sans-serif;
 	list-style-type: none;
 	width: auto;
@@ -137,12 +140,12 @@ body a {
 	font-weight: bold;
 }
 
-#cssmenu li {
+.cssmenu li {
 	display: block;
 	float: left;
 }
 
-#cssmenu li span {
+.cssmenu li span {
 	display: block;
 	float: left;
 	color: white;
@@ -151,7 +154,7 @@ body a {
 	padding: 0px 20px 0 0;
 }
 
-#cssmenu li a {
+.cssmenu li a {
 	display: block;
 	float: left;
 	color: Gray;
@@ -160,7 +163,7 @@ body a {
 	padding: 0px 20px 0 0;
 }
 
-#cssmenu li a:hover {
+.cssmenu li a:hover {
 	color: white;
 }
 

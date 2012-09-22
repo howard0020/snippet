@@ -28,8 +28,12 @@
 
 	<div id="wrapper">
 	<div id="Profile" class="lift:UserSnippet.CurrentUserIcon">
-			<img id="userIcon" src=""/>
+		<img id="userIcon" src=""/>
+		<div id="LoginMenu" class="cssmenu">
+			<div class="lift:Menu.builder?group=UserMenu"></div>
 		</div>
+	</div>
+	
 		<div id="header-wrapper">
 			<div id="header">
 				<div id="logo">
@@ -43,8 +47,9 @@
 	<!-- 			<span class="lift:UserSnippet.CurrentUserName">
 			    	<p id="userName"></p>
 			    </span> -->
-				<div id="Menu">
-					<lift:menu.builder top:id="cssmenu"/>
+				<div id="Menu" class="cssmenu">
+					
+					<div class="lift:Menu.builder?group=General"></div>
 				
 				<!-- 
 					<div id="cssmenu">

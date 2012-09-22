@@ -5,6 +5,7 @@ import net.liftweb.mapper._
 import net.liftweb.sitemap.Loc
 import net.liftweb.sitemap.Loc.If
 import net.liftweb.http.RedirectResponse
+import net.liftweb.sitemap.Loc.LocGroup
 
 
 class CodeSnippet extends LongKeyedMapper[CodeSnippet]
@@ -24,10 +25,10 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 	  //override def calcPrefix = List("admin",_dbTableNameLC)
 	  override def displayName = "Snippet"
 	  override def createMenuLocParams: List[Loc.AnyLocParam] =  {
-			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")))
+			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("Admin"))
 	  }
 	  override def showAllMenuLocParams: List[Loc.AnyLocParam] =  {
-			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")))
+			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("Admin"))
 	  }
 	  override def createMenuName = "New Snippet"
 	    
