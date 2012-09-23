@@ -19,10 +19,10 @@ class PostActor extends CometActor with CometListener {
 	
 	def registerWith = PostServer
 		
-  	def render =  bind("content","input" -> SHtml.ajaxForm(SHtml.text("",sendMessage _)), 
+//  	def render =  bind("content","input" -> SHtml.ajaxForm(SHtml.text("",sendMessage _)), 
+// 								"code" -> bindText _) 
+  		def render = bind("content","input" -> SHtml.ajaxForm(SHtml.textarea("",sendMessage _,"id"->"snippetTextArea") ++ SHtml.submitButton(() => {})), 
  								"code" -> bindText _) 
-  		
-
 
   	def bindText(template : NodeSeq) : NodeSeq ={
 		  posts.flatMap{ case (code) 
@@ -41,8 +41,7 @@ class PostActor extends CometActor with CometListener {
     
 	override def lowPriority = {
 	case msg:List[CodeSnippet] => posts = msg
-		reRender()
-		//partialUpdate(Run("SyntaxHighlighter.highlight();"))
+		reRender(false)
 	}
   
 }
