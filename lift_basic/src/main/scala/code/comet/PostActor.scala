@@ -42,7 +42,7 @@ class PostActor extends CometActor with CometListener {
 	override def lowPriority = {
 	case msg:List[CodeSnippet] => posts = msg
 		reRender()
-		partialUpdate(Call("SyntaxHighlighter.all()"))
+		//partialUpdate(Run("SyntaxHighlighter.highlight();"))
 	}
   
 }
