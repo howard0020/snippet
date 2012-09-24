@@ -26,6 +26,7 @@ class UserSnippet {
 	}
 	def CurrentUserName = "#userName" #> UserName
 	
+	//bind to the src attribute 
 	def CurrentUserIcon = "#userIcon [src]" #> UserIcon
 	
 	def loginForm = User.login

@@ -21,60 +21,42 @@
 <body class="lift:content_id=main">
 	<div id="main" class="lift:surround?with=default;at=content">
 		<script id="JSMain" type="text/javascript" charset="utf-8">
-		var editor;
-    $(document).ready(function() {
-			$( "#datepicker" ).datepicker();
-			 
-			 
-			$(".post_content").click(function(e) 
-			 { 
-			 	var className = $(this).attr("class"); 
-			 	if (className.indexOf("post_collapse") != -1) 
-			 		{$(this).attr("class", "post_content")} 
-			 	else 
-			 		{$(this).attr("class", "post_content post_collapse") } 
-			 });
-			 
-			 var postTextArea = document.getElementById("snippetTextArea");
-   			 editor = CodeMirror.fromTextArea(postTextArea,{
-   			 	   lineNumbers: true
-   			 });    
-		});
+			var editor;
+	    	$(document).ready(function() {				 
+				$(".post_content").click(function(e) 
+				 { 
+				 	var className = $(this).attr("class"); 
+				 	if (className.indexOf("post_collapse") != -1) 
+				 		{$(this).attr("class", "post_content")} 
+				 	else 
+				 		{$(this).attr("class", "post_content post_collapse") } 
+				 });
+				 
+				 var postTextArea = document.getElementById("snippetTextArea");
+	   			 editor = CodeMirror.fromTextArea(postTextArea,{
+	   			 	   lineNumbers: true
+	   			 });   
+	   			 
+	   			 var postTextArea2 = document.getElementById("snippetTextArea2");
+	   			 editor = CodeMirror.fromTextArea(postTextArea2,{
+	   			 	   lineNumbers: true
+	   			 });     
+			});
+	    </script>
+		<div class="lift:PostForm.ajaxForm">
+			<content:input></content:input>
+		</div>
 		
-    </script>
-<!--     	<div class="post_wrapper">
-			<div class="lift:Post.Content">
-				<content:code>
-					<div class="post_content post_collapse">
-						<content:text></content:text>
-					</div>
-				</content:code>
-			</div>
-			</p>			
-			</div> -->
-			
-<!-- 			<lift:comet type="PostActor" name="none" >
-  			 <div><ul>
-     	 <chat:messages/>
-   			</ul></div>
-  		 <chat:input />
-			</lift:comet> -->
-			
-			<div class="lift:PostForm.ajaxForm">
-				<content:input></content:input>
-			</div>
-		<lift:comet type="PostActor" name="none" >
-			<script type="text/javascript">
-   			 SyntaxHighlighter.highlight();
-			</script>
-			
-  			<content:code>
-				<div class="post_content post_collapse">
-					<content:text></content:text>
-				</div>
-			</content:code>
-			
-		</lift:comet>
+		<!-- <div class="lift:PostForm.ajaxForm2">
+			<content:input></content:input>
+		</div> -->
+		
+		<lift:embed what="/templates-hidden/PostWrapper">
+		</lift:embed>
+		<lift:bind-at name="other-footer">
+			<P>Footer from main index file</P>
+		</lift:bind-at>
+	</div>
 </body>
 </html>
 

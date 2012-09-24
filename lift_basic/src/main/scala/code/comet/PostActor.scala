@@ -19,14 +19,12 @@ class PostActor extends CometActor with CometListener {
 	
 	def registerWith = PostServer
 		
-//  	def render =  bind("content","input" -> SHtml.ajaxForm(SHtml.text("",sendMessage _)), 
-// 								"code" -> bindText _) 
-  		def render = bind("content","input" -> SHtml.ajaxForm(SHtml.textarea("",sendMessage _,"id"->"snippetTextArea") ++ SHtml.submitButton(() => {})), 
- 								"code" -> bindText _) 
+
+    def render = bind("content","template" -> bindText _) 
 
   	def bindText(template : NodeSeq) : NodeSeq ={
 		  posts.flatMap{ case (code) 
-		    => BindHelpers.bind("content",template, BindHelpers.TheBindParam("text",scala.xml.Unparsed(code.content.get)))
+		    => BindHelpers.bind("content",template, BindHelpers.TheBindParam("post",scala.xml.Unparsed(code.content.get)))
 		  }
 	}
 

@@ -5,7 +5,11 @@ import code.model._
 import code.comet.PostServer
 import net.liftweb.http.SHtml
 import net.liftweb.http.js.JE._
-
+import scala.xml.{NodeSeq}
+import net.liftweb.http.{SHtml,SessionVar}
+import net.liftweb.http.js.jquery.JqJsCmds.FadeIn
+import scala.swing.TextArea
+import scala.swing.TextArea
 
 //object PostForm extends LiftScreen{
 //  
@@ -32,4 +36,11 @@ class PostForm extends {
   	    snippet.save
   	    PostServer ! snippet
   	} 
+	
+//	def textArea = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("",sendMessage _,"id"->"snippetTextArea2") ++ SHtml.submitButton(() => {})))
+//	object ExampleVar extends SessionVar[String]("Replace Me")
+//	def ajaxForm2 =SHtml.ajaxEditable(
+//	    SHtml.textarea("",sendMessage _),
+//	    textArea,
+//	    () => {})
 }

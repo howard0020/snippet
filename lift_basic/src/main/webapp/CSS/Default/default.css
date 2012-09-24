@@ -1,4 +1,8 @@
 /*This css will wipe out all of the default behavior of CSS*/
+  .CodeMirror {
+  border: 1px solid black;
+  }      
+  
 html,address,blockquote,body,dd,div,dl,dt,fieldset,form,frame,frameset,h1,h2,h3,h4,h5,h6,noframes,ol,p,ul,center,dir,hr,menu,pre
 	{
 	display: block;
