@@ -21,7 +21,7 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 									   with CRUDify[Long, CodeSnippet]
 {
-	  override def dbTableName = "CodeSnippet"
+	  override def dbTableName = "Posts"
 	  //override def pageWrapper(body: NodeSeq) = <lift:surround with="admin" at="content">{body}</lift:surround>
 	  //override def calcPrefix = List("admin",_dbTableNameLC)
 	  override def displayName = "Snippet"
