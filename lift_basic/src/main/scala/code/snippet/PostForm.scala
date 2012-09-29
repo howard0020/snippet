@@ -36,11 +36,4 @@ class PostForm extends {
   	    snippet.save
   	    PostServer ! snippet
   	} 
-	
-//	def textArea = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("",sendMessage _,"id"->"snippetTextArea2") ++ SHtml.submitButton(() => {})))
-//	object ExampleVar extends SessionVar[String]("Replace Me")
-//	def ajaxForm2 =SHtml.ajaxEditable(
-//	    SHtml.textarea("",sendMessage _),
-//	    textArea,
-//	    () => {})
 }
