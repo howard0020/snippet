@@ -29,8 +29,15 @@ class PostActor extends CometActor with CometListener {
         			)
         ))
 
-  def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("", sendMessage _, "id" -> "snippetTextArea") ++ SHtml.submitButton(() => {})))
-
+  def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
+      (SHtml.textarea("", sendMessage _, "id" -> "snippetTextArea") 
+    		  ++ SHtml.text("Lift",sendTags _)
+    		  ++ SHtml.submitButton(() => {})))
+  
+  private def sendTags(msg: String)={
+      Console.println("========>" + msg)
+    }
+  
   private def sendMessage(msg: String) = {
     val snippet = CodeSnippet.create
     snippet.content.set(msg)
