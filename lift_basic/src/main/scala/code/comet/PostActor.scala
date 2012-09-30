@@ -18,20 +18,23 @@ import net.liftweb.mapper.By
 import code.snippet.Post
 import net.liftweb.common.Failure
 import net.liftweb.common.Box
+import code.model.SnippetTags
 
 class PostActor extends CometActor with CometListener {
   implicit val formats = net.liftweb.json.DefaultFormats
 
   private var content = ""
   private var tags = ""
-  var param = Full("Lift")
+  var param = S.param("tag")
   private var posts: List[CodeSnippet] = param match {
-    //case Empty => CodeSnippet.findAll()
-    case Full(text) => Tag.find(By(Tag.name,text)).get.posts.toList
-   // case Failure(msg,_,_) => {
-    //  S.error(msg)
-   //   CodeSnippet.findAll()
-    //  }
+    case Empty => CodeSnippet.findAll()
+    case Full(text) =>{ 
+      Console.println("=======> tag:" + text)
+      Tag.find(By(Tag.name,text)).get.posts.toList}
+    case Failure(msg,_,_) => {
+      S.error(msg)
+      CodeSnippet.findAll()
+    }
   }
 
   def registerWith = PostServer
@@ -54,6 +57,7 @@ class PostActor extends CometActor with CometListener {
     snippet.content.set(content)
     snippet.tags ++= Tag.getTagList(tags)
     snippet.save
+    PostServer ! snippet
   }
 
   private def sendMessage(msg: String) = {
