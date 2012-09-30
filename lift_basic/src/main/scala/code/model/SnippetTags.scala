@@ -8,7 +8,6 @@ class SnippetTags extends LongKeyedMapper[SnippetTags] with IdPK {
 }
 
 
-object SnippetTags extends SnippetTags with LongKeyedMetaMapper[SnippetTags]{
-  
-  
+object SnippetTags extends SnippetTags 
+	with LongKeyedMetaMapper[SnippetTags]{
 }

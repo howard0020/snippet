@@ -17,6 +17,11 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 	object content extends MappedTextarea(this , 2048)
 	object tags extends MappedManyToMany(SnippetTags, SnippetTags.codeSnippet, SnippetTags.tag, Tag)
 	
+	def getTags = {
+		var str = ""
+	    tags.foreach(t => str += t.name.get + ",")
+	    str.dropRight(1)
+	}
 }
 object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 									   with CRUDify[Long, CodeSnippet]
@@ -33,6 +38,7 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 	  }
 	  override def createMenuName = "New Snippet"
 	    
+	 
 
 	  //override def showAllMenuLocParams = LocGroup("admin") :: Nil
 	 /*override def createMenuLocParams = LocGroup("admin") :: Nil*/
