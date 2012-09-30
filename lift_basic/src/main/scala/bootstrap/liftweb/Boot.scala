@@ -45,7 +45,7 @@ class Boot {
       // /static path to be visible
      
       Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General")))
-     // Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       ) :::
     Omniauth.sitemap
     

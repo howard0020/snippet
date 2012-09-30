@@ -5,13 +5,16 @@
 	<div id="postTemplate">
 		<div class="post_content post_collapse">
 			<div class="content"></div>
+			<div class="tag"></div>
 		</div>
 	</div>
 	<script type="text/javascript">
    	 SyntaxHighlighter.highlight();
    	 var postTextArea = document.getElementById("snippetTextArea");
 	   			 editor = CodeMirror.fromTextArea(postTextArea,{
-	   			 	   lineNumbers: true
+	   			 	   lineNumbers: true,
+	   			 	   mode: "text/x-scala"
 	   			 });   
+	//editor.setOption("theme","eclipse");
 	</script>
 </lift:comet>

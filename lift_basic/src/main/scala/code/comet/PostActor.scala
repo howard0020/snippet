@@ -25,7 +25,9 @@ class PostActor extends CometActor with CometListener {
   def bindText =
     ".post_content" #> (
       (ns: NodeSeq) => (
-        posts.flatMap(p => (".content" #> scala.xml.Unparsed(p.content.get))(ns))))
+        posts.flatMap(p => (".content" #> scala.xml.Unparsed(p.content.get) & ".tag" #> "")(ns)
+        			)
+        ))
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("", sendMessage _, "id" -> "snippetTextArea") ++ SHtml.submitButton(() => {})))
 
