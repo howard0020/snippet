@@ -56,5 +56,6 @@ class User extends MegaProtoUser[User] {
   def AllPost = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
   
   def findUser(email : String) = User.find(By(User.email,email))
+  
 }
 

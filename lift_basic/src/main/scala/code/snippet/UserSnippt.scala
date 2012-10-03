@@ -10,7 +10,7 @@ import code.model.CodeSnippet
 import net.liftweb.common.Failure
 
 class UserSnippet {
-  
+	
 	def UserName = User.currentUser match {
 	  case Full(currUser) => currUser.username.get
 	  case Empty =>  ""
@@ -24,6 +24,7 @@ class UserSnippet {
 	  case Failure(msg,_,_) => "msg"
 	  case _=>	""
 	}
+  	
 	def CurrentUserName = "#userName" #> UserName
 	
 	//bind to the src attribute 

@@ -195,7 +195,7 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	display: inline-block;
 }
 
-.post_content { /* Border: 2px solid black !important; */
+.post { /* Border: 2px solid black !important; */
 	margin: 2px;
 	padding: 15px;
 	/* display:inline-block !important; */
@@ -212,7 +212,7 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	
 }
 
-.post_content h2 {
+.post h2 {
 	display: block;
 }
 /* .post_content p{
@@ -221,20 +221,28 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 /*  .post_content div{
 	display:inline-block;
 }  */
-.post_content .syntaxhighlighter .gutter {
+.post .syntaxhighlighter .gutter {
 	display: none;
 }
 
-.post_content .syntaxhighlighter .code {
+.post .syntaxhighlighter .code {
 	width: auto !important;
 }
 
-.post_content .syntaxhighlighter { /*display: inline-block;
+.post .syntaxhighlighter { /*display: inline-block;
 	max-width: 300px !important;
 	max-height: 300px !important;*/
 	overflow: hidden !important;
 }
 
-.post_content .toolbar {
+.post .toolbar {
 	display: none;
 }
+
+.post_author_name{
+	display: inline-block;
+	color: #4EA6EA;
+	font-size: 13px;
+	font-weight: bold;
+}
+

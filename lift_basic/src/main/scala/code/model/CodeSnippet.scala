@@ -1,14 +1,17 @@
 package code.model
 
-import code.model._
-import net.liftweb.mapper._
-import net.liftweb.sitemap.Loc
-import net.liftweb.sitemap.Loc.If
+
 import net.liftweb.http.RedirectResponse
+import net.liftweb.mapper._
+import net.liftweb.sitemap.Loc.If
 import net.liftweb.sitemap.Loc.LocGroup
+import net.liftweb.sitemap.Loc
+import net.liftweb.common.Full
+import net.liftweb.common.Empty
+import net.liftweb.common.Box
 
 
-class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
+class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany with CreatedUpdated
 {
 	def getSingleton = CodeSnippet
 	def primaryKeyField = id
@@ -22,6 +25,13 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 	    tags.foreach(t => str += t.name.get + ",")
 	    str.dropRight(1)
 	}
+	
+	def getAuthor:Box[User] =User.findByKey(Author.get)
+
+	  
+	  //val name = author.username
+	  //val imgDir = author.iconURL
+	
 }
 object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 									   with CRUDify[Long, CodeSnippet]
