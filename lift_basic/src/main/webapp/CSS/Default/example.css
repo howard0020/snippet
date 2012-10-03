@@ -199,7 +199,6 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	margin: 2px;
 	padding: 15px;
 	/* display:inline-block !important; */
-	float: left;
 	vertical-align: top;
 	background-color: white;
 	overflow: hidden !important;
@@ -211,7 +210,9 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	font-size:10px !important; */
 	
 }
-
+#postTemplate{
+	float:left;
+}
 .post h2 {
 	display: block;
 }
@@ -226,13 +227,13 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 }
 
 .post .syntaxhighlighter .code {
-	width: auto !important;
+	/* width: auto !important; */
 }
 
 .post .syntaxhighlighter { /*display: inline-block;
 	max-width: 300px !important;
-	max-height: 300px !important;*/
-	overflow: hidden !important;
+	max-height: 300px !important;
+	overflow: hidden !important;*/
 }
 
 .post .toolbar {

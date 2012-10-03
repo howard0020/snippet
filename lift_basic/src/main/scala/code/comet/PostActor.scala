@@ -26,6 +26,7 @@ class PostActor extends CometActor with CometListener {
 
   private var content = ""
   private var tags = ""
+  private var title = ""
   var param = S.param("tag")
   private var posts: List[CodeSnippet] = param match {
     case Empty => CodeSnippet.findAll()
@@ -40,7 +41,7 @@ class PostActor extends CometActor with CometListener {
 
   def registerWith = PostServer
 		  
-  def render = "#postForm" #> ajaxForm & "#postTemplate" #> bindText
+  def render = "#postForm *" #> ajaxForm & "#postTemplate *" #> bindText
 
   def bindText =
     ".post" #> (
@@ -58,11 +59,13 @@ class PostActor extends CometActor with CometListener {
             case Failure(msg,_,_) =>"Error"
           }) &
           ".post_created_date *" #> p.createdAt &
+          ".post_title *" #> p.title &
           ".post_content *" #> scala.xml.Unparsed(p.content.get) & 
           ".tag *" #> (p.getTags))(ns))))
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
       (SHtml.textarea("", content = _, "id" -> "snippetTextArea") 
+    		  ++ SHtml.text("", title = _)  
     		  ++ SHtml.text("Lift",tags = _)
     		  ++ SHtml.submitButton(() => {})
     		  ++ SHtml.hidden(() => postForm)
@@ -75,6 +78,7 @@ class PostActor extends CometActor with CometListener {
             case Empty => -1
             case Failure(msg,_,_) => -1})
     snippet.content.set(content)
+    snippet.title.set(title)
     snippet.tags ++= Tag.getTagList(tags)
     snippet.save
     PostServer ! snippet

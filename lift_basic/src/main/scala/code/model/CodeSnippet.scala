@@ -15,6 +15,7 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany with Crea
 {
 	def getSingleton = CodeSnippet
 	def primaryKeyField = id
+	object title extends MappedString(this , 500)
 	object id extends MappedLongIndex(this)
 	object Author extends MappedLongForeignKey(this, User)
 	object content extends MappedTextarea(this , 2048)
