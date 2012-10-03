@@ -37,7 +37,7 @@ body a {
 	background-color: #EDEDED;
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
-	color: #787878;
+	/* color: #787878; */
 	background-image:
 		url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif');
 }
@@ -59,6 +59,7 @@ body a {
 }
 /* Content Wrapper*/
 #content-wrapper {
+	background-color: white;
 	width: 750px;
 	margin: 0px auto;
 }
@@ -191,23 +192,23 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 }
 
 /*POST*/
-.post_wrapper {
+/* .post_wrapper {
 	display: inline-block;
 }
 
-.post { /* Border: 2px solid black !important; */
+.post { Border: 2px solid black !important;
 	margin: 2px;
 	padding: 15px;
-	/* display:inline-block !important; */
+	display:inline-block !important;
 	vertical-align: top;
 	background-color: white;
 	overflow: hidden !important;
 }
 
-.post_collapse { /* max-width: 300px !important;
+.post_collapse { max-width: 300px !important;
 	max-height: 300px !important;
 	overflow:hidden !important;
-	font-size:10px !important; */
+	font-size:10px !important;
 	
 }
 #postTemplate{
@@ -216,24 +217,24 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 .post h2 {
 	display: block;
 }
-/* .post_content p{
+.post_content p{
 	display:block;
-} */
-/*  .post_content div{
+}
+ .post_content div{
 	display:inline-block;
-}  */
+} 
 .post .syntaxhighlighter .gutter {
 	display: none;
 }
 
 .post .syntaxhighlighter .code {
-	/* width: auto !important; */
+	width: auto !important;
 }
 
-.post .syntaxhighlighter { /*display: inline-block;
+.post .syntaxhighlighter { display: inline-block;
 	max-width: 300px !important;
 	max-height: 300px !important;
-	overflow: hidden !important;*/
+	overflow: hidden !important;
 }
 
 .post .toolbar {
@@ -245,5 +246,49 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	color: #4EA6EA;
 	font-size: 13px;
 	font-weight: bold;
-}
+} */
 
+/*From William's css*/
+
+.post_wrapper {
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
+	background-color:white;
+}
+.post{
+	margin-left: 60px;
+}
+.post_author_image {
+	float: left;
+}
+.post_header {
+	margin-bottom: 5px;
+}
+.post_signifier {
+	color: #999;
+}
+.post_username_link {
+	display: inline-block;
+	color: rgb(78,166,234);
+	font-size: 13px;
+	font-weight: bold;
+}
+.post_username_link:hover {
+	text-decoration: underline;
+}
+.post_metadata {
+	font-size: 9px;
+	display: block;
+	color: #999;
+}
+.post_title {
+	color: #555;
+	font-weight: bold;
+}
+.post_content h2 {
+	color: black;
+	font-weight: bold;
+	padding-left: 2px;
+	background-color: #f2faff;
+}a.edit_link {	background: url("../images/icons/edit_icon.png") no-repeat;	color: gray;	padding-left: 19px;}a.edit_link:hover {	text-decoration: underline;}

@@ -44,7 +44,7 @@ class PostActor extends CometActor with CometListener {
   def render = "#postForm *" #> ajaxForm & "#postTemplate *" #> bindText
 
   def bindText =
-    ".post" #> (
+    ".post_wrapper" #> (
       (ns: NodeSeq) => (posts.flatMap( p => (
           ".post_author_image [src]" #> (p.getAuthor match{
             case Full(author)=> 
@@ -58,10 +58,11 @@ class PostActor extends CometActor with CometListener {
             case Empty => ""
             case Failure(msg,_,_) =>"Error"
           }) &
-          ".post_created_date *" #> p.createdAt &
-          ".post_title *" #> p.title &
+          ".post_created_date *" #> (if(p.createdAt == null) "" else p.createdAt.toString()) &
+          ".post_title *" #> (if(p.title == null) "" else p.title.toString()) &
           ".post_content *" #> scala.xml.Unparsed(p.content.get) & 
-          ".tag *" #> (p.getTags))(ns))))
+          ".tag *" #> (if(p.getTags.equals("")) "" else ("tags: " + p.getTags))
+          )(ns))))
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
       (SHtml.textarea("", content = _, "id" -> "snippetTextArea") 
