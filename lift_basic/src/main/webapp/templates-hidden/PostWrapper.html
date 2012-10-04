@@ -1,20 +1,22 @@
-<lift:comet type="PostActor" name="none" >
-
-	<div id="postForm">
-	</div>
-	<div id="postTemplate">
-		<div class="post_content post_collapse">
-			<div class="content"></div>
-			<div class="tag"></div>
+<div class="lift:Posts.setParam">
+	<lift:comet type="PostActor" name="none" >
+	
+		<div id="postForm">
 		</div>
-	</div>
-	<script type="text/javascript">
-   	 SyntaxHighlighter.highlight();
-   	 var postTextArea = document.getElementById("snippetTextArea");
-	   			 editor = CodeMirror.fromTextArea(postTextArea,{
-	   			 	   lineNumbers: true,
-	   			 	   mode: "text/x-scala"
-	   			 });   
-	//editor.setOption("theme","eclipse");
-	</script>
-</lift:comet>
+		<div id="postTemplate">
+			<div class="post_content post_collapse">
+				<div class="content"></div>
+				<div class="tag"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+	   	 SyntaxHighlighter.highlight();
+	   	 var postTextArea = document.getElementById("snippetTextArea");
+		   			 editor = CodeMirror.fromTextArea(postTextArea,{
+		   			 	   lineNumbers: true,
+		   			 	   mode: "text/x-scala"
+		   			 });   
+		//editor.setOption("theme","eclipse");
+		</script>
+	</lift:comet>
+</div>

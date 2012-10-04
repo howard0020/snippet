@@ -21,17 +21,34 @@ import net.liftweb.common.Box
 import code.model.SnippetTags
 
 class PostActor extends CometActor with CometListener {
+  object tagVar extends SessionVar[Box[String]](Empty)
+  
   implicit val formats = net.liftweb.json.DefaultFormats
 
   private var content = ""
   private var tags = ""
-  var param = S.param("tag")
-  private var posts: List[CodeSnippet] = param match {
-    case Empty => CodeSnippet.findAll()
+    
+  private var posts = getPosts
+ 
+  def getPost(s: String):List[CodeSnippet] = {
+	    Tag.find(By(Tag.name,s)) match {
+	    	case Full(theTag) => theTag.posts.all
+	    	case Empty => List[CodeSnippet]()
+	 	}
+  }
+  
+  def getPosts: List[CodeSnippet] = tagVar.is match {
+    case Empty => {
+      Console.println("===>var = none")
+      CodeSnippet.findAll()
+    }
+    
     case Full(text) =>{ 
-      Console.println("=======> tag:" + text)
-      Tag.find(By(Tag.name,text)).get.posts.toList}
+    	Console.println("===>var = "+text)
+    	getPost(text)
+    }
     case Failure(msg,_,_) => {
+      Console.println("===>var = fail")
       S.error(msg)
       CodeSnippet.findAll()
     }
@@ -41,9 +58,11 @@ class PostActor extends CometActor with CometListener {
 
   def render = "#postForm" #> ajaxForm & "#postTemplate" #> bindText
 
-  def bindText =
+  def bindText ={
+    Console.println("====> rendering")
     ".post_content" #> (
       (ns: NodeSeq) => (posts.flatMap( p => (".content" #> scala.xml.Unparsed(p.content.get) & ".tag *" #> ("Tags:" + p.getTags))(ns))))
+  }
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
       (SHtml.textarea("", content = _, "id" -> "snippetTextArea") 
@@ -55,7 +74,7 @@ class PostActor extends CometActor with CometListener {
   private def postForm = {
     val snippet = CodeSnippet.create
     snippet.content.set(content)
-    snippet.tags ++= Tag.getTagList(tags)
+    snippet.tags ++= Tag.getTagList(tags)  
     snippet.save
     PostServer ! snippet
   }
@@ -71,6 +90,9 @@ class PostActor extends CometActor with CometListener {
     case msg: List[CodeSnippet] =>
       posts = msg
       reRender(false)
+    case msg: CodeSnippet =>
+      posts = msg :: posts
+      reRender(false)
   }
 }
 
@@ -79,8 +101,7 @@ object PostServer extends LiftActor with ListenerManager {
   def createUpdate = posts
   override def lowPriority = {
     case msg: CodeSnippet => {
-      posts = CodeSnippet.findAll()
-      updateListeners()
+    	updateListeners(msg)
     }
   }
 }

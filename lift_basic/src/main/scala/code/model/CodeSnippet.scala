@@ -16,7 +16,7 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 	object Author extends MappedLongForeignKey(this, User)
 	object content extends MappedTextarea(this , 2048)
 	object tags extends MappedManyToMany(SnippetTags, SnippetTags.codeSnippet, SnippetTags.tag, Tag)
-	
+
 	def getTags = {
 		var str = ""
 	    tags.foreach(t => str += t.name.get + ",")

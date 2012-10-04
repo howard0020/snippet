@@ -97,7 +97,10 @@ class Boot {
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
     
- 
+   LiftRules.rewrite.append {
+      case RewriteRequest(ParsePath(List("index", tag),_,_,_),_,_) =>
+        RewriteResponse("index" :: Nil, Map("tag" -> tag))
+    }
 
     
   }
