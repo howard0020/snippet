@@ -59,7 +59,6 @@ body a {
 }
 /* Content Wrapper*/
 #content-wrapper {
-	background-color: white;
 	width: 750px;
 	margin: 0px auto;
 }
@@ -72,7 +71,10 @@ body a {
 	
 }
 
-#CenterContent { /*background-color: white;
+#CenterContent { 
+	background-color: white;
+	padding: 5px;
+	/*
 	border-radius:15px;
 	-moz-border-radius:25px; /* Firefox 3.6 and earlier */ */
 	
@@ -87,8 +89,34 @@ body a {
 }
 
 #footer-wrapper {
-	display: block;
+	display: inline-block;
 	clear: both;
+	color: gray;
+	width: 750px;
+}
+#footer-wrapper ul.footer_links{
+	float: right;
+	position: relative;
+	right: -8px;
+}
+
+#footer-wrapper ul.footer_links li{
+	display: inline;
+	border-left: 1px solid gray;
+	padding: 0 8px 0 12px;
+	font-size: 11px;
+	line-height: 11px;
+}
+#footer-wrapper ul.footer_links li.first{
+	border: none;
+}
+
+#footer-wrapper a{
+	text-decoration: none !important;
+	color: gray;	
+}
+#footer-wrapper a:hover{
+	color: black;	
 }
 
 #footer-text {
@@ -249,11 +277,14 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 } */
 
 /*From William's css*/
-
+#postTemplate h2{
+	font-size: 1.1em;
+}
 .post_wrapper {
 	clear: both;
 	overflow: hidden;
 	margin-bottom: 10px;
+	Margin-left: 5px;
 	background-color:white;
 }
 .post{
@@ -263,7 +294,7 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	float: left;
 }
 .post_header {
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 }
 .post_signifier {
 	color: #999;
@@ -281,6 +312,7 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	font-size: 9px;
 	display: block;
 	color: #999;
+	margin:5px;
 }
 .post_title {
 	color: #555;
@@ -292,3 +324,8 @@ form[action="/user_mgt/login"] table tbody tr:first-child td {
 	padding-left: 2px;
 	background-color: #f2faff;
 }a.edit_link {	background: url("../images/icons/edit_icon.png") no-repeat;	color: gray;	padding-left: 19px;}a.edit_link:hover {	text-decoration: underline;}
+
+.post_created_date{
+	Margin-left: 10px;
+}
+
