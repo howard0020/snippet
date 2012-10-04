@@ -14,17 +14,23 @@ import code.model.Tag
 import net.liftweb.mapper.By
 
 class Posts {
-  object tagVar extends SessionVar[Box[String]](Empty)
   
-	def SetParam(tempalte: NodeSeq):NodeSeq = {
+	def setparam(tempalte: NodeSeq) = {
     val tag = S.param("tag")
     tag match {
-      case Full(name) => Console.println("=1======> tag:" + name)
-      case Empty => {}
+      case Full(name) => Console.println("=Snippet=====> tag:" + name)
+      case Empty => Console.println("=Snippet======> tag:Empty")
+      case Failure(msg,_,_) => Console.println("=Snippet======> tag:Empty:Failure"+msg)
     }
-    tagVar.set(tag)
-    
-   // 
+    for{
+      session <- S.session
+      tagStr <- S.param("tag")
+    }{
+      val name = S.attr("namehehe",_.toString)
+      val tag = Tag.find(By(Tag.name,tagStr))
+      Console.println("===attr=>"+name.openOr(""))
+      session.setupComet("PostActor",name,tag)
+    }
     tempalte
   }
 }

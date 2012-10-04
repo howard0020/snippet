@@ -53,6 +53,10 @@ object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
 	  })
 	  tagList.toList
 	}
+	  
+	  def getTopTag(top:Int)={
+	    SnippetTags
+	  }
 }
 
 

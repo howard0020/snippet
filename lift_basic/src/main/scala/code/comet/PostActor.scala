@@ -21,23 +21,23 @@ import net.liftweb.common.Box
 import code.model.SnippetTags
 
 class PostActor extends CometActor with CometListener {
-  object tagVar extends SessionVar[Box[String]](Empty)
+
   
   implicit val formats = net.liftweb.json.DefaultFormats
 
   private var content = ""
   private var tags = ""
     
-  private var posts = getPosts
+  private var posts = getPosts(Empty)
  
-  def getPost(s: String):List[CodeSnippet] = {
-	    Tag.find(By(Tag.name,s)) match {
+
+  def getPosts(tag:Box[Tag]):List[CodeSnippet] = {
+	    tag match {
 	    	case Full(theTag) => theTag.posts.all
-	    	case Empty => List[CodeSnippet]()
+	    	case Empty =>  CodeSnippet.findAll()
 	 	}
   }
-  
-  def getPosts: List[CodeSnippet] = tagVar.is match {
+/*  def getPosts: List[CodeSnippet] = tagVar.is match {
     case Empty => {
       Console.println("===>var = none")
       CodeSnippet.findAll()
@@ -52,14 +52,13 @@ class PostActor extends CometActor with CometListener {
       S.error(msg)
       CodeSnippet.findAll()
     }
-  }
+  }*/
 
   def registerWith = PostServer
 
   def render = "#postForm" #> ajaxForm & "#postTemplate" #> bindText
 
   def bindText ={
-    Console.println("====> rendering")
     ".post_content" #> (
       (ns: NodeSeq) => (posts.flatMap( p => (".content" #> scala.xml.Unparsed(p.content.get) & ".tag *" #> ("Tags:" + p.getTags))(ns))))
   }
@@ -93,6 +92,11 @@ class PostActor extends CometActor with CometListener {
     case msg: CodeSnippet =>
       posts = msg :: posts
       reRender(false)
+    case msg: Box[Tag] =>{
+      Console.println("=========comet>"+msg.openOr(""))
+      posts = getPosts(msg)
+      reRender()
+    }
   }
 }
 
