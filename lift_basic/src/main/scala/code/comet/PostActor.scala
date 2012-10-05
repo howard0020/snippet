@@ -22,22 +22,25 @@ import code.model.SnippetTags
 import code.model.User
 
 class PostActor extends CometActor with CometListener {
+
+  
   implicit val formats = net.liftweb.json.DefaultFormats
 
   private var content = ""
   private var tags = ""
+
   private var title = ""
-  var param = S.param("tag")
-  private var posts: List[CodeSnippet] = param match {
-    case Empty => CodeSnippet.findAll()
-    case Full(text) =>{ 
-      Console.println("=======> tag:" + text)
-      Tag.find(By(Tag.name,text)).get.posts.toList}
-    case Failure(msg,_,_) => {
-      S.error(msg)
-      CodeSnippet.findAll()
-    }
+
+  private var posts = getPosts(Empty)
+ 
+
+  def getPosts(tag:Box[Tag]):List[CodeSnippet] = {
+	    tag match {
+	    	case Full(theTag) => theTag.posts.all
+	    	case Empty =>  CodeSnippet.findAll()
+	 	}
   }
+
 
   def registerWith = PostServer
 		  
@@ -96,6 +99,14 @@ class PostActor extends CometActor with CometListener {
     case msg: List[CodeSnippet] =>
       posts = msg
       reRender(false)
+    case msg: CodeSnippet =>
+      posts = msg :: posts
+      reRender(false)
+    case msg: Box[Tag] =>{
+      Console.println("=========comet>"+msg.openOr(""))
+      posts = getPosts(msg)
+      reRender()
+    }
   }
 }
 
@@ -104,8 +115,7 @@ object PostServer extends LiftActor with ListenerManager {
   def createUpdate = posts
   override def lowPriority = {
     case msg: CodeSnippet => {
-      posts = CodeSnippet.findAll()
-      updateListeners()
+    	updateListeners(msg)
     }
   }
 }

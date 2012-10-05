@@ -8,6 +8,8 @@ import net.liftweb.http.RedirectResponse
 import net.liftweb.sitemap.Loc.LocGroup
 import net.liftweb.util.StringHelpers
 import scala.collection.mutable.ListBuffer
+import net.liftweb.common.{Empty,Full,Failure,Box}
+
 
 class Tag extends LongKeyedMapper[Tag] with IdPK 
 									with ManyToMany
@@ -16,7 +18,11 @@ class Tag extends LongKeyedMapper[Tag] with IdPK
 	def getSingleton = Tag
 	object name extends MappedString(this,100)
 	object posts extends MappedManyToMany(SnippetTags, SnippetTags.tag, SnippetTags.codeSnippet, CodeSnippet)
-
+	
+	def getPosts = {
+	  posts.all
+	}
+	
 
 }
 object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
@@ -34,13 +40,23 @@ object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
 	  val tagList = new ListBuffer[Tag]
 	  val strs = StringHelpers.roboSplit(s,",")
 	  strs.foreach(s => {
-	    val tag = Tag.create
-	    tag.name.set(s)
-	    tag.save
-	    tagList += tag
+	    val oldTag = Tag.find(By(Tag.name,s))
+	    oldTag match {
+	      case Full(tag) => tagList +=tag
+	      case Empty =>{
+	         val tag = Tag.create
+	         tag.name.set(s)
+		     tag.save
+		     tagList += tag
+	      }
+	    }
 	  })
 	  tagList.toList
 	}
+	  
+	  def getTopTag(top:Int)={
+	    SnippetTags
+	  }
 }
 
 

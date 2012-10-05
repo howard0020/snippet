@@ -97,8 +97,32 @@ class Boot {
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
     
- 
-
+   LiftRules.rewrite.append {
+      case RewriteRequest(ParsePath(List("index", tag),_,_,_),_,_) =>
+        RewriteResponse("index" :: Nil, Map("tag" -> tag))
+    }
     
+    LiftRules.dispatch.append(SendToComet)
+  }
+}
+import http.rest._
+
+object SendToComet extends RestHelper {
+  serve {
+    case Get("send" :: rest, _) => {
+      val (name, msg) = rest match {
+        case name :: msg :: _ => (name, msg)
+        case name :: _ => (name, "No Message")
+        case _ => ("Woof", "No message")
+      }
+
+      for {
+        sess <- S.session ?~ "Session not found"
+        ca <- sess.findComet("Tick", Full(name)) ?~ "Comet actor not found"
+      } yield {
+        ca ! msg
+        <span>Thanks</span>
+      }
+    }
   }
 }
