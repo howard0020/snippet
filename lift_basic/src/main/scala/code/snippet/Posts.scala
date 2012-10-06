@@ -2,6 +2,7 @@ package code.snippet
 
 import net.liftweb.util.BindPlus._
 import net.liftweb.util._
+
 import code.model.User
 import Helpers._
 import net.liftweb.common.{Full, Empty, Box}
@@ -12,6 +13,12 @@ import net.liftweb.http.S
 import scala.xml.NodeSeq
 import code.model._
 import net.liftweb.mapper.By
+import net.liftweb.http.SHtml
+import scala.xml.Text
+import net.liftweb.http.js._
+import net.liftweb.http.js.{JE,JsCmd,JsCmds}
+import JsCmds._
+import net.liftweb.http.js.JE.{JsRaw,Str}
 
 class Posts {
   
@@ -35,4 +42,34 @@ class Posts {
     }
     tempalte
   }
+	
+/*	def popularTag =  ".tag-list *" #> 
+	{ 
+	  ".tag-item" #> (SnippetTags.getTopTag(5).flatMap( p => 
+	    ".tag-item" #> ""
+	    ))
+	    
+	}*/
+	  
+
+	def popularTag = {
+	  val count = S.attr("count",_.toInt).openOr(6)
+	  ".tag-list *" #> { 
+	  ".tag-item" #> (SnippetTags.getTopTag(count).map(p =>
+    	".tag-item *" #> getTagButton(p.name.get )))}    
+}
+	    
+	def getTagButton(str:String) = SHtml.ajaxButton(str,() => sendTagMsgStr(str))
+	
+	def sendTagMsgStr(tag:String) ={
+	  sendTagMsg(Tag.find(By(Tag.name,tag)))
+	  Noop
+	}  
+	  
+	def sendTagMsg(tag:Box[Tag]):Unit ={
+		for(session <- S.session)
+		{
+		  session.sendCometActorMessage("PostActor",Full("PostActor"),tag)
+		}
+	  }
 }

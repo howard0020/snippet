@@ -98,7 +98,7 @@ class Boot {
     S.addAround(DB.buildLoanWrapper)
     
    LiftRules.rewrite.append {
-      case RewriteRequest(ParsePath(List("index", tag),_,_,_),_,_) =>
+      case RewriteRequest(ParsePath("tag" :: tag :: Nil,_,_,_),_,_) =>
         RewriteResponse("index" :: Nil, Map("tag" -> tag))
     }
     
