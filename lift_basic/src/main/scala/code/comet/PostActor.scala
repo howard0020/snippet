@@ -25,8 +25,12 @@ class PostActor extends CometActor with CometListener {
 
   
   implicit val formats = net.liftweb.json.DefaultFormats
-
+  
+  private var currTagFilter : Box[Tag] = Empty
+  
+  //for new post
   private var content = ""
+  //for new post
   private var tags = ""
 
   private var title = ""
@@ -38,6 +42,9 @@ class PostActor extends CometActor with CometListener {
 	    tag match {
 	    	case Full(theTag) => theTag.posts.all
 	    	case Empty =>  CodeSnippet.findAll()
+	    	case Failure(msg,_,_) => 
+	    	  S.error(msg)
+	    	  CodeSnippet.findAll()
 	 	}
   }
 
@@ -100,10 +107,21 @@ class PostActor extends CometActor with CometListener {
       posts = msg
       reRender(false)
     case msg: CodeSnippet =>
-      posts = msg :: posts
-      reRender(false)
+  
+         Console.println("=========cometActor.Current Tag Filter>"+currTagFilter.openOr(""))
+      posts = if(msg.tags.exists(tag => tag == currTagFilter.openOr(""))){
+        Console.println("=========cometActor.CodeSnippet.contain>"+currTagFilter.openOr(""))
+        msg :: posts
+      }else
+      {
+        Console.println("=========cometActor.CodeSnippet.NOTcontain>"+currTagFilter.openOr(""))
+        posts
+      }
+        reRender(false)
     case msg: Box[Tag] =>{
       Console.println("=========cometActor.Box[Tag]>"+msg.openOr(""))
+      currTagFilter = msg
+      Console.println("=========cometActor.Current Tag Filter>"+currTagFilter.openOr(""))
       posts = getPosts(msg)
       reRender(false)
       //TODO change reRender to be partialUpdate
