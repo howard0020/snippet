@@ -54,16 +54,20 @@ body a {
 }
 
 #header {
-	width: 850px;
+	width: 900px;
 	margin: 0px auto;
 }
 /* Content Wrapper*/
 #content-wrapper {
-	width: 750px;
+	width: 900px;
 	margin: 0px auto;
 }
 
 #left-content-wrapper {
+	float:left;
+}
+
+#popular-Tag-Menu{
 	
 }
 
@@ -71,7 +75,41 @@ body a {
 	
 }
 
+.tag-list li button {
+   border-top: 1px solid #f7f7f7;
+   background: #afb2b5;
+   background: -webkit-gradient(linear, left top, left bottom, from(#444545), to(#afb2b5));
+   background: -webkit-linear-gradient(top, #444545, #afb2b5);
+   background: -moz-linear-gradient(top, #444545, #afb2b5);
+   background: -ms-linear-gradient(top, #444545, #afb2b5);
+   background: -o-linear-gradient(top, #444545, #afb2b5);
+   padding: 5px 10px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.tag-list li button:hover {
+   border-top-color: #424042;
+   background: #424042;
+   color: #ccc;
+}
+.tag-list li button:active {
+   border-top-color: #423e42;
+   background: #423e42;
+}
+
 #CenterContent { 
+	float:left;
+	width:750px;
 	background-color: white;
 	padding: 5px;
 	/*
@@ -157,6 +195,7 @@ body a {
 	display: inline-block;
 }
 
+
 .cssmenu {
 }
 
@@ -196,6 +235,26 @@ body a {
 	color: white;
 }
 
+#popular-Tag-Menu {
+	margin-top:20px;
+	float:right;
+}
+
+#popular-Tag-Menu ul {
+	margin:0px;
+	list-style-type: none;
+}
+
+#popular-Tag-Menu li {
+	text-align: right;
+}
+
+#popular-Tag-Menu li a {
+}
+
+#popular-Tag-Menu li a:hover {
+	color: white;
+}
 
 .edit_error_class {
 	display: block;
