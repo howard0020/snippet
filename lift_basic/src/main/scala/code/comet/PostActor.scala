@@ -10,7 +10,7 @@ import net.liftweb.http.js._
 import net.liftweb.http.js.JE._
 import JsCmds._
 import scala.xml.NodeSeq
-import net.liftweb.util.Helpers._
+import Helpers._
 import code.model.Tag
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
@@ -103,9 +103,11 @@ class PostActor extends CometActor with CometListener {
       posts = msg :: posts
       reRender(false)
     case msg: Box[Tag] =>{
-      Console.println("=========comet>"+msg.openOr(""))
+      Console.println("=========cometActor.Box[Tag]>"+msg.openOr(""))
       posts = getPosts(msg)
-      reRender()
+      reRender(false)
+      //TODO change reRender to be partialUpdate
+      //partialUpdate(SetHtml("postTemplate",))
     }
   }
 }

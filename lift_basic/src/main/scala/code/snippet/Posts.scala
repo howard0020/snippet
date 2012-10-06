@@ -55,11 +55,17 @@ class Posts {
 	def popularTag = {
 	  val count = S.attr("count",_.toInt).openOr(6)
 	  ".tag-list *" #> { 
+	     ".tag-all *" #> getTagButton("All") &
 	  ".tag-item" #> (SnippetTags.getTopTag(count).map(p =>
     	".tag-item *" #> getTagButton(p.name.get )))}    
 }
 	    
-	def getTagButton(str:String) = SHtml.ajaxButton(str,() => sendTagMsgStr(str))
+	def getTagButton(str:String) ={
+	  if (str == "All")
+		  SHtml.ajaxButton(str,() => sendTagMsgStr(""))
+	  else 
+		  SHtml.ajaxButton(str,() => sendTagMsgStr(str))
+	}
 	
 	def sendTagMsgStr(tag:String) ={
 	  sendTagMsg(Tag.find(By(Tag.name,tag)))
