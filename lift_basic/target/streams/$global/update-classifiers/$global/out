@@ -6575,7 +6575,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.mortbay.jetty#servlet-api;2.5-20081211!servlet-api.jar(doc)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] junit#junit;4.7!junit.jar(src)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-tools.testing#specs_2.9.1;1.6.9!specs_2.9.1.jar(src)[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 2070ms :: artifacts dl 98ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1206ms :: artifacts dl 69ms[0m
 [0m[[0mdebug[0m] [0mNbr of module to sort : 33[0m
 [0m[[0mdebug[0m] [0mSort dependencies of : org.scala-lang#scala-library;2.9.1 / Number of dependencies = 0[0m
 [0m[[0mdebug[0m] [0mSort done for : org.scala-lang#scala-library;2.9.1[0m
@@ -7490,4 +7490,4 @@
 [0m[[0mdebug[0m] [0m	report for my.company#snippet$sources_javadoc_2.9.1;0.1-SNAPSHOT docs produced in C:\Users\xiao qiang wu\.ivy2\cache\my.company-snippet$sources_javadoc_2.9.1-docs.xml[0m
 [0m[[0mdebug[0m] [0mNbr of module to sort : 0[0m
 [0m[[0mdebug[0m] [0m	report for my.company#snippet$sources_javadoc_2.9.1;0.1-SNAPSHOT pom produced in C:\Users\xiao qiang wu\.ivy2\cache\my.company-snippet$sources_javadoc_2.9.1-pom.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (2070ms resolve - 98ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (1206ms resolve - 69ms download)[0m

@@ -6,6 +6,7 @@ import net.liftweb.util._
 import net.liftweb.common._
 import net.liftweb.http.S
 import net.liftweb.sitemap.Loc.LocGroup
+import code.gh.Auth
 
 /**
  * The singleton that has methods for accessing the database
@@ -32,7 +33,9 @@ object User extends User with MetaMegaProtoUser[User] {
           <tr><td>{S.??("password")}</td><td><user:password /></td></tr>
           <tr><td><a href={lostPasswordPath.mkString("/", "/", "")}
                 >{S.??("recover.password")}</a></td><td><user:submit /></td></tr>
-                <tr><td></td><td><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></td></tr></table>
+                <tr><td></td><td><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></td></tr>
+                <tr><td></td><td><a href={ Auth.login_url }>Github Login</a></td></tr>
+                </table>
      </form>)
   }
   

@@ -1,0 +1,37 @@
+/* repositories page styles */
+ul#repo_list li, ul#repo_items li {
+	margin: 10px;
+}
+
+a.repo_link {
+	color: #4183C4;
+	text-decoration: none;
+	font-size: 12pt;
+}
+
+/* items in a particular repository */
+/*
+.repo_file {
+	background-color: black;
+}
+.repo_dir {
+	background-color: yellow;
+}
+*/
+
+/* repository page navigation links */
+ul#repo_nav_bar {
+	overflow: hidden;
+}
+ul#repo_nav_bar li {
+	float: left
+}
+.repo_nav_link {
+	margin-right: 5px;
+	text-decoration: none
+}
+.editor {
+	border: 1px solid gray;
+/*	background-color: gray; */
+/*	padding: 5px; */
+}
