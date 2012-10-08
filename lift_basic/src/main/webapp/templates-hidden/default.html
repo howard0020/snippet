@@ -20,7 +20,7 @@
 	rel="Stylesheet" />
 
 <link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
-<link rel="stylesheet" type="text/css" href="../CSS/Default/example.css" /> 
+<link rel="stylesheet" type="text/css" href="../CSS/Default/example.css" />
 <link rel="stylesheet" href="../codemirror/theme/eclipse.css" />
 <script src="../codemirror/lib/codemirror.js"></script>
 <link rel="stylesheet" href="../codemirror/lib/codemirror.css">
@@ -28,26 +28,24 @@
 </head>
 <body class="BodyGrayAndWhiteStyle">
 	<div id="wrapper">
-	<div id="Profile" class="lift:UserSnippet.CurrentUserIcon">
-		<img id="userIcon" src=""/>
-		<div id="LoginMenu" class="cssmenu">
-			<div class="lift:Menu.builder?group=UserMenu"></div>
-		</div>
-	</div>
 		<div id="header-wrapper">
+			<div id="Profile" class="lift:UserSnippet.CurrentUserIcon">
+				<img id="userIcon" src="" />
+			</div>
+			<div id="LoginMenu" class="cssmenu">
+				<div class="lift:Menu.builder?group=UserMenu"></div>
+			</div>
 			<div id="header">
 				<div id="logo">
 					<div id="LogoAsText">
 						<a href="#">Snippet </a>
 					</div>
-					<img alt="" id="ajax-loader"
-						style="display: none; margin-bottom: 0px; margin-left: 5px"
-						src="/images/ajax-loader.gif" />
+					
 				</div>
 				<div id="Menu" class="cssmenu">
-				<div class="lift:Menu.builder?group=General"></div>
-		
-				<!-- 
+					<div class="lift:Menu.builder?group=General"></div>
+
+					<!-- 
 					<div id="cssmenu">
 						<span class="lift:Menu.builder" li:class="sample"></span>
 					</div> -->
@@ -65,6 +63,9 @@
 					<div class="lift:Msgs?showAll=true"></div>
 				</div>
 				<div id="main-content-wrapper">
+					<img alt="" id="ajax-loader"
+						style="display: none; margin-bottom: 0px; margin-left: 5px"
+						src="/images/ajax-loader.gif" />
 					<div id="content">The main content will get bound here</div>
 				</div>
 			</div>

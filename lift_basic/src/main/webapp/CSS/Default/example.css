@@ -38,12 +38,14 @@ body a {
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
 	/* color: #787878; */
-	background-image:
-		url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif');
+	/* background-image:
+		url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif'); */
 }
 
 #wrapper {
+	width: 950px;
 	display: block;
+	margin: 0px auto;
 }
 
 /* Header */
@@ -59,8 +61,11 @@ body a {
 }
 /* Content Wrapper*/
 #content-wrapper {
-	width: 900px;
-	margin: 0px auto;
+	width: 950px;
+	margin-top:15px;
+	background-color:white;
+	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 }
 
 #left-content-wrapper {
@@ -76,7 +81,7 @@ body a {
 }
 
 .tag-list li button {
-   border-top: 1px solid #f7f7f7;
+   /* border-top: 1px solid #f7f7f7;
    background: #afb2b5;
    background: -webkit-gradient(linear, left top, left bottom, from(#444545), to(#afb2b5));
    background: -webkit-linear-gradient(top, #444545, #afb2b5);
@@ -95,16 +100,16 @@ body a {
    font-size: 14px;
    font-family: Georgia, serif;
    text-decoration: none;
-   vertical-align: middle;
+   vertical-align: middle; */
 }
 .tag-list li button:hover {
-   border-top-color: #424042;
+   /* border-top-color: #424042;
    background: #424042;
-   color: #ccc;
+   color: #ccc; */
 }
 .tag-list li button:active {
-   border-top-color: #423e42;
-   background: #423e42;
+   /* border-top-color: #423e42;
+   background: #423e42; */
 }
 
 #CenterContent { 
@@ -163,18 +168,18 @@ body a {
 /* Logo */
 #logo {
 	display: inline-block;
-	color: #FFFFFF;
+	position:relative;
+	bottom:25px;
 }
 
 #LogoAsText {
 	text-transform: lowercase;
-	font-size: 28px;
-	color: white;
 }
 
 #LogoAsText a {
 	text-decoration: none;
-	color: white;
+	font-size: 38px;
+	color: #7E7D7D;
 }
 
 #Menu {
@@ -182,9 +187,9 @@ body a {
 	color: #FFFFFF;
 }
 #Profile{
-	width: 750px;
-	margin: 0px auto;
-	align: right;
+	position:relative;
+	left: 600px;
+	display: inline-block;
 }
 #Profile img{
 	width: 32px;
@@ -192,6 +197,8 @@ body a {
 }
 
 #LoginMenu{
+	position: relative;
+	left: 550px;
 	display: inline-block;
 }
 
