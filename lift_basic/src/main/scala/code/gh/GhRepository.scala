@@ -25,7 +25,8 @@ object GhRepository {
 
   def get_dir(name: String, repoName: String, path: String, access_token: String) = {
     val svc = GitHub.api_host / "repos" / name / repoName / "contents" / path
-    svc.secure <<? Map("access_token" -> access_token) ># { json => json }
+    val handler = svc.secure <<? Map("access_token" -> access_token) ># { json => json }
+    Http(handler)
   }
   def resource_json2obj(jsonObj: JsonObject): GhResource = {
     // sample link: 
@@ -46,7 +47,7 @@ object GhRepository {
   }
   def get_user_repos(user: String, access_token: String) = {
     val svc = GitHub.api_host / "users" / user / "repos"
-    svc.secure <<? Map("access_token" -> access_token) ># { json =>
+    val handler = svc.secure <<? Map("access_token" -> access_token) ># { json =>
       val jsonList = parse.jsonList(json)
 
       jsonList.map { jsonObj =>
@@ -67,6 +68,7 @@ object GhRepository {
         GhRepository(id, GhOwner(owner_id, owner_login), name, updated_at, language, html_url, clone_url, description, open_issues)
       }
     }
+    Http(handler)
   }
 
   def get_org_repos(org_login: String, access_token: String) = {
