@@ -50,9 +50,9 @@ body a {
 
 /* Header */
 #header-wrapper {
-	background-color: #DADADA;
+	/* background-color: #DADADA;
 	border: 1px solid #BABAC0;
-	padding: 3px;
+	padding: 3px; */
 }
 
 #header {
@@ -81,40 +81,18 @@ body a {
 }
 
 .tag-list li button {
-   /* border-top: 1px solid #f7f7f7;
-   background: #afb2b5;
-   background: -webkit-gradient(linear, left top, left bottom, from(#444545), to(#afb2b5));
-   background: -webkit-linear-gradient(top, #444545, #afb2b5);
-   background: -moz-linear-gradient(top, #444545, #afb2b5);
-   background: -ms-linear-gradient(top, #444545, #afb2b5);
-   background: -o-linear-gradient(top, #444545, #afb2b5);
-   padding: 5px 10px;
-   -webkit-border-radius: 0px;
-   -moz-border-radius: 0px;
-   border-radius: 0px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 14px;
-   font-family: Georgia, serif;
-   text-decoration: none;
-   vertical-align: middle; */
+  
 }
 .tag-list li button:hover {
-   /* border-top-color: #424042;
-   background: #424042;
-   color: #ccc; */
+  
 }
 .tag-list li button:active {
-   /* border-top-color: #423e42;
-   background: #423e42; */
+  
 }
 
 #CenterContent { 
-	float:left;
-	width:750px;
+	/* float:left;
+	width:750px; */
 	background-color: white;
 	padding: 5px;
 	/*
@@ -188,7 +166,7 @@ body a {
 }
 #Profile{
 	position:relative;
-	left: 600px;
+	left: 580px;
 	display: inline-block;
 }
 #Profile img{
@@ -200,6 +178,7 @@ body a {
 	position: relative;
 	left: 550px;
 	display: inline-block;
+	bottom:5px;
 }
 
 
@@ -223,7 +202,7 @@ body a {
 .cssmenu li span {
 	display: block;
 	float: left;
-	color: white;
+	color: black;
 	text-decoration: none;
 	font-weight: bold;
 	padding: 0px 20px 0 0;
@@ -239,7 +218,7 @@ body a {
 }
 
 .cssmenu li a:hover {
-	color: white;
+	color: black;
 }
 
 #popular-Tag-Menu {
@@ -260,7 +239,7 @@ body a {
 }
 
 #popular-Tag-Menu li a:hover {
-	color: white;
+	color: black;
 }
 
 .edit_error_class {
