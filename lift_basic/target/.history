@@ -9,3 +9,6 @@ exit
 update
 eclipse with-source=true
 exit
+update
+eclipse with-source=true
+exit
