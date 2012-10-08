@@ -44,8 +44,8 @@ class Boot {
       // more complex because this menu allows anything in the
       // /static path to be visible
      
-      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General")))
-      //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
+      Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
+        Menu(Loc("compose", Link(List("compose"), true, "/compose/index"), "Compose", LocGroup("General")))
       ) :::
     Omniauth.sitemap
     
@@ -102,27 +102,8 @@ class Boot {
         RewriteResponse("index" :: Nil, Map("tag" -> tag))
     }
     
-    LiftRules.dispatch.append(SendToComet)
+   
   }
 }
-import http.rest._
 
-object SendToComet extends RestHelper {
-  serve {
-    case Get("send" :: rest, _) => {
-      val (name, msg) = rest match {
-        case name :: msg :: _ => (name, msg)
-        case name :: _ => (name, "No Message")
-        case _ => ("Woof", "No message")
-      }
 
-      for {
-        sess <- S.session ?~ "Session not found"
-        ca <- sess.findComet("Tick", Full(name)) ?~ "Comet actor not found"
-      } yield {
-        ca ! msg
-        <span>Thanks</span>
-      }
-    }
-  }
-}

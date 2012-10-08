@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special</title>
+</head>
+<body class="lift:content_id=main">
+	<div id="main" class="lift:surround?with=default;at=content">
+		<!-- Code Mirror Init-->
+		<link class="lift:head" rel="stylesheet"
+			href="../codemirror/theme/eclipse.css" />
+		<script class="lift:head" src="../codemirror/lib/codemirror.js"></script>
+		<link class="lift:head" rel="stylesheet"
+			href="../codemirror/lib/codemirror.css">
+		<script class="lift:head" src="../codemirror/mode/clike/clike.js"></script>
+		<script class="lift:head" src="../codemirror/lib/util/searchcursor.js"></script>
+		<script class="lift:head"
+			src="../codemirror/lib/util/match-highlighter.js"></script>
+		<script class="lift:head" src="../codemirror/lib/util/loadmode.js"></script>
+		<link class="lift:head" rel="stylesheet"
+			href="../CSS/Default/codemirror_default.css">
+		<!-- Code Mirror Init End-->
+		<!-- Aloha Editor Init-->
+		<link rel="stylesheet" href="../aloha/css/aloha.css" type="text/css">
+		<script class="lift:head" src="../aloha/lib/require.js"></script>
+		<script class="lift:head" src="../aloha/lib/vendor/jquery-1.7.2.js"></script>
+		<script class="lift:head" type="text/javascript">
+
+		$( "#sortable" ).disableSelection();
+		});
+            if (window.Aloha === undefined || window.Aloha === null) {
+                var Aloha = window.Aloha = {};
+            }
+
+            Aloha.settings = {
+            	sidebar: {
+            		disabled: true
+            	},
+            	plugins:{
+            		block: {
+					defaults : {
+						'.default-block': {
+						}, 
+						'.columnBlock': {
+							'aloha-block-type': 'ColumnBlock'
+						},
+						'.uneditableColumnBlock': {
+							'aloha-block-type': 'UneditableColumnBlock'
+						},
+						'.product-teaser': {
+							'aloha-block-type': 'ProductTeaserBlock'
+						},
+						'.company': {
+							'aloha-block-type': 'CompanyBlock'
+						},
+						'.imageBlock': {
+							'aloha-block-type': 'ImageBlock'
+						},
+						'.editableImageBlock': {
+							'aloha-block-type': 'EditableImageBlock'
+						},
+						'.news-block': {
+							'aloha-block-type': 'NewsBlock'
+						},
+						'.sortable-news-block': {
+							'aloha-block-type': 'SortableNewsBlock'
+						},
+						'.editable-product-teaser': {
+							'aloha-block-type': 'EditableProductTeaserBlock'
+						}
+					}
+				}
+            	}
+           }
+       
+    </script>
+		<script class="lift:head" src="../aloha/lib/aloha-full.js"
+			data-aloha-plugins="common/ui,common/format,
+		                        common/table,
+		                        common/list,
+		                        common/link,
+		                        common/highlighteditables,
+		                        common/block,
+		                        common/undo,
+		                        common/image,
+		                        common/contenthandler,
+		                        common/paste,
+		                        common/commands,
+		                        common/abbr,
+		                        common/align,
+		                        common/horizontalruler,
+		                        extra/ribbon">
+	</script>
+		<script type="text/javascript">
+
+	    Aloha.ready( function() {
+	
+	        // Make #content editable once Aloha is loaded and ready.
+	        Aloha.jQuery('.editable-area').aloha();
+
+	    });
+	    
+	     
+	</script>
+		<!-- Aloha Editor Init End-->
+
+		<button onclick="addPage();">add html</button>
+		<button onclick="addCode();">add code</button>
+		<p>
+			<input type="text" value="javascript" id="mode"> 
+			<input type="text" value="javascript" id="modeFile">
+			<button type="button" onclick="change()">change mode</button>
+			<select id="modeSelect" >
+				<option value="application/x-aspx" mode="htmlembedded" >ASP.Net</option>
+				<option value="text/x-csrc" mode="clike" >C</option>
+				<option value="text/x-c++src" mode="clike" >C++</option>
+				<option value="text/x-csharp" mode="clike" >C#</option>
+				<option value="text/x-clojure" mode="clojure" >Clogjure</option>
+				<option value="text/x-coffeescript" mode="coffeescript" >Coffe Script</option>
+				<option value="text/x-common-lisp" mode="commonlisp" >Common Lisp</option>
+				<option value="application/x-ejs" mode="htmlembedded">Embedded Javascript</option>
+				<option value="text/x-erlang" mode="erlang" >Erlang</option>
+				<option value="text/x-go" mode="go" >Go</option>
+				<option value="text/x-groovy" mode="groovy" >Groovy</option>
+				<option value="text/x-haskell" mode="haskell" >Haskell</option>
+				<option value="text/x-haxe" mode="haxe" >Haxe</option>
+				<option value="text/html" mode="htmlmixed" >HTML</option>
+				<option value="text/x-" mode="" >Java</option>
+				<option value="text/x-" mode="" >JavaScript</option>
+				<option value="application/x-jsp" mode="htmlembedded">JSP</option>
+				<option value="text/x-" mode="" >Jinja2</option>
+				<option value="text/x-" mode="" >LESS</option>
+				<option value="text/x-" mode="" >Lua</option>
+				<option value="text/x-" mode="" >Markdown</option>
+				<option value="text/x-" mode="" >MySQL</option>
+				<option value="text/x-" mode="" >NTriples</option>
+				<option value="text/x-" mode="" >OCaml</option>
+				<option value="text/x-" mode="" >Pascal</option>
+				<option value="text/x-" mode="" >Perl</option>
+				<option value="text/x-" mode="" >PHP</option>
+				<option value="text/x-" mode="" >Pig Latin</option>
+				<option value="text/x-" mode="" >PL/SQL</option>
+				<option value="text/x-" mode="" >Properties files</option>
+				<option value="text/x-" mode="" >Python</option>
+				<option value="text/x-" mode="" >R</option>
+				<option value="text/x-" mode="" >reStructuredText</option>
+				<option value="text/x-" mode="" >Ruby</option>
+				<option value="text/x-" mode="" >Rust</option>
+				<option value="text/x-" mode="" >Scala</option>
+				<option value="text/x-" mode="" >Scheme</option>
+				<option value="text/x-" mode="" >Shell</option>
+				<option value="text/x-" mode="" >Sieve</option>
+				<option value="text/x-" mode="" >Smalltalk</option>
+				<option value="text/x-" mode="" >Smarty</option>
+				<option value="text/x-" mode="" >SPARQL</option>
+				<option value="text/x-" mode="" >sTeX, LaTeX</option>
+				<option value="text/x-" mode="" >Tiddlywiki</option>
+				<option value="text/x-" mode="" >Tiki wiki</option>
+				<option value="text/x-" mode="" >VB.NET</option>
+				<option value="text/x-" mode="" >VBScript</option>
+				<option value="text/x-" mode="" >Velocity</option>
+				<option value="text/x-" mode="" >Verilog</option>
+				<option value="text/x-" mode="" >XML</option>
+				<option value="text/x-" mode="" >XQuery</option>
+				<option value="text/x-" mode="" >YAML</option>				
+			</select>
+		</p>
+		<div id="composer-area" class="sortable">
+
+			<div class="editable-area sortable-area">
+				<h1>This is a empty post!</h1>
+			</div>
+			<br></br>
+			<textarea class="sortable-area" id="snippetTextArea">
+import snippet.fun._
+
+class ReplaceMe extends SomeCode{
+    def click = {
+    	this.text.remove
+    }    
+}
+			</textarea>
+		</div>
+		<script type="text/javascript">
+		
+			CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
+
+			var modeInput = document.getElementById("mode");
+			var modeFileInput = document.getElementById("modeFile");
+			CodeMirror.connect(modeInput, "keypress", function(e) {
+			  if (e.keyCode == 13) change();
+			});
+			
+			var postTextArea = document.getElementById("snippetTextArea");
+   			 editor = CodeMirror.fromTextArea(postTextArea,{
+   			 	   lineNumbers: true,
+   			 	   mode: "text/x-scala",
+   			 	   lineWrapping: "wrap",
+   			 	   onCursorActivity: function() {
+   			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
+   			 	   }
+   			});   
+		   	function change() {
+			   editor.setOption("mode", modeInput.value);
+			   CodeMirror.autoLoadMode(editor, modeFileInput.value);
+			}
+			
+			
+	    function addPage() {
+        	var $ = Aloha.jQuery;
+
+       	 	$('#composer-area').append("<br></br><div class=\"editable\"></div>");
+       	 	Aloha.jQuery('.editable').mahalo();
+        	Aloha.jQuery('.editable').aloha();
+    	}
+    	function addCode(){
+    		var composerArea = document.getElementById("composer-area");
+    		var myCodeMirror = CodeMirror(composerArea, {
+    		  lineNumbers: true,
+			  value: "",
+			  mode:  "text/x-scala"
+			});
+    	}
+	</script>
+	</div>
+</body>
+</html>
