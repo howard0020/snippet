@@ -25,10 +25,10 @@ class UserSnippet {
 	  case _=>	""
 	}
   	
-	def CurrentUserName = "#userName" #> UserName
+	def CurrentUserName = ".userName *" #> UserName
 	
 	//bind to the src attribute 
-	def CurrentUserIcon = "#userIcon [src]" #> UserIcon
+	def CurrentUserIcon = ".userIcon [src]" #> UserIcon
 	
 	def loginForm = User.login
 }

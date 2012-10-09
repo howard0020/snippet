@@ -18,14 +18,11 @@
 	href="/CSS/SyntaxHighlighter/shCoreDefault.css" />
 <link type="text/css" href="/CSS/redmond/jquery-ui-1.8.23.custom.css"
 	rel="Stylesheet" />
-
-<link rel="stylesheet" type="text/css" href="../CSS/Default/default.css" />
-<link rel="stylesheet" type="text/css" href="../CSS/Default/example.css" />
 <link rel="stylesheet" href="../codemirror/theme/eclipse.css" />
 <script src="/codemirror/lib/codemirror.js"></script>
 <link rel="stylesheet" href="../codemirror/lib/codemirror.css">
 <script src="/codemirror/mode/clike/clike.js"></script>
-<link rel="stylesheet" type="text/css" href="/CSS/Default/default.css" />
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.2/build/cssreset/cssreset-min.css">
 <link rel="stylesheet" type="text/css" href="/CSS/Default/example.css" /> 
 <link rel="stylesheet" href="/codemirror/theme/eclipse.css" />
 <script src="/codemirror/lib/codemirror.js"></script>
@@ -35,12 +32,14 @@
 <body class="BodyGrayAndWhiteStyle">
 	<div id="wrapper">
 		<div id="header-wrapper">
-			<div id="Profile" class="lift:UserSnippet.CurrentUserIcon">
-				<img id="userIcon" src="" />
-			</div>
-			<div id="LoginMenu" class="cssmenu">
+			<div id="Profile" class="lift:UserSnippet.CurrentUserName">
+				<span class="userName"></span>
+				
+				<div id="LoginMenu" class="cssmenu">
 				<div class="lift:Menu.builder?group=UserMenu"></div>
 			</div>
+			</div>
+			
 			<div id="header">
 				<div id="logo">
 					<div id="LogoAsText">
