@@ -30,7 +30,9 @@
             }
 
             Aloha.settings = {
-     
+     			sidebar: {
+     				disabled: true
+     			},
             	plugins:{
             		block: {
 					defaults : {
@@ -103,9 +105,6 @@
 		<button onclick="addPage();">add html</button>
 		<button onclick="addCode();">add code</button>
 		<p>
-			<input type="text" value="javascript" id="mode"> 
-			<input type="text" value="javascript" id="modeFile">
-			
 			<select id="modeSelect" >
 				<option value="application/x-aspx" mode="htmlembedded" >ASP.Net</option>
 				<option value="text/x-csrc" mode="clike" >C</option>
@@ -168,7 +167,7 @@
 				<h1>This is a empty post!</h1>
 			</div>
 			<br></br>
-			<div class="default-block">
+			
 			<textarea class="sortable-area" id="snippetTextArea" contenteditable="true">
 import snippet.fun._
 
@@ -178,7 +177,7 @@ class ReplaceMe extends SomeCode{
     }    
 }
 			</textarea>
-		</div>
+		
 		</div>
 		<script type="text/javascript">
 		
@@ -186,9 +185,9 @@ class ReplaceMe extends SomeCode{
 			var modeSelect = document.getElementById("modeSelect");
 			var modeInput = document.getElementById("mode");
 			var modeFileInput = document.getElementById("modeFile");
-			CodeMirror.connect(modeInput, "keypress", function(e) {
-			  if (e.keyCode == 13) change();
-			});
+		//	CodeMirror.connect(modeInput, "keypress", function(e) {
+		//	  if (e.keyCode == 13) change();
+		//	});
 			
 			var postTextArea = document.getElementById("snippetTextArea");
    			 editor = CodeMirror.fromTextArea(postTextArea,{
