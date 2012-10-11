@@ -1,9 +1,14 @@
 <lift:posts.setparam name="PostActor">
-	<a href = "http://localhost:8080/github">Github Upload</a>
-	<span>Github username: xiaoqiangwu2007@gmail.com   password: codesnippet1</span>
+
 	<lift:comet type="PostActor" name="PostActor">
-	<div id="postForm">
-	</div>
+		<lift:test_cond.loggedin>
+			<a href = "http://localhost:8080/github">Github Upload</a>
+			<span>Github username: xiaoqiangwu2007@gmail.com   password: codesnippet1</span>
+		
+			<div id="postForm">
+			</div>
+		</lift:test_cond.loggedin>
+		
 	<div id="postTemplate">
 		<div class="post_wrapper">
 			<img class="post_author_image"/>

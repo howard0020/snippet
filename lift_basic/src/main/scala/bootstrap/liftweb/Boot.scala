@@ -87,6 +87,8 @@ class Boot {
     }
     //=============================== end GITHUB RELATED CONFIG =========================//
 
+    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
+    
     //=============================== Omniauth ==========================================//
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr(""), Props.get(FacebookProvider.providerPropertySecret).openOr(""))
 
