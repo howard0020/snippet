@@ -50,9 +50,11 @@ body a {
 
 /* Header */
 #header-wrapper {
-	/* background-color: #DADADA;
-	border: 1px solid #BABAC0;
-	padding: 3px; */
+	width: 1000px;
+	background-color: #414141;
+	z-index: 9999;
+	position: fixed;
+	top: 0px;
 	width: 1000px;
 }
 
@@ -63,7 +65,7 @@ body a {
 /* Content Wrapper*/
 #content-wrapper {
 	width: 1000px;
-	margin-top:15px;
+	padding-top:60px;
 }
 
 #left-content-wrapper {
@@ -80,7 +82,7 @@ body a {
 }
 
 .tag-list li button {
-	background: black;
+	background: gray;
 	color: white;
 	font-size: 15px;
 	padding: 10px;
@@ -88,7 +90,7 @@ body a {
 	cursor: pointer;
 }
 .tag-list li button:hover {
-  background:gray;
+  background: #78AA2B;
 }
 .tag-list li button:active {
   background:gray;
@@ -149,8 +151,9 @@ body a {
 /* Logo */
 #logo {
 	display: inline-block;
-	position:relative;
-	bottom:25px;
+	position: relative;
+	bottom: 10px;
+	left: 20px;
 }
 
 #LogoAsText {
@@ -160,15 +163,15 @@ body a {
 #LogoAsText a {
 	text-decoration: none;
 	font-size: 38px;
-	color: #7E7D7D;
+	color: #78AA2B;
 }
 
 #Menu {
 	position: relative;
 	display: inline-block;
-	color: white;
 	float: right;
 	top: 20px;
+	margin-right: 20px;
 }
 #Profile{
 	text-align: right;
@@ -183,6 +186,7 @@ body a {
 
 #LoginMenu{
 	display: inline-block;
+	margin-right: 20px;
 }
 
 
@@ -207,22 +211,22 @@ body a {
 .cssmenu li span {
 	display: block;
 	float: left;
-	color: black;
+	color: #78AA2B;
 	text-decoration: none;
 	font-weight: bold;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #78AA2B;
 }
 
 .cssmenu li a {
 	display: block;
 	float: left;
-	color: Gray;
+	color: white;
 	text-decoration: none;
 	font-weight: bold;
 }
 
 .cssmenu li a:hover {
-	color: black;
+	color: #78AA2B;
 }
 
 #popular-Tag-Menu {
@@ -292,10 +296,12 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	
 }
 .post{
-	margin-left: 60px;
+	
 }
 .post_author_image {
 	float: left;
+	width: 32px;
+	height: 32px;
 }
 .post_header {
 	margin-bottom: 0px;
