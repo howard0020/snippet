@@ -25,16 +25,12 @@
 		<script class="lift:head" src="../aloha/lib/vendor/jquery-1.7.2.js"></script>
 		<script class="lift:head" type="text/javascript">
 
-		$( "#sortable" ).disableSelection();
-		});
             if (window.Aloha === undefined || window.Aloha === null) {
                 var Aloha = window.Aloha = {};
             }
 
             Aloha.settings = {
-            	sidebar: {
-            		disabled: true
-            	},
+     
             	plugins:{
             		block: {
 					defaults : {
@@ -68,7 +64,7 @@
 							'aloha-block-type': 'EditableProductTeaserBlock'
 						}
 					}
-				}
+					}
             	}
            }
        
@@ -88,7 +84,8 @@
 		                        common/abbr,
 		                        common/align,
 		                        common/horizontalruler,
-		                        extra/ribbon">
+		                        extra/ribbon,
+		                        extra/htmlsource">
 	</script>
 		<script type="text/javascript">
 
@@ -108,7 +105,7 @@
 		<p>
 			<input type="text" value="javascript" id="mode"> 
 			<input type="text" value="javascript" id="modeFile">
-			<button type="button" onclick="change()">change mode</button>
+			
 			<select id="modeSelect" >
 				<option value="application/x-aspx" mode="htmlembedded" >ASP.Net</option>
 				<option value="text/x-csrc" mode="clike" >C</option>
@@ -131,7 +128,7 @@
 				<option value="text/x-" mode="" >LESS</option>
 				<option value="text/x-" mode="" >Lua</option>
 				<option value="text/x-" mode="" >Markdown</option>
-				<option value="text/x-" mode="" >MySQL</option>
+				<option value="text/x-mysql" mode="mysql" >MySQL</option>
 				<option value="text/x-" mode="" >NTriples</option>
 				<option value="text/x-" mode="" >OCaml</option>
 				<option value="text/x-" mode="" >Pascal</option>
@@ -163,6 +160,7 @@
 				<option value="text/x-" mode="" >XQuery</option>
 				<option value="text/x-" mode="" >YAML</option>				
 			</select>
+			<button type="button" onclick="change()">change mode</button>
 		</p>
 		<div id="composer-area" class="sortable">
 
@@ -170,7 +168,8 @@
 				<h1>This is a empty post!</h1>
 			</div>
 			<br></br>
-			<textarea class="sortable-area" id="snippetTextArea">
+			<div class="default-block">
+			<textarea class="sortable-area" id="snippetTextArea" contenteditable="true">
 import snippet.fun._
 
 class ReplaceMe extends SomeCode{
@@ -180,10 +179,11 @@ class ReplaceMe extends SomeCode{
 }
 			</textarea>
 		</div>
+		</div>
 		<script type="text/javascript">
 		
 			CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
-
+			var modeSelect = document.getElementById("modeSelect");
 			var modeInput = document.getElementById("mode");
 			var modeFileInput = document.getElementById("modeFile");
 			CodeMirror.connect(modeInput, "keypress", function(e) {
@@ -199,15 +199,15 @@ class ReplaceMe extends SomeCode{
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
    			});   
-		   	function change() {
-			   editor.setOption("mode", modeInput.value);
-			   CodeMirror.autoLoadMode(editor, modeFileInput.value);
-			}
+   			
+	   	function change() {
+		   editor.setOption("mode", modeSelect.value);
+		   CodeMirror.autoLoadMode(editor, $('option:selected',modeSelect).attr('mode'));
+		}
 			
 			
 	    function addPage() {
         	var $ = Aloha.jQuery;
-
        	 	$('#composer-area').append("<br></br><div class=\"editable\"></div>");
        	 	Aloha.jQuery('.editable').mahalo();
         	Aloha.jQuery('.editable').aloha();
