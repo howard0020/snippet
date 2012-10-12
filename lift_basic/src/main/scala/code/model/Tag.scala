@@ -28,6 +28,7 @@ class Tag extends LongKeyedMapper[Tag] with IdPK
 object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
 	  override def dbTableName = "Tag"
 	  override def displayName = "Tag"
+	  /*
 	  override def createMenuLocParams: List[Loc.AnyLocParam] =  {
 			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("General"))
 	  }
@@ -35,6 +36,7 @@ object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
 			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("General"))
 	  }
 	  override def createMenuName = "New Tag"
+	  */
 	  //get a list of tags from a string
 	  def getTagList(s :String) : List[Tag] = {
 	  val tagList = new ListBuffer[Tag]
