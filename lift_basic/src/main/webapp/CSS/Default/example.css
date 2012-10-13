@@ -43,6 +43,10 @@ body a {
 }
 
 #wrapper {
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+	min-height: 100%;
 }
 
 /* Header */
@@ -72,10 +76,6 @@ body a {
 	padding-right: 15px;
 }
 
-#popular-Tag-Menu{
-	
-}
-
 #right-content-wrapper {
 	
 }
@@ -96,9 +96,7 @@ body a {
 }
 
 #CenterContent {
-	position: relative;
 	width: 1000px;
-	float: left;
 	background-color: white;
 	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
@@ -234,13 +232,11 @@ body a {
 .cssmenu li a:hover {
 	color: white;
 }
-
-#popular-Tag-Menu {
-	position: absolute;
-	left: -70px;
-	top: 18px;
+#popular-Tag-Menu{
+	position: fixed;
+	left: 70px;
+	margin-top: 20px;
 }
-
 #popular-Tag-Menu ul {
 	margin:0px;
 	list-style-type: none;
