@@ -48,6 +48,7 @@ class Boot {
       // /static path to be visible
 
       //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
+       Menu(Loc("compose", Link(List("compose"), true, "/compose/index"), "Compose", LocGroup("General"))),
       //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       //================== GITHUB RELATED LINKS ===========================//
       Menu.i("Github") / "github"
@@ -72,6 +73,7 @@ class Boot {
       Menu(Loc("GhSignin", List("ghauth", "signin"), "GhSignin", Hidden)),
       Menu(Loc("GhCallback", List("ghauth", "callback"), "GhCallback", Hidden)),
       Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)) //================== end GITHUB RELATED LINKS ===========================//
+    
       ) :::
       Omniauth.sitemap
 
@@ -138,27 +140,8 @@ class Boot {
       case RewriteRequest(ParsePath("tag" :: tag :: Nil, _, _, _), _, _) =>
         RewriteResponse("index" :: Nil, Map("tag" -> tag))
     }
-
-    LiftRules.dispatch.append(SendToComet)
   }
 }
 
-object SendToComet extends RestHelper {
-  serve {
-    case Get("send" :: rest, _) => {
-      val (name, msg) = rest match {
-        case name :: msg :: _ => (name, msg)
-        case name :: _ => (name, "No Message")
-        case _ => ("Woof", "No message")
-      }
 
-      for {
-        sess <- S.session ?~ "Session not found"
-        ca <- sess.findComet("Tick", Full(name)) ?~ "Comet actor not found"
-      } yield {
-        ca ! msg
-        <span>Thanks</span>
-      }
-    }
-  }
-}
+
