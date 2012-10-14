@@ -41,6 +41,7 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 	  //override def pageWrapper(body: NodeSeq) = <lift:surround with="admin" at="content">{body}</lift:surround>
 	  //override def calcPrefix = List("admin",_dbTableNameLC)
 	  override def displayName = "Snippet"
+	  /*  
 	  override def createMenuLocParams: List[Loc.AnyLocParam] =  {
 			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("General"))
 	  }
@@ -48,6 +49,7 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 			  List(If(User.loggedIn_? _, () => RedirectResponse("/login")), LocGroup("General"))
 	  }
 	  override def createMenuName = "New Snippet"
+	  */
 	    
 	 
 
