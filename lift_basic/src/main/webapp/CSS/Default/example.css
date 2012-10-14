@@ -49,7 +49,12 @@ body a {
 	position: relative;
 	margin: 0 auto;
 	height: 100%;
+	height: auto !important;
 	min-height: 100%;
+	width: 1000px;
+	background-color: white;
+	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Header */
@@ -69,9 +74,13 @@ body a {
 }
 /* Content Wrapper*/
 #content-wrapper {
+	position: relative;
+	height: 100%;
 	width: 1000px;
+	height: auto !important;
+	min-height: 100%;
 	padding-top: 60px;
-	margin: 0px auto;
+	margin: 0 auto;
 
 }
 
@@ -85,7 +94,8 @@ body a {
 }
 
 .tag-list li button {
-	background: darkgray;
+	background: transparent;
+	width: 100%;
 	color: white;
 	font-size: 15px;
 	padding: 10px;
@@ -93,10 +103,10 @@ body a {
 	cursor: pointer;
 }
 .tag-list li button:hover {
-  background: #78AA2B;
+  background-color: #78AA2B;
 }
 .tag-list li button:active {
-  background:gray;
+  background-color:gray;
 }
 
 #CenterContent {
@@ -105,10 +115,7 @@ body a {
 
 #main-content-wrapper {
 	position:relative;
-	width: 1000px;
-	background-color: white;
-	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
-	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+	
 }
 
 #main {
@@ -116,14 +123,15 @@ body a {
 }
 
 #footer-wrapper {
-	display: inline-block;
-	clear: both;
-	color: gray;
-	width: 750px;
+	width:100%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: white;
+	background-color: #78AA2B;
 }
 #footer-wrapper ul.footer_links{
 	float: right;
-	position: relative;
 	right: -8px;
 }
 
@@ -140,7 +148,7 @@ body a {
 
 #footer-wrapper a{
 	text-decoration: none !important;
-	color: gray;	
+	color: white;	
 }
 #footer-wrapper a:hover{
 	color: black;	
@@ -241,13 +249,9 @@ body a {
 	left: -70px;
 	margin-top: 20px;
 }
-#popular-Tag-Menu ul {
-	margin:0px;
-	list-style-type: none;
-}
 
-#popular-Tag-Menu li {
-	text-align: right;
+#popular-Tag-Menu .tag-list-item {
+	background-color: gray;
 }
 
 #popular-Tag-Menu li a {
@@ -350,5 +354,10 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 
 .post_created_date{
 	Margin-left: 10px;
+}
+
+#user-login{
+	background-color: gray;
+	color: white;
 }
 

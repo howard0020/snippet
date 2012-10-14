@@ -14,32 +14,35 @@ import code.gh.Auth
 object User extends User with MetaMegaProtoUser[User] {
   override def dbTableName = "users" // define the DB table name
   override def screenWrap = Full(<lift:surround with="default" at="content">
-			       <lift:bind /></lift:surround>)
+                                   <lift:bind/>
+                                 </lift:surround>)
   // define the order fields will appear in forms and output
   override def fieldOrder = List(id, firstName, lastName, username, email, iconURL,
-  locale, timezone, password)
-  
+    locale, timezone, password)
+
   override def signupFields = List(username, email, password)
 
-  override def editFields = List(username, email,password,iconURL)
+  override def editFields = List(username, email, password, iconURL)
 
   // comment this line out to require email validations
   override def skipEmailValidation = true
-  
+
   override def loginXhtml = {
-    (<form method="post" action={S.uri}><table><tr><td
-              colspan="2">{S.??("log.in")}</td></tr>
-          <tr><td>{userNameFieldString}</td><td><user:email /></td></tr>
-          <tr><td>{S.??("password")}</td><td><user:password /></td></tr>
-          <tr><td><a href={lostPasswordPath.mkString("/", "/", "")}
-                >{S.??("recover.password")}</a></td><td><user:submit /></td></tr>
-                <tr><td></td><td><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></td></tr>
-                <tr><td></td><td><a href={ Auth.login_url }>Github Login</a></td></tr>
-                </table>
-     </form>)
+    (<div id="user-login">
+       <form method="post" action={ S.uri }>
+         <div>
+           <span>{ S.??("log.in") }</span>
+           <span>{ userNameFieldString }</span><div><user:email/></div>
+           <span>{ S.??("password") }</span><div><user:password/></div>
+           <div><a href={ lostPasswordPath.mkString("/", "/", "") }>{ S.??("recover.password") }</a></div><div><user:submit/></div>
+           <div><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
+           <div><a href={ Auth.login_url }>Github Login</a></div>
+         </div>
+       </form>
+     </div>)
   }
-  
-  override def globalUserLocParams = LocGroup("UserMenu")::super.globalUserLocParams
+
+  override def globalUserLocParams = LocGroup("UserMenu") :: super.globalUserLocParams
 }
 
 /**
@@ -47,18 +50,18 @@ object User extends User with MetaMegaProtoUser[User] {
  */
 class User extends MegaProtoUser[User] {
   def getSingleton = User // what's the "meta" server
-  
-  object username extends MappedString(this,32){
-    override def displayName = "User Name" 
+
+  object username extends MappedString(this, 32) {
+    override def displayName = "User Name"
   }
-  
-  object iconURL extends MappedText(this){
-	  override def displayName = "Icon URL"
+
+  object iconURL extends MappedText(this) {
+    override def displayName = "Icon URL"
   }
-  
-  def AllPost = CodeSnippet.findAll(By(CodeSnippet.Author,this.id))
-  
-  def findUser(email : String) = User.find(By(User.email,email))
-  
+
+  def AllPost = CodeSnippet.findAll(By(CodeSnippet.Author, this.id))
+
+  def findUser(email: String) = User.find(By(User.email, email))
+
 }
 
