@@ -94,7 +94,7 @@
 	    Aloha.ready( function() {
 	
 	        // Make #content editable once Aloha is loaded and ready.
-	        Aloha.jQuery('.editable-area').aloha();
+	        Aloha.jQuery('.editableFields').aloha();
 
 	    });
 	    
@@ -163,9 +163,14 @@
 		</p>
 		<div id="composer-area" class="sortable">
 
-			<div class="editable-area sortable-area">
+			<!-- <div class="editable-area sortable-area">
 				<h1>This is a empty post!</h1>
-			</div>
+			</div> -->
+			<form>
+			<div>
+			 	<textarea  maxlength="50" class="editableFields"></textarea>
+			 	</div>
+			</form>
 			<br></br>
 			
 			<textarea class="sortable-area" id="snippetTextArea" contenteditable="true">
