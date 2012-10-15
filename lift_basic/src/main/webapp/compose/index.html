@@ -5,6 +5,7 @@
 </head>
 <body class="lift:content_id=main">
 	<div id="main" class="lift:surround?with=default;at=content">
+		<script class="lift:head" id="composeJS" src="/js/compose-post.js" type="text/javascript"></script>
 		<!-- Code Mirror Init-->
 		<link class="lift:head" rel="stylesheet"
 			href="/codemirror/theme/eclipse.css" />
@@ -90,11 +91,11 @@
 		                        extra/htmlsource">
 	</script>
 		<script type="text/javascript">
-
+		window.codeEditors = new Array();
 	    Aloha.ready( function() {
 	
 	        // Make #content editable once Aloha is loaded and ready.
-	        Aloha.jQuery('.editableFields').aloha();
+	        Aloha.jQuery('.WYSIWYG-fields').aloha();
 
 	    });
 	    
@@ -102,8 +103,9 @@
 	</script>
 		<!-- Aloha Editor Init End-->
 
-		<button onclick="addPage();">add html</button>
-		<button onclick="addCode();">add code</button>
+		<button id="btnAddHTML">add html</button>
+		<button id="btnAddCode">add code</button>
+		<button class="btn btn-danger" type="button" id="btnDel">remove last row</button>
 		<p>
 			<select id="modeSelect" >
 				<option value="application/x-aspx" mode="htmlembedded" >ASP.Net</option>
@@ -166,14 +168,16 @@
 			<!-- <div class="editable-area sortable-area">
 				<h1>This is a empty post!</h1>
 			</div> -->
-			<form>
-			<div>
-			 	<textarea  maxlength="50" class="editableFields"></textarea>
-			 	</div>
-			</form>
-			<br></br>
 			
-			<textarea class="sortable-area" id="snippetTextArea" contenteditable="true">
+	<!-- Form for the whole post -->
+			<form class="lift:form.ajax" action="#">
+				<div class="lift:post_form">
+				<div id="Text1" class="field-content WYSIWYG-fields" contenteditable="true"> 	
+					<h1>Header</h1>
+				</div><br>
+				
+				<div id="Text2" class="">
+					<textarea class="field-content code-block-fields" id="snippetTextArea" contenteditable="true">
 import snippet.fun._
 
 class ReplaceMe extends SomeCode{
@@ -181,8 +185,19 @@ class ReplaceMe extends SomeCode{
     	this.text.remove
     }    
 }
-			</textarea>
-		
+					</textarea>
+				</div>
+		        <div>
+          			<button id="next" value="Submit" 
+          				type="button" class="btn">
+          				<Lift:Loc>Finish</Lift:Loc>
+       				</button>
+        		</div>
+			</form>
+			<div data-lift="post_form.sendToServer">
+      			<script id="sendToServer"></script>
+     			<script id="initDynamic"></script>
+   			</div>
 		</div>
 		<script type="text/javascript">
 		
@@ -202,7 +217,8 @@ class ReplaceMe extends SomeCode{
    			 	   onCursorActivity: function() {
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
-   			});   
+   			});  
+   			window.codeEditors.push(editor);
    			
 	   	function change() {
 		   editor.setOption("mode", modeSelect.value);
