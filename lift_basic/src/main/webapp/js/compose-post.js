@@ -12,7 +12,7 @@
             // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
             var newField = $('<br><div class="field-content WYSIWYG-fields" contenteditable="true"></div>');
             newField.next('.field-content').attr('id','Text' + newNum);
-            $('#Text' + num).after(newField);
+            $('#Text' + num).parent().append(newField);
             
             Aloha.jQuery('.WYSIWYG-fields').mahalo();
         	Aloha.jQuery('.WYSIWYG-fields').aloha();
@@ -33,7 +33,7 @@
             // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
             var newField = $('<br><textarea class="field-content code-block-fields"></textarea>');
             newField.next('.field-content').attr('id','Text' + newNum);
-            $('#Text' + num).after(newField);
+            $('#Text' + num).parent().append(newField);
             var newTextArea = document.getElementById('Text' + newNum);
             var newEditor = CodeMirror.fromTextArea(newTextArea, {
     		  lineNumbers: true,
@@ -44,7 +44,7 @@
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
 			});
-			window.codeEditors.push(newEditor);
+			window.codeEditors['Text' + newNum] = newEditor;
             // manipulate the name/id values of the input inside the new element
            // newElem.children('textarea').attr('class', 'emailContent').attr('id', 'reminderText' + newNum);
             //newElem.children('input').attr('class', 'schedule').attr('id', 'runReminderInDays' + newNum);
@@ -65,19 +65,20 @@
               $('#btnDel').attr('disabled','disabled');
           });
         };
+        //collect form data and submit to server
         self.collectFormData = function(fnName) {
-          for(var i = 0; i < window.codeEditors.length; i++)
+          for(var keys in window.codeEditors)
           {
-          	window.codeEditors[i].save();
+          	window.codeEditors[keys].save();
           }
           var formData = new Array();
           $(".field-content").each(function() {
             if($(this).is('.code-block-fields')){
-            	console.log("code editor");
-            	formData.push($(this).val());
+            	var editorObj = window.codeEditors[$(this).attr('id')];
+            	formData.push(["codeBlock",editorObj.getOption("mode"),$(this).val()]);
             }else{
-            	console.log("html editor");
-            	formData.push($(this).html());	
+            	
+            	formData.push(["htmlBlock",$(this).html()]);	
             }
           });
           console.log(formData)

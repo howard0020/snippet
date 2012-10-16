@@ -86,5 +86,8 @@ class PostForm extends Loggable{
 	}
 	def test(x:Any) :JsCmd ={
 	  Console.println("===test=>"+x);
+	  val list = Full(x).asA[List[List[String]]]
+	  
+	  
 	}
 }
