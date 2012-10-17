@@ -30,5 +30,9 @@ class UserSnippet {
 	//bind to the src attribute 
 	def CurrentUserIcon = ".userIcon [src]" #> UserIcon
 	
+	def CurrentUserUrl = ".userUrl [href]" #> "/User/profile.html"
+	
 	def loginForm = User.login
+	
+	def CurrentUserProfile = CurrentUserName & CurrentUserIcon & CurrentUserUrl
 }
