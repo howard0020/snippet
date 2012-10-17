@@ -7,7 +7,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background-color: #EDEDED;
+	background-color: #E2E9D7;
 }
 
 /*All Div that should have no space near them, and allow other div to be near*/
@@ -40,6 +40,7 @@ body a {
 	
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
+	font-family: arial,sans-serif;
 	/* color: #787878; */
 	/* background-image:
 		url('https://ssl.gstatic.com/android/market_images/web/background_stripes.gif'); */
@@ -52,9 +53,11 @@ body a {
 	height: auto !important;
 	min-height: 100%;
 	width: 1000px;
-	background-color: white;
+	background-color: #D5E7BB;
+	/*
 	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+	*/
 }
 
 /* Header */
@@ -79,8 +82,9 @@ body a {
 	width: 1000px;
 	height: auto !important;
 	min-height: 100%;
-	padding-top: 60px;
+	padding-top: 50px;
 	margin: 0 auto;
+	background-color:#D5E7BB;
 
 }
 
@@ -236,7 +240,7 @@ body a {
 .cssmenu li a {
 	display: block;
 	float: left;
-	color: gray;
+	color: darkGray;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -302,9 +306,9 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	clear: both;
 	overflow: hidden;
 	padding: 15px;
-	Margin-left: 5px;
-	background-color: white;
-	
+	margin: 1px;
+	margin-bottom: 2px;
+	background-color: #F4F7F2;
 }
 .post{
 	
@@ -324,7 +328,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 .post_username_link {
 	display: inline-block;
-	color: #4EA6EA;
+	color: #69912F;
 	font-size: 10px;
 	font-weight: bold;
 	margin-left: 10px;
@@ -339,17 +343,19 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	margin:5px;
 }
 .post_title {
-	color: #78AA2B;
+	color: #69912F;
 	font-weight: bold;
 	padding-left: 3px;
-	font-size: 16px;
-
+	font-size: 18px;
+}
+.post_content{
+	color: gray;
 }
 .post_content h2 {
-	color: black;
+	color: #5A6B40;
 	font-weight: bold;
 	padding-left: 2px;
-	background-color: #f2faff;
+	background-color: #E6F0D7;
 }a.edit_link {	background: url("../images/icons/edit_icon.png") no-repeat;	color: gray;	padding-left: 19px;}a.edit_link:hover {	text-decoration: underline;}
 
 .post_created_date{
