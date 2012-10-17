@@ -9,6 +9,7 @@ import sitemap._
 import Loc._
 import mapper._
 import code.model._
+import post._
 import omniauth.lib._
 import omniauth.Omniauth
 import http.rest._
@@ -37,7 +38,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags,Block)
 
     // where to search snippet
     LiftRules.addToPackages("code")
@@ -49,6 +50,7 @@ class Boot {
 
       //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
        Menu(Loc("compose", Link(List("compose"), true, "/compose/index"), "Compose", LocGroup("General"))),
+       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       //================== GITHUB RELATED LINKS ===========================//
       Menu.i("Github") / "github"

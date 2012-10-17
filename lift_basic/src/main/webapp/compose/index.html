@@ -91,7 +91,7 @@
 		                        extra/htmlsource">
 	</script>
 		<script type="text/javascript">
-		window.codeEditors = new Array();
+		window.codeEditors = new Object();
 	    Aloha.ready( function() {
 	
 	        // Make #content editable once Aloha is loaded and ready.
@@ -172,19 +172,19 @@
 	<!-- Form for the whole post -->
 			<form class="lift:form.ajax" action="#">
 				<div class="lift:post_form">
-				<div id="Text1" class="field-content WYSIWYG-fields" contenteditable="true"> 	
-					<h1>Header</h1>
-				</div><br>
-				
-				<div id="Text2" class="">
-					<textarea class="field-content code-block-fields" id="snippetTextArea" contenteditable="true">
-import snippet.fun._
-
-class ReplaceMe extends SomeCode{
-    def click = {
-    	this.text.remove
-    }    
-}
+				<div>
+					<div id="Text1" class="field-content WYSIWYG-fields" contenteditable="true"> 	
+						<h1>Header</h1>
+					</div><br>
+					
+					<textarea id="Text2" class="field-content code-block-fields">
+	import snippet.fun._
+	
+	class ReplaceMe extends SomeCode{
+	    def click = {
+	    	this.text.remove
+	    }    
+	}
 					</textarea>
 				</div>
 		        <div>
@@ -192,6 +192,7 @@ class ReplaceMe extends SomeCode{
           				type="button" class="btn">
           				<Lift:Loc>Finish</Lift:Loc>
        				</button>
+        		</div>
         		</div>
 			</form>
 			<div data-lift="post_form.sendToServer">
@@ -209,8 +210,8 @@ class ReplaceMe extends SomeCode{
 		//	  if (e.keyCode == 13) change();
 		//	});
 			
-			var postTextArea = document.getElementById("snippetTextArea");
-   			 editor = CodeMirror.fromTextArea(postTextArea,{
+			var postTextArea = document.getElementById("Text2");
+   			var editor = CodeMirror.fromTextArea(postTextArea,{
    			 	   lineNumbers: true,
    			 	   mode: "text/x-scala",
    			 	   lineWrapping: "wrap",
@@ -218,7 +219,7 @@ class ReplaceMe extends SomeCode{
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
    			});  
-   			window.codeEditors.push(editor);
+   			window.codeEditors["Text2"] = editor;
    			
 	   	function change() {
 		   editor.setOption("mode", modeSelect.value);

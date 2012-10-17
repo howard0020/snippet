@@ -2,9 +2,11 @@ package code.snippet
 
 import net.liftweb.http.LiftScreen
 import code.model._
+import code.model.post._
 import code.comet.PostServer
 import net.liftweb.http.SHtml
 import net.liftweb.http.js.{JsCmd, JE, JsCmds}
+import JsCmds.Noop
 import scala.xml.{NodeSeq}
 import net.liftweb.http.{SessionVar}
 import net.liftweb.http.js.jquery.JqJsCmds.FadeIn
@@ -19,7 +21,9 @@ import net.liftweb.json.JsonAST.JValue
 import net.liftweb.json.JsonAST.JArray
 import net.liftweb.json.JsonAST.JString
 import net.liftweb.common.Loggable
-import net.liftweb.common.Full
+import net.liftweb.common.{Full,Empty,Failure}
+import net.liftweb.http.S
+import net.liftweb.http.RedirectResponse
 
 
 //object PostForm extends LiftScreen{
@@ -85,6 +89,34 @@ class PostForm extends Loggable{
     "#initDynamic" #> Script(JE.JsRaw(js2).cmd)
 	}
 	def test(x:Any) :JsCmd ={
-	  Console.println("===test=>"+x);
+	 
+	  val boxList = Full(x).asA[List[List[String]]]
+	  boxList match { 
+	 		case Full(tempList) =>
+ 		     
+ 		      if(User.currentUser.isEmpty){
+ 		        S.redirectTo("/login")
+ 		        return
+ 		      }
+ 		      val user = User.currentUser openTheBox
+	 		  val post = CodeSnippet.create.Author(user.id)
+	 		  tempList.foreach(s => 
+	 		  	s match {
+	 		  	  case "htmlBlock" :: content :: Nil =>
+	 		  	  	val block = Block.create.post(post.id).content(content)
+	 		  	  	post.blocks += block
+	 		  	  	block.save()
+	 		  	  case "codeBlock" :: meta :: content :: Nil => 
+	 		  	    val block = Block.create.post(post.id).content(content).meta(meta)
+	 		  	    post.blocks += block
+	 		  	  	block.save()
+	 		  	  case nil => 
+	 		  	}
+	 		  )
+	 		  post.save()
+	 		  Noop
+	 		case Empty => S.error("Empty Form.")
+	 		case Failure(msg,_,_) => S.error(msg)
+	  }
 	}
 }

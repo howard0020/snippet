@@ -161,6 +161,27 @@ body a {
 #footer-text {
 	margin-left: 30px;
 }
+#profile_navigation{
+	position: absolute;
+	margin-top: 100px;
+}
+#author_info{
+	position: absolute;
+	left: 0px;
+}
+#profile_left{
+	position: absolute;
+	width: 200px;
+	height: 500px;
+	border-right: 1px solid #91AD90;
+}
+#profile_right{
+	position: relative;
+	margin-left: 220px;
+}
+
+
+
 /* Logo */
 #logo {
 	position: absolute;
@@ -356,7 +377,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	font-weight: bold;
 	padding-left: 2px;
 	background-color: #E6F0D7;
-}a.edit_link {	background: url("../images/icons/edit_icon.png") no-repeat;	color: gray;	padding-left: 19px;}a.edit_link:hover {	text-decoration: underline;}
+}
 
 .post_created_date{
 	Margin-left: 10px;
@@ -366,4 +387,3 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	background-color: gray;
 	color: white;
 }
-
