@@ -50,6 +50,7 @@ class Boot {
 
       //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
        Menu(Loc("compose", Link(List("compose"), true, "/compose/index"), "Compose", LocGroup("General"))),
+       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
       //================== GITHUB RELATED LINKS ===========================//
       Menu.i("Github") / "github"
