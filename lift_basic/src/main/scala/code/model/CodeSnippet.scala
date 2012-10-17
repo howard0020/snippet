@@ -9,9 +9,12 @@ import net.liftweb.sitemap.Loc
 import net.liftweb.common.Full
 import net.liftweb.common.Empty
 import net.liftweb.common.Box
+import code.model.post.Block
 
 
-class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany with CreatedUpdated
+class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany 
+													   with CreatedUpdated
+													   with OneToMany[Long,CodeSnippet]
 {
 	def getSingleton = CodeSnippet
 	def primaryKeyField = id
@@ -19,8 +22,10 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany with Crea
 	object id extends MappedLongIndex(this)
 	object Author extends MappedLongForeignKey(this, User)
 	object content extends MappedTextarea(this , 2048)
+	object blocks extends MappedOneToMany(Block,Block.post,OrderBy(Block.id,Ascending))	
 	object tags extends MappedManyToMany(SnippetTags, SnippetTags.codeSnippet, SnippetTags.tag, Tag)
-
+	
+	
 	def getTags = {
 		var str = ""
 	    tags.foreach(t => str += t.name.get + ",")

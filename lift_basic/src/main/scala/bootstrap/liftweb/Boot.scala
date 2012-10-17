@@ -9,6 +9,7 @@ import sitemap._
 import Loc._
 import mapper._
 import code.model._
+import post._
 import omniauth.lib._
 import omniauth.Omniauth
 import http.rest._
@@ -37,7 +38,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags,Block)
 
     // where to search snippet
     LiftRules.addToPackages("code")
