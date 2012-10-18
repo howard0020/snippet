@@ -20,6 +20,7 @@ import net.liftweb.common.Failure
 import net.liftweb.common.Box
 import code.model.SnippetTags
 import code.model.User
+import code.model.post.Block
 
 class PostActor extends CometActor with CometListener {
 
@@ -70,10 +71,21 @@ class PostActor extends CometActor with CometListener {
           }) &
           ".post_created_date *" #> (if(p.createdAt == null) "" else p.createdAt.toString()) &
           ".post_title *" #> (if(p.title == null) "" else p.title.toString()) &
-          ".post_content *" #> scala.xml.Unparsed(p.content.get) & 
+          ".post_content *" #> { ".post_block" #> 
+          			(p.blocks.map(b => "*" #> getBlockContent(b)))} & 
           ".tag *" #> (if(p.getTags.equals("")) "" else ("tags: " + p.getTags))
           )(ns))))
-
+          
+  def getBlockContent(block: Block):NodeSeq = {
+      if(block.meta.toString == ""){
+	     xml.Unparsed(block.content.is)  
+      }else
+      {
+         val text =Option(block.content.is)
+        <textarea>{text.getOrElse("")}</textarea>
+      }
+  }
+    
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
       (SHtml.textarea("", content = _, "id" -> "snippetTextArea") 
     		  ++ SHtml.text("", title = _)  
