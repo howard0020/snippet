@@ -28,19 +28,29 @@ object User extends User with MetaMegaProtoUser[User] {
   override def skipEmailValidation = true
 
   override def loginXhtml = {
-    (<div id="user-login">
-       <form method="post" action={ S.uri }>
-         <div>
-           <span>{ S.??("log.in") }</span>
-           <span>{ userNameFieldString }</span><div><user:email/></div>
-           <span>{ S.??("password") }</span><div><user:password/></div>
-           <div><a href={ lostPasswordPath.mkString("/", "/", "") }>{ S.??("recover.password") }</a></div><div><user:submit/></div>
-           <div><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
-           <div><a href={ Auth.login_url }>Github Login</a></div>
+    (<div id="user_login_wrapper">
+       <form id="user_login_form" method="post" action={ S.uri }>
+         <div class="user_login_otherlogin">
+           <div class="user_login_facebook"><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
+           <div class="user_login_github"><a href={ Auth.login_url }>Github Login</a></div>
+         </div>
+         <div class="user_login_regularlogin">
+           <div class="form_row">
+             <span class="user_login_username_text form_left">{ S.??("log.in") }</span>
+             <div class="user_login_username_textbox form_right"><user:email/></div>
+           </div>
+           <div class="form_row">
+             <span class="user_login_password_text form_left">{ S.??("password") }</span>
+             <div class="user_login_username_textbox form_right"><user:password/></div>
+           </div>
+           <div class="user_login_lostpassword"><a href={ lostPasswordPath.mkString("/", "/", "") }>{ S.??("recover.password") }</a></div>
+           <div class="loginbutton"><user:submit/></div>
          </div>
        </form>
      </div>)
   }
+
+  //<span>{ userNameFieldString }</span>
 
   override def globalUserLocParams = LocGroup("UserMenu") :: super.globalUserLocParams
 }

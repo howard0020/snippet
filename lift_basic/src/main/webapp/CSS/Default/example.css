@@ -107,7 +107,7 @@ body a {
 	cursor: pointer;
 }
 .tag-list li button:hover {
-  background-color: #78AA2B;
+  background-color: #69912F;
 }
 .tag-list li button:active {
   background-color:gray;
@@ -164,20 +164,36 @@ body a {
 #profile_navigation{
 	position: absolute;
 	margin-top: 100px;
+	background-color: #E8F7DF;
+	width: 100%;
+	min-height: 100%;
 }
 #author_info{
 	position: absolute;
-	left: 0px;
+	width: 100%;
+	left: 0;
+	text-align: center;
+	margin: 5px;
 }
+#author_info .usernam{
+	display: block;
+}
+
 #profile_left{
 	position: absolute;
 	width: 200px;
-	height: 500px;
+	height: 100%;
 	border-right: 1px solid #91AD90;
+	overflow: hidden;
 }
 #profile_right{
 	position: relative;
-	margin-left: 220px;
+	padding: 1px;
+	margin-left: 200px;
+	overflow: hidden;
+}
+.post_metadata .tag{
+	margin-left: 10px;
 }
 
 
@@ -383,7 +399,57 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	Margin-left: 10px;
 }
 
-#user-login{
-	background-color: gray;
+#user_login_wrapper{
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+	position:relative;
+}
+
+#user_login_form .form_left{
+	width: 75px;
+	display: inline-block;
+	text-align: right;
+	padding-right: 5px;
+	
+}
+#user_login_form .form_right{
+	display: inline-block;
+}
+#user_login_form .form_right input{
+	height: 25px;
+	width: 200px;
+}
+#user_login_form .form_row{
+	margin-bottom: 10px;
+}
+.user_login_lostpassword{
+	text-align: right;
+}
+.user_login_lostpassword a{
+	color:gray;
+}
+.user_login_otherlogin{
+	width: 200px;
+	position: absolute;
+}
+.user_login_regularlogin{
+	position: absolute;
+	left: 210px;
+	width: 340px;
+}
+.user_login_regularlogin .loginbutton{
+	text-align: right;
+}
+.user_login_regularlogin .loginbutton input{
+	width: 90px;
+	height: 35px;
+	font-size: 20px;
+	background-color: #78AA2B;
 	color: white;
+	border: none;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-right: 30px;
 }
