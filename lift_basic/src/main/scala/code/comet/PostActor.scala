@@ -21,6 +21,8 @@ import net.liftweb.common.Box
 import code.model.SnippetTags
 import code.model.User
 import code.model.post.Block
+import scala.xml.Attribute
+import scala.Null
 
 class PostActor extends CometActor with CometListener {
 
@@ -82,7 +84,7 @@ class PostActor extends CometActor with CometListener {
       }else
       {
          val text =Option(block.content.is)
-        <textarea>{text.getOrElse("")}</textarea>
+        <textarea class="code-block-fields">{text.getOrElse("")}</textarea> % Attribute(None,"mode",Text(block.meta.is),Null)
       }
   }
     

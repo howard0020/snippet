@@ -1,19 +1,33 @@
 
 <lift:posts.setparam name="PostActor">
-
+	<!-- Code Mirror Init-->
+		<link class="lift:head" rel="stylesheet"
+			href="/codemirror/theme/eclipse.css" />
+		<script class="lift:head" src="../codemirror/lib/codemirror.js"></script>
+		<link class="lift:head" rel="stylesheet"
+			href="/codemirror/lib/codemirror.css">
+		<script class="lift:head" src="/codemirror/mode/clike/clike.js"></script>
+		<script class="lift:head" src="/codemirror/lib/util/searchcursor.js"></script>
+		<script class="lift:head"
+			src="/codemirror/lib/util/match-highlighter.js"></script>
+		<script class="lift:head" src="/codemirror/lib/util/loadmode.js"></script>
+		<link class="lift:head" rel="stylesheet"
+			href="/CSS/Default/codemirror_default.css">
+		<!-- Code Mirror Init End-->
 	<script class="lift:head" type="text/javascript"
 		src="/scripts/shCore.js"></script>
 	<script class="lift:head" type="text/javascript"
 		src="/scripts/shBrushScala.js"></script>
 	<script class="lift:head" type="text/javascript"
 		src="/scripts/shBrushJScript.js"></script>
-	<script class="lift:head" type="text/javascript"xml unparsed and xml
+	<script class="lift:head" type="text/javascript"
 		src="/scripts/shBrushJava.js"></script>
 	<script class="lift:head" type="text/javascript"
 		src="/scripts/shBrushXml.js"></script>
 	<link class="lift:head" type="text/css" rel="stylesheet"
 		href="/CSS/SyntaxHighlighter/shCoreDefault.css" />
-
+	<script class="lift:head" type="text/javascript" 
+		src="/js/codeMirror-modes.js"></script>
 	<lift:comet type="PostActor" name="PostActor">
 		<lift:test_cond.loggedin>
 			<a href="http://localhost:8080/github">Github Upload</a>
@@ -44,13 +58,21 @@
 		</div>
 		
 		<script type="text/javascript">
-			SyntaxHighlighter.highlight();
-			var postTextArea = document.getElementById("snippetTextArea");
-			editor = CodeMirror.fromTextArea(postTextArea, {
-				lineNumbers : true,
-				mode : "text/x-scala"
-			});
-			//editor.setOption("theme","eclipse");
+			$('.code-block-fields').each(function() {
+    		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
+		    var $this = $(this),
+		        $code = $this.html(),
+		        $unescaped = $('<div/>').html($code).text();
+		   
+		    var thisEditor = CodeMirror.fromTextArea(this, {
+		        mode: $this.attr('mode'),
+		        lineNumbers: true,
+		        readOnly: true
+		    });
+		    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')]);
+		   	//alert($this.attr('mode'));
+		    
+		});
 		</script>
 	</lift:comet>
 </lift:posts.setparam>

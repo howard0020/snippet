@@ -201,8 +201,7 @@
    			</div>
 		</div>
 		<script type="text/javascript">
-		
-			CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
+		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
 			var modeSelect = document.getElementById("modeSelect");
 			var modeInput = document.getElementById("mode");
 			var modeFileInput = document.getElementById("modeFile");
@@ -225,8 +224,6 @@
 		   editor.setOption("mode", modeSelect.value);
 		   CodeMirror.autoLoadMode(editor, $('option:selected',modeSelect).attr('mode'));
 		}
-			
-			
 	    function addPage() {
         	var $ = Aloha.jQuery;
        	 	$('#composer-area').append("<br></br><div class=\"editable\"></div>");
@@ -241,7 +238,7 @@
 			  mode:  "text/x-scala"
 			});
     	}
-	</script>
+		</script>
 	</div>
 </body>
 </html>
