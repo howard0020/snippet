@@ -56,13 +56,12 @@
         };
         self.removeFields = function() {
           $('#btnDel').click(function() {
-            var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
-            $('#input' + num).remove();     // remove the last element
-            // enable the "add" button
-            $('#btnAdd').removeAttr('disabled','');
+            var num = $('.field-content').length; // how many "duplicatable" input fields we currently have
+            $('#Text' + num).remove();     // remove the last element
+            
             // if only one element remains, disable the "remove" button
-            if (num-1 == 1)
-              $('#btnDel').attr('disabled','disabled');
+           // if (num-1 == 1)
+           //   $('#btnDel').attr('disabled','disabled');
           });
         };
         //collect form data and submit to server

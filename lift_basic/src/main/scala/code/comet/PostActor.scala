@@ -54,7 +54,7 @@ class PostActor extends CometActor with CometListener {
 
   def registerWith = PostServer
 		  
-  def render = "#postForm *" #> ajaxForm & "#postTemplate *" #> bindText
+  def render = "#postTemplate *" #> bindText
 
   def bindText =
     ".post_wrapper" #> (

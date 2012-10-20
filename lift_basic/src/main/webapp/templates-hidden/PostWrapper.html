@@ -35,8 +35,6 @@
 			<a href="http://localhost:8080/github">Github Upload</a>
 			<span>Github username: xiaoqiangwu2007@gmail.com password:
 				codesnippet1</span>
-
-			<div id="postForm"></div>
 		</lift:test_cond.loggedin>
 
 		<lift:embed what="/Post"></lift:embed>
@@ -51,7 +49,11 @@
 		    var thisEditor = CodeMirror.fromTextArea(this, {
 		        mode: $this.attr('mode'),
 		        lineNumbers: true,
-		        readOnly: true
+		        readOnly: true,
+		        lineWrapping: "wrap",
+		        onCursorActivity: function() {
+   			 	   		thisEditor.matchHighlight("CodeMirror-matchhighlight");
+   			 	   }
 		    });
 		    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')]);
 		   	//alert($this.attr('mode'));

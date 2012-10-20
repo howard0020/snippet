@@ -69,7 +69,6 @@ class PostForm extends Loggable{
   val js2 =
     """
       |            $(document).ready(function() {
-      |              $('#btnDel').attr('disabled','disabled');
       |              window.dyTable = new window.fmpwizard.views.DynamicFields();
       |              window.dyTable.addFields();
       |              window.dyTable.removeFields();
@@ -95,7 +94,7 @@ class PostForm extends Loggable{
 	 		case Full(tempList) =>
  		     
  		      if(User.currentUser.isEmpty){
- 		        S.redirectTo("/login")
+ 		        S.redirectTo("/user_mgt/login")
  		        return
  		      }
  		      val user = User.currentUser openTheBox
