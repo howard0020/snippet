@@ -51,7 +51,7 @@
             // insert the new element after the last "duplicatable" input field
             
             // enable the "remove" button
-            //$('#btnDel').removeAttr('disabled','');
+             $('#btnDel').removeAttr('disabled','');
           });
         };
         self.removeFields = function() {
