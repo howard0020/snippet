@@ -101,6 +101,8 @@ class PostForm extends Loggable{
 	 		  val post = CodeSnippet.create.Author(user.id)
 	 		  tempList.foreach(s => 
 	 		  	s match {
+	 		  	  case "titleField" :: content :: Nil =>
+	 		  	    post.title.set(content)
 	 		  	  case "htmlBlock" :: content :: Nil =>
 	 		  	  	val block = Block.create.post(post.id).content(content)
 	 		  	  	post.blocks += block

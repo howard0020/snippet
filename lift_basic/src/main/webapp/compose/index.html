@@ -74,7 +74,8 @@
        
     </script>
 		<script class="lift:head" src="/aloha/lib/aloha-full.js"
-			data-aloha-plugins="common/ui,common/format,
+			data-aloha-plugins="common/ui,
+								common/format,
 		                        common/table,
 		                        common/list,
 		                        common/link,
@@ -173,11 +174,16 @@
 			<form class="lift:form.ajax" action="#">
 				<div class="lift:post_form">
 				<div>
-					<div id="Text1" class="field-content WYSIWYG-fields" contenteditable="true"> 	
+					<br>
+					<input type="text" id="Text1" 
+						class="field-content title-field" 
+						name="title" placeholder="Post Title"></input>
+					<br>
+					<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
 						<h1>Header</h1>
 					</div><br>
 					
-					<textarea id="Text2" class="field-content code-block-fields">
+					<textarea id="Text3" class="field-content code-block-fields">
 	import snippet.fun._
 	
 	class ReplaceMe extends SomeCode{
@@ -205,11 +211,9 @@
 			var modeSelect = document.getElementById("modeSelect");
 			var modeInput = document.getElementById("mode");
 			var modeFileInput = document.getElementById("modeFile");
-		//	CodeMirror.connect(modeInput, "keypress", function(e) {
-		//	  if (e.keyCode == 13) change();
-		//	});
-			
-			var postTextArea = document.getElementById("Text2");
+
+			//Setup the first Code editor
+			var postTextArea = document.getElementById("Text3");
    			var editor = CodeMirror.fromTextArea(postTextArea,{
    			 	   lineNumbers: true,
    			 	   mode: "text/x-scala",
@@ -218,8 +222,8 @@
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
    			});  
-   			window.codeEditors["Text2"] = editor;
-   			
+   			window.codeEditors["Text3"] = editor;
+   	
 	   	function change() {
 		   editor.setOption("mode", modeSelect.value);
 		   CodeMirror.autoLoadMode(editor, $('option:selected',modeSelect).attr('mode'));

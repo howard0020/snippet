@@ -72,7 +72,9 @@
           }
           var formData = new Array();
           $(".field-content").each(function() {
-            if($(this).is('.code-block-fields')){
+          	if($(this).is('.title-field')){
+          		formData.push(["titleField",$(this).val()])
+          	}else if($(this).is('.code-block-fields')){
             	var editorObj = window.codeEditors[$(this).attr('id')];
             	formData.push(["codeBlock",editorObj.getOption("mode"),$(this).val()]);
             }else{
