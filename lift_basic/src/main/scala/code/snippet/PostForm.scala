@@ -73,7 +73,7 @@ class PostForm extends Loggable{
       |              window.dyTable.addFields();
       |              window.dyTable.removeFields();
       |            });
-    """.stripMargin
+    """.format(ourFnName).stripMargin
     
     def render = {
     "#next [onclick]" #> JE.JsRaw(js1)
@@ -81,13 +81,13 @@ class PostForm extends Loggable{
 	def sendToServer = {
     "#sendToServer" #> Script(
       Function(ourFnName, List("paramName"),
-        SHtml.jsonCall(JsVar("paramName"), test _)._2.cmd //use on lift >= 2.5
+        SHtml.jsonCall(JsVar("paramName"), processForm _)._2.cmd //use on lift >= 2.5
         //SHtml.jsonCall(JsVar("paramName"), (s: Any) => addRowsToDB(s) )._2.cmd //Use this on Lift < 2.5
       )
     ) &
     "#initDynamic" #> Script(JE.JsRaw(js2).cmd)
 	}
-	def test(x:Any) :JsCmd ={
+	def processForm(x:Any) :JsCmd ={
 	 
 	  val boxList = Full(x).asA[List[List[String]]]
 	  boxList match { 

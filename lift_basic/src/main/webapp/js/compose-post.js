@@ -31,7 +31,7 @@
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
             // create the new element via clone(), and manipulate it's ID using newNum value
             // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
-            var newField = $('<br><textarea class="field-content code-block-fields"></textarea>');
+            var newField = $('<br><div class="field-content code-block-fields><textarea"></textarea></div>');
             newField.next('.field-content').attr('id','Text' + newNum);
             $('#Text' + num).parent().append(newField);
             var newTextArea = document.getElementById('Text' + newNum);
@@ -66,24 +66,27 @@
         };
         //collect form data and submit to server
         self.collectFormData = function(fnName) {
-          for(var keys in window.codeEditors)
-          {
-          	window.codeEditors[keys].save();
-          }
-          var formData = new Array();
-          $(".field-content").each(function() {
-          	if($(this).is('.title-field')){
-          		formData.push(["titleField",$(this).val()])
-          	}else if($(this).is('.code-block-fields')){
-            	var editorObj = window.codeEditors[$(this).attr('id')];
-            	formData.push(["codeBlock",editorObj.getOption("mode"),$(this).val()]);
-            }else{
-            	
-            	formData.push(["htmlBlock",$(this).html()]);	
-            }
-          });
-          console.log(formData)
-          fnName(formData);
+          var check = $("[name='title']").validator();
+          if(check.data("validator").checkValidity() == true){
+          	console.log("title is true" );
+	          for(var keys in window.codeEditors)
+	          {
+	          	window.codeEditors[keys].save();
+	          }
+	          var formData = new Array();
+	          $(".field-content").each(function() {
+	          	if($(this).is('.title-field')){
+	          		formData.push(["titleField",$(this).val()])
+	          	}else if($(this).is('.code-block-fields')){
+	            	var editorObj = window.codeEditors[$(this).attr('id')];
+	            	formData.push(["codeBlock",editorObj.getOption("mode"),$(this).children("textarea:first").val()]);
+	            }else{
+	            	formData.push(["htmlBlock",$(this).html()]);	
+	            }
+	          });
+	          console.log(formData);
+	          fnName(formData);
+        	}
         };
       },
       SomeOtherNameSpace: function(){
