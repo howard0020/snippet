@@ -3,6 +3,17 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
+
+
+/*user to hide and show sortable handles*/
+.sortable-item:hover .handle {
+	display:inline;
+}
+.handle {
+	display:none;
+}
+
+
 html, body {
 	margin: 0;
 	padding: 0;

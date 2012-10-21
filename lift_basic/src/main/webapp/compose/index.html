@@ -25,7 +25,7 @@
 		
 		<link rel="stylesheet" href="/aloha/css/aloha.css" type="text/css">
 		<script class="lift:head" src="/aloha/lib/require.js"></script>
-		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script>
+<!-- 		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script> -->
 		<script class="lift:head" type="text/javascript">
 
             if (window.Aloha === undefined || window.Aloha === null) {
@@ -101,8 +101,22 @@
 
 	    });
 	    
-	     
 	</script>
+<!-- 	<style class="lift:head">
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+    </style> -->
+    <script class="lift:head">
+    $(function() {
+      
+        $( "#editor-sort" ).sortable({
+        handle: '.handle',
+        cancel: ':input,button,.contenteditable'
+        });
+       
+    });
+    </script>
 		<!-- Aloha Editor Init End-->
 
 		<button id="btnAddHTML">add html</button>
@@ -174,16 +188,21 @@
 	<!-- Form for the whole post -->
 			<form class="lift:form.ajax" action="#">
 				<div class="lift:post_form">
-				<div>
+				<div id="editor-sort">
 					<br>
 					<input type="text" id="Text1" required="required"
 						class="field-content title-field" 
 						name="title" placeholder="Post Title"></input>
 					<br>
-					<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
-						<h1>Header</h1>
-					</div><br>
-					<div id="Text3" class="field-content code-block-fields">
+					<br>
+					<div class="sortable-item">
+						<span class="handle">Drag</span>
+						<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
+							<h1>Header</h1>
+						</div>
+					</div>
+					<div id="Text3" class="field-content code-block-fields sortable-item">
+						<span class="handle">Drag</span>
 						<textarea id="textArea3">
 	import snippet.fun._
 	
@@ -244,7 +263,7 @@
 			  mode:  "text/x-scala"
 			});
     	}
-    	
+
 		</script>
 	</div>
 </body>
