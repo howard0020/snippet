@@ -6,6 +6,7 @@
 <body class="lift:content_id=main">
 	<div id="main" class="lift:surround?with=default;at=content">
 		<script class="lift:head" id="composeJS" src="/js/compose-post.js" type="text/javascript"></script>
+		<script class="lift:head" src="http://cdn.jquerytools.org/1.2.7/form/jquery.tools.min.js"></script>
 		<!-- Code Mirror Init-->
 		<link class="lift:head" rel="stylesheet"
 			href="/codemirror/theme/eclipse.css" />
@@ -24,7 +25,7 @@
 		
 		<link rel="stylesheet" href="/aloha/css/aloha.css" type="text/css">
 		<script class="lift:head" src="/aloha/lib/require.js"></script>
-		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script>
+<!-- 		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script> -->
 		<script class="lift:head" type="text/javascript">
 
             if (window.Aloha === undefined || window.Aloha === null) {
@@ -74,7 +75,8 @@
        
     </script>
 		<script class="lift:head" src="/aloha/lib/aloha-full.js"
-			data-aloha-plugins="common/ui,common/format,
+			data-aloha-plugins="common/ui,
+								common/format,
 		                        common/table,
 		                        common/list,
 		                        common/link,
@@ -99,8 +101,22 @@
 
 	    });
 	    
-	     
 	</script>
+<!-- 	<style class="lift:head">
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+    </style> -->
+    <script class="lift:head">
+    $(function() {
+      
+        $( "#editor-sort" ).sortable({
+        handle: '.handle',
+        cancel: ':input,button,.contenteditable'
+        });
+       
+    });
+    </script>
 		<!-- Aloha Editor Init End-->
 
 		<button id="btnAddHTML">add html</button>
@@ -172,12 +188,22 @@
 	<!-- Form for the whole post -->
 			<form class="lift:form.ajax" action="#">
 				<div class="lift:post_form">
-				<div>
-					<div id="Text1" class="field-content WYSIWYG-fields" contenteditable="true"> 	
-						<h1>Header</h1>
-					</div><br>
-					
-					<textarea id="Text2" class="field-content code-block-fields">
+				<div id="editor-sort">
+					<br>
+					<input type="text" id="Text1" required="required"
+						class="field-content title-field" 
+						name="title" placeholder="Post Title"></input>
+					<br>
+					<br>
+					<div class="sortable-item">
+						<span class="handle">Drag</span>
+						<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
+							<h1>Header</h1>
+						</div>
+					</div>
+					<div id="Text3" class="field-content code-block-fields sortable-item">
+						<span class="handle">Drag</span>
+						<textarea id="textArea3">
 	import snippet.fun._
 	
 	class ReplaceMe extends SomeCode{
@@ -185,7 +211,8 @@
 	    	this.text.remove
 	    }    
 	}
-					</textarea>
+						</textarea>
+					</div>
 				</div>
 		        <div>
           			<button id="next" value="Submit" 
@@ -205,11 +232,9 @@
 			var modeSelect = document.getElementById("modeSelect");
 			var modeInput = document.getElementById("mode");
 			var modeFileInput = document.getElementById("modeFile");
-		//	CodeMirror.connect(modeInput, "keypress", function(e) {
-		//	  if (e.keyCode == 13) change();
-		//	});
-			
-			var postTextArea = document.getElementById("Text2");
+
+			//Setup the first Code editor
+			var postTextArea = document.getElementById("textArea3");
    			var editor = CodeMirror.fromTextArea(postTextArea,{
    			 	   lineNumbers: true,
    			 	   mode: "text/x-scala",
@@ -218,8 +243,8 @@
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
    			});  
-   			window.codeEditors["Text2"] = editor;
-   			
+   			window.codeEditors["Text3"] = editor;
+   	
 	   	function change() {
 		   editor.setOption("mode", modeSelect.value);
 		   CodeMirror.autoLoadMode(editor, $('option:selected',modeSelect).attr('mode'));
@@ -238,6 +263,7 @@
 			  mode:  "text/x-scala"
 			});
     	}
+
 		</script>
 	</div>
 </body>

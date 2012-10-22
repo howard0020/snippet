@@ -43,11 +43,11 @@ class PostActor extends CometActor with CometListener {
 
   def getPosts(tag:Box[Tag]):List[CodeSnippet] = {
 	    tag match {
-	    	case Full(theTag) => theTag.posts.all
-	    	case Empty =>  CodeSnippet.findAll()
+	    	case Full(theTag) => theTag.posts.all.reverse
+	    	case Empty =>  CodeSnippet.findAll().reverse
 	    	case Failure(msg,_,_) => 
 	    	  S.error(msg)
-	    	  CodeSnippet.findAll()
+	    	  CodeSnippet.findAll().reverse
 	 	}
   }
 
