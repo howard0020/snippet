@@ -25,3 +25,9 @@ eclipse with-source=true
 git status
 update
 ipconfig
+update
+eclipse with-source=true
+exit
+update
+eclipse with-source=true
+exit

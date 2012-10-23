@@ -1,11 +1,12 @@
 [0m[[0mdebug[0m] [0mOther repositories:[0m
 [0m[[0mdebug[0m] [0mDefault repositories:[0m
 [0m[[0mdebug[0m] [0m	Raw(ProjectResolver(inter-project, mapped: ))[0m
-[0m[[0mdebug[0m] [0m	FileRepository(local,FileConfiguration(true,None),sbt.Patterns@17e9fe8)[0m
+[0m[[0mdebug[0m] [0m	FileRepository(local,FileConfiguration(true,None),sbt.Patterns@3b143cec)[0m
 [0m[[0mdebug[0m] [0m	Omniauth repo: https://repository-liftmodules.forge.cloudbees.com/release[0m
 [0m[[0mdebug[0m] [0m	public: http://repo1.maven.org/maven2/[0m
 [0m[[0mdebug[0m] [0mUsing inline dependencies specified in Scala.[0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.9.1 ...[0m
+[0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-core_2.9.1;6.0.3 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftmodules#omniauth_2.9.1;2.4-0.5 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftweb#lift-webkit_2.9.1;2.4 ...[0m
 [0m[[0minfo[0m] [0mResolving commons-fileupload#commons-fileupload;1.2.2 ...[0m
@@ -31,9 +32,10 @@
 [0m[[0minfo[0m] [0mResolving net.databinder#dispatch-oauth_2.9.1;0.8.5 ...[0m
 [0m[[0minfo[0m] [0mResolving net.databinder#dispatch-http-json_2.9.1;0.8.5 ...[0m
 [0m[[0minfo[0m] [0mResolving net.databinder#dispatch-json_2.9.1;0.8.5 ...[0m
-[0m[[0minfo[0m] [0mResolving mysql#mysql-connector-java;5.1.21 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftweb#lift-wizard_2.9.1;2.4 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftweb#lift-db_2.9.1;2.4 ...[0m
+[0m[[0minfo[0m] [0mResolving net.liftweb#lift-textile_2.9.1;2.4 ...[0m
+[0m[[0minfo[0m] [0mResolving net.liftweb#lift-widgets_2.9.1;2.4 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftweb#lift-mapper_2.9.1;2.4 ...[0m
 [0m[[0minfo[0m] [0mResolving net.liftweb#lift-proto_2.9.1;2.4 ...[0m
 [0m[[0minfo[0m] [0mResolving com.h2database#h2;1.2.147 ...[0m

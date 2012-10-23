@@ -6,6 +6,9 @@
   <classpathentry output="target/scala-2.9.1/test-classes" path="src/test/java" kind="src"></classpathentry>
   <classpathentry output="target/scala-2.9.1/test-classes" path="src/test/resources" kind="src"></classpathentry>
   <classpathentry path="org.scala-ide.sdt.launching.SCALA_CONTAINER" kind="con"></classpathentry>
+  <classpathentry path="./lib_managed/jars/com.typesafe.sbteclipse/sbteclipse-plugin/scala_2.9.1/sbt_0.11.3/sbteclipse-plugin-2.0.0.jar" kind="lib"></classpathentry>
+  <classpathentry path="./lib_managed/jars/com.typesafe.sbteclipse/sbteclipse-core/scala_2.9.1/sbt_0.11.3/sbteclipse-core-2.0.0.jar" kind="lib"></classpathentry>
+  <classpathentry kind="lib" path="./lib_managed/jars/org.scalaz/scalaz-core_2.9.1/scalaz-core_2.9.1-6.0.3.jar" sourcepath="./lib_managed/srcs/org.scalaz/scalaz-core_2.9.1/scalaz-core_2.9.1-6.0.3-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5.jar" sourcepath="./lib_managed/srcs/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2.jar" sourcepath="./lib_managed/srcs/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2-sources.jar"></classpathentry>
@@ -34,6 +37,8 @@
   <classpathentry path="./lib_managed/jars/mysql/mysql-connector-java/mysql-connector-java-5.1.21.jar" kind="lib"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4-sources.jar"></classpathentry>
+  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4-sources.jar"></classpathentry>
+  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4-sources.jar"></classpathentry>
   <classpathentry kind="lib" path="./lib_managed/jars/com.h2database/h2/h2-1.2.147.jar" sourcepath="./lib_managed/srcs/com.h2database/h2/h2-1.2.147-sources.jar"></classpathentry>

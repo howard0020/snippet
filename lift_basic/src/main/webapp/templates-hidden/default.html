@@ -15,6 +15,25 @@
 <link rel="stylesheet" type="text/css" href="/CSS/Default/default.css" />
 <link rel="stylesheet" type="text/css" href="/CSS/Default/example.css" />
 <script type="text/javascript" src="/js/slide.js"></script>
+<!-- SEARCH STYLES & SCRIPTS -->
+<script src="/scripts/util.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		btnWithDefaultText({
+			buttonSelector : "#searchPostBtn",
+			defaultText : "Search",
+			enterKeyHandler : function(searchQuery) {
+				window.location.href= "http://localhost:8080/search/" + searchQuery;
+			},
+			color : "gray"
+		});
+		btnWithDefaultText({
+			buttonSelector : "#cometSearchWrapper input",
+			defaultText : "Search",
+			color : "gray"
+		});
+	});
+</script>
 
 </head>
 <body class="BodyGrayAndWhiteStyle">
@@ -33,6 +52,12 @@
 					<a href="/index">Snippet </a>
 				</div>
 			</div>
+			<div id="cometSearchWrapper" style="float: left;margin-left:300px;"
+				class="lift:search.searchPosts">
+				<search:textarea></search:textarea>
+			</div>
+				<input type="text" id="searchPostBtn"></input>
+			
 			<div id="Profile" class="lift:UserSnippet.CurrentUserProfile">
 				<span><a class="userUrl userName"></a></span>
 				<div id="slide_open">Login</div>
