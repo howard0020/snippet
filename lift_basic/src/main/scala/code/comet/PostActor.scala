@@ -23,14 +23,15 @@ import code.model.User
 import code.model.post.Block
 import scala.xml.Attribute
 import scala.Null
+import code.search.SearchQuery
+import code.search.SearchEngine
 
 class PostActor extends CometActor with CometListener {
 
-  
   implicit val formats = net.liftweb.json.DefaultFormats
-  
-  private var currTagFilter : Box[Tag] = Empty
-  
+
+  private var currTagFilter: Box[Tag] = Empty
+
   //for new post
   private var content = ""
   //for new post
@@ -39,69 +40,77 @@ class PostActor extends CometActor with CometListener {
   private var title = ""
 
   private var posts = getPosts(Empty)
- 
 
-  def getPosts(tag:Box[Tag]):List[CodeSnippet] = {
-	    tag match {
-	    	case Full(theTag) => theTag.posts.all.reverse
-	    	case Empty =>  CodeSnippet.findAll().reverse
-	    	case Failure(msg,_,_) => 
-	    	  S.error(msg)
-	    	  CodeSnippet.findAll().reverse
-	 	}
+  def getPosts(tag: Box[Tag]): List[CodeSnippet] = {
+    tag match {
+      case Full(theTag) => theTag.posts.all.reverse
+      case Empty => CodeSnippet.findAll().reverse
+      case Failure(msg, _, _) =>
+        S.error(msg)
+        CodeSnippet.findAll().reverse
+    }
   }
 
+  def searchPosts(queryBox: Box[String]): List[CodeSnippet] = {
+    queryBox match {
+      case Full(queryString) => SearchEngine.searchPostByTitle(queryString)
+      case Empty => CodeSnippet.findAll()
+      case Failure(msg, _, _) =>
+        S.error(msg)
+        CodeSnippet.findAll()
+    }
+  }
 
   def registerWith = PostServer
-		  
+
   def render = "#postTemplate *" #> bindText
 
   def bindText =
     ".post_wrapper" #> (
-      (ns: NodeSeq) => (posts.flatMap( p => (
-          ".post_author_image [src]" #> (p.getAuthor match{
-            case Full(author)=> 
-              if(author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
-              else author.iconURL.get
-            case Empty => ""
-            case Failure(msg,_,_) =>"Error" 
-            })&
-          ".post_author_name *" #> (p.getAuthor match{
-            case Full(author)=> author.username.get
-            case Empty => ""
-            case Failure(msg,_,_) =>"Error"
-          }) &
-          ".post_created_date *" #> (if(p.createdAt == null) "" else p.createdAt.toString()) &
-          ".post_title *" #> (if(p.title == null) "" else p.title.toString()) &
-          ".post_content *" #> { ".post_block" #> 
-          			(p.blocks.map(b => "*" #> getBlockContent(b)))} & 
-          ".tag *" #> (if(p.getTags.equals("")) "" else ("tags: " + p.getTags))
-          )(ns))))
-          
-  def getBlockContent(block: Block):NodeSeq = {
-      if(block.meta.toString == ""){
-	     xml.Unparsed(block.content.is)  
-      }else
-      {
-         val text =Option(block.content.is)
-        <textarea class="code-block-fields">{text.getOrElse("")}</textarea> % Attribute(None,"mode",Text(block.meta.is),Null)
-      }
+      (ns: NodeSeq) => (posts.flatMap(p => (
+        ".post_author_image [src]" #> (p.getAuthor match {
+          case Full(author) =>
+            if (author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
+            else author.iconURL.get
+          case Empty => ""
+          case Failure(msg, _, _) => "Error"
+        }) &
+        ".post_author_name *" #> (p.getAuthor match {
+          case Full(author) => author.username.get
+          case Empty => ""
+          case Failure(msg, _, _) => "Error"
+        }) &
+        ".post_created_date *" #> (if (p.createdAt == null) "" else p.createdAt.toString()) &
+        ".post_title *" #> (if (p.title == null) "" else p.title.toString()) &
+        ".post_content *" #> {
+          ".post_block" #>
+            (p.blocks.map(b => "*" #> getBlockContent(b)))
+        } &
+        ".tag *" #> (if (p.getTags.equals("")) "" else ("tags: " + p.getTags)))(ns))))
+
+  def getBlockContent(block: Block): NodeSeq = {
+    if (block.meta.toString == "") {
+      xml.Unparsed(block.content.is)
+    } else {
+      val text = Option(block.content.is)
+      <textarea class="code-block-fields">{ text.getOrElse("") }</textarea> % Attribute(None, "mode", Text(block.meta.is), Null)
+    }
   }
-    
-  def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, 
-      (SHtml.textarea("", content = _, "id" -> "snippetTextArea") 
-    		  ++ SHtml.text("", title = _)  
-    		  ++ SHtml.text("Lift",tags = _)
-    		  ++ SHtml.submitButton(() => {})
-    		  ++ SHtml.hidden(() => postForm)
-      ))
-  
+
+  def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd,
+    (SHtml.textarea("", content = _, "id" -> "snippetTextArea")
+      ++ SHtml.text("", title = _)
+      ++ SHtml.text("Lift", tags = _)
+      ++ SHtml.submitButton(() => {})
+      ++ SHtml.hidden(() => postForm)))
+
   private def postForm = {
     val snippet = CodeSnippet.create
-    snippet.Author.set(User.currentUser match{
-            case Full(curUser)=> curUser.id
-            case Empty => -1
-            case Failure(msg,_,_) => -1})
+    snippet.Author.set(User.currentUser match {
+      case Full(curUser) => curUser.id
+      case Empty => -1
+      case Failure(msg, _, _) => -1
+    })
     snippet.content.set(content)
     snippet.title.set(title)
     snippet.tags ++= Tag.getTagList(tags)
@@ -121,26 +130,28 @@ class PostActor extends CometActor with CometListener {
       posts = msg
       reRender(false)
     case msg: CodeSnippet =>
-  
-         Console.println("=========cometActor.Current Tag Filter>"+currTagFilter.openOr(""))
-      posts = if(msg.tags.exists(tag => tag == currTagFilter.openOr(""))){
-        Console.println("=========cometActor.CodeSnippet.contain>"+currTagFilter.openOr(""))
+
+      Console.println("=========cometActor.Current Tag Filter>" + currTagFilter.openOr(""))
+      posts = if (msg.tags.exists(tag => tag == currTagFilter.openOr(""))) {
+        Console.println("=========cometActor.CodeSnippet.contain>" + currTagFilter.openOr(""))
         msg :: posts
-      }else
-      {
-        Console.println("=========cometActor.CodeSnippet.NOTcontain>"+currTagFilter.openOr(""))
+      } else {
+        Console.println("=========cometActor.CodeSnippet.NOTcontain>" + currTagFilter.openOr(""))
         posts
       }
-        reRender(false)
-    case msg: Box[Tag] =>{
-      Console.println("=========cometActor.Box[Tag]>"+msg.openOr(""))
+      reRender(false)
+    case msg: Box[Tag] => {
+      Console.println("=========cometActor.Box[Tag]>" + msg.openOr(""))
       currTagFilter = msg
-      Console.println("=========cometActor.Current Tag Filter>"+currTagFilter.openOr(""))
+      Console.println("=========cometActor.Current Tag Filter>" + currTagFilter.openOr(""))
       posts = getPosts(msg)
       reRender(false)
       //TODO change reRender to be partialUpdate
       //partialUpdate(SetHtml("postTemplate",))
     }
+    case SearchQuery(query) => 
+      posts = searchPosts(query)
+      reRender(false)
   }
 }
 
@@ -149,7 +160,7 @@ object PostServer extends LiftActor with ListenerManager {
   def createUpdate = posts
   override def lowPriority = {
     case msg: CodeSnippet => {
-    	updateListeners(msg)
+      updateListeners(msg)
     }
   }
 }

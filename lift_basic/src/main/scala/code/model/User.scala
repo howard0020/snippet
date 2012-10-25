@@ -28,26 +28,44 @@ object User extends User with MetaMegaProtoUser[User] {
   override def skipEmailValidation = true
 
   override def loginXhtml = {
-    (<div id="user_login_wrapper">
-       <form id="user_login_form" method="post" action={ S.uri }>
-         <div class="user_login_otherlogin">
-           <div class="user_login_facebook"><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
-           <div class="user_login_github"><a href={ Auth.login_url }>Github Login</a></div>
-         </div>
-         <div class="user_login_regularlogin">
-           <div class="form_row">
-             <span class="user_login_username_text form_left">{ S.??("log.in") }</span>
-             <div class="user_login_username_textbox form_right"><user:email/></div>
-           </div>
-           <div class="form_row">
-             <span class="user_login_password_text form_left">{ S.??("password") }</span>
-             <div class="user_login_username_textbox form_right"><user:password/></div>
-           </div>
-           <div class="user_login_lostpassword"><a href={ lostPasswordPath.mkString("/", "/", "") }>{ S.??("recover.password") }</a></div>
-           <div class="loginbutton"><user:submit/></div>
-         </div>
-       </form>
-     </div>)
+    (
+      <form id="user_login_form" class="thirty_three_percent_inline_block" method="post" action={ S.uri }>
+        <span class="user_form_title">Already a Member?</span>
+        <div class="user_login_regularlogin">
+          <div class="user_form_row">
+            <span class="user_form_left">{ S.??("log.in") }</span>
+            <div class="user_form_right user_form_input"><user:email/></div>
+          </div>
+          <div class="user_form_row">
+            <span class="user_form_left">{ S.??("password") }</span>
+            <div class="user_form_right user_form_input"><user:password/></div>
+          </div>
+          <!--<div class="user_login_lostpassword"><a href={ lostPasswordPath.mkString("/", "/", "") }>{ S.??("recover.password") }</a></div>-->
+          <div class="user_form_button"><user:submit/></div>
+        </div>
+        <div class="user_login_otherlogin">
+          <div class="user_login_facebook"><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
+          <div class="user_login_github"><a href={ Auth.login_url }>Github Login</a></div>
+        </div>
+      </form>)
+  }
+  override def lostPasswordXhtml = {
+    (<form id="user_lostpassword_form" class="thirty_three_percent_inline_block" method="post" action={ S.uri }>
+       <span class="user_form_title">Lost your password?</span>
+       <span>{ S.??("enter.email") }</span>
+       <div class="user_form_row">
+         <span class="user_form_left">{ userNameFieldString }</span>
+         <div class="user_form_right user_form_input"><user:email/></div>
+       </div>
+       <div class="user_form_button"><user:submit/></div>
+     </form>)
+  }
+  override def signupXhtml(user: TheUserType) = {
+    (<form id="user_signup_form" class="thirty_three_percent_inline_block" method="post" action={ S.uri }>
+       <span class="user_form_title">Not a Member?</span>
+       <div class="user_form_input">{ localForm(user, false, signupFields) }</div>
+       <div class="user_form_button"><user:submit/></div>
+     </form>)
   }
 
   //<span>{ userNameFieldString }</span>

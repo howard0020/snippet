@@ -81,8 +81,8 @@ class Boot {
           }))),
       Menu(Loc("GhSignin", List("ghauth", "signin"), "GhSignin", Hidden)),
       Menu(Loc("GhCallback", List("ghauth", "callback"), "GhCallback", Hidden)),
-      Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)) //================== end GITHUB RELATED LINKS ===========================//
-    
+      Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)), //================== end GITHUB RELATED LINKS ===========================//
+      Menu(Loc("Search", List("search"), "Search"))
       ) :::
       Omniauth.sitemap
 
@@ -95,6 +95,9 @@ class Boot {
           case _ => ""
         })
         RewriteResponse("github_repo" :: Nil, Map("repoName" -> repoName, "path" -> path))
+      case RewriteRequest(ParsePath(List("search", queryString), suffix , _, _), _, _) =>
+        val q = if (suffix.isEmpty) "" else suffix
+        RewriteResponse("search" :: Nil, Map("queryString" -> queryString))
     }
     //=============================== end GITHUB RELATED CONFIG =========================//
 

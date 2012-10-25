@@ -32,7 +32,18 @@ class UserSnippet {
 	
 	def CurrentUserUrl = ".userUrl [href]" #> "/User/profile.html"
 	
+	def RemoveSlideOpenIfLoggedIn = "#slide_open [class]" #> (User.loggedIn_? match{
+	  case true => "collapse"
+	  case false => ""
+	})
+	
 	def loginForm = User.login
 	
-	def CurrentUserProfile = CurrentUserName & CurrentUserIcon & CurrentUserUrl
+	def CurrentUserProfile = CurrentUserName & CurrentUserIcon & CurrentUserUrl & RemoveSlideOpenIfLoggedIn
+	
+	def loginHtml = User.loginXhtml
+	
+	def signupForm = User.signup;
+	
+	def lostpasswordForm = User.lostPassword;
 }

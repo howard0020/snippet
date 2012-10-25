@@ -24,6 +24,36 @@ html, body {
 	height: 100%;
 	background-color: #E2E9D7;
 }
+h1,h2,h3,h4,h5,h6{
+	color:#5B865B;
+}
+h1{
+	font-size: 26px;
+}
+h2 {
+	font-size: 22px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 16px;
+}
+h6 {
+	font-size: 14px;
+}
+#main ul, ol{
+	padding-left: 20px;
+}
+#main ul{
+	list-style: circle;	
+}
+#main ol{
+	list-style: decimal;	
+}
 
 /*All Div that should have no space near them, and allow other div to be near*/
 #header-wrapper
@@ -68,7 +98,7 @@ body a {
 	height: auto !important;
 	min-height: 100%;
 	width: 1000px;
-	background-color: #D5E7BB;
+	background-color: #F4F7F2;
 	/*
 	-webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
@@ -82,6 +112,8 @@ body a {
 	position: fixed;
 	width: 100%;
 	border-bottom: 4px solid #78AA2B;
+	height: 35px;
+	max-height: 35px;
 }
 
 #header {
@@ -97,9 +129,9 @@ body a {
 	width: 1000px;
 	height: auto !important;
 	min-height: 100%;
-	padding-top: 50px;
+	padding-top: 38px;
 	margin: 0 auto;
-	background-color:#D5E7BB;
+	background-color:#F4F7F2;
 
 }
 
@@ -110,6 +142,11 @@ body a {
 
 #right-content-wrapper {
 	
+}
+.tag-list{
+	list-style: none !important;
+	margin:0px !important;
+	padding:0px !important;
 }
 
 .tag-list li button {
@@ -140,7 +177,6 @@ body a {
 #main {
 	
 }
-
 #footer-wrapper {
 	width:100%;
 	position: absolute;
@@ -216,7 +252,7 @@ body a {
 /* Logo */
 #logo {
 	position: absolute;
-	bottom: -1px;
+	bottom: -7px;
 	left: 20px;
 }
 
@@ -226,28 +262,32 @@ body a {
 
 #LogoAsText a {
 	text-decoration: none;
-	font-size: 38px;
+	font-size: 34px;
 	color: #78AA2B;
 }
 
 #Menu {
 	position: relative;
-	float: right;
-	top: 8px;
-	margin-right: 20px;
+	top: 18px;
+	left: 600px;
 }
 #Profile{
-	width: 1000px;
-	text-align: right;
-	margin: 0px auto;
+	float: right;
+	max-width: 200px;
+	text-align: center;
+	margin-right: 5px;
 	
 }
 #Profile img{
 }
 
 #Profile .userName{
-	text-overflow: ellipsis;
-	color: #78AA2B;
+	width: 100%;
+	font-size: 12px;
+	background-color: #78AA2B;
+	color: white;
+	cursor: pointer;
+	padding: 3px;
 }
 
 #LoginMenu{
@@ -352,7 +392,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 
 /*From William's css*/
 #postTemplate h2{
-	font-size: 1.1em;
+	
 }
 .post_wrapper {
 	clear: both;
@@ -360,7 +400,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	padding: 15px;
 	margin: 1px;
 	margin-bottom: 2px;
-	background-color: #F4F7F2;
+	border-bottom: 5px solid #E2E9D7;
 }
 .post{
 	
@@ -403,41 +443,45 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .post_content{
 	color: gray;
 }
-.post_content h2 {
-	color: #5A6B40;
-	font-weight: bold;
-	padding-left: 2px;
-	background-color: #E6F0D7;
-}
 
 .post_created_date{
 	Margin-left: 10px;
 }
 
 #user_login_wrapper{
-	width: 600px;
 	margin: 0 auto;
+	position: relative;
 	text-align: center;
+	background-color: #ACB8AF;
+	z-index: 100;
 	padding-top: 20px;
-	position:relative;
+	display: none;
 }
 
-#user_login_form .form_left{
-	width: 75px;
+
+.user_form_left{
+	width: 85px;
+	font-weight: bold;
+	color: gray;
 	display: inline-block;
 	text-align: right;
-	padding-right: 5px;
-	
 }
-#user_login_form .form_right{
+.user_form_right{
 	display: inline-block;
+	margin-left: 10px;
 }
-#user_login_form .form_right input{
+.user_form_input input{
 	height: 25px;
 	width: 200px;
+	font-size: 14px;
+	font-weight: bold;
+	color: gray;
 }
-#user_login_form .form_row{
+.user_form_row{
 	margin-bottom: 10px;
+	color: gray;
+	font-weight: bold;
+	text-align: left;
 }
 .user_login_lostpassword{
 	text-align: right;
@@ -446,25 +490,80 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	color:gray;
 }
 .user_login_otherlogin{
-	width: 200px;
-	position: absolute;
+	position: relative;
+	bottom: 30px;
+	right: 70px;
+	display: inline-block;
 }
 .user_login_regularlogin{
-	position: absolute;
-	left: 210px;
-	width: 340px;
+}
+#user_signup_form .user_input_form{
+	margin-top: 5px;
 }
 .user_login_regularlogin .loginbutton{
 	text-align: right;
 }
-.user_login_regularlogin .loginbutton input{
+.user_form_button{
+	text-align: right;
+}
+.user_form_button input{
 	width: 90px;
 	height: 35px;
-	font-size: 20px;
+	font-size: 16px;
 	background-color: #78AA2B;
 	color: white;
 	border: none;
 	cursor: pointer;
 	margin-top: 10px;
 	margin-right: 30px;
+}
+#slide_login_toggler{
+	
+}
+#user_signup_form{
+	text-align: left;
+	color: gray;
+	font-weight: bold;
+}
+
+#user_signup_form input{
+	display: block;
+	position: relative;
+	left: 100px;
+	bottom: 20px;
+}
+#user_signup_form .user_form_button input{
+	position: relative;
+	left: 213px;
+}
+.thirty_three_percent_inline_block{
+	display: inline-block;
+	width:33%;
+	vertical-align: top;
+	color: gray;
+	font-weight: bold;
+}
+.user_form_title{
+	color: #628362;
+	font-size: 20px;
+	font-weight: bold;
+	display: block;
+	padding-bottom: 5px;
+	text-align: center;
+}
+#slide_close{
+	cursor: pointer;
+	display:inline-block;
+	color:gray;
+}
+#slide_open{
+	width: 100%;
+	font-size: 12px;
+	background-color: #78AA2B;
+	color: white;
+	cursor: pointer;
+	padding: 3px;
+}
+.collapse{
+	display:none;
 }
