@@ -197,12 +197,17 @@
 					<br>
 					<div class="sortable-item">
 						<span class="handle">Drag</span>
+						<a class="field-delete" 
+						onclick="deleteParentElement(this)"
+						 style="background:none;border:0;color:#ff0000">Delete
+						 </a>
 						<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
 							<h1>Header</h1>
 						</div>
 					</div>
 					<div id="Text3" class="field-content code-block-fields sortable-item">
 						<span class="handle">Drag</span>
+						<button class="field-delete" onclick="deleteParentElement(this)">Delete</button>
 						<textarea id="textArea3">
 	import snippet.fun._
 	
@@ -263,7 +268,14 @@
 			  mode:  "text/x-scala"
 			});
     	}
-
+		function deleteParentElement(n){
+			n.parentNode.parentNode.removeChild(n.parentNode);
+		}
+		$(function() {
+		$(a.field-delete).click(function(){
+			this.parent().remove();
+		});
+		});
 		</script>
 	</div>
 </body>
