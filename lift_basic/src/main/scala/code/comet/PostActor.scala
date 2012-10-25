@@ -90,7 +90,7 @@ class PostActor extends CometActor with CometListener {
 
   def getBlockContent(block: Block): NodeSeq = {
     if (block.meta.toString == "") {
-      xml.Unparsed(block.content.is)
+      <div>{xml.Unparsed(block.content.is)}</div>
     } else {
       val text = Option(block.content.is)
       <textarea class="code-block-fields">{ text.getOrElse("") }</textarea> % Attribute(None, "mode", Text(block.meta.is), Null)

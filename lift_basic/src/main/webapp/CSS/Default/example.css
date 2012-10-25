@@ -5,6 +5,11 @@ Released for free under a Creative Commons Attribution 2.5 License
 */
 
 
+/* css for sortable place holders  */
+.ui-sortable-placeholder { 
+	border: 1px dotted black; 
+	visibility: visible !important; 
+}
 /*user to hide and show sortable handles*/
 .sortable-item:hover > .handle {
 	display:inline;

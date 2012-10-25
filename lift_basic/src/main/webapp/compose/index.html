@@ -27,7 +27,7 @@
 		<script class="lift:head" src="/aloha/lib/require.js"></script>
 <!-- 		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script> -->
 		<script class="lift:head" type="text/javascript">
-
+			var editorCount = 3;
             if (window.Aloha === undefined || window.Aloha === null) {
                 var Aloha = window.Aloha = {};
             }
@@ -100,6 +100,9 @@
 	        Aloha.jQuery('.WYSIWYG-fields').aloha();
 
 	    });
+	    $(".field-delete").click(function() {
+	    	deleteParentElement(this);
+	    });
 	    
 	</script>
 <!-- 	<style class="lift:head">
@@ -112,7 +115,10 @@
       
         $( "#editor-sort" ).sortable({
         handle: '.handle',
-        cancel: ':input,button,.contenteditable'
+        cancel: ':input,button,.contenteditable',
+        start: function(e,ui){
+                ui.placeholder.height(ui.item.height());
+            }
         });
        
     });
@@ -197,10 +203,7 @@
 					<br>
 					<div class="sortable-item">
 						<span class="handle">Drag</span>
-						<a class="field-delete" 
-						onclick="deleteParentElement(this)"
-						 style="background:none;border:0;color:#ff0000">Delete
-						 </a>
+						<button class="field-delete" onclick="deleteParentElement(this)">Delete</button>
 						<div id="Text2" class="field-content WYSIWYG-fields" contenteditable="true"> 	
 							<h1>Header</h1>
 						</div>
@@ -271,11 +274,7 @@
 		function deleteParentElement(n){
 			n.parentNode.parentNode.removeChild(n.parentNode);
 		}
-		$(function() {
-		$(a.field-delete).click(function(){
-			this.parent().remove();
-		});
-		});
+
 		</script>
 	</div>
 </body>

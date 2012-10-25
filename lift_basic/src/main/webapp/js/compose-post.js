@@ -6,13 +6,21 @@
         self.addFields = function() {
           $('#btnAddHTML').click(function() {
           	var $ = Aloha.jQuery;
-            var num     = $('.field-content').length; // how many "duplicatable" input fields we currently have
+            var num     = editorCount++; // how many "duplicatable" input fields we currently have
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
             // create the new element via clone(), and manipulate it's ID using newNum value
             // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
-            var newField = $('<div class="sortable-item"><span class="handle">Drag</span><div class="field-content WYSIWYG-fields" contenteditable="true"></div></div>');
+            var newField = $('<div class="sortable-item">' +
+			            		'<span class="handle">Drag</span>' +
+			            		'<button class="field-delete">Delete</button>' +
+			            		'<div class="field-content WYSIWYG-fields" contenteditable="true">' +
+			            		'</div>' +
+			            	'</div>');
+			newField.children(".field-delete").click(function(){
+			            		deleteParentElement(this);
+			            	});
             newField.attr('id','Text' + newNum);
-            $('#Text' + num).parent().append(newField);
+            $('#Text1').parent().append(newField);
             
             Aloha.jQuery('.WYSIWYG-fields').mahalo();
         	Aloha.jQuery('.WYSIWYG-fields').aloha();
@@ -21,13 +29,20 @@
           
             $('#btnAddCode').click(function() {
  
-            var num     = $('.field-content').length; // how many "duplicatable" input fields we currently have
+            var num     = editorCount++; // how many "duplicatable" input fields we currently have
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
            	//create the html to add
-            var newField = $('<div class="field-content code-block-fields"><textarea></textarea></div>');
+            var newField = $('<div class="field-content code-block-fields sortable-item">' +
+			            		'<span class="handle">Drag</span>' +
+			            		'<button class="field-delete">Delete</button>' +
+			            		'<textarea></textarea>' +
+		            		'</div>');
+		    newField.children(".field-delete").click(function(){
+			            		deleteParentElement(this);
+			            	});
             var editorDiv = newField.attr('id','Text' + newNum);
-            editorDiv.children().attr('id','textArea' + newNum);
-            $('#Text' + num).parent().append(newField);
+            editorDiv.children("textarea:first").attr('id','textArea' + newNum);
+            $('#Text1').parent().append(newField);
             var newTextArea = document.getElementById('textArea' + newNum);
             var newEditor = CodeMirror.fromTextArea(newTextArea, {
     		  lineNumbers: true,
