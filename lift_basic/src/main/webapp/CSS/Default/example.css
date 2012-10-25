@@ -5,7 +5,26 @@ Released for free under a Creative Commons Attribution 2.5 License
 */
 
 
+<<<<<<< HEAD
 
+=======
+/* css for sortable place holders  */
+.ui-sortable-placeholder { 
+	border: 1px dotted black; 
+	visibility: visible !important; 
+}
+/*user to hide and show sortable handles*/
+.sortable-item:hover > .handle {
+	display:inline;
+}
+.handle {
+	display:none;
+	float:right;
+}
+.field-delete {
+	float:right;
+}
+>>>>>>> b3e6c5a9499eedd5c647fea788b4648b4d415b82
 
 
 html, body {
