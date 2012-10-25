@@ -5,14 +5,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 */
 
 
-/*user to hide and show sortable handles*/
-.sortable-item:hover > .handle {
-	display:inline;
-}
-.handle {
-	display:none;
-	float:right;
-}
+
 
 
 html, body {
@@ -264,16 +257,16 @@ body a {
 }
 
 #Menu {
-	position: relative;
-	top: 18px;
-	left: 600px;
+	position: absolute;
+	right: 0;
+	top: 20px;
 }
 #Profile{
-	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
 	max-width: 200px;
 	text-align: center;
-	margin-right: 5px;
-	
 }
 #Profile img{
 }
@@ -563,4 +556,42 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 .collapse{
 	display:none;
+}
+
+/*user to hide and show sortable handles*/
+.sortable-item{
+	position:relative;
+}
+
+.sortable-item:hover > .handle {
+	/* display:inline; */
+}
+.handle {
+	position: absolute;
+	width: 25px;
+	height: 100%;
+	min-height: 100%;
+	background: url(../../images/drag-handle-green.png);
+	background-repeat: repeat;
+	border-top: 1px solid #78AA2B;
+	border-left: 1px solid #78AA2B;
+	border-right: 1px solid #78AA2B;
+	border-bottom: 1px solid #78AA2B;
+	cursor: move;
+}
+#editor_form_wrapper{
+	position:relative;
+}
+#editor-sort{
+	position:relative;
+}
+.field-content{
+	position: relative;
+	left: 32px;
+}
+#cometSearchWrapper{
+	position: relative;
+	display: inline-block;
+	left: 300px;
+	top: 15px;
 }
