@@ -5,19 +5,6 @@ Released for free under a Creative Commons Attribution 2.5 License
 */
 
 
-/* css for sortable place holders  */
-.ui-sortable-placeholder { 
-	border: 1px dotted black; 
-	visibility: visible !important; 
-}
-/*user to hide and show sortable handles*/
-.sortable-item:hover > .handle {
-}
-.field-delete {
-	float:right;
-}
-
-
 html, body {
 	margin: 0;
 	padding: 0;
@@ -570,9 +557,12 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 
 /*user to hide and show sortable handles*/
 .sortable-item{
-	position:relative;
+	position: relative;
+	margin-top: 3px;
+	margin-bottom: 3px;
 }
-.sortable-item:hover > .handle {
+.sortable-item:hover > .handle, 
+.sortable-item:hover > .field-delete {
 	display:inline; 
 }
 .handle {
@@ -581,16 +571,21 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	width: 25px;
 	height: 100%;
 	min-height: 100%;
-	background: url(../../images/drag-handle-green.png);
+	background: url(../../images/handle.png);
 	background-repeat: repeat;
+	/*
 	border-top: 1px solid #78AA2B;
 	border-left: 1px solid #78AA2B;
 	border-right: 1px solid #78AA2B;
 	border-bottom: 1px solid #78AA2B;
+	*/
 	cursor: move;
 }
 #editor_form_wrapper{
 	position:relative;
+}
+#editor_form_wrapper .title-field{
+	color: inherit;	
 }
 #editor-sort{
 	position:relative;
@@ -598,6 +593,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .field-content{
 	position: relative;
 	left: 32px;
+	width: 960px;
 }
 #cometSearchWrapper{
 	position: relative;
@@ -605,3 +601,27 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	left: 300px;
 	top: 15px;
 }
+/* css for sortable place holders  */
+.ui-sortable-placeholder { 
+	border: 1px dotted black; 
+	visibility: visible !important; 
+}
+.field-delete {
+	display: none;
+	position: absolute;
+	right: 10px;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: url(../../images/delete.png);
+	opacity: 0.6;
+	cursor: pointer;
+	z-index: 100;
+}
+.sortable-item .aloha-editable-highlight{
+	outline: 2px #ffe767 dotted!important;
+	}
