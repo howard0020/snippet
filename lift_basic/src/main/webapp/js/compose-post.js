@@ -12,7 +12,7 @@
             // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
             var newField = $('<div class="sortable-item">' +
 			            		'<div class="handle"></div>' +
-			            		'<button class="field-delete">Delete</button>' +
+			            		'<button class="field-delete"></button>' +
 			            		'<div class="field-content WYSIWYG-fields" contenteditable="true">' +
 			            		'</div>' +
 			            	'</div>');
@@ -34,7 +34,7 @@
            	//create the html to add
             var newField = $('<div class="sortable-item">' +
 			            		'<div class="handle"></div>' +
-			            		'<button class="field-delete">Delete</button>' +
+			            		'<button class="field-delete"></button>' +
 			            		'<div class="field-content code-block-fields">' +
 			            			'<textarea></textarea>' +
 			            		'</div>' +
