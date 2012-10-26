@@ -573,9 +573,10 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	position:relative;
 }
 .sortable-item:hover > .handle {
-	/* display:inline; */
+	display:inline; 
 }
 .handle {
+	display:none;
 	position: absolute;
 	width: 25px;
 	height: 100%;
