@@ -32,16 +32,19 @@
             var num     = editorCount++; // how many "duplicatable" input fields we currently have
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
            	//create the html to add
-            var newField = $('<div class="field-content code-block-fields sortable-item">' +
+            var newField = $('<div class="sortable-item">' +
 			            		'<div class="handle"></div>' +
 			            		'<button class="field-delete">Delete</button>' +
-			            		'<textarea></textarea>' +
+			            		'<div class="field-content code-block-fields">' +
+			            			'<textarea></textarea>' +
+			            		'</div>' +
 		            		'</div>');
-		    newField.children(".field-delete").click(function(){
+		    //find the delete button and add click event
+		    newField.find(".field-delete").click(function(){
 			            		deleteParentElement(this);
 			            	});
             var editorDiv = newField.attr('id','Text' + newNum);
-            editorDiv.children("textarea:first").attr('id','textArea' + newNum);
+            editorDiv.find("textarea:first").attr('id','textArea' + newNum);
             $('#Text1').parent().append(newField);
             var newTextArea = document.getElementById('textArea' + newNum);
             var newEditor = CodeMirror.fromTextArea(newTextArea, {
@@ -53,7 +56,7 @@
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
 			});
-			window.codeEditors['Text' + newNum] = newEditor;
+			window.codeEditors['textArea' + newNum] = newEditor;
             // manipulate the name/id values of the input inside the new element
            // newElem.children('textarea').attr('class', 'emailContent').attr('id', 'reminderText' + newNum);
             //newElem.children('input').attr('class', 'schedule').attr('id', 'runReminderInDays' + newNum);
@@ -89,7 +92,7 @@
 	          	if($(this).is('.title-field')){
 	          		formData.push(["titleField",$(this).val()])
 	          	}else if($(this).is('.code-block-fields')){
-	            	var editorObj = window.codeEditors[$(this).attr('id')];
+	            	var editorObj = window.codeEditors[$(this).find('textArea:first').attr('id')];
 	            	formData.push(["codeBlock",editorObj.getOption("mode"),$(this).children("textarea:first").val()]);
 	            }else{
 	            	formData.push(["htmlBlock",$(this).html()]);	

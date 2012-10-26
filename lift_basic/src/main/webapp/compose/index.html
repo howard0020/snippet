@@ -209,10 +209,11 @@
 							<h1>Header</h1>
 						</div>
 					</div>
-					<div id="Text3" class="field-content code-block-fields sortable-item">
+					<div id="Text3" class="sortable-item">
 						<div class="handle"></div>
 						<button class="field-delete" onclick="deleteParentElement(this)">Delete</button>
-						<textarea id="textArea3">
+						<div class="field-content code-block-fields">
+							<textarea id="textArea3">
 	import snippet.fun._
 	
 	class ReplaceMe extends SomeCode{
@@ -220,7 +221,8 @@
 	    	this.text.remove
 	    }    
 	}
-						</textarea>
+							</textarea>
+						</div>
 					</div>
 				</div>
 		        <div>
@@ -252,7 +254,7 @@
    			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
    			 	   }
    			});  
-   			window.codeEditors["Text3"] = editor;
+   			window.codeEditors["textArea3"] = editor;
    	
 	   	function change() {
 		   editor.setOption("mode", modeSelect.value);
