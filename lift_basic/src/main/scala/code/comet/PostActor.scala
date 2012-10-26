@@ -38,7 +38,14 @@ class PostActor extends CometActor with CometListener {
   private var tags = ""
 
   private var title = ""
-
+    
+  private val initCodeBlockJS = 
+    """
+      |            $(document).ready(function() {
+      |              initCodeBlock();
+      |            });
+    """.stripMargin
+    
   private var posts = getPosts(Empty)
 
   def getPosts(tag: Box[Tag]): List[CodeSnippet] = {
@@ -63,7 +70,8 @@ class PostActor extends CometActor with CometListener {
 
   def registerWith = PostServer
 
-  def render = "#postTemplate *" #> bindText
+  def render = "#postTemplate *" #> bindText &
+  				"#initCodeBlock" #> Script(JE.JsRaw(initCodeBlockJS).cmd)
 
   def bindText =
     ".post_wrapper" #> (
@@ -86,7 +94,7 @@ class PostActor extends CometActor with CometListener {
           ".post_block" #>
             (p.blocks.map(b => "*" #> getBlockContent(b)))
         } &
-        ".tag *" #> (if (p.getTags.equals("")) "" else ("tags: " + p.getTags)))(ns))))
+        ".tag *" #> (if (p.getTags.equals("")) "" else ("tags: " + p.getTags)))(ns)))) 
 
   def getBlockContent(block: Block): NodeSeq = {
     if (block.meta.toString == "") {

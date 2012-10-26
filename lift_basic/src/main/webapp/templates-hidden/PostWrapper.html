@@ -28,7 +28,8 @@
 		href="/CSS/SyntaxHighlighter/shCoreDefault.css" />
 	<script class="lift:head" type="text/javascript" 
 		src="/js/codeMirror-modes.js"></script>
-
+	<script class="lift:head" type="text/javascript" 
+		src="/js/post-wrapper.js"></script>	
 	<lift:comet type="PostActor" name="PostActor" eager_eval="true">
 
 		<lift:test_cond.loggedin>
@@ -38,27 +39,7 @@
 		</lift:test_cond.loggedin>
 
 		<lift:embed what="/Post"></lift:embed>
+		<script id="initCodeBlock"></script>
 		
-		<script type="text/javascript">
-			$('.code-block-fields').each(function() {
-    		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
-		    var $this = $(this),
-		        $code = $this.html(),
-		        $unescaped = $('<div/>').html($code).text();
-		   
-		    var thisEditor = CodeMirror.fromTextArea(this, {
-		        mode: $this.attr('mode'),
-		        lineNumbers: true,
-		        readOnly: true,
-		        lineWrapping: "wrap",
-		        onCursorActivity: function() {
-   			 	   		thisEditor.matchHighlight("CodeMirror-matchhighlight");
-   			 	   }
-		    });
-		    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')]);
-		    $('pre.CodeMirror-cursor').remove();
-		    
-		});
-		</script>
 	</lift:comet>
 </lift:posts.setparam>
