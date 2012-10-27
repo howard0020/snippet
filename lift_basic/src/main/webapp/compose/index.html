@@ -115,7 +115,7 @@
 
 				$("#editor-sort").sortable({
 					handle : '.handle',
-					cancel : ':input,button,.contenteditable',
+					cancel : 'h2',
 					start : function(e, ui) {
 						ui.placeholder.height(ui.item.height());
 					}
@@ -197,14 +197,17 @@
 			<!-- Form for the whole post -->
 			<form class="lift:form.ajax" action="#">
 				<div class="lift:post_form" id="editor_form_wrapper">
-					<div id="editor-sort">
-						<br>
-						<h2>
+					<br>
+					<h2>
 							<input type="text" id="Text1" required="required"
 								class="field-content title-field" name="title"
 								placeholder="Post Title"></input>
-						</h2>
-						<br> <br>
+					</h2>
+					<br> <br>
+					<div id="editor-sort">
+						
+						
+						
 						<div class="sortable-item">
 							<div class="handle"></div>
 

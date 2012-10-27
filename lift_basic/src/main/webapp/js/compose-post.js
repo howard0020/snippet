@@ -20,7 +20,7 @@
 			            		deleteParentElement(this);
 			            	});
             newField.attr('id','Text' + newNum);
-            $('#Text1').parent().append(newField);
+            $('#editor-sort').append(newField);
             
             Aloha.jQuery('.WYSIWYG-fields').mahalo();
         	Aloha.jQuery('.WYSIWYG-fields').aloha();
@@ -45,7 +45,7 @@
 			            	});
             var editorDiv = newField.attr('id','Text' + newNum);
             editorDiv.find("textarea:first").attr('id','textArea' + newNum);
-            $('#Text1').parent().append(newField);
+            $('#editor-sort').append(newField);
             var newTextArea = document.getElementById('textArea' + newNum);
             var newEditor = CodeMirror.fromTextArea(newTextArea, {
     		  lineNumbers: true,
