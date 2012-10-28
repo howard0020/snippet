@@ -38,7 +38,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags,Block)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags,Block, ToCModel)
 
     // where to search snippet
     LiftRules.addToPackages("code")
@@ -82,8 +82,8 @@ class Boot {
       Menu(Loc("GhSignin", List("ghauth", "signin"), "GhSignin", Hidden)),
       Menu(Loc("GhCallback", List("ghauth", "callback"), "GhCallback", Hidden)),
       Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)), //================== end GITHUB RELATED LINKS ===========================//
-      Menu(Loc("Search", List("search"), "Search"))
-      ) :::
+      Menu(Loc("Search", List("search"), "Search")),
+      Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content"))) :::
       Omniauth.sitemap
 
     //=============================== GITHUB RELATED CONFIG =====================//

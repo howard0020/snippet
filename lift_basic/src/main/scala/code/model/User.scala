@@ -7,6 +7,7 @@ import net.liftweb.common._
 import net.liftweb.http.S
 import net.liftweb.sitemap.Loc.LocGroup
 import code.gh.Auth
+import code.model.ToCModel.ToCPost
 
 /**
  * The singleton that has methods for accessing the database
@@ -91,5 +92,21 @@ class User extends MegaProtoUser[User] {
 
   def findUser(email: String) = User.find(By(User.email, email))
 
+    def toc: ToCModel = {
+    ToCModel.find(By(ToCModel.Author, this.id)) match {
+      case Full(t) => t
+      case Empty => ToCModel.createFor(this)
+      case Failure(msg, _, _) =>
+        throw new RuntimeException("update_toc")
+    }   
+  }
+  
+  def getToCPosts: List[ToCPost] = {
+    toc.getToCPosts
+  }
+  
+  def updateToC {
+    toc.updateTitles
+  }
 }
 
