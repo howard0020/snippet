@@ -38,7 +38,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags,Block, ToCModel)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags, Block, ToCModel)
 
     // where to search snippet
     LiftRules.addToPackages("code")
@@ -49,16 +49,15 @@ class Boot {
       // /static path to be visible
 
       //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
-      
-       Menu.i("New post") / "compose/index"
-         >> If(
-             () => User.loggedIn_?,
-             () => RedirectResponse(Auth.LOGIN_URL)
-         )
-         >> LocGroup("General"),
-       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
+
+      Menu.i("New post") / "compose/index"
+        >> If(
+          () => User.loggedIn_?,
+          () => RedirectResponse(Auth.LOGIN_URL))
+          >> LocGroup("General"),
+      Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       //,Menu(Loc("Static", Link(List("static"), true, "/static/index"), "Post Form"))
-       
+
       //================== GITHUB RELATED LINKS ===========================//
       Menu.i("Github") / "github"
         >> If(
@@ -83,7 +82,8 @@ class Boot {
       Menu(Loc("GhCallback", List("ghauth", "callback"), "GhCallback", Hidden)),
       Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)), //================== end GITHUB RELATED LINKS ===========================//
       Menu(Loc("Search", List("search"), "Search")),
-      Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content"))) :::
+      Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
+      Menu(Loc("Page Not Found Error", List("pagenotfounderror"), "Page Not Found Error"))) :::
       Omniauth.sitemap
 
     //=============================== GITHUB RELATED CONFIG =====================//
@@ -95,14 +95,12 @@ class Boot {
           case _ => ""
         })
         RewriteResponse("github_repo" :: Nil, Map("repoName" -> repoName, "path" -> path))
-      case RewriteRequest(ParsePath(List("search", queryString), suffix , _, _), _, _) =>
+      case RewriteRequest(ParsePath(List("search", queryString), suffix, _, _), _, _) =>
         val q = if (suffix.isEmpty) "" else suffix
         RewriteResponse("search" :: Nil, Map("queryString" -> queryString))
     }
     //=============================== end GITHUB RELATED CONFIG =========================//
 
-    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
-    
     //=============================== Omniauth ==========================================//
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr(""), Props.get(FacebookProvider.providerPropertySecret).openOr(""))
 
@@ -124,6 +122,14 @@ class Boot {
     //LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
     LiftRules.setSiteMapFunc(() => sitemap)
 
+    //============ ERROR PAGES =======================//
+    // Catch 404s   
+    LiftRules.uriNotFound.prepend(NamedPF("404handler"){
+      case (req,failure) => 
+        NotFoundAsTemplate(ParsePath(List("404"),"html",false,false))
+    })
+
+    //============= STANDARD LIFT PROJECT CODE =================== //
     // Use jQuery 1.4
     LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQuery14Artifacts
 
