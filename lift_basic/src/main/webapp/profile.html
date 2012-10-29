@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>Profile</title>
+
+</head>
+<body class="lift:content_id=main">
+	<div id="main" class="lift:surround?with=default;at=content">
+
+		<div id="profile_wrapper">
+			<div id="profile_left">
+				<div id="author_info" class="lift:UserSnippet.CurrentUserProfile">
+					<img class="usericon"></img>
+					<span class="username">Author Name</span>
+				</div>
+				<div id="profile_navigation"></div>
+			</div>
+			<div id="profile_right">
+				<div id="profile_posts">
+					<lift:embed what="/templates-hidden/PostWrapper">
+					</lift:embed>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

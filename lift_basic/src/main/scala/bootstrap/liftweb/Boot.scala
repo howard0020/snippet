@@ -35,11 +35,11 @@ class Boot {
     initSiteMap
 
     GitHub.init
-    
+
     // Omniauth
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr(""), Props.get(FacebookProvider.providerPropertySecret).openOr(""))
     Omniauth.initWithProviders(List(SnippetProvider))
-    
+
     //=============================== REWRITES =====================//
     // * search rewrites
     // * tag rewrites
@@ -49,6 +49,16 @@ class Boot {
         RewriteResponse("search" :: Nil, Map("queryString" -> queryString))
       case RewriteRequest(ParsePath("tag" :: tag :: Nil, _, _, _), _, _) =>
         RewriteResponse("index" :: Nil, Map("tag" -> tag))
+      case RewriteRequest(ParsePath("profile" :: idString :: Nil, _, _, _), _, _) =>
+        try {
+          val id = idString.toLong
+          User.findByKey(id) match {
+            case Full(u) => RewriteResponse("profile" :: Nil, Map("id" -> id.toString))
+            case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+          }
+        } catch {
+          case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+        }
     }
 
     // Catch 404s   
@@ -70,6 +80,23 @@ class Boot {
           () => RedirectResponse(Auth.LOGIN_URL))
           >> LocGroup("General"),
       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
+      Menu(Loc("Profile Page", List("profile"), "Profile Page",
+        If(
+          () => {
+            S.param("id") match {
+              case Full(v) => true
+              case Empty => User.loggedIn_?
+              case Failure(_, _, _) => false
+            }
+          },
+           () => {
+            S.param("id") match {
+              case Full(v) => InternalServerErrorResponse()
+              case Empty => User.loggedIn_? match {
+                case true => InternalServerErrorResponse()
+                case false => RedirectResponse("http://localhost:8080/user_mgt/login")}
+              case Failure(_, _, _) => InternalServerErrorResponse()
+            }}))),
       Menu(Loc("Search", List("search"), "Search")),
       Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
       Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden))) :::
@@ -110,9 +137,9 @@ class Boot {
     // any ORM you want
     Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags, Block, ToCModel)
   }
-  
+
   def initStdConfig {
-        //============= STANDARD LIFT PROJECT CODE =================== //
+    //============= STANDARD LIFT PROJECT CODE =================== //
     // Use jQuery 1.4
     LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQuery14Artifacts
 
