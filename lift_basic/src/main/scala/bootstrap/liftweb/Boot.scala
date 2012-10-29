@@ -83,7 +83,7 @@ class Boot {
       Menu(Loc("GhLoginUser", List("ghauth", "loginuser"), "GhLoginUser", Hidden)), //================== end GITHUB RELATED LINKS ===========================//
       Menu(Loc("Search", List("search"), "Search")),
       Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
-      Menu(Loc("Page Not Found Error", List("pagenotfounderror"), "Page Not Found Error"))) :::
+      Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden))) :::
       Omniauth.sitemap
 
     //=============================== GITHUB RELATED CONFIG =====================//
