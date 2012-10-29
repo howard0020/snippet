@@ -80,7 +80,7 @@ class Boot {
       Menu.i("New post") / "compose/index"
         >> If(
           () => User.loggedIn_?,
-          () => RedirectResponse(Auth.LOGIN_URL))
+          () => RedirectResponse(SiteConsts.LOGIN_URL))
           >> LocGroup("General"),
       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       Menu(Loc("Profile Page", List("profile"), "Profile Page",

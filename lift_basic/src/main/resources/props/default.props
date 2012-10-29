@@ -10,9 +10,9 @@ db.url=jdbc:mysql://localhost:3306/websolut_snippet
 db.user=root
 db.password=
 
-// URL
+// general urls
 login_url=http://localhost:8080/user_mgt/login
-home_url=http://localhost:8080
+index_url=http://localhost:8080
 
 // general omniauth properties
 omniauth.baseurl=http://localhost:8080/

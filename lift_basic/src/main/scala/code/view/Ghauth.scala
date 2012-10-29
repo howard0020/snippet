@@ -1,11 +1,11 @@
 package code.view
 import scala.xml.NodeSeq
-
 import code.gh.Auth
 import code.model.User
 import net.liftweb.common.Full
 import net.liftweb.http.LiftView
 import net.liftweb.http.S
+import code.share.SiteConsts
 
 class Ghauth extends LiftView {
   
@@ -33,8 +33,8 @@ class Ghauth extends LiftView {
         newUser.iconURL.set(ghUser.avatar_url)
         newUser.save
         User.logUserIn(newUser)
-        S.redirectTo(Auth.HOME_URL)
-      case _ => S.redirectTo(Auth.LOGIN_URL)
+        S.redirectTo(SiteConsts.INDEX_URL)
+      case _ => S.redirectTo(SiteConsts.LOGIN_URL)
     }
   }
 }

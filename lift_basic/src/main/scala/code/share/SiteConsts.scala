@@ -10,8 +10,8 @@ object SiteConsts {
   val DB_PASSWORD = readProp("db.password")
   
   // general site wide constants
+  val INDEX_URL = readProp("index_url")
   val LOGIN_URL = readProp("login_url")
-  val HOME_URL = readProp("home_url")
   
   // general omniauth properties
   val OMNI_BASE_URL = readProp("omniauth.baseurl")

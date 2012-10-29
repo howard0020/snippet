@@ -7,6 +7,7 @@ import http._
 import sitemap._
 import Loc._
 import code.model._
+import code.share.SiteConsts
 
 object GitHub {
   val host = :/("github.com")
@@ -29,14 +30,14 @@ object GitHub {
       >> If(
         () => User.loggedIn_? && Auth.is_logged_in,
         () => User.loggedIn_? match {
-          case false => RedirectResponse(Auth.LOGIN_URL)
+          case false => RedirectResponse(SiteConsts.LOGIN_URL)
           case true => RedirectResponse(Auth.sign_url(Full("/github")))
         }),
       Menu(Loc("Github Repo", List("github_repo"), "Github Repo", Hidden,
         If(
           () => User.loggedIn_? && Auth.is_logged_in,
           () => User.loggedIn_? match {
-            case false => RedirectResponse(Auth.LOGIN_URL)
+            case false => RedirectResponse(SiteConsts.LOGIN_URL)
             case true => RedirectResponse(
               Auth.sign_url(Full("/github/" + S.param("repoName").get +
                 (S.param("path").get match {

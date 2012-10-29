@@ -24,11 +24,6 @@ object Auth {
   val FAILURE_URL_NAME = "gh.failure_url"
   val NEXT_PAGE_NAME = "next"
 
-  val LOGIN_URL_NAME = "login_url"
-  val LOGIN_URL = Props.get(LOGIN_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Auth: Login url is not set in default.props") }
-  val HOME_URL_NAME = "home_url"
-  val HOME_URL = Props.get(HOME_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Auth: Home url is not set in default.props") }
-  
   val key = Props.get(KEY_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Key is not set") }
   val secret = Props.get(SECRET_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Secret is not set") }
   val success_url = Props.get(DEFAULT_SUCCESS_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Success URL is not set") }
