@@ -1,9 +1,14 @@
-db.driver=com.mysql.jdbc.Driver
+// site 5 db
+//db.driver=com.mysql.jdbc.Driver
 //db.url=jdbc:mysql://173.239.45.59:3306/websolut_snippet
-db.url=jdbc:mysql://localhost:3306/websolut_snippet
 //db.user=websolut_snippet
+//db.password=52012345
+
+// local db
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/websolut_snippet
 db.user=root
-db.password=52012345
+db.password=
 
 // URL
 login_url=http://localhost:8080/user_mgt/login
@@ -19,16 +24,12 @@ omniauth.facebooksecret=bcb245f8b307621ece3f8de1adc45d8b
 omniauth.facebookkey=146178378859457
 omniauth.facebookpermissions=email
 
-// github omniauth properties
-omniauth.githubsecret=3318aad2f1904e5353aac73ffff0314c8871e615
-omniauth.githubkey=0a3ef2c5700f5fb3ab39
-
 // github properties
+gh.secret=3318aad2f1904e5353aac73ffff0314c8871e615
+gh.key=0a3ef2c5700f5fb3ab39
 gh.base_url=http://localhost:8080/
 gh.callback_url=http://localhost:8080/ghauth/callback
 gh.signin_url=http://localhost:8080/ghauth/signin
 gh.success_url=http://localhost:8080/github
 gh.failure_url=http://localhost:8080/ghauth/failure
-gh.secret=3318aad2f1904e5353aac73ffff0314c8871e615
-gh.key=0a3ef2c5700f5fb3ab39
 

@@ -14,9 +14,9 @@ import omniauth.lib._
 import omniauth.Omniauth
 import http.rest._
 import code.gh.Auth
-import code.auth.VThreeGithubProvider
 import code.auth.SnippetFacebookProvider
 import code.gh.GitHub
+import code.share.SiteConsts
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -25,6 +25,9 @@ import code.gh.GitHub
 class Boot {
 
   def boot {
+    // create constants in the properties file
+    SiteConsts.init
+    
     // setup database configuration
     initDB
 
@@ -82,21 +85,24 @@ class Boot {
       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       Menu(Loc("Profile Page", List("profile"), "Profile Page",
         If(
-          () => {
+          () =>
+     {
             S.param("id") match {
               case Full(v) => true
               case Empty => User.loggedIn_?
               case Failure(_, _, _) => false
             }
           },
-           () => {
+          () => {
             S.param("id") match {
               case Full(v) => InternalServerErrorResponse()
               case Empty => User.loggedIn_? match {
                 case true => InternalServerErrorResponse()
-                case false => RedirectResponse("http://localhost:8080/user_mgt/login")}
+                case false => RedirectResponse("http://localhost:8080/user_mgt/login")
+              }
               case Failure(_, _, _) => InternalServerErrorResponse()
-            }}))),
+            }
+          }))),
       Menu(Loc("Search", List("search"), "Search")),
       Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
       Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden))) :::
