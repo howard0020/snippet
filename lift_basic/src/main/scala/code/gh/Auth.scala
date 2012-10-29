@@ -10,29 +10,14 @@ import net.liftweb.http.SessionVar
 import net.liftweb.util.Props
 import org.apache.http.client.utils.URLEncodedUtils
 import org.apache.http.message.BasicNameValuePair
+import code.share.SiteConsts
 
 object Auth {
 
   object GhAuthInfo extends SessionVar[Box[GhUser]](Empty)
 
-  val KEY_NAME = "gh.key"
-  val SECRET_NAME = "gh.secret"
-  val DEFAULT_SUCCESS_URL_NAME = "gh.success_url"
-  val BASE_URL = "gh.base_url"
-  val SIGNIN_URL_NAME = "gh.signin_url"
-  val CALLBACK_URL = "gh.callback_url"
-  val FAILURE_URL_NAME = "gh.failure_url"
   val NEXT_PAGE_NAME = "next"
-
-  val key = Props.get(KEY_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Key is not set") }
-  val secret = Props.get(SECRET_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Secret is not set") }
-  val success_url = Props.get(DEFAULT_SUCCESS_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Success URL is not set") }
-  val base_url = Props.get(BASE_URL) match { case Full(v) => v; case _ => throw new RuntimeException("Base URL is not set") }
-  val callback_url = Props.get(CALLBACK_URL) match { case Full(v) => v; case _ => throw new RuntimeException("Callback URL is not set") }
-  val signin_url = Props.get(SIGNIN_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Signin URL is not set") }
-  val failure_url = Props.get(FAILURE_URL_NAME) match { case Full(v) => v; case _ => throw new RuntimeException("Failure URL is not set") }
   val GH_LOGIN_REDIRECT = "http://localhost:8080/ghauth/loginuser"
-
   val svc = GitHub.host / "login" / "oauth"
 
   def authorize_uri(client_id: String, redirect_uri: String) = {
@@ -53,11 +38,11 @@ object Auth {
   }
 
   private def next: String = {
-    S.param(NEXT_PAGE_NAME) openOr success_url
+    S.param(NEXT_PAGE_NAME) openOr SiteConsts.GH_SUCCESS_URL
   }
 
   def sign_url(success_url: Box[String]) = {
-    signin_url + (success_url match {
+    SiteConsts.GH_SIGNIN_URL + (success_url match {
       case Full(url) => "?" + NEXT_PAGE_NAME + "=" + url
       case _ => success_url
     })
@@ -78,13 +63,13 @@ object Auth {
   }
 
   def signin = {
-    var req = authorize_uri(key, callback_url + "?" + Auth.NEXT_PAGE_NAME + "=" + next)
+    var req = authorize_uri(SiteConsts.GH_KEY, SiteConsts.GH_CALLBACK_URL + "?" + Auth.NEXT_PAGE_NAME + "=" + next)
     S.redirectTo(req.to_uri.toString())
   }
 
   def callback = {
     val ghCode = S.param("code") openOr Auth.redirect_to_signin
-    var token = access_token(key, callback_url, secret, ghCode)
+    var token = access_token(SiteConsts.GH_KEY, SiteConsts.GH_CALLBACK_URL, SiteConsts.GH_SECRET, ghCode)
     val user = GhUser.get_authenticated_user(token)
     GhAuthInfo(Full(user))
     S.redirectTo(next)
