@@ -27,9 +27,4 @@ omniauth.facebookpermissions=email
 // github properties
 gh.secret=3318aad2f1904e5353aac73ffff0314c8871e615
 gh.key=0a3ef2c5700f5fb3ab39
-gh.base_url=http://localhost:8080/
-gh.callback_url=http://localhost:8080/ghauth/callback
-gh.signin_url=http://localhost:8080/ghauth/signin
-gh.success_url=http://localhost:8080/github
-gh.failure_url=http://localhost:8080/ghauth/failure
-
+gh.success_url=github

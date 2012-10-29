@@ -15,11 +15,11 @@ import net.liftweb.http.S
 import net.liftweb.util.Helpers.strToCssBindPromoter
 import net.liftweb.util.IterableConst
 import code.gh.GhFile
-import code.gh.Auth.GhAuthInfo
 import code.gh.Auth
 import net.liftweb.common.Full
 import code.editor.Editor
 import code.gh.GhUser
+import code.gh.GitHub.GhAuthInfo
 
 class Github {
   val GITHUB_LINK = "/github/"

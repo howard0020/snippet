@@ -6,7 +6,7 @@ import net.liftweb.util._
 import net.liftweb.common._
 import net.liftweb.http.S
 import net.liftweb.sitemap.Loc.LocGroup
-import code.gh.Auth
+import code.gh.GitHub
 import code.model.ToCModel.ToCPost
 
 /**
@@ -46,7 +46,7 @@ object User extends User with MetaMegaProtoUser[User] {
         </div>
         <div class="user_login_otherlogin">
           <div class="user_login_facebook"><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
-          <div class="user_login_github"><a href={ Auth.login_url }>Github Login</a></div>
+          <div class="user_login_github"><a href={ GitHub.login_url }>Github Login</a></div>
         </div>
       </form>)
   }
