@@ -26,6 +26,10 @@ class Boot {
 
   def boot {
     // create constants in the properties file
+    // should be called first
+    // ================================================================================
+    // = TO DO: need to make sure necessary constants are read successfully
+    // ================================================================================
     SiteConsts.init
     
     // setup database configuration
@@ -127,11 +131,9 @@ class Boot {
 
   def initDB {
     if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor =
-        new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-          Props.get("db.url") openOr
-            "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-          Props.get("db.user"), Props.get("db.password"))
+      val vendor = new StandardDBVendor(
+    		  		SiteConsts.DB_DRIVER,SiteConsts.DB_URL,
+    		  		Full(SiteConsts.DB_USER), Full(SiteConsts.DB_PASSWORD))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 
