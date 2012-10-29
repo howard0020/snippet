@@ -25,7 +25,10 @@ class UserSnippet {
 	  case _=>	""
 	}
   	
-	def CurrentUserName = ".userName *" #> UserName
+	def CurrentUserName = ".userName *" #> UserName & (".userName [class]" #> (User.loggedIn_? match{
+	  case true => "collapse"
+	  case false => ""
+	}))
 	
 	//bind to the src attribute 
 	def CurrentUserIcon = ".userIcon [src]" #> UserIcon
