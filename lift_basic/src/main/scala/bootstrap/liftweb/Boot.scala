@@ -32,7 +32,7 @@ class Boot {
     // = TO DO: need to make sure necessary constants are read successfully
     // ================================================================================
     SiteConsts.init
-    
+
     // setup database configuration
     initDB
 
@@ -63,10 +63,10 @@ class Boot {
           val id = idString.toLong
           User.findByKey(id) match {
             case Full(u) => RewriteResponse("profile" :: Nil, Map("id" -> id.toString))
-            case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+            case _ => RewriteResponse("404" :: Nil)
           }
         } catch {
-          case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+          case _ => RewriteResponse("404" :: Nil)
         }
     }
 
@@ -75,6 +75,12 @@ class Boot {
       case (req, failure) =>
         NotFoundAsTemplate(ParsePath(List("404"), "html", false, false))
     })
+
+    // Catch exceptions and return pages with friendly error messages
+    LiftRules.exceptionHandler.prepend {
+      case (runMode, request, exception: RuntimeException) =>
+        InternalServerErrorResponse()
+    }
 
     initStdConfig
   }
@@ -92,13 +98,13 @@ class Boot {
       Menu(Loc("Profile Page", List("profile"), "Profile Page",
         If(
           () =>
-     {
-            S.param("id") match {
-              case Full(v) => true
-              case Empty => User.loggedIn_?
-              case Failure(_, _, _) => false
-            }
-          },
+            {
+              S.param("id") match {
+                case Full(v) => true
+                case Empty => User.loggedIn_?
+                case Failure(_, _, _) => false
+              }
+            },
           () => {
             S.param("id") match {
               case Full(v) => InternalServerErrorResponse()
@@ -134,8 +140,8 @@ class Boot {
   def initDB {
     if (!DB.jndiJdbcConnAvailable_?) {
       val vendor = new StandardDBVendor(
-    		  		SiteConsts.DB_DRIVER,SiteConsts.DB_URL,
-    		  		Full(SiteConsts.DB_USER), Full(SiteConsts.DB_PASSWORD))
+        SiteConsts.DB_DRIVER, SiteConsts.DB_URL,
+        Full(SiteConsts.DB_USER), Full(SiteConsts.DB_PASSWORD))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 

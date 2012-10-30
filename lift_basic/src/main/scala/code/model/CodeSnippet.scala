@@ -37,7 +37,7 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 	  
 	  //val name = author.username
 	  //val imgDir = author.iconURL
-	
+
 }
 object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 									   with CRUDify[Long, CodeSnippet]
