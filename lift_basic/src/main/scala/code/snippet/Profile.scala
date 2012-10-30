@@ -73,7 +73,7 @@ class Profile {
   
   // snipppets
   def posts = {
-    val posts = CodeSnippet.findAll(By(CodeSnippet.Author, profileUser))
+    val posts = profileUser.toc.posts
     PostSnippet.render(posts)
   }
   
@@ -88,13 +88,7 @@ class Profile {
     bind("tblofcontent",
       xhtml,
       "toc_update_listener" -> clientToCUpdateListener,
-      "is_toc_editable" -> clientToCEditable,
-      "refresh" -> SHtml.ajaxButton("Refresh",
-        () => {
-          profileUser.updateToC
-          SampleData.run
-          Noop
-        }))
+      "is_toc_editable" -> clientToCEditable)
   }
 
   private def clientToCUpdateListener = {
