@@ -27,10 +27,7 @@ object SiteConsts {
   // github properties
   val GH_SECRET = readProp("gh.secret")
   val GH_KEY = readProp("gh.key")
-  val GH_SUCCESS_URL = INDEX_URL + "/" + readProp("gh.success_url")
-  val GH_SIGNIN_NAME = readProp("gh.signin_name", Some("signin"))
-  val GH_CALLBACK_NAME = readProp("gh.callback_name", Some("callback"))
-  val GH_LOGINUSER_NAME = readProp("gh.loginuser_name", Some("loginuser"))
+
   
   private def readProp(key: String, defaultValue:Option[String]=None): String = {
     val errorMsg = "SiteConsts.init: " + key + " is missing in properties file"

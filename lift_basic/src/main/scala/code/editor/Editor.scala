@@ -1,4 +1,5 @@
 package code.editor
+import code.gh.GhFile
 
 object Editor {
   private val SYNTAX_HIGHLIGHTER_PARAMS = Map(
@@ -12,6 +13,11 @@ object Editor {
     "html" -> "xml",
     "js" -> "js",
     "cs" -> "csharp")
+
+  def isImg(ext: String) = {
+    List("png", "jpg", "gif").contains(ext.toLowerCase())
+  }
+
   private val pat = """(.*)[.]([^.]*)""".r
   private def get_file_ext(fname: String): Option[String] = {
     fname match {
@@ -20,25 +26,26 @@ object Editor {
     }
   }
 
-  def display(content: String, filename: String) = {
+  def display(ghFile: GhFile, content: String, filename: String) = {
     get_file_ext(filename) match {
       case Some(ext) =>
-        var params_map = SYNTAX_HIGHLIGHTER_PARAMS
-        if (ext2lang.contains(ext))
-          params_map += ("brush" -> ext2lang(ext))
-        val ls = for ((k, v) <- params_map)
-          yield k + ": " + v
-        <div class="editor">
-          <pre class={ ls mkString ";" }>{ content }</pre>
-        </div>
-        <div class="lift:NewPost">
-          Create New Post form will go here. Will be replaced by editor later on.
-        </div>
+        isImg(ext) match {
+          case true =>
+            <div>
+              <img src={ ghFile.htmlUrl + "?raw=true" } alt={ filename }></img>
+            </div>
+          case false =>
+            var params_map = SYNTAX_HIGHLIGHTER_PARAMS
+            if (ext2lang.contains(ext))
+              params_map += ("brush" -> ext2lang(ext))
+            val ls = for ((k, v) <- params_map)
+              yield k + ": " + v
+            <div class="editor">
+              <pre class={ ls mkString ";" }>{ content }</pre>
+            </div>
+        }
       case None =>
         <div class="editor"><pre>{ content }</pre></div>
-        <div class="lift:NewPost">
-          Create New Post form will go here. Will be replaced by editor later on.
-        </div>
     }
   }
 }

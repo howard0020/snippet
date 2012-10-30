@@ -17,6 +17,7 @@ import code.gh.Auth
 import code.auth.SnippetFacebookProvider
 import code.gh.GitHub
 import code.share.SiteConsts
+import code.auth.GhProvider
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -45,7 +46,8 @@ class Boot {
 
     // Omniauth
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr(""), Props.get(FacebookProvider.providerPropertySecret).openOr(""))
-    Omniauth.initWithProviders(List(SnippetProvider))
+    val ghProvider = new GhProvider(SiteConsts.GH_KEY, SiteConsts.GH_SECRET)
+    Omniauth.initWithProviders(List(SnippetProvider, ghProvider))
 
     //=============================== REWRITES =====================//
     // * search rewrites
@@ -102,7 +104,7 @@ class Boot {
               case Full(v) => InternalServerErrorResponse()
               case Empty => User.loggedIn_? match {
                 case true => InternalServerErrorResponse()
-                case false => RedirectResponse("http://localhost:8080/user_mgt/login")
+                case false => RedirectResponse(SiteConsts.LOGIN_URL)
               }
               case Failure(_, _, _) => InternalServerErrorResponse()
             }
