@@ -32,7 +32,7 @@ import code.model.SampleData
 import code.share.SiteConsts
 
 class Profile {
-  
+
   private val profileUser: User = {
     val userIDString = S.param("id") match {
       case Full(id) => id
@@ -66,21 +66,39 @@ class Profile {
         profileUser.id == User.currentUserId.get.toLong
     }
   }
-  
+
   private val isToCEditable: Boolean = {
     isCurrentUserProfile
   }
-  
+
   // snipppets
-  def posts = {
-    val posts = profileUser.toc.posts
-    PostSnippet.render(posts)
+  def picktemplate = {
+    val tplName = if (isCurrentUserProfile) "myprofile" else "otherprofile"
+    "%s ^*".format(tplName) #> "right hand side value is ignored"
   }
   
+  def posts = {
+    val now = System.nanoTime
+
+    val posts = profileUser.toc.posts
+    val micros = (System.nanoTime - now) / 1000
+
+    println("Posts: %d microseconds".format(micros))
+
+    PostSnippet.render(posts)
+  }
+
   def tblofcontent = {
+    val now = System.nanoTime
     val children = profileUser.getToCPosts
 
-    "#tblofcontent *" #> getView(children)
+    val res = getView(children)
+    val micros = (System.nanoTime - now) / 1000
+
+    println("tblofcontent: %d microseconds".format(micros))
+
+    "#tblofcontent *" #> res
+
   }
 
   def tocUpdate(xhtml: NodeSeq): NodeSeq = {
@@ -93,41 +111,47 @@ class Profile {
 
   private def clientToCUpdateListener = {
     Script(
-          Function("clientToCUpdateListner", Nil,
-            isToCEditable match {
-              case false => Noop
-              case true =>
-                SHtml.jsonCall(
-                  JsRaw("$('#tblofcontent').dynatree('getTree').toDict().children"),
-                  (tocGeneric: Any) => { // List[Map[String,Any]
-                    if (isToCEditable) {
-                      val toc = tocGeneric match {
-                        case toc: List[Map[String, Any]] => toc
-                        case _ => throw new RuntimeException("update in TblOfContent.scala: to do handle this error")
-                      }
+      Function("clientToCUpdateListener", Nil,
+        isToCEditable match {
+          case false => Noop
+          case true =>
+            SHtml.jsonCall(
+              JsRaw("$('#tblofcontent').dynatree('getTree').toDict().children"),
+              (tocGeneric: Any) => { // List[Map[String,Any]
+                if (isToCEditable) {
+                  val toc = tocGeneric match {
+                    case toc: List[Map[String, Any]] => toc
+                    case _ => throw new RuntimeException("update in TblOfContent.scala: to do handle this error")
+                  }
 
-                      val tocJsonString = toJsonString(toc)
-                      updateToC(tocJsonString)
-                    }
-                    Noop
-                  })._2.cmd
-            }))
+                  val tocJsonString = toJsonString(toc)
+                  updateToC(tocJsonString)
+
+                  // send message to comet actor to rerender
+                  for (session <- S.session) {
+                    session.sendCometActorMessage("ProfilePostActor", Full("ProfilePostActor"), "rerender")
+                  }
+
+                }
+                Noop
+              })._2.cmd
+        }))
   }
-  
+
   private def clientToCEditable = {
     Script(
-        Function("isToCEditable", Nil,
-          {
-            JsCrVar("tocEditable", isToCEditable) &
-              Run("return tocEditable;")
-          }))
+      Function("isToCEditable", Nil,
+        {
+          JsCrVar("tocEditable", isToCEditable) &
+            Run("return tocEditable;")
+        }))
   }
-  
+
   private def getView(posts: List[ToCPost]): NodeSeq = {
     var nodes = Queue[Elem]()
     for (post <- posts) {
       val children = post.children match {
-        case None => Text("") 
+        case None => Text("")
         case Some(ls) => getView(ls)
       }
       val className = post.isFolder match {
@@ -145,7 +169,7 @@ class Profile {
   private def encodeID(id: Long): String = {
     "tree_" + id
   }
-  
+
   private def decodeID(encodedID: String): Long = {
     encodedID.split("_").last.toLong
   }

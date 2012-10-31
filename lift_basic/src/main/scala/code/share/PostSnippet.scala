@@ -11,7 +11,8 @@ import scala.xml.Text
 import scala.xml.Null
 
 object PostSnippet {
-  
+  val profileLink = SiteConsts.INDEX_URL + "/" + "profile"
+
   def render(posts: List[CodeSnippet]) = {
     "#postTemplate *" #> {
     ".post_wrapper" #> (
@@ -20,6 +21,11 @@ object PostSnippet {
           case Full(author) =>
             if (author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
             else author.iconURL.get
+          case Empty => ""
+          case Failure(msg, _, _) => "Error"
+        }) &
+        ".post_author_name [href]" #> (p.getAuthor match {
+          case Full(author) => profileLink + "/" + author.id.get
           case Empty => ""
           case Failure(msg, _, _) => "Error"
         }) &

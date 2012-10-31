@@ -29,11 +29,23 @@
 
 		</div>
 		<div id="profile_right">
-			<lift:Profile.posts eager_eval="true">
-				<div id="profile_posts">
-					<lift:embed what="/templates-hidden/Post">
-					</lift:embed>
-				</div>
-			</lift:Profile>
+			<lift:profile.picktemplate>
+				<myprofile>
+					<lift:comet type="ProfilePostActor" name="ProfilePostActor" eager_eval="true">
+						<div id="profile_posts">
+							<lift:embed what="/templates-hidden/Post">
+							</lift:embed>
+						</div>
+					</lift:comet>
+				</myprofile>
+				<otherprofile>
+					<lift:profile.posts eager_eval="true">
+						<div id="profile_posts">
+							<lift:embed what="/templates-hidden/Post">
+							</lift:embed>
+						</div>
+					</lift:profile.posts>
+				</otherprofile>
+			</lift:profile.picktemplate>
 		</div>
 	</div>
