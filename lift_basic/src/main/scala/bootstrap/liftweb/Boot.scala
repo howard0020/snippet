@@ -117,7 +117,8 @@ class Boot {
           }))),
       Menu(Loc("Search", List("search"), "Search")),
       Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
-      Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden))) :::
+      Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden)),
+      Menu(Loc("Data Population Script", List("db"), "Database Script", Hidden))) :::
       Omniauth.sitemap
 
     val ghMenus = GitHub.sitemap

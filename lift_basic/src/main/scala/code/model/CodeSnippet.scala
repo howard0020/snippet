@@ -34,7 +34,17 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 	
 	def getAuthor:Box[User] =User.findByKey(Author.get)
 
-	  
+	// before deleting a post, notify appropriate ToCModel that we are about to delete a post
+	override def delete_! = {
+	  getAuthor match {
+	    case Full(user) =>
+	      user.toc.notifyPostDelete(this) match {
+		    case true => super.delete_!
+		    case false => false
+		  }
+	    case _ => false
+	  }
+	}
 	  //val name = author.username
 	  //val imgDir = author.iconURL
 
