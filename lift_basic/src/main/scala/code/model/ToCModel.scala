@@ -69,6 +69,10 @@ class ToCModel extends LongKeyedMapper[ToCModel] with ManyToMany with CreatedUpd
   def notifyPostDelete(post: CodeSnippet) = {
 	  this.delete_!
   }
+  
+  def notifyPostAdd(post: CodeSnippet) = {
+    this.delete_!
+  }
 }
 object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
   override def dbTableName = "TblOfContent"
