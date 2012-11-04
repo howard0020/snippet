@@ -25,13 +25,13 @@ class UserSnippet {
 	  case _=>	""
 	}
   	
-	def CurrentUserNameExpandable = "#profile_user_name *" #> UserName & ("#profile_user_name [class]" #> (User.loggedIn_? match{
+	def CurrentUserNameExpandable =  "#profile_user_name [class]" #> (User.loggedIn_? match{
 	  case true => "expand"
 	  case false => "collapse"
-	}))
-	
+	})
+	def CurrentUserName = ".userName *" #> UserName
 	//bind to the src attribute 
-	def CurrentUserIcon = ".userIcon [src]" #> UserIcon
+	def CurrentUserIcon = ".profile_user_icon [src]" #> UserIcon
 	
 	def CurrentUserUrl = ".userUrl [href]" #> "/User/profile.html"
 	
@@ -39,10 +39,14 @@ class UserSnippet {
 	  case true => "collapse"
 	  case false => "expand"
 	})
+	def LogoutMenuItem = ".logout_url [href]"  #> "/user_mgt/logout" & ("#logout_menu_item [class]"#> (User.loggedIn_? match{
+	  case true => "expand"
+	  case false => "collapse"
+	}))
 	
 	def loginForm = User.login
 	
-	def CurrentUserProfile = CurrentUserNameExpandable & CurrentUserIcon & CurrentUserUrl & RemoveSlideOpenIfLoggedIn
+	def CurrentUserProfile = CurrentUserName & CurrentUserNameExpandable & CurrentUserIcon & CurrentUserUrl & RemoveSlideOpenIfLoggedIn & LogoutMenuItem
 	
 	def loginHtml = User.loginXhtml
 	

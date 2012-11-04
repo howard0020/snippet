@@ -255,26 +255,35 @@ body a {
 
 #Menu {
 	position: absolute;
-	right: 0;
-	top: 20px;
+	right: 300px;
+	top: 15px;
 }
 #Profile{
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 5px;
 	max-width: 200px;
 	text-align: center;
+}
+#Profile div >a{
+	text-decoration: none;
+	font-size: 12px;
+	color: white;
+	cursor: pointer;
+}
+#Profile > div{
+	margin-left: 5px;
+	margin-right: 5px;
 }
 #Profile img{
 }
 
 #profile_user_name{
-	width: 100%;
-	font-size: 12px;
-	background-color: #78AA2B;
-	color: white;
-	cursor: pointer;
-	padding: 3px;
+}
+.profile_user_icon{
+	height: 20px;
+	width: 20px;
+	margin-right: 10px;
 }
 
 #LoginMenu{
@@ -546,7 +555,6 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 #slide_open{
 	width: 100%;
 	font-size: 12px;
-	background-color: #78AA2B;
 	color: white;
 	cursor: pointer;
 	padding: 3px;
@@ -601,7 +609,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 #cometSearchWrapper{
 	position: relative;
 	display: inline-block;
-	left: 300px;
+	left: 200px;
 	top: 15px;
 }
 /* css for sortable place holders  */
