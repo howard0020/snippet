@@ -27,20 +27,106 @@ import code.model.ToCModel._
 import scala.xml.Elem
 import scala.collection.immutable.Queue
 import code.model.SampleData
+import code.share.SiteConsts
 
 class TblOfContent {
 
+  private val profileUser: User = {
+    val userIDString = S.param("id") match {
+      case Full(id) => id
+      case Empty => User.loggedIn_? match {
+        case true => User.currentUserId match {
+          case Full(id) => id
+          case _ => throw new RuntimeException("Error: fail to retrieve user id.")
+        }
+        case false =>
+          println("Access control should've prevented this from happening")
+          S.redirectTo(SiteConsts.LOGIN_URL)
+      }
+      case Failure(msg, _, _) =>
+        S.error(msg)
+        S.redirectTo(SiteConsts.LOGIN_URL)
+    }
+    val id = userIDString.toLong
+    User.findByKey(id) match {
+      case Full(u) => u
+      case Empty =>
+        throw new RuntimeException("Access control should've prevented this from happening")
+      case Failure(msg, _, _) =>
+        throw new RuntimeException("Failed in retrieving user")
+    }
+  }
+
+  private val isCurrentUserProfile: Boolean = {
+    User.loggedIn_? match {
+      case false => false
+      case true => // user has logged in
+        profileUser.id == User.currentUserId.get.toLong
+    }
+  }
+  
+  private val isToCEditable: Boolean = {
+    isCurrentUserProfile
+  }
+  
+  // snipppets
   def render = {
     val children = profileUser.getToCPosts
 
     "#tblofcontent *" #> getView(children)
   }
 
+  def update(xhtml: NodeSeq): NodeSeq = {
+    val tocEditable = isToCEditable
+    bind("tblofcontent",
+      xhtml,
+      "tree_update_listener" -> clientTreeUpdateListener,
+      "is_toc_editable" -> clientToCEditable,
+      "refresh" -> SHtml.ajaxButton("Refresh",
+        () => {
+          profileUser.updateToC
+          SampleData.run
+          Noop
+        }))
+  }
+
+  private def clientTreeUpdateListener = {
+    Script(
+          Function("treeUpdateListner", Nil,
+            isToCEditable match {
+              case false => Noop
+              case true =>
+                SHtml.jsonCall(
+                  JsRaw("$('#tblofcontent').dynatree('getTree').toDict().children"),
+                  (tocGeneric: Any) => { // List[Map[String,Any]
+                    if (isToCEditable) {
+                      val toc = tocGeneric match {
+                        case toc: List[Map[String, Any]] => toc
+                        case _ => throw new RuntimeException("update in TblOfContent.scala: to do handle this error")
+                      }
+
+                      val tocJsonString = toJsonString(toc)
+                      updateToC(tocJsonString)
+                    }
+                    Noop
+                  })._2.cmd
+            }))
+  }
+  
+  private def clientToCEditable = {
+    Script(
+        Function("isToCEditable", Nil,
+          {
+            JsCrVar("tocEditable", isToCEditable) &
+              Run("return tocEditable;")
+          }))
+  }
+  
   private def getView(posts: List[ToCPost]): NodeSeq = {
     var nodes = Queue[Elem]()
     for (post <- posts) {
       val children = post.children match {
-        case None => Text("")
+        case None => Text("") 
         case Some(ls) => getView(ls)
       }
       val className = post.isFolder match {
@@ -60,16 +146,6 @@ class TblOfContent {
   }
   private def decodeID(encodedID: String): Long = {
     encodedID.split("_").last.toLong
-  }
-
-  def posts = {
-    print("==================================posts")
-    "#post_title" #> {
-      SearchEngine.searchPost("").map(p => {
-        "span * " #> p.title.toString &
-          "span [data]" #> p.id.toString
-      })
-    }
   }
 
   private def toJsonString(posts: List[Map[String, Any]]): String = {
@@ -100,71 +176,5 @@ class TblOfContent {
     val toc = profileUser.toc
     toc.content.set(json)
     toc.save
-  }
-
-  private val profileUser: User = {
-    val userIDString = S.param("id")
-    val id = userIDString.get.toLong
-    User.findByKey(id) match {
-      case Full(u) => u
-      case Empty =>
-        S.error("No such user exists")
-        throw new RuntimeException("gotta find out how to handle this unexpected error")
-      case Failure(msg, _, _) =>
-        S.error("profile_user: " + msg)
-        throw new RuntimeException("gotta find out how to handle this unexpected error")
-    }
-  }
-
-  private def isCurrentUserProfile: Boolean = {
-    User.loggedIn_? match {
-      case false => false
-      case true => // user has logged in
-        profileUser.id == User.currentUserId.get.toLong
-    }
-  }
-  private def isToCEditable: Boolean = {
-    isCurrentUserProfile
-  }
-
-  def update(xhtml: NodeSeq): NodeSeq = {
-    val tocEditable = isToCEditable
-    bind("tblofcontent",
-      xhtml,
-      "update_toc" ->
-        (tocEditable match {
-          case false => Text("")
-          case true =>
-            Script(
-              Function("updateToC", Nil,
-                SHtml.jsonCall(
-                  JsRaw("$('#tblofcontent').dynatree('getTree').toDict().children"),
-                  (tocGeneric: Any) => { // List[Map[String,Any]
-                    if (tocEditable) {
-                    val toc = tocGeneric match {
-                      case toc: List[Map[String, Any]] => toc
-                      case _ => throw new RuntimeException("update in TblOfContent.scala: to do handle this error")
-                    }
-
-                    val tocJsonString = toJsonString(toc)
-                    updateToC(tocJsonString)
-                    }
-                    Noop
-                  })._2.cmd))
-        }),
-      "is_toc_editable" -> Script(
-        Function("isToCEditable", Nil,
-          {
-            JsCrVar("tocEditable", tocEditable) &
-              Run("return tocEditable;")
-          })),
-       "refresh" -> SHtml.ajaxButton("Refresh",
-           () => {
-             profileUser.updateToC
-             SampleData.run
-             Noop
-           }
-           )
-      )
   }
 }

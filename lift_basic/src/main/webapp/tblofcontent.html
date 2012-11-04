@@ -76,19 +76,34 @@ li {
 	padding: 0px;
 }
 </style>
-	<div class="example">
-		<lift:tbl_of_content.update>
-			<tblofcontent:update_toc></tblofcontent:update_toc>
-			<tblofcontent:is_toc_editable></tblofcontent:is_toc_editable>
-			<tblofcontent:refresh></tblofcontent:refresh>
-		</lift:tbl_of_content.update>
-		
-		<lift:tbl_of_content>
-			<div id="tblofcontent">
-				<ul></ul>
-			</div>
-		</lift:tbl_of_content>
 
+	<div id="profile_wrapper">
+		<div id="profile_left">
+			<lift:tbl_of_content>
+				<div id="tblofcontent"></div>
+			</lift:tbl_of_content>
+
+			<lift:tbl_of_content.update>
+				<tblofcontent:tree_update_listner></tblofcontent:tree_update_listner>
+				<tblofcontent:is_toc_editable></tblofcontent:is_toc_editable>
+				<tblofcontent:refresh></tblofcontent:refresh>
+			</lift:tbl_of_content.update>
+
+		</div>
+		<div id="profile_right">
+			<div id="profile_posts">
+				<lift:embed what="/templates-hidden/PostWrapper">
+				</lift:embed>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!--  
+
+	<div class="example">
 		<lift:tbl_of_content.posts>
 			<div id="post_selector">
 				<input id="ps_search_box" type="text" />
@@ -100,3 +115,4 @@ li {
 	</div>
 
 </div>
+-->

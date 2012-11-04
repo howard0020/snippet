@@ -14,9 +14,10 @@ import omniauth.lib._
 import omniauth.Omniauth
 import http.rest._
 import code.gh.Auth
-import code.auth.VThreeGithubProvider
 import code.auth.SnippetFacebookProvider
 import code.gh.GitHub
+import code.share.SiteConsts
+import code.auth.GhProvider
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -25,6 +26,13 @@ import code.gh.GitHub
 class Boot {
 
   def boot {
+    // create constants in the properties file
+    // should be called first
+    // ================================================================================
+    // = TO DO: need to make sure necessary constants are read successfully
+    // ================================================================================
+    SiteConsts.init
+
     // setup database configuration
     initDB
 
@@ -38,7 +46,8 @@ class Boot {
 
     // Omniauth
     val SnippetProvider = new SnippetFacebookProvider(Props.get(FacebookProvider.providerPropertyKey).openOr(""), Props.get(FacebookProvider.providerPropertySecret).openOr(""))
-    Omniauth.initWithProviders(List(SnippetProvider))
+    val ghProvider = new GhProvider(SiteConsts.GH_KEY, SiteConsts.GH_SECRET)
+    Omniauth.initWithProviders(List(SnippetProvider, ghProvider))
 
     //=============================== REWRITES =====================//
     // * search rewrites
@@ -54,10 +63,10 @@ class Boot {
           val id = idString.toLong
           User.findByKey(id) match {
             case Full(u) => RewriteResponse("profile" :: Nil, Map("id" -> id.toString))
-            case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+            case _ => RewriteResponse("404" :: Nil)
           }
         } catch {
-          case _ => RewriteResponse("404" :: Nil, Map[String, String]())
+          case _ => RewriteResponse("404" :: Nil)
         }
     }
 
@@ -66,6 +75,12 @@ class Boot {
       case (req, failure) =>
         NotFoundAsTemplate(ParsePath(List("404"), "html", false, false))
     })
+
+    // Catch exceptions and return pages with friendly error messages
+    LiftRules.exceptionHandler.prepend {
+      case (runMode, request, exception: RuntimeException) =>
+        InternalServerErrorResponse()
+    }
 
     initStdConfig
   }
@@ -77,29 +92,33 @@ class Boot {
       Menu.i("New post") / "compose/index"
         >> If(
           () => User.loggedIn_?,
-          () => RedirectResponse(Auth.LOGIN_URL))
+          () => RedirectResponse(SiteConsts.LOGIN_URL))
           >> LocGroup("General"),
       Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
       Menu(Loc("Profile Page", List("profile"), "Profile Page",
         If(
+          () =>
+            {
+              S.param("id") match {
+                case Full(v) => true
+                case Empty => User.loggedIn_?
+                case Failure(_, _, _) => false
+              }
+            },
           () => {
-            S.param("id") match {
-              case Full(v) => true
-              case Empty => User.loggedIn_?
-              case Failure(_, _, _) => false
-            }
-          },
-           () => {
             S.param("id") match {
               case Full(v) => InternalServerErrorResponse()
               case Empty => User.loggedIn_? match {
                 case true => InternalServerErrorResponse()
-                case false => RedirectResponse("http://localhost:8080/user_mgt/login")}
+                case false => RedirectResponse(SiteConsts.LOGIN_URL)
+              }
               case Failure(_, _, _) => InternalServerErrorResponse()
-            }}))),
+            }
+          }))),
       Menu(Loc("Search", List("search"), "Search")),
       Menu(Loc("Edit Table of Content", List("tblofcontent"), "Edit Table of Content")),
-      Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden))) :::
+      Menu(Loc("Page Not Found", List("404"), "Page Not Found", Hidden)),
+      Menu(Loc("Data Population Script", List("db"), "Database Script", Hidden))) :::
       Omniauth.sitemap
 
     val ghMenus = GitHub.sitemap
@@ -121,11 +140,9 @@ class Boot {
 
   def initDB {
     if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor =
-        new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-          Props.get("db.url") openOr
-            "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-          Props.get("db.user"), Props.get("db.password"))
+      val vendor = new StandardDBVendor(
+        SiteConsts.DB_DRIVER, SiteConsts.DB_URL,
+        Full(SiteConsts.DB_USER), Full(SiteConsts.DB_PASSWORD))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 

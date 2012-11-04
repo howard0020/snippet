@@ -6,8 +6,9 @@ import net.liftweb.util._
 import net.liftweb.common._
 import net.liftweb.http.S
 import net.liftweb.sitemap.Loc.LocGroup
-import code.gh.Auth
+import code.gh.GitHub
 import code.model.ToCModel.ToCPost
+import code.gh.GitHub.GhAuthInfo
 
 /**
  * The singleton that has methods for accessing the database
@@ -46,7 +47,7 @@ object User extends User with MetaMegaProtoUser[User] {
         </div>
         <div class="user_login_otherlogin">
           <div class="user_login_facebook"><lift:SignUp.FacebookNormal></lift:SignUp.FacebookNormal></div>
-          <div class="user_login_github"><a href={ Auth.login_url }>Github Login</a></div>
+          <div class="user_login_github"><a href="/auth/github/signin">Github Login</a></div>
         </div>
       </form>)
   }
@@ -72,6 +73,12 @@ object User extends User with MetaMegaProtoUser[User] {
   //<span>{ userNameFieldString }</span>
 
   override def globalUserLocParams = LocGroup("UserMenu") :: super.globalUserLocParams
+
+  // when user logs out, destroy github session
+  override def logout: Nothing = {
+    GhAuthInfo(Empty)
+    super.logout
+  }
 }
 
 /**
@@ -92,19 +99,19 @@ class User extends MegaProtoUser[User] {
 
   def findUser(email: String) = User.find(By(User.email, email))
 
-    def toc: ToCModel = {
+  def toc: ToCModel = {
     ToCModel.find(By(ToCModel.Author, this.id)) match {
       case Full(t) => t
       case Empty => ToCModel.createFor(this)
       case Failure(msg, _, _) =>
         throw new RuntimeException("update_toc")
-    }   
+    }
   }
-  
+
   def getToCPosts: List[ToCPost] = {
     toc.getToCPosts
   }
-  
+
   def updateToC {
     toc.updateTitles
   }

@@ -20,15 +20,16 @@ a.repo_link {
 */
 
 /* repository page navigation links */
-ul#repo_nav_bar {
-	overflow: hidden;
-}
-ul#repo_nav_bar li {
-	float: left
+#repo_nav_bar {
+	margin: 10px;
+	margin-left: 5px;
 }
 .repo_nav_link {
+	color: #5B865B;
+	text-decoration: none;
+	font-size: 15pt;
 	margin-right: 5px;
-	text-decoration: none
+	margin-left: 5px;
 }
 .editor {
 /*	border: 1px solid gray; */

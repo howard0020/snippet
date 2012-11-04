@@ -31,6 +31,7 @@ import net.liftweb.mapper.MappedLong
 import net.liftweb.mapper.MappedText
 import code.model.ToCModel.ToCPost
 import net.liftweb.json.parse
+import net.liftweb.common.Full
 
 class ToCModel extends LongKeyedMapper[ToCModel] with ManyToMany with CreatedUpdated {
   implicit val formats = DefaultFormats
@@ -51,22 +52,32 @@ class ToCModel extends LongKeyedMapper[ToCModel] with ManyToMany with CreatedUpd
     }
   }
 
-  def updateTitles {
-    val userPosts = CodeSnippet.findAll(By(CodeSnippet.Author, this.Author))
-    var idToTitle = Map[Long, String]()
-    for (post <- userPosts)
-      idToTitle += (post.id.toLong -> post.title)
-      
+  def posts: List[CodeSnippet] = {
+    val id2postMap = ToCModel.userPostIdToPostMap(this.Author)
+    getToCPosts.flatMap( rootPost => ToCModel.TocPostToListPosts(rootPost, id2postMap) )
+  }
+
+  // update titles
+  def updateTitles {      
     val posts = getToCPosts
-    val updatedPosts = ToCModel.updateTitles(posts, idToTitle)
+    val updatedPosts = ToCModel.updateTitles(posts, ToCModel.userPostIdToPostMap(this.Author))
     val jsonString = write(updatedPosts)
     content.set(jsonString)
     save
+  }
+  
+  def notifyPostDelete(post: CodeSnippet) = {
+	  this.delete_!
+  }
+  
+  def notifyPostAdd(post: CodeSnippet) = {
+    this.delete_!
   }
 }
 object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
   override def dbTableName = "TblOfContent"
 
+  
   def createFor(user: User): ToCModel = {
     val toc = ToCModel.create
 
@@ -81,6 +92,24 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
     toc
   }
 
+  // precondition: map idToPost has key tocPost.id
+  private def TocPostToListPosts(tocPost: ToCPost, idToPost: Map[Long, CodeSnippet]):List[CodeSnippet] = {
+    var posts = List(idToPost(tocPost.id))
+    tocPost.children match {
+      case None => posts
+      case Some(children) =>
+      	posts ++ children.flatMap( childPost => TocPostToListPosts(childPost, idToPost))
+    }
+  }
+  
+  private def userPostIdToPostMap(userId: Long) = {
+      val userPosts = CodeSnippet.findAll(By(CodeSnippet.Author, userId))
+    var idToPost = Map[Long, CodeSnippet]()
+    for (post <- userPosts)
+      idToPost += (post.id.toLong -> post)
+    idToPost
+  }
+  
   private def createToC(posts: List[ToCPost]): ToCPost = {
     ToCPost(-1, "Table Of Content", Some(posts), true)
   }
@@ -89,18 +118,18 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
     ToCPost(snippet.id, snippet.title, None, false)
   }
   // clone post and replace title with most updated titel from database
-  private def updateTitles(posts: List[ToCPost], idToTitle: Map[Long, String]): List[ToCPost] = {
+  private def updateTitles(posts: List[ToCPost], idToPost: Map[Long, CodeSnippet]): List[ToCPost] = {
     for (post <- posts) yield {
       val id = post.id
       val isFolder = post.isFolder
       val title = isFolder match {
         case true => post.title
-        case false => idToTitle(id)
+        case false => idToPost(id).title.toString
       }
       val children = post.children match {
         case None => None
         case Some(ls) =>
-          Some(updateTitles(ls, idToTitle))
+          Some(updateTitles(ls, idToPost))
       }
       ToCPost(id, title, children, isFolder)
     }

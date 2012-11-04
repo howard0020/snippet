@@ -140,13 +140,8 @@ $(document)
 																				.getNextSibling());
 													}
 												}
-												console
-														.log("table of content has been updated on the client");
-												// use ajax to call server-side
-												// code to
-												// persist the new tree
-												if (isToCEditable())
-													updateToC();
+												console.log("table of content has been updated on the client");
+												clientToCUpdateListener();
 											},
 											onDragLeave : function(node,
 													sourceNode) {
