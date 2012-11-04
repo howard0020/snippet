@@ -268,7 +268,7 @@ body a {
 #Profile img{
 }
 
-#Profile .userName{
+#profile_user_name{
 	width: 100%;
 	font-size: 12px;
 	background-color: #78AA2B;
@@ -553,6 +553,9 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 .collapse{
 	display:none;
+}
+.expand{
+	display:inline-block;
 }
 
 /*user to hide and show sortable handles*/
