@@ -446,7 +446,8 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 
 #user_login_wrapper{
 	margin: 0 auto;
-	position: relative;
+	position: fixed;
+	width:1000px;
 	text-align: center;
 	background-color: #ACB8AF;
 	z-index: 100;
