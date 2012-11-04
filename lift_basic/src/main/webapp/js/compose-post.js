@@ -27,8 +27,10 @@
            
           });
           
-            $('#btnAddCode').click(function() {
- 
+		$('#btnAddCode').click(function() {
+ 			var modeSelect = document.getElementById("newModeSelect");
+ 			var mode = $('option:selected', modeSelect).attr('value');
+ 			
             var num     = editorCount++; // how many "duplicatable" input fields we currently have
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
            	//create the html to add
@@ -50,18 +52,15 @@
             var newEditor = CodeMirror.fromTextArea(newTextArea, {
     		  lineNumbers: true,
 			  value: "",
-			  mode:  "text/x-scala",
+			  mode:  mode,
 			  lineWrapping: "wrap",
 			  onCursorActivity: function() {
-   			 	   		editor.matchHighlight("CodeMirror-matchhighlight");
-   			 	   }
+   			  	editor.matchHighlight("CodeMirror-matchhighlight");
+   			  }		
 			});
+			CodeMirror.autoLoadMode(newEditor, window.codeMirrorModes[mode][1]);
 			window.codeEditors['textArea' + newNum] = newEditor;
-            // manipulate the name/id values of the input inside the new element
-           // newElem.children('textarea').attr('class', 'emailContent').attr('id', 'reminderText' + newNum);
-            //newElem.children('input').attr('class', 'schedule').attr('id', 'runReminderInDays' + newNum);
-            // insert the new element after the last "duplicatable" input field
-            
+          
             // enable the "remove" button
              $('#btnDel').removeAttr('disabled','');
           });
@@ -112,6 +111,7 @@
     }
   };
 })(this, jQuery);
+
 
 /* You call functions from your html file like this:
 
