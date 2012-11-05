@@ -1,5 +1,4 @@
 function initCodeBlock(){
-
 	$('.code-block-fields').each(function() {
 		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
 	    var $this = $(this),
@@ -15,7 +14,7 @@ function initCodeBlock(){
 		 	   		thisEditor.matchHighlight("CodeMirror-matchhighlight");
 		 	   }
 	    });
-	    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')]);
+	    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')][1]);
 	    $('pre.CodeMirror-cursor').remove();
 	});
 };

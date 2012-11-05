@@ -10,9 +10,10 @@
 		<script class="lift:head"
 			src="http://cdn.jquerytools.org/1.2.7/form/jquery.tools.min.js"></script>
 		<!-- Code Mirror Init-->
+		<script class="lift:head" src="/js/codeMirror-modes.js"></script>
 		<link class="lift:head" rel="stylesheet"
-			href="/codemirror/theme/eclipse.css" />
-		<script class="lift:head" src="../codemirror/lib/codemirror.js"></script>
+			href="/codemirror/theme/eclipse.css">
+		<script class="lift:head" src="/codemirror/lib/codemirror.js"></script>
 		<link class="lift:head" rel="stylesheet"
 			href="/codemirror/lib/codemirror.css">
 		<script class="lift:head" src="/codemirror/mode/clike/clike.js"></script>
@@ -25,7 +26,7 @@
 		<!-- Code Mirror Init End-->
 		<!-- Aloha Editor Init-->
 
-		<link rel="stylesheet" href="/aloha/css/aloha.css" type="text/css">
+		<link class="lift:head" rel="stylesheet" href="/aloha/css/aloha.css" type="text/css">
 		<script class="lift:head" src="/aloha/lib/require.js"></script>
 		<!-- 		<script class="lift:head" src="/aloha/lib/vendor/jquery-1.7.2.js"></script> -->
 		<script class="lift:head" type="text/javascript">
@@ -95,15 +96,14 @@
 		</script>
 		<script type="text/javascript">
 			window.codeEditors = new Object();
+	
 			Aloha.ready(function() {
 
 				// Make #content editable once Aloha is loaded and ready.
 				Aloha.jQuery('.WYSIWYG-fields').aloha();
 
 			});
-			$(".field-delete").click(function() {
-				deleteParentElement(this);
-			});
+		
 		</script>
 		<!-- 	<style class="lift:head">
     #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
@@ -125,69 +125,14 @@
 		</script>
 		<!-- Aloha Editor Init End-->
 
-		<button id="btnAddHTML">add html</button>
+		
+		<select id="newModeSelect"></select>
 		<button id="btnAddCode">add code</button>
+		<span class="separator">|</span>
+		<button id="btnAddHTML">add html</button>
 		<button id="btnDel">remove last</button>
-		<p>
-			<select id="modeSelect">
-				<option value="application/x-aspx" mode="htmlembedded">ASP.Net</option>
-				<option value="text/x-csrc" mode="clike">C</option>
-				<option value="text/x-c++src" mode="clike">C++</option>
-				<option value="text/x-csharp" mode="clike">C#</option>
-				<option value="text/x-clojure" mode="clojure">Clogjure</option>
-				<option value="text/x-coffeescript" mode="coffeescript">Coffe
-					Script</option>
-				<option value="text/x-common-lisp" mode="commonlisp">Common
-					Lisp</option>
-				<option value="application/x-ejs" mode="htmlembedded">Embedded
-					Javascript</option>
-				<option value="text/x-erlang" mode="erlang">Erlang</option>
-				<option value="text/x-go" mode="go">Go</option>
-				<option value="text/x-groovy" mode="groovy">Groovy</option>
-				<option value="text/x-haskell" mode="haskell">Haskell</option>
-				<option value="text/x-haxe" mode="haxe">Haxe</option>
-				<option value="text/html" mode="htmlmixed">HTML</option>
-				<option value="text/x-" mode="">Java</option>
-				<option value="text/x-" mode="">JavaScript</option>
-				<option value="application/x-jsp" mode="htmlembedded">JSP</option>
-				<option value="text/x-" mode="">Jinja2</option>
-				<option value="text/x-" mode="">LESS</option>
-				<option value="text/x-" mode="">Lua</option>
-				<option value="text/x-" mode="">Markdown</option>
-				<option value="text/x-mysql" mode="mysql">MySQL</option>
-				<option value="text/x-" mode="">NTriples</option>
-				<option value="text/x-" mode="">OCaml</option>
-				<option value="text/x-" mode="">Pascal</option>
-				<option value="text/x-" mode="">Perl</option>
-				<option value="text/x-" mode="">PHP</option>
-				<option value="text/x-" mode="">Pig Latin</option>
-				<option value="text/x-" mode="">PL/SQL</option>
-				<option value="text/x-" mode="">Properties files</option>
-				<option value="text/x-" mode="">Python</option>
-				<option value="text/x-" mode="">R</option>
-				<option value="text/x-" mode="">reStructuredText</option>
-				<option value="text/x-" mode="">Ruby</option>
-				<option value="text/x-" mode="">Rust</option>
-				<option value="text/x-" mode="">Scala</option>
-				<option value="text/x-" mode="">Scheme</option>
-				<option value="text/x-" mode="">Shell</option>
-				<option value="text/x-" mode="">Sieve</option>
-				<option value="text/x-" mode="">Smalltalk</option>
-				<option value="text/x-" mode="">Smarty</option>
-				<option value="text/x-" mode="">SPARQL</option>
-				<option value="text/x-" mode="">sTeX, LaTeX</option>
-				<option value="text/x-" mode="">Tiddlywiki</option>
-				<option value="text/x-" mode="">Tiki wiki</option>
-				<option value="text/x-" mode="">VB.NET</option>
-				<option value="text/x-" mode="">VBScript</option>
-				<option value="text/x-" mode="">Velocity</option>
-				<option value="text/x-" mode="">Verilog</option>
-				<option value="text/x-" mode="">XML</option>
-				<option value="text/x-" mode="">XQuery</option>
-				<option value="text/x-" mode="">YAML</option>
-			</select>
-			<button type="button" onclick="change()">change mode</button>
-		</p>
+		<span class="separator">|</span>		
+		<button id="publish" onclick="$('#next').click();">Publish</button>
 		<div id="composer-area" class="sortable">
 
 			<!-- <div class="editable-area sortable-area">
@@ -205,13 +150,10 @@
 					</h2>
 					<br> <br>
 					<div id="editor-sort">
-						
-						
-						
 						<div class="sortable-item">
 							<div class="handle"></div>
 
-							<button class="field-delete" onclick="deleteParentElement(this)"></button>
+							<button class="field-delete" onclick="window.deleteParentElement(this)"></button>
 							<div id="Text2" class="field-content WYSIWYG-fields"
 								contenteditable="true">
 								<h3>Header</h3>
@@ -219,7 +161,7 @@
 						</div>
 						<div id="Text3" class="sortable-item">
 							<div class="handle"></div>
-							<button class="field-delete" onclick="deleteParentElement(this)"></button>
+							<button class="field-delete" onclick="window.deleteParentElement(this)"></button>
 							<div class="field-content code-block-fields">
 								<textarea id="textArea3">
 	import snippet.fun._
@@ -234,7 +176,7 @@
 						</div>
 					</div>
 					<div>
-						<button id="next" value="Submit" type="button" class="btn">
+						<button hidden="true" id="next" value="Submit" type="button" class="btn">
 							<Lift:Loc>Finish</Lift:Loc>
 						</button>
 					</div>
@@ -246,11 +188,7 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
-			var modeSelect = document.getElementById("modeSelect");
-			var modeInput = document.getElementById("mode");
-			var modeFileInput = document.getElementById("modeFile");
-
+		
 			//Setup the first Code editor
 			var postTextArea = document.getElementById("textArea3");
 			var editor = CodeMirror.fromTextArea(postTextArea, {
@@ -263,29 +201,6 @@
 			});
 			window.codeEditors["textArea3"] = editor;
 
-			function change() {
-				editor.setOption("mode", modeSelect.value);
-				CodeMirror.autoLoadMode(editor,
-						$('option:selected', modeSelect).attr('mode'));
-			}
-			function addPage() {
-				var $ = Aloha.jQuery;
-				$('#composer-area').append(
-						"<br></br><div class=\"editable\"></div>");
-				Aloha.jQuery('.editable').mahalo();
-				Aloha.jQuery('.editable').aloha();
-			}
-			function addCode() {
-				var composerArea = document.getElementById("composer-area");
-				var myCodeMirror = CodeMirror(composerArea, {
-					lineNumbers : true,
-					value : "",
-					mode : "text/x-scala"
-				});
-			}
-			function deleteParentElement(n) {
-				n.parentNode.parentNode.removeChild(n.parentNode);
-			}
 		</script>
 	</div>
 </body>

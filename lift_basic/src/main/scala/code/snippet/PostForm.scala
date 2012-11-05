@@ -24,6 +24,7 @@ import net.liftweb.common.Loggable
 import net.liftweb.common.{Full,Empty,Failure}
 import net.liftweb.http.S
 import net.liftweb.http.RedirectResponse
+import code.share.SiteConsts
 
 
 //object PostForm extends LiftScreen{
@@ -52,17 +53,18 @@ class PostForm extends Loggable{
   	    PostServer ! snippet
   	} 
 	
-	//----------------NEW----------------------------------------------------//
 	val ourFnName = Helpers.nextFuncName
   /**
    * JavaScript to collect our form data
    */
+	
   val js1 =
     """
       |window.dyTable = new window.fmpwizard.views.DynamicFields();
       |window.dyTable.collectFormData(%s);
-  	  |
+  	
     """.format(ourFnName).stripMargin
+    
   /**
    * JavaScript to setup the adding rows to the page action
    */
@@ -72,29 +74,31 @@ class PostForm extends Loggable{
       |              window.dyTable = new window.fmpwizard.views.DynamicFields();
       |              window.dyTable.addFields();
       |              window.dyTable.removeFields();
+      |				 window.initModeOpts("newModeSelect");
+      |              window.initModeOpts("changeModeSelect");	
       |            });
     """.format(ourFnName).stripMargin
     
     def render = {
     "#next [onclick]" #> JE.JsRaw(js1)
   }
+	
 	def sendToServer = {
     "#sendToServer" #> Script(
       Function(ourFnName, List("paramName"),
         SHtml.jsonCall(JsVar("paramName"), processForm _)._2.cmd //use on lift >= 2.5
-        //SHtml.jsonCall(JsVar("paramName"), (s: Any) => addRowsToDB(s) )._2.cmd //Use this on Lift < 2.5
       )
     ) &
     "#initDynamic" #> Script(JE.JsRaw(js2).cmd)
 	}
+	
 	def processForm(x:Any) :JsCmd ={
-	 
 	  val boxList = Full(x).asA[List[List[String]]]
 	  boxList match { 
 	 		case Full(tempList) =>
  		     
  		      if(User.currentUser.isEmpty){
- 		        S.redirectTo("/user_mgt/login")
+ 		        S.redirectTo(SiteConsts.LOGIN_URL)
  		        return
  		      }
  		      val user = User.currentUser openTheBox
@@ -115,6 +119,8 @@ class PostForm extends Loggable{
 	 		  	}
 	 		  )
 	 		  post.save()
+	 		  PostServer ! post
+	 		  S.redirectTo(SiteConsts.INDEX_URL)
 	 		  Noop
 	 		case Empty => S.error("Empty Form.")
 	 		case Failure(msg,_,_) => S.error(msg)
