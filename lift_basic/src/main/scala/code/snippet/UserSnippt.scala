@@ -35,18 +35,11 @@ class UserSnippet {
 	
 	def CurrentUserUrl = ".userUrl [href]" #> "/User/profile.html"
 	
-	def RemoveSlideOpenIfLoggedIn = "#slide_open [class]" #> (User.loggedIn_? match{
-	  case true => "collapse"
-	  case false => "expand"
-	})
-	def LogoutMenuItem = ".logout_url [href]"  #> "/user_mgt/logout" & ("#logout_menu_item [class]"#> (User.loggedIn_? match{
-	  case true => "expand"
-	  case false => "collapse"
-	}))
+	def LogoutMenuItem = ".logout_url [href]"  #> "/user_mgt/logout"
 	
 	def loginForm = User.login
 	
-	def CurrentUserProfile = CurrentUserName & CurrentUserNameExpandable & CurrentUserIcon & CurrentUserUrl & RemoveSlideOpenIfLoggedIn & LogoutMenuItem
+	def CurrentUserProfile = CurrentUserName  & CurrentUserIcon & CurrentUserUrl  & LogoutMenuItem
 	
 	def loginHtml = User.loginXhtml
 	

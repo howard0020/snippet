@@ -57,9 +57,13 @@
 			</div>
 			
 			<div id="Profile" class="lift:UserSnippet.CurrentUserProfile">
-				<div id="profile_user_name" class="expand"><img class="profile_user_icon userUrl"></img><a class="userUrl userName"></a></div>
-				<div id="slide_open" class="expand">Login</div>
-				<div id="logout_menu_item" class="collapse"><a class="logout_url">Logout</a></div>
+				<lift:test_cond.loggedin>
+					<div id="profile_user_name"><img class="profile_user_icon userUrl"></img><a class="userUrl userName"></a></div>
+					<div id="logout_menu_item"><a class="logout_url">Logout</a></div>
+				</lift:test_cond.loggedin>
+				<lift:test_cond.loggedout>
+					<div id="slide_open">Login</div>
+				</lift:test_cond.loggedout>
 			</div>
 			<div id="Menu" class="cssmenu">
 				<div class="lift:Menu.builder?group=General"></div>

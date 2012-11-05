@@ -279,6 +279,10 @@ body a {
 }
 
 #profile_user_name{
+	display: inline-block;
+}
+#logout_menu_item{
+	display: inline-block;
 }
 .profile_user_icon{
 	height: 20px;
