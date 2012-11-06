@@ -200,29 +200,22 @@ body a {
 	margin-left: 30px;
 }
 #profile_navigation{
-	position: absolute;
-	margin-top: 100px;
 	background-color: #E8F7DF;
 	width: 100%;
-	min-height: 100%;
 }
 #author_info{
-	position: absolute;
-	width: 100%;
-	left: 0;
-	text-align: center;
-	margin: 5px;
 }
 #author_info .usernam{
 	display: block;
 }
 
 #profile_left{
-	position: absolute;
+	position: fixed;
 	width: 200px;
 	height: 100%;
 	border-right: 1px solid #91AD90;
-	overflow: hidden;
+	overflow: auto;
+	min-height: 100%;
 }
 #profile_right{
 	position: relative;
