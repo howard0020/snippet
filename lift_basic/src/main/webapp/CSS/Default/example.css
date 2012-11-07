@@ -634,3 +634,6 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .sortable-item .aloha-editable-highlight{
 	outline: 2px #ffe767 dotted!important;
 	}
+.edit_button{
+	float: right;
+}
