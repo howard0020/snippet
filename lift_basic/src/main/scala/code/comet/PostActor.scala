@@ -71,8 +71,7 @@ class PostActor extends CometActor with CometListener {
 
   def registerWith = PostServer
 
-  def render =  PostSnippet.render(posts) &
-  				"#initCodeBlock" #> Script(JE.JsRaw(initCodeBlockJS).cmd)
+  def render = PostSnippet.render(posts) &	"#initCodeBlock" #> Script(JE.JsRaw(initCodeBlockJS).cmd)
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd,
     (SHtml.textarea("", content = _, "id" -> "snippetTextArea")

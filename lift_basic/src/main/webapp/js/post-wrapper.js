@@ -1,3 +1,6 @@
+
+window.codeEditorMap = new Object();
+
 function initCodeBlock(){
 	$('.code-block-fields').each(function() {
 		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
@@ -14,6 +17,7 @@ function initCodeBlock(){
 		 	   		thisEditor.matchHighlight("CodeMirror-matchhighlight");
 		 	   }
 	    });
+	    codeEditorMap[$this.attr('id')] = thisEditor;
 	    CodeMirror.autoLoadMode(thisEditor, window.codeMirrorModes[$this.attr('mode')][1]);
 	    $('pre.CodeMirror-cursor').remove();
 	});
