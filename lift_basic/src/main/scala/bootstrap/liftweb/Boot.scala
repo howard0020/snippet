@@ -101,6 +101,7 @@ class Boot {
   def initSiteMap {
     var menuItems = List(
       Menu.i("Home") / "index" >> LocGroup("General"), // the simple way to declare a menu
+
       Menu.i("Edit post") / "compose" / "edit"
         >> If(
           () => User.loggedIn_?,

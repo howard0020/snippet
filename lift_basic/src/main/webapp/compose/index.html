@@ -119,16 +119,17 @@
 		</script>
 		<!-- Aloha Editor Init End-->
 
-		
-		<select id="newModeSelect"></select>
-		<button id="btnAddCode">add code</button>
-		<span class="separator">|</span>
-		<button id="btnAddHTML">add html</button>
-		<button id="btnDel">remove last</button>
-		<span class="separator">|</span>		
-		<button id="publish" onclick="$('#next').click();">Publish</button>
+		<div id="compose_toolbar" class="fixed_position">
+			<select id="newModeSelect"></select>
+			<button id="btnAddCode"></button>
+			<span class="separator">|</span>
+			<button id="btnAddHTML"></button>
+			<button id="btnDel"></button>
+			<span class="separator">|</span>		
+			<button id="publish" onclick="$('#next').click();"></button>
+		</div>
 		<hr>
-		<br>
+		
 		<div id="composer-area" class="sortable">
 
 			<!-- <div class="editable-area sortable-area">
