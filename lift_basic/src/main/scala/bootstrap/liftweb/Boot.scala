@@ -102,7 +102,7 @@ class Boot {
     var menuItems = List(
       Menu.i("Home") / "index" >> LocGroup("General"), // the simple way to declare a menu
       //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
-      Menu.i("Edit post") / "compose" / "index"
+      Menu.i("Edit post") / "compose" / "a"
         >> If(
           () => User.loggedIn_?,
           () => RedirectResponse(SiteConsts.LOGIN_URL))

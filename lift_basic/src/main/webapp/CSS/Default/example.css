@@ -116,7 +116,7 @@ body a {
 	width: 1000px;
 	height: auto !important;
 	min-height: 100%;
-	padding-top: 38px;
+	padding-top: 33px;
 	margin: 0 auto;
 	background-color:#F4F7F2;
 
@@ -636,4 +636,45 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	}
 .edit_button{
 	float: right;
+}
+.fixed_position{
+	position:fixed;
+}
+#compose_toolbar{
+	z-index:50;
+	background-color: #AEBEAE;
+	width: 1000px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#composer-area{
+	margin-top: 40px;
+}
+#compose_toolbar >button{
+	border: none;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	background-color:transparent;
+}
+#compose_toolbar >select{
+	border: none;
+	height: 24px;
+	cursor: pointer;
+}
+#compose_toolbar >.separator{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#btnAddHTML{
+	background-image: url('http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-list-add-font-icon.png');
+}
+#btnAddCode{
+	background-image: url('http://icons.iconarchive.com/icons/awicons/vista-artistic/24/add-icon.png');
+}
+#publish{
+	background-image: url('http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/24/Accept-icon.png');
+}
+#btnDel{
+	background-image: url('http://icons.iconarchive.com/icons/kyo-tux/delikate/24/Close-icon.png');
 }
