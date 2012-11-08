@@ -131,19 +131,14 @@
 		<hr>
 		
 		<div id="composer-area" class="sortable">
-
-			<!-- <div class="editable-area sortable-area">
-				<h1>This is a empty post!</h1>
-			</div> -->
-
-			<!-- Form for the whole post -->
-			<form class="lift:form.ajax" action="#">
+				<!-- Form for the whole post -->
+			<form action="#">
 				<div class="lift:post_form" id="editor_form_wrapper">
 					<br>
 					<h2>
-							<input type="text" id="Text1" required="required"
-								class="field-content title-field" name="title"
-								placeholder="Post Title"></input>
+						<input type="text" id="Text1" required="required"
+							class="field-content title-field" name="title"
+							placeholder="Post Title"></input>
 					</h2>
 					<br> <br>
 					<div id="editor-sort">
@@ -179,11 +174,12 @@
 					</div>
 				</div>
 			</form>
-			<div data-lift="post_form.sendToServer">
+			<div class="lift:post_form.sendToServer">
 				<script id="sendToServer"></script>
 				<script id="initDynamic"></script>
 			</div>
 		</div>
+		<div id="content">The main content will get bound here</div>
 		<script type="text/javascript">
 		
 			//Setup the first Code editor

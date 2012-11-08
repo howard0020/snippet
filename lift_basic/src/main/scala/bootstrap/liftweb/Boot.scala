@@ -68,14 +68,14 @@ class Boot {
         } catch {
           case _ => RewriteResponse("404" :: Nil)
         }
-      case RewriteRequest(ParsePath("edit-post" :: idString :: Nil, _, _, _), _, _) =>
+      case RewriteRequest(ParsePath("compose" :: "edit" :: idString :: Nil, _, _, _), _, _) =>
         try {
           Console.println("===>id"+idString)
           val id = idString.toLong
           CodeSnippet.findByKey(id) match {
             case Full(post) => 
               Console.println("===find>"+post)
-              RewriteResponse("compose" :: "index" :: Nil, Map("id" -> id.toString))
+              RewriteResponse("compose" :: "edit" :: Nil, Map("id" -> id.toString))
             case _ => RewriteResponse("404" :: Nil)
           }
         } catch {

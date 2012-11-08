@@ -62,7 +62,6 @@ class PostForm extends Loggable{
     """
       |window.dyTable = new window.fmpwizard.views.DynamicFields();
       |window.dyTable.collectFormData(%s);
-  	
     """.format(ourFnName).stripMargin
     
   /**
