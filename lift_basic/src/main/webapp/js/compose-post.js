@@ -4,68 +4,16 @@
       DynamicFields: function(){
         var self = this;
         self.addFields = function() {
-          $('#btnAddHTML').click(function() {
-          	var $ = Aloha.jQuery;
-            var num     = editorCount++; // how many "duplicatable" input fields we currently have
-            var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
-            // create the new element via clone(), and manipulate it's ID using newNum value
-            // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
-            var newField = $('<div class="sortable-item">' +
-			            		'<div class="handle"></div>' +
-			            		'<button class="field-delete"></button>' +
-			            		'<div class="field-content WYSIWYG-fields" contenteditable="true">' +
-			            		'</div>' +
-			            	'</div>');
-			newField.children(".field-delete").click(function(){
-			            		deleteParentElement(this);
-			            	});
-            newField.attr('id','Text' + newNum);
-            $('#editor-sort').append(newField);
-            
-            Aloha.jQuery('.WYSIWYG-fields').mahalo();
-        	Aloha.jQuery('.WYSIWYG-fields').aloha();
-           
+          $('#btnAddHTML').click(function (){
+          	addHTMLBlock("");
           });
           
-		$('#btnAddCode').click(function() {
- 			var modeSelect = document.getElementById("newModeSelect");
- 			var mode = $('option:selected', modeSelect).attr('value');
- 			
-            var num     = editorCount++; // how many "duplicatable" input fields we currently have
-            var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
-           	//create the html to add
-            var newField = $('<div class="sortable-item">' +
-			            		'<div class="handle"></div>' +
-			            		'<button class="field-delete"></button>' +
-			            		'<div class="field-content code-block-fields">' +
-			            			'<textarea></textarea>' +
-			            		'</div>' +
-		            		'</div>');
-		    //find the delete button and add click event
-		    newField.find(".field-delete").click(function(){
-			            		deleteParentElement(this);
-			            	});
-            var editorDiv = newField.attr('id','Text' + newNum);
-            editorDiv.find("textarea:first").attr('id','textArea' + newNum);
-            $('#editor-sort').append(newField);
-            var newTextArea = document.getElementById('textArea' + newNum);
-            var newEditor = CodeMirror.fromTextArea(newTextArea, {
-    		  lineNumbers: true,
-			  value: "",
-			  mode:  mode,
-			  lineWrapping: "wrap",
-			  onCursorActivity: function() {
-   			  	editor.matchHighlight("CodeMirror-matchhighlight");
-   			  }		
-			});
-			CodeMirror.autoLoadMode(newEditor, window.codeMirrorModes[mode][1]);
-			window.codeEditors['textArea' + newNum] = newEditor;
-          
-            // enable the "remove" button
-             $('#btnDel').removeAttr('disabled','');
-          });
-        };
-        
+		  $('#btnAddCode').click(function (){
+		  	var modeSelect = document.getElementById("newModeSelect");
+		  	var mode = $('option:selected', modeSelect).attr('value');
+		  	addCodeBlock("",mode);
+		  });
+        }; 
         //remove the last editor
         self.removeFields = function() {
           $('#btnDel').click(function() {
@@ -111,8 +59,64 @@
     }
   };
 })(this, jQuery);
+function addHTMLBlock(content) {
+        	var $ = Aloha.jQuery;
+            var num     = editorCount++; // how many "duplicatable" input fields we currently have
+            var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+            // create the new element via clone(), and manipulate it's ID using newNum value
+            // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
+            var newField = $('<div class="sortable-item">' +
+			            		'<div class="handle"></div>' +
+			            		'<button class="field-delete"></button>' +
+			            		'<div class="field-content WYSIWYG-fields" contenteditable="true">' +
+			            		'</div>' +
+			            	'</div>');
+			newField.find(".WYSIWYG-fields:first").append(content);
+			newField.children(".field-delete").click(function(){
+			            		deleteParentElement(this);
+			            	});
+            newField.attr('id','Text' + newNum);
+            $('#editor-sort').append(newField);
+            
+            Aloha.jQuery('.WYSIWYG-fields').mahalo();
+        	Aloha.jQuery('.WYSIWYG-fields').aloha();
+};
+function addCodeBlock(content,mode) {
 
-
+            var num     = editorCount++; // how many "duplicatable" input fields we currently have
+            var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+           	//create the html to add
+            var newField = $('<div class="sortable-item">' +
+			            		'<div class="handle"></div>' +
+			            		'<button class="field-delete"></button>' +
+			            		'<div class="field-content code-block-fields">' +
+			            			'<textarea></textarea>' +
+			            		'</div>' +
+		            		'</div>');
+		    newField.find("textarea:first").val(content);
+		    //find the delete button and add click event
+		    newField.find(".field-delete").click(function(){
+			            		deleteParentElement(this);
+			            	});
+            var editorDiv = newField.attr('id','Text' + newNum);
+            editorDiv.find("textarea:first").attr('id','textArea' + newNum);
+            $('#editor-sort').append(newField);
+            var newTextArea = document.getElementById('textArea' + newNum);
+            var newEditor = CodeMirror.fromTextArea(newTextArea, {
+    		  lineNumbers: true,
+			  value: "",
+			  mode:  mode,
+			  lineWrapping: "wrap",
+			  onCursorActivity: function() {
+   			  	editor.matchHighlight("CodeMirror-matchhighlight");
+   			  }		
+			});
+			CodeMirror.autoLoadMode(newEditor, window.codeMirrorModes[mode][1]);
+			window.codeEditors['textArea' + newNum] = newEditor;
+          
+            // enable the "remove" button
+             $('#btnDel').removeAttr('disabled','');
+};
 /* You call functions from your html file like this:
 
 <script type="text/javascript">

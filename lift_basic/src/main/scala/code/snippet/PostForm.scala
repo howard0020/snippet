@@ -74,21 +74,49 @@ class PostForm extends Loggable{
       |              window.dyTable.addFields();
       |              window.dyTable.removeFields();
       |				 window.initModeOpts("newModeSelect");
-      |              window.initModeOpts("changeModeSelect");	
+      |              window.initModeOpts("changeModeSelect");
+      |				 initEditors();
       |            });
     """.format(ourFnName).stripMargin
-    
-    def render = {
-    "#next [onclick]" #> JE.JsRaw(js1)
-  }
+    /**
+     * JavaScript to setup initial editors
+     */
+    def js3 =
+      """
+      	|function initEditors(){
+      	|	%s	
+      	|}
+      """.format(addEditorsJS).stripMargin
+      
+    var addEditorsJS = "";
 	
+    def render = "#next [onclick]" #> JE.JsRaw(js1) & renderPostContent
+	
+    def renderPostContent = {
+	      if(S.param("id").isDefined){
+	    	for{
+	    	  id <- S.param("id") ?~ "Post id is not defined."
+	    	  post <- CodeSnippet.findByKey(id.toLong) ?~ ("Can NOT find post with post id:" +id)
+	    	}yield{
+	    	  Console.println("====here render>"+post.title)
+	    		"#post_title" #> ((n: NodeSeq) =>{println("node found: " + n); NodeSeq.Empty })
+	    	}
+	    	"#foo" #> ""
+	      }else{
+	        addEditorsJS += "addHTMLBlock('<h3>Header</h3>');"
+	        addEditorsJS += "\n"
+	        addEditorsJS += """addCodeBlock('import snippet.fun._\nclass ReplaceMe extends SomeCode{\n	def click = {\n		this.text.remove\n	}\n}','text/x-scala');"""
+	        "#post_title [value]" #> ""
+	      }
+    }
+    
 	def sendToServer = {
     "#sendToServer" #> Script(
       Function(ourFnName, List("paramName"),
         SHtml.jsonCall(JsVar("paramName"), processForm _)._2.cmd //use on lift >= 2.5
       )
-    ) &
-    "#initDynamic" #> Script(JE.JsRaw(js2).cmd)
+    ) & 
+     "#initDynamic" #> Script(JE.JsRaw(js2).cmd & JE.JsRaw(js3).cmd) 
 	}
 	
 	def processForm(x:Any) :JsCmd ={
