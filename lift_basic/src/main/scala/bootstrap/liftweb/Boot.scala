@@ -73,6 +73,7 @@ class Boot {
           val id = idString.toLong
           CodeSnippet.findByKey(id) match {
             case Full(post) => 
+              Console.println("=-===>id:"+idString)
               RewriteResponse("compose" :: "edit" :: Nil, Map("id" -> id.toString))
             case _ => RewriteResponse("404" :: Nil)
           }

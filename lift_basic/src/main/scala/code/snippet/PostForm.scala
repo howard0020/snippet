@@ -25,6 +25,7 @@ import net.liftweb.common.{Full,Empty,Failure}
 import net.liftweb.http.S
 import net.liftweb.http.RedirectResponse
 import code.share.SiteConsts
+import net.liftweb.http.js.JE.JsArray
 
 
 //object PostForm extends LiftScreen{
@@ -54,6 +55,8 @@ class PostForm extends Loggable{
   	} 
 	
 	val ourFnName = Helpers.nextFuncName
+	//0 if this is a new post
+	var currentEditPost :CodeSnippet =null;
   /**
    * JavaScript to collect our form data
    */
@@ -81,7 +84,7 @@ class PostForm extends Loggable{
     /**
      * JavaScript to setup initial editors
      */
-    def js3 =
+    def js3 :String=
       """
       	|function initEditors(){
       	|	%s	
@@ -93,20 +96,27 @@ class PostForm extends Loggable{
     def render = "#next [onclick]" #> JE.JsRaw(js1) & renderPostContent
 	
     def renderPostContent = {
-	      if(S.param("id").isDefined){
-	    	for{
-	    	  id <- S.param("id") ?~ "Post id is not defined."
-	    	  post <- CodeSnippet.findByKey(id.toLong) ?~ ("Can NOT find post with post id:" +id)
-	    	}yield{
-	    	  Console.println("====here render>"+post.title)
-	    		"#post_title" #> ((n: NodeSeq) =>{println("node found: " + n); NodeSeq.Empty })
-	    	}
-	    	"#foo" #> ""
-	      }else{
-	        addEditorsJS += "addHTMLBlock('<h3>Header</h3>');"
-	        addEditorsJS += "\n"
-	        addEditorsJS += """addCodeBlock('import snippet.fun._\nclass ReplaceMe extends SomeCode{\n	def click = {\n		this.text.remove\n	}\n}','text/x-scala');"""
-	        "#post_title [value]" #> ""
+   
+  	      var postTitle = ""
+	      S.param("id") match{
+	        case Full(id) => CodeSnippet.findByKey(id.toLong) match{
+	          case Full(post) => {
+	        	  currentEditPost = post
+	        	  postTitle = post.title
+		    	  post.blocks.map(b => if(b.meta.toString() == ""){
+		    		addEditorsJS += "addHTMLBlock('%s')".format(b.content.is) + "\n"
+		    	  }else{ 
+		    	    addEditorsJS += """addCodeBlock(%s,'%s')""".format(b.contentToJSString,b.meta.toString()) + "\n"
+		    	  })
+		    	  "#post_title [value]" #> postTitle
+	          }
+	          case Empty => "#empty" #> ""
+	        }
+	        case Empty => 
+	          addEditorsJS += "addHTMLBlock('<h3>Header</h3>');"
+	          addEditorsJS += "\n"
+	          addEditorsJS += """addCodeBlock('import snippet.fun._\nclass ReplaceMe extends SomeCode{\n	def click = {\n		this.text.remove\n	}\n}','text/x-scala');"""
+	          "#empty" #> ""
 	      }
     }
     
@@ -123,13 +133,20 @@ class PostForm extends Loggable{
 	  val boxList = Full(x).asA[List[List[String]]]
 	  boxList match { 
 	 		case Full(tempList) =>
- 		     
  		      if(User.currentUser.isEmpty){
  		        S.redirectTo(SiteConsts.LOGIN_URL)
  		        return
  		      }
  		      val user = User.currentUser openTheBox
-	 		  val post = CodeSnippet.create.Author(user.id)
+ 		       val post = if(currentEditPost != null){
+ 		         //delete all the blocks and recreate them
+ 		    	   currentEditPost.blocks.foreach(b => b.delete_!)
+ 		    	   currentEditPost.blocks.clear
+ 		    	   currentEditPost.blocks.save
+ 		    	   currentEditPost
+ 		       }else{
+ 		    	   CodeSnippet.create.Author(user.id)
+ 		       }
 	 		  tempList.foreach(s => 
 	 		  	s match {
 	 		  	  case "titleField" :: content :: Nil =>

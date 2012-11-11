@@ -11,6 +11,10 @@ import scala.xml.Text
 import scala.xml.Null
 import code.model.User
 import net.liftweb.http.S
+import net.liftweb.http.SHtml
+import net.liftweb.http.js.JsCmds
+import JsCmds.{ Noop, Script }
+import net.liftweb.http.js.JsCommands
 
 object PostSnippet {
   val profileLink = SiteConsts.INDEX_URL + "/" + "profile"
@@ -52,6 +56,7 @@ object PostSnippet {
       <div>{xml.Unparsed(block.content.is)}</div>
     } else {
       val text = Option(block.content.is)
+      //TODO better way to do this?
       <textarea id="" class="code-block-fields">{ text.getOrElse("") }</textarea> % Attribute(None, "mode", Text(block.meta.is), Null) % Attribute(None,"id",Text(block.id.is.toString()),Null)
     }
   }
@@ -62,7 +67,10 @@ object PostSnippet {
 	      post.getAuthor match{
 	        case Full(author) => 
 	          if(author.id.get == user.id.get) {
-	             <button>Edit</button>
+	            // <button>Edit</button> % Attribute(None,"onclick",Text(""), Null)
+	            SHtml.ajaxButton("Edit",() => {
+	              JsCmds.RedirectTo(SiteConsts.EDITPOST_URL + post.id.toString)
+	            })
 	          }else{
 	            NodeSeq.Empty
 	          }

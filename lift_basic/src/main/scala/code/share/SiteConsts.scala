@@ -13,7 +13,8 @@ object SiteConsts {
   // general site wide constants
   val INDEX_URL = readProp("index_url")
   val LOGIN_URL = readProp("login_url")
-  
+  val EDITPOST_URL = readProp("editPost_url") 
+      
   // general omniauth properties
   val OMNI_BASE_URL = readProp("omniauth.baseurl")
   val OMNI_SUCCESS_URL = readProp("omniauth.successurl")
