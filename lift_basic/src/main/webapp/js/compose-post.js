@@ -108,7 +108,7 @@ function addCodeBlock(content,mode) {
 			  mode:  mode,
 			  lineWrapping: "wrap",
 			  onCursorActivity: function() {
-   			  	editor.matchHighlight("CodeMirror-matchhighlight");
+   			  	newEditor.matchHighlight("CodeMirror-matchhighlight");
    			  }		
 			});
 			CodeMirror.autoLoadMode(newEditor, window.codeMirrorModes[mode][1]);
