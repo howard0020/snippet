@@ -30,7 +30,7 @@ import scala.xml.Elem
 import scala.collection.immutable.Queue
 import code.share.SiteConsts
 
-class Profile {
+class Profilea {
 
   private val profileUser: User = {
     val userIDString = S.param("id") match {
@@ -160,21 +160,18 @@ class Profile {
   private def getView(posts: List[ToCPost]): NodeSeq = {
     var nodes = Queue[Elem]()
     for (post <- posts) {
+      val children = getView(post.children)
 
       val className = post.isFolder match {
         case true => "folder"
         case false => ""
       }
-
       nodes += <li id={ encodeID(post.id) } class={ className }>
-                 <div><span class="disclose"><span></span></span>{ Text(post.title) }</div>
-                 {
-                   if (post.children != Nil)
-                     getView(post.children)
-                 }
+                 { Text(post.title) }
+                 { children }
                </li>
     }
-    <ol class="sortable">{ nodes }</ol>
+    <ul>{ nodes }</ul>
   }
 
   private def encodeID(id: Long): String = {

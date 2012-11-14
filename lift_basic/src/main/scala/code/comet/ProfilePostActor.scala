@@ -33,7 +33,9 @@ class ProfilePostActor extends CometActor {
   private def posts = {
     User.loggedIn_? match {
       case false => S.redirectTo(SiteConsts.LOGIN_URL)
-      case true => User.currentUser.get.toc.posts
+      case true => 
+        println("comet posts")
+        User.currentUser.get.toc.tree.posts
     }
   }
 
@@ -43,6 +45,7 @@ class ProfilePostActor extends CometActor {
 
   override def lowPriority = {
     case _ =>
-      reRender(false)
+      println("comet rerendering posts")
+      reRender(true)
   }
 }

@@ -1,55 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-  <classpathentry output="target/scala-2.9.1/classes" path="src/main/scala" kind="src"></classpathentry>
-  <classpathentry output="target/scala-2.9.1/classes" path="src/main/java" kind="src"></classpathentry>
-  <classpathentry output="target/scala-2.9.1/classes" path="src/main/resources" kind="src"></classpathentry>
-  <classpathentry output="target/scala-2.9.1/test-classes" path="src/test/scala" kind="src"></classpathentry>
-  <classpathentry output="target/scala-2.9.1/test-classes" path="src/test/java" kind="src"></classpathentry>
-  <classpathentry output="target/scala-2.9.1/test-classes" path="src/test/resources" kind="src"></classpathentry>
-  <classpathentry path="org.scala-ide.sdt.launching.SCALA_CONTAINER" kind="con"></classpathentry>
-  <classpathentry path="./lib_managed/jars/com.typesafe.sbteclipse/sbteclipse-plugin/scala_2.9.1/sbt_0.11.3/sbteclipse-plugin-2.0.0.jar" kind="lib"></classpathentry>
-  <classpathentry path="./lib_managed/jars/com.typesafe.sbteclipse/sbteclipse-core/scala_2.9.1/sbt_0.11.3/sbteclipse-core-2.0.0.jar" kind="lib"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.scalaz/scalaz-core_2.9.1/scalaz-core_2.9.1-6.0.3.jar" sourcepath="./lib_managed/srcs/org.scalaz/scalaz-core_2.9.1/scalaz-core_2.9.1-6.0.3-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5.jar" sourcepath="./lib_managed/srcs/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2.jar" sourcepath="./lib_managed/srcs/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-util_2.9.1/lift-util_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-util_2.9.1/lift-util_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/commons-codec/commons-codec/commons-codec-1.4.jar" sourcepath="./lib_managed/srcs/commons-codec/commons-codec/commons-codec-1.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/nu.validator.htmlparser/htmlparser/htmlparser-1.2.1.jar" sourcepath="./lib_managed/srcs/nu.validator.htmlparser/htmlparser/htmlparser-1.2.1-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/javax.mail/mail/mail-1.4.4.jar" sourcepath="./lib_managed/srcs/javax.mail/mail/mail-1.4.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/javax.activation/activation/activation-1.1.jar" sourcepath="./lib_managed/srcs/javax.activation/activation/activation-1.1-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/joda-time/joda-time/joda-time-1.6.2.jar" sourcepath="./lib_managed/srcs/joda-time/joda-time/joda-time-1.6.2-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-actor_2.9.1/lift-actor_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-actor_2.9.1/lift-actor_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-common_2.9.1/lift-common_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-common_2.9.1/lift-common_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.slf4j/slf4j-api/slf4j-api-1.6.4.jar" sourcepath="./lib_managed/srcs/org.slf4j/slf4j-api/slf4j-api-1.6.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/com.thoughtworks.paranamer/paranamer/paranamer-2.3.jar" sourcepath="./lib_managed/srcs/com.thoughtworks.paranamer/paranamer/paranamer-2.3-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.scala-lang/scalap/scalap-2.9.1.jar" sourcepath="./lib_managed/srcs/org.scala-lang/scalap/scalap-2.9.1-sources.jar"></classpathentry>
-  <classpathentry path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER" kind="con"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-core_2.9.1/dispatch-core_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-core_2.9.1/dispatch-core_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.apache.httpcomponents/httpclient/httpclient-4.1.jar" sourcepath="./lib_managed/srcs/org.apache.httpcomponents/httpclient/httpclient-4.1-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.apache.httpcomponents/httpcore/httpcore-4.1.jar" sourcepath="./lib_managed/srcs/org.apache.httpcomponents/httpcore/httpcore-4.1-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/commons-logging/commons-logging/commons-logging-1.1.1.jar" sourcepath="./lib_managed/srcs/commons-logging/commons-logging/commons-logging-1.1.1-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-http_2.9.1/dispatch-http_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-http_2.9.1/dispatch-http_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-futures_2.9.1/dispatch-futures_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-futures_2.9.1/dispatch-futures_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-oauth_2.9.1/dispatch-oauth_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-oauth_2.9.1/dispatch-oauth_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-http-json_2.9.1/dispatch-http-json_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-http-json_2.9.1/dispatch-http-json_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.databinder/dispatch-json_2.9.1/dispatch-json_2.9.1-0.8.5.jar" sourcepath="./lib_managed/srcs/net.databinder/dispatch-json_2.9.1/dispatch-json_2.9.1-0.8.5-sources.jar"></classpathentry>
-  <classpathentry path="./lib_managed/jars/mysql/mysql-connector-java/mysql-connector-java-5.1.21.jar" kind="lib"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4.jar" sourcepath="./lib_managed/srcs/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/com.h2database/h2/h2-1.2.147.jar" sourcepath="./lib_managed/srcs/com.h2database/h2/h2-1.2.147-sources.jar"></classpathentry>
-  <classpathentry path="./lib_managed/jars/org.apache.derby/derby/derby-10.7.1.1.jar" kind="lib"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/ch.qos.logback/logback-classic/logback-classic-0.9.26.jar" sourcepath="./lib_managed/srcs/ch.qos.logback/logback-classic/logback-classic-0.9.26-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/ch.qos.logback/logback-core/logback-core-0.9.26.jar" sourcepath="./lib_managed/srcs/ch.qos.logback/logback-core/logback-core-0.9.26-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.mortbay.jetty/jetty/jetty-6.1.26.jar" sourcepath="./lib_managed/srcs/org.mortbay.jetty/jetty/jetty-6.1.26-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.mortbay.jetty/jetty-util/jetty-util-6.1.26.jar" sourcepath="./lib_managed/srcs/org.mortbay.jetty/jetty-util/jetty-util-6.1.26-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.mortbay.jetty/servlet-api/servlet-api-2.5-20081211.jar" sourcepath="./lib_managed/srcs/org.mortbay.jetty/servlet-api/servlet-api-2.5-20081211-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/junit/junit/junit-4.7.jar" sourcepath="./lib_managed/srcs/junit/junit/junit-4.7-sources.jar"></classpathentry>
-  <classpathentry kind="lib" path="./lib_managed/jars/org.scala-tools.testing/specs_2.9.1/specs_2.9.1-1.6.9.jar" sourcepath="./lib_managed/srcs/org.scala-tools.testing/specs_2.9.1/specs_2.9.1-1.6.9-sources.jar"></classpathentry>
-  <classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER" kind="con"></classpathentry>
-  <classpathentry path="bin" kind="output"></classpathentry>
+	<classpathentry kind="src" output="target/scala-2.9.1/classes" path="src/main/scala"/>
+	<classpathentry kind="src" output="target/scala-2.9.1/classes" path="src/main/java"/>
+	<classpathentry kind="src" output="target/scala-2.9.1/classes" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/scala-2.9.1/test-classes" path="src/test/scala"/>
+	<classpathentry kind="src" output="target/scala-2.9.1/test-classes" path="src/test/java"/>
+	<classpathentry kind="src" output="target/scala-2.9.1/test-classes" path="src/test/resources"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5.jar" sourcepath="lib_managed/srcs/net.liftmodules/omniauth_2.9.1/omniauth_2.9.1-2.4-0.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-webkit_2.9.1/lift-webkit_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2.jar" sourcepath="lib_managed/srcs/commons-fileupload/commons-fileupload/commons-fileupload-1.2.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-util_2.9.1/lift-util_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-util_2.9.1/lift-util_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/commons-codec/commons-codec/commons-codec-1.4.jar" sourcepath="lib_managed/srcs/commons-codec/commons-codec/commons-codec-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/nu.validator.htmlparser/htmlparser/htmlparser-1.2.1.jar" sourcepath="lib_managed/srcs/nu.validator.htmlparser/htmlparser/htmlparser-1.2.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/javax.mail/mail/mail-1.4.4.jar" sourcepath="lib_managed/srcs/javax.mail/mail/mail-1.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/javax.activation/activation/activation-1.1.jar" sourcepath="lib_managed/srcs/javax.activation/activation/activation-1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/joda-time/joda-time/joda-time-1.6.2.jar" sourcepath="lib_managed/srcs/joda-time/joda-time/joda-time-1.6.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-actor_2.9.1/lift-actor_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-actor_2.9.1/lift-actor_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-common_2.9.1/lift-common_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-common_2.9.1/lift-common_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.slf4j/slf4j-api/slf4j-api-1.6.4.jar" sourcepath="lib_managed/srcs/org.slf4j/slf4j-api/slf4j-api-1.6.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/com.thoughtworks.paranamer/paranamer/paranamer-2.3.jar" sourcepath="lib_managed/srcs/com.thoughtworks.paranamer/paranamer/paranamer-2.3-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.scala-lang/scalap/scalap-2.9.1.jar" sourcepath="lib_managed/srcs/org.scala-lang/scalap/scalap-2.9.1-sources.jar"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-core_2.9.1/dispatch-core_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-core_2.9.1/dispatch-core_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.apache.httpcomponents/httpclient/httpclient-4.1.jar" sourcepath="lib_managed/srcs/org.apache.httpcomponents/httpclient/httpclient-4.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.apache.httpcomponents/httpcore/httpcore-4.1.jar" sourcepath="lib_managed/srcs/org.apache.httpcomponents/httpcore/httpcore-4.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/commons-logging/commons-logging/commons-logging-1.1.1.jar" sourcepath="lib_managed/srcs/commons-logging/commons-logging/commons-logging-1.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-http_2.9.1/dispatch-http_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-http_2.9.1/dispatch-http_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-futures_2.9.1/dispatch-futures_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-futures_2.9.1/dispatch-futures_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-oauth_2.9.1/dispatch-oauth_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-oauth_2.9.1/dispatch-oauth_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-http-json_2.9.1/dispatch-http-json_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-http-json_2.9.1/dispatch-http-json_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.databinder/dispatch-json_2.9.1/dispatch-json_2.9.1-0.8.5.jar" sourcepath="lib_managed/srcs/net.databinder/dispatch-json_2.9.1/dispatch-json_2.9.1-0.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/mysql/mysql-connector-java/mysql-connector-java-5.1.21.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-wizard_2.9.1/lift-wizard_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-db_2.9.1/lift-db_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-textile_2.9.1/lift-textile_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-widgets_2.9.1/lift-widgets_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-mapper_2.9.1/lift-mapper_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4.jar" sourcepath="lib_managed/srcs/net.liftweb/lift-proto_2.9.1/lift-proto_2.9.1-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/com.h2database/h2/h2-1.2.147.jar" sourcepath="lib_managed/srcs/com.h2database/h2/h2-1.2.147-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.apache.derby/derby/derby-10.7.1.1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/ch.qos.logback/logback-classic/logback-classic-0.9.26.jar" sourcepath="lib_managed/srcs/ch.qos.logback/logback-classic/logback-classic-0.9.26-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/ch.qos.logback/logback-core/logback-core-0.9.26.jar" sourcepath="lib_managed/srcs/ch.qos.logback/logback-core/logback-core-0.9.26-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.mortbay.jetty/jetty/jetty-6.1.26.jar" sourcepath="lib_managed/srcs/org.mortbay.jetty/jetty/jetty-6.1.26-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.mortbay.jetty/jetty-util/jetty-util-6.1.26.jar" sourcepath="lib_managed/srcs/org.mortbay.jetty/jetty-util/jetty-util-6.1.26-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.mortbay.jetty/servlet-api/servlet-api-2.5-20081211.jar" sourcepath="lib_managed/srcs/org.mortbay.jetty/servlet-api/servlet-api-2.5-20081211-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/junit/junit/junit-4.7.jar" sourcepath="lib_managed/srcs/junit/junit/junit-4.7-sources.jar"/>
+	<classpathentry kind="lib" path="lib_managed/jars/org.scala-tools.testing/specs_2.9.1/specs_2.9.1-1.6.9.jar" sourcepath="lib_managed/srcs/org.scala-tools.testing/specs_2.9.1/specs_2.9.1-1.6.9-sources.jar"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
