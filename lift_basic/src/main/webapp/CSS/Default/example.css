@@ -116,7 +116,7 @@ body a {
 	width: 1000px;
 	height: auto !important;
 	min-height: 100%;
-	padding-top: 38px;
+	padding-top: 33px;
 	margin: 0 auto;
 	background-color:#F4F7F2;
 
@@ -200,29 +200,22 @@ body a {
 	margin-left: 30px;
 }
 #profile_navigation{
-	position: absolute;
-	margin-top: 100px;
 	background-color: #E8F7DF;
 	width: 100%;
-	min-height: 100%;
 }
 #author_info{
-	position: absolute;
-	width: 100%;
-	left: 0;
-	text-align: center;
-	margin: 5px;
 }
 #author_info .usernam{
 	display: block;
 }
 
 #profile_left{
-	position: absolute;
+	position: fixed;
 	width: 200px;
 	height: 100%;
 	border-right: 1px solid #91AD90;
-	overflow: hidden;
+	overflow: auto;
+	min-height: 100%;
 }
 #profile_right{
 	position: relative;
@@ -255,26 +248,39 @@ body a {
 
 #Menu {
 	position: absolute;
-	right: 0;
-	top: 20px;
+	right: 300px;
+	top: 15px;
 }
 #Profile{
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 5px;
 	max-width: 200px;
 	text-align: center;
+}
+#Profile div >a{
+	text-decoration: none;
+	font-size: 12px;
+	color: white;
+	cursor: pointer;
+}
+#Profile > div{
+	margin-left: 5px;
+	margin-right: 5px;
 }
 #Profile img{
 }
 
-#Profile .userName{
-	width: 100%;
-	font-size: 12px;
-	background-color: #78AA2B;
-	color: white;
-	cursor: pointer;
-	padding: 3px;
+#profile_user_name{
+	display: inline-block;
+}
+#logout_menu_item{
+	display: inline-block;
+}
+.profile_user_icon{
+	height: 20px;
+	width: 20px;
+	margin-right: 10px;
 }
 
 #LoginMenu{
@@ -437,7 +443,8 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 
 #user_login_wrapper{
 	margin: 0 auto;
-	position: relative;
+	position: fixed;
+	width:1000px;
 	text-align: center;
 	background-color: #ACB8AF;
 	z-index: 100;
@@ -546,13 +553,15 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 #slide_open{
 	width: 100%;
 	font-size: 12px;
-	background-color: #78AA2B;
 	color: white;
 	cursor: pointer;
 	padding: 3px;
 }
 .collapse{
 	display:none;
+}
+.expand{
+	display:inline-block;
 }
 
 /*user to hide and show sortable handles*/
@@ -598,7 +607,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 #cometSearchWrapper{
 	position: relative;
 	display: inline-block;
-	left: 300px;
+	left: 200px;
 	top: 15px;
 }
 /* css for sortable place holders  */
@@ -625,3 +634,47 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .sortable-item .aloha-editable-highlight{
 	outline: 2px #ffe767 dotted!important;
 	}
+.edit_button{
+	float: right;
+}
+.fixed_position{
+	position:fixed;
+}
+#compose_toolbar{
+	z-index:50;
+	background-color: #AEBEAE;
+	width: 1000px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#composer-area{
+	margin-top: 40px;
+}
+#compose_toolbar >button{
+	border: none;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	background-color:transparent;
+}
+#compose_toolbar >select{
+	border: none;
+	height: 24px;
+	cursor: pointer;
+}
+#compose_toolbar >.separator{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#btnAddHTML{
+	background-image: url('http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-list-add-font-icon.png');
+}
+#btnAddCode{
+	background-image: url('http://icons.iconarchive.com/icons/awicons/vista-artistic/24/add-icon.png');
+}
+#publish{
+	background-image: url('http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/24/Accept-icon.png');
+}
+#btnDel{
+	background-image: url('http://icons.iconarchive.com/icons/kyo-tux/delikate/24/Close-icon.png');
+}

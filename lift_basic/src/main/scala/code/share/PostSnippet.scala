@@ -9,6 +9,12 @@ import code.model.post.Block
 import scala.xml.Attribute
 import scala.xml.Text
 import scala.xml.Null
+import code.model.User
+import net.liftweb.http.S
+import net.liftweb.http.SHtml
+import net.liftweb.http.js.JsCmds
+import JsCmds.{ Noop, Script }
+import net.liftweb.http.js.JsCommands
 
 object PostSnippet {
   val profileLink = SiteConsts.INDEX_URL + "/" + "profile"
@@ -17,6 +23,7 @@ object PostSnippet {
     "#postTemplate *" #> {
     ".post_wrapper" #> (
       (ns: NodeSeq) => (posts.flatMap(p => (
+        ".edit_button" #> renderEditBtn(p) &
         ".post_author_image [src]" #> (p.getAuthor match {
           case Full(author) =>
             if (author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
@@ -49,7 +56,34 @@ object PostSnippet {
       <div>{xml.Unparsed(block.content.is)}</div>
     } else {
       val text = Option(block.content.is)
-      <textarea class="code-block-fields">{ text.getOrElse("") }</textarea> % Attribute(None, "mode", Text(block.meta.is), Null)
+      //TODO better way to do this?
+      <textarea id="" class="code-block-fields">{ text.getOrElse("") }</textarea> % Attribute(None, "mode", Text(block.meta.is), Null) % Attribute(None,"id",Text(block.id.is.toString()),Null)
     }
   }
+  
+  private def renderEditBtn(post : CodeSnippet):NodeSeq = {
+	  User.currentUser match {
+	    case Full(user) => 
+	      post.getAuthor match{
+	        case Full(author) => 
+	          if(author.id.get == user.id.get) {
+	            // <button>Edit</button> % Attribute(None,"onclick",Text(""), Null)
+	            SHtml.ajaxButton("Edit",() => {
+	              JsCmds.RedirectTo(SiteConsts.EDITPOST_URL + post.id.toString)
+	            })
+	          }else{
+	            NodeSeq.Empty
+	          }
+	        case Empty => NodeSeq.Empty   
+	         case Failure(msg,_,_) =>
+	        	S.error(msg)
+	      		NodeSeq.Empty
+	      }
+	    case Empty => NodeSeq.Empty
+	    case Failure(msg,_,_) =>
+	      S.error(msg)
+	      NodeSeq.Empty
+	  }
+  }
+
 }

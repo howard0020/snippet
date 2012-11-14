@@ -9,6 +9,6 @@ $(document).ready(function() {
 	// Collapse Panel
 	$("#slide_close").click(function(){
 		$("#user_login_wrapper").slideUp("slow");	
-	});		
+	});	
 		
 });

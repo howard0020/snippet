@@ -35,3 +35,6 @@ update
 eclipse with-source=true
 exi
 exit
+update
+eclipse with-source=true
+eclipse

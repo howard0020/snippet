@@ -71,8 +71,7 @@ class PostActor extends CometActor with CometListener {
 
   def registerWith = PostServer
 
-  def render = PostSnippet.render(posts) &
-  				"#initCodeBlock" #> Script(JE.JsRaw(initCodeBlockJS).cmd)
+  def render = PostSnippet.render(posts) &	"#initCodeBlock" #> Script(JE.JsRaw(initCodeBlockJS).cmd)
 
   def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd,
     (SHtml.textarea("", content = _, "id" -> "snippetTextArea")
@@ -107,20 +106,20 @@ class PostActor extends CometActor with CometListener {
       posts = msg
       reRender(false)
     case msg: CodeSnippet =>
-
-      Console.println("=========cometActor.Current Tag Filter>" + currTagFilter.openOr(""))
-      posts = if (msg.tags.exists(tag => tag == currTagFilter.openOr(""))) {
-        Console.println("=========cometActor.CodeSnippet.contain>" + currTagFilter.openOr(""))
-        msg :: posts
-      } else {
-        Console.println("=========cometActor.CodeSnippet.NOTcontain>" + currTagFilter.openOr(""))
-        posts
+      currTagFilter match {
+        case Full(currTag) => 
+        //if there is a tag filter check if the new message have this tag
+        if (msg.tags.exists(tag => tag == currTag)){  
+          posts = msg :: posts
+        }
+        //if no filter are apply add the new message
+        case Empty =>
+          posts = msg :: posts
+        case Failure(msg,_,_) => S.error(msg)
       }
       reRender(false)
     case msg: Box[Tag] => {
-      Console.println("=========cometActor.Box[Tag]>" + msg.openOr(""))
       currTagFilter = msg
-      Console.println("=========cometActor.Current Tag Filter>" + currTagFilter.openOr(""))
       posts = getPosts(msg)
       reRender(false)
       //TODO change reRender to be partialUpdate
@@ -133,8 +132,9 @@ class PostActor extends CometActor with CometListener {
 }
 
 object PostServer extends LiftActor with ListenerManager {
-  var posts: List[CodeSnippet] = CodeSnippet.findAll()
-  def createUpdate = posts
+ // var posts: List[CodeSnippet] = CodeSnippet.findAll().reverse
+ // def createUpdate = posts
+  def createUpdate = Empty
   override def lowPriority = {
     case msg: CodeSnippet => {
       updateListeners(msg)

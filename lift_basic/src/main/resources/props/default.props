@@ -13,6 +13,7 @@ db.password=
 // general urls
 login_url=http://localhost:8080/user_mgt/login
 index_url=http://localhost:8080
+editPost_url=http://localhost:8080/compose/edit/
 
 // general omniauth properties
 omniauth.baseurl=http://localhost:8080/

@@ -6,38 +6,17 @@
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	id="jquery">
- </script>
-<script type="text/javascript">
-    	$(".post_content").click(function(e) 
-			 { 
-			 	var className = $(this).attr("class"); 
-			 	if (className.indexOf("post_collapse") != -1) 
-			 		{$(this).attr("class", "post_content")} 
-			 	else 
-			 		{$(this).attr("class", "post_content post_collapse") } 
-		})
-    </script>
+</script>
+
 </head>
 <body class="lift:content_id=main">
 	<div id="main" class="lift:surround?with=default;at=content">
-		<!-- <script id="JSMain" type="text/javascript" charset="utf-8">
-	    	$(document).ready(function() {				 
-				$(".post_content").click(function(e) 
-				 { 
-				 	var className = $(this).attr("class"); 
-				 	if (className.indexOf("post_collapse") != -1) 
-				 		{$(this).attr("class", "post_content")} 
-				 	else 
-				 		{$(this).attr("class", "post_content post_collapse") } 
-				 });
-			});
-	    </script> -->
+
 		<lift:embed what="/templates-hidden/PopularTag">
 		</lift:embed>
 		
 		<lift:embed what="/templates-hidden/PostWrapper">
 		</lift:embed>
-		
 		
 		<lift:bind-at name="other-footer">
 			<P>Footer from main index file</P>

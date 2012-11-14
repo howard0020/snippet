@@ -68,6 +68,18 @@ class Boot {
         } catch {
           case _ => RewriteResponse("404" :: Nil)
         }
+      case RewriteRequest(ParsePath("compose" :: "edit" :: idString :: Nil, _, _, _), _, _) =>
+        try {
+          val id = idString.toLong
+          CodeSnippet.findByKey(id) match {
+            case Full(post) => 
+              Console.println("=-===>id:"+idString)
+              RewriteResponse("compose" :: "edit" :: Nil, Map("id" -> id.toString))
+            case _ => RewriteResponse("404" :: Nil)
+          }
+        } catch {
+          case _ => RewriteResponse("404" :: Nil)
+        }
     }
 
     // Catch 404s   
@@ -88,8 +100,13 @@ class Boot {
   def initSiteMap {
     var menuItems = List(
       Menu.i("Home") / "index" >> LocGroup("General"), // the simple way to declare a menu
-      //Menu(Loc("AllSnippet", Link(List("AllSnippet"), true, "/AllSnippet/index"), "All Snippet", LocGroup("General"))),
-      Menu.i("New post") / "compose/index"
+
+      Menu.i("Edit post") / "compose" / "edit"
+        >> If(
+          () => User.loggedIn_?,
+          () => RedirectResponse(SiteConsts.LOGIN_URL))
+          >> Hidden,
+      Menu.i("New post") / "compose" / "new"
         >> If(
           () => User.loggedIn_?,
           () => RedirectResponse(SiteConsts.LOGIN_URL))
