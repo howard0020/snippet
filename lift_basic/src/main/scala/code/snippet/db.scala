@@ -1,4 +1,5 @@
 package code.snippet
+
 import scala.xml.NodeSeq
 import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml
@@ -12,6 +13,10 @@ import net.liftweb.http.LiftRules
 import java.io.File
 import net.liftweb.http.js.JsCmds.JsCrVar
 import net.liftweb.http.js.JsCmds.Run
+import net.liftweb.json.Serialization.{read, write}
+import code.model.ToCModel._
+import net.liftweb.http.js.JE.JsRaw
+import scala.xml.Text
 
 class db {
 
@@ -37,7 +42,9 @@ class db {
             val post = CodeSnippet.create
             post.Author.set(user.id)
             post.title.set(line.trim)
+            println("before save")
             post.save
+            println("after save")
           }
           jsUpdatePostCount
         }),
@@ -51,7 +58,18 @@ class db {
         <span id="post_count">Number of Posts in db: {
           CodeSnippet.findAll().length
         }</span>
-      })
+      },
+      "addpost" -> SHtml.ajaxButton("Add Single Post",
+//          <input type="button" value="Delete Post"></input>,
+//          () => Run("$('#post_id').val()"),
+//          (postId:String) => {
+          () => {
+            val post = CodeSnippet.create
+            post.Author.set(user.id)
+            post.title("post")
+            post.save
+            Noop
+          }))
   }
 
   def jsUpdatePostCount = {

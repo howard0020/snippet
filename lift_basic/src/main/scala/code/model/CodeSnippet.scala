@@ -30,7 +30,7 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
 
   def getAuthor: Box[User] = User.findByKey(Author.get)
 
-  // before deleting a post, notify appropriate ToCModel that we are about to delete a post
+  /*  // before deleting a post, notify appropriate ToCModel that we are about to delete a post
   override def delete_! = {
     getAuthor match {
       case Full(user) =>
@@ -40,13 +40,13 @@ class CodeSnippet extends LongKeyedMapper[CodeSnippet] with ManyToMany
         }
       case _ => false
     }
-  }
+  }*/
   //val name = author.username
   //val imgDir = author.iconURL
 
 }
 object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
-									   with CRUDify[Long, CodeSnippet] {
+  with CRUDify[Long, CodeSnippet] {
   override def dbTableName = "Posts"
   //override def pageWrapper(body: NodeSeq) = <lift:surround with="admin" at="content">{body}</lift:surround>
   //override def calcPrefix = List("admin",_dbTableNameLC)
@@ -54,11 +54,22 @@ object CodeSnippet extends CodeSnippet with LongKeyedMetaMapper[CodeSnippet]
 
   // when a new post is created(inserted into database), this method will be called
   override def afterCreate = createPostCallback _ :: super.afterCreate
-  
+
   private def createPostCallback(post: CodeSnippet): Unit = {
-    println("before")
-    post.getAuthor.get.toc.notifyPostAdd(this)
-    println("after")
+    println("before create")
+    val toc = post.getAuthor.get.toc
+    println("save: " + toc.saved_?)
+    toc.notifyPostAdd(post)
+    println("after create")
+  }
+  override def afterDelete = deletePostCallback _ :: super.afterDelete
+
+  private def deletePostCallback(post: CodeSnippet): Unit = {
+    println("before delete")
+    val toc = post.getAuthor.get.toc
+    println("save: " + toc.saved_?)
+    toc.notifyPostDelete(post)
+    println("after delete")
   }
 
   /*  

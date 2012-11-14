@@ -141,7 +141,7 @@ $(document)
 													}
 												}
 												console.log("table of content has been updated on the client");
-												clientToCUpdateListener();
+												clientToCUpdateListener(sourceNode.data.key, node.data.key, hitMode);
 											},
 											onDragLeave : function(node,
 													sourceNode) {

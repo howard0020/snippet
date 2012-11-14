@@ -102,18 +102,26 @@ class User extends MegaProtoUser[User] {
   def toc: ToCModel = {
     ToCModel.find(By(ToCModel.Author, this.id)) match {
       case Full(t) => t
-      case Empty => ToCModel.createFor(this)
+      case Empty => 
+        val toc = ToCModel.create
+        toc.Author.set(this.id)
+        toc.save
+        toc
+        /*CodeSnippet.find(By(CodeSnippet.Author, this)) match {
+          case Empty =>
+            val toc = ToCModel.create
+            toc.Author.set(this.id)
+            toc.save
+            toc
+          case Full(p) =>
+            ToCModel.createFor(this)
+          case Failure(msg, _, _) =>
+            throw new RuntimeException("update_toc")
+        }*/
       case Failure(msg, _, _) =>
         throw new RuntimeException("update_toc")
     }
   }
 
-  def getToCPosts: List[ToCPost] = {
-    toc.getToCPosts
-  }
-
-  def updateToC {
-    toc.updateTitles
-  }
 }
 
