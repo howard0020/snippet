@@ -1,14 +1,14 @@
 // site 5 db
-db.driver=com.mysql.jdbc.Driver
-db.url=jdbc:mysql://173.239.45.59:3306/websolut_snippet
-db.user=websolut_snippet
-db.password=52012345
+//db.driver=com.mysql.jdbc.Driver
+//db.url=jdbc:mysql://173.239.45.59:3306/websolut_snippet
+//db.user=websolut_snippet
+//db.password=52012345
 
 // local db
-//db.driver=com.mysql.jdbc.Driver
-//db.url=jdbc:mysql://localhost:3306/websolut_snippet
-//db.user=root
-//db.password=
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/websolut_snippet
+db.user=root
+db.password=
 
 // general urls
 login_url=http://localhost:8080/user_mgt/login

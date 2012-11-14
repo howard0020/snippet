@@ -1,37 +1,6 @@
 
 <lift:posts.setparam name="PostActor">
-	<!-- Code Mirror Init-->
-		<link class="lift:head" rel="stylesheet"
-			href="/codemirror/theme/eclipse.css" />
-		<script class="lift:head" src="../codemirror/lib/codemirror.js"></script>
-		<link class="lift:head" rel="stylesheet"
-			href="/codemirror/lib/codemirror.css">
-		<script class="lift:head" src="/codemirror/mode/clike/clike.js"></script>
-		<script class="lift:head" src="/codemirror/lib/util/searchcursor.js"></script>
-		<script class="lift:head"
-			src="/codemirror/lib/util/match-highlighter.js"></script>
-		<script class="lift:head" src="/codemirror/lib/util/loadmode.js"></script>
-		<link class="lift:head" rel="stylesheet"
-			href="/CSS/Default/codemirror_default.css">
-		<!-- Code Mirror Init End-->
-	<script class="lift:head" type="text/javascript"
-		src="/scripts/shCore.js"></script>
-	<script class="lift:head" type="text/javascript"
-		src="/scripts/shBrushScala.js"></script>
-	<script class="lift:head" type="text/javascript"
-		src="/scripts/shBrushJScript.js"></script>
-	<script class="lift:head" type="text/javascript"
-		src="/scripts/shBrushJava.js"></script>
-	<script class="lift:head" type="text/javascript"
-		src="/scripts/shBrushXml.js"></script>
-	<link class="lift:head" type="text/css" rel="stylesheet"
-		href="/CSS/SyntaxHighlighter/shCoreDefault.css" />
-	<script class="lift:head" type="text/javascript" 
-		src="/js/codeMirror-modes.js"></script>
-	<script class="lift:head" type="text/javascript" 
-		src="/js/post-wrapper.js"></script>	
 	<lift:comet type="PostActor" name="PostActor" eager_eval="true">
-
 		<lift:test_cond.loggedin>
 			<a href="http://localhost:8080/github">Github Upload</a>
 			<span>Github username: xiaoqiangwu2007@gmail.com password:
@@ -39,7 +8,5 @@
 		</lift:test_cond.loggedin>
 
 		<lift:embed what="/Post"></lift:embed>
-		<script id="initCodeBlock"></script>
-		
 	</lift:comet>
 </lift:posts.setparam>
