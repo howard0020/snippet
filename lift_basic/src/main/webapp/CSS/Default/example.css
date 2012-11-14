@@ -116,10 +116,9 @@ body a {
 	width: 1000px;
 	height: auto !important;
 	min-height: 100%;
-	padding-top: 33px;
 	margin: 0 auto;
 	background-color:#F4F7F2;
-
+	padding-top: 38px;
 }
 
 #left-content-wrapper {
@@ -253,8 +252,8 @@ body a {
 }
 #Profile{
 	position: absolute;
-	right: 0;
-	top: 5px;
+	right: 0px;
+	top: 0px;
 	max-width: 200px;
 	text-align: center;
 }
@@ -265,8 +264,13 @@ body a {
 	cursor: pointer;
 }
 #Profile > div{
-	margin-left: 5px;
-	margin-right: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+	height: 30px;
+	display: inline-block;
+}
+#Profile > div:hover{
+	background-color: gray;
 }
 #Profile img{
 }
@@ -311,6 +315,9 @@ body a {
 	display: block;
 	float: left;
 	padding-left: 18px;
+	height:30px;
+}
+.cssmenu li:hover{
 }
 
 .cssmenu li span {
@@ -325,7 +332,7 @@ body a {
 .cssmenu li a {
 	display: block;
 	float: left;
-	color: darkGray;
+	color: white;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -395,6 +402,12 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	margin-bottom: 2px;
 	border-bottom: 5px solid #E2E9D7;
 }
+.post_wrapper >.edit_button{
+	display:none;
+}
+.post_wrapper:hover >.edit_button{
+	display:inline;
+}
 .post{
 	
 }
@@ -445,8 +458,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	margin: 0 auto;
 	position: fixed;
 	width:1000px;
-	text-align: center;
-	background-color: #ACB8AF;
+	background-color: rgba(99, 104, 100, 0.93);
 	z-index: 100;
 	padding-top: 20px;
 	display: none;
@@ -456,7 +468,6 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .user_form_left{
 	width: 85px;
 	font-weight: bold;
-	color: gray;
 	display: inline-block;
 	text-align: right;
 }
@@ -470,10 +481,11 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	font-size: 14px;
 	font-weight: bold;
 	color: gray;
+	text-decoration: none;
+	border: 1px solid gray;
 }
 .user_form_row{
 	margin-bottom: 10px;
-	color: gray;
 	font-weight: bold;
 	text-align: left;
 }
@@ -484,9 +496,9 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	color:gray;
 }
 .user_login_otherlogin{
-	position: relative;
-	bottom: 30px;
-	right: 70px;
+	position: absolute;
+	bottom: -13px;
+	left: 10px;
 	display: inline-block;
 }
 .user_login_regularlogin{
@@ -503,7 +515,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .user_form_button input{
 	width: 90px;
 	height: 35px;
-	font-size: 16px;
+	font-size: 14px;
 	background-color: #78AA2B;
 	color: white;
 	border: none;
@@ -516,7 +528,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 #user_signup_form{
 	text-align: left;
-	color: gray;
+	color: white;
 	font-weight: bold;
 }
 
@@ -534,11 +546,11 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	display: inline-block;
 	width:33%;
 	vertical-align: top;
-	color: gray;
+	color: white;
 	font-weight: bold;
+	position: relative;
 }
 .user_form_title{
-	color: #628362;
 	font-size: 20px;
 	font-weight: bold;
 	display: block;
@@ -547,15 +559,17 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 #slide_close{
 	cursor: pointer;
-	display:inline-block;
-	color:gray;
+	display: inline-block;
+	color: white;
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
 }
 #slide_open{
 	width: 100%;
 	font-size: 12px;
 	color: white;
 	cursor: pointer;
-	padding: 3px;
 }
 .collapse{
 	display:none;
@@ -574,6 +588,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 .sortable-item:hover > .field-delete {
 	display:inline; 
 }
+
 .handle {
 	display:none;
 	position: absolute;
@@ -646,6 +661,7 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 	width: 1000px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	top: 38px;
 }
 #composer-area{
 	margin-top: 40px;
