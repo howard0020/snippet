@@ -10,8 +10,6 @@ import JsCmds.Noop
 import scala.xml.{NodeSeq}
 import net.liftweb.http.{SessionVar}
 import net.liftweb.http.js.jquery.JqJsCmds.FadeIn
-import scala.swing.TextArea
-import scala.swing.TextArea
 import net.liftweb.util._
 import Helpers._
 import net.liftweb.http.js.JE.JsRaw
