@@ -298,7 +298,60 @@ body a {
 	top: 50%;
 	z-index: 1000;
 }
+.github_repo_row_header{
+	height: 30px;
+	background: -webkit-linear-gradient(top, #C5CCC2, #DBDBDB);
+	background: -moz-linear-gradient(top, #C5CCC2, #DBDBDB);
+	background: -ms-linear-gradient(top, #C5CCC2, #DBDBDB);
+	background: -o-linear-gradient(top, #C5CCC2, #DBDBDB);
+	border-bottom: 1px solid #C4C4C4;
+}
 
+.github_repo_row_header a{
+	display: inline-block;
+	color: #576B5B;
+	text-decoration: none;
+	font-weight: bold;
+	width: 33%;
+	font-size: 14px;
+}
+.github_repo_row{
+	height: 30px;
+	background-color: #F2F2F2;
+	border: 1px solid #C4C4C4;
+	border-top: none;
+}
+
+#github_repo_list_wrapper {
+	padding: 15px;
+}
+.github_repo_row .github_repo_name_wrapper{
+	position: relative;
+}
+.github_repo_row > div{
+	height: 100%;
+	display: inline-block;
+	width:33%;
+}
+.github_repo_row .github_repo_date_wrapper{
+}
+.github_repo_row .github_repo_last_commit_wrapper{
+}
+.github_repo_row .github_repo_name_wrapper .github_repo_name_link{
+	color: #6C90AD;
+	font-size: 14px;
+	position: absolute;
+	top: 6px;
+	left: 30px;
+}
+.github_repo_row .github_repo_name_wrapper .github_repo_name_icon{
+	width: 20px;
+	height: 20px;
+	border: 1px solid #6C90AD;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+}
 .cssmenu {
 }
 
@@ -657,11 +710,16 @@ form[action="/user_mgt/lost_password"] table tbody tr td {
 }
 #compose_toolbar{
 	z-index:50;
-	background-color: #AEBEAE;
+	background-color: #525050;
 	width: 1000px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	top: 38px;
+	background: -webkit-linear-gradient(top, #525050, #F4F7F2);
+	background: -moz-linear-gradient(top, #525050, #F4F7F2);
+	background: -ms-linear-gradient(top, #525050, #F4F7F2);
+	background: -o-linear-gradient(top, #525050, #F4F7F2);
+	border-bottom: 1px solid #ECECEC;
 }
 #composer-area{
 	margin-top: 40px;

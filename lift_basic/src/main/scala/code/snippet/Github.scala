@@ -38,9 +38,12 @@ class Github {
   
   def repos = {    
     val repos = GhRepository.get_user_repos(ghUser.login, ghUser.access_token)
-    ".repo_item" #> repos.map((r) =>
-      ".repo_link *" #> r.name &
-        ".repo_link [href]" #> (GitHub.GH_INDEX_NAME + "/" + r.name))
+    ".github_repo_row *" #> repos.map((r) => 
+      ".github_repo_name_link *" #> r.name &
+        ".github_repo_name_link [href]" #> (GitHub.GH_INDEX_NAME + "/" + r.name) &
+      ".github_repo_date_link *" #> "11-11-111" & 
+      ".github_repo_last_commit_comment_link *" #> "Changed CSS and fixed a lot of things"
+      )
   }
 }
 
