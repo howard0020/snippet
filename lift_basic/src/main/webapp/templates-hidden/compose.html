@@ -7,8 +7,7 @@
 	<div id="main" class="lift:surround?with=default;at=content">
 		<script class="lift:head" id="composeJS" src="/js/compose-post.js"
 			type="text/javascript"></script>
-		<script class="lift:head"
-			src="/js/jquery.tools.min.js"></script>
+		<script class="lift:head" src="/js/jquery.tools.validator.min.js"></script>
 		<!-- Code Mirror Init-->
 		<script class="lift:head" src="/js/codeMirror-modes.js"></script>
 		<link class="lift:head" rel="stylesheet"
@@ -25,8 +24,8 @@
 			href="/CSS/Default/codemirror_default.css">
 		<!-- Code Mirror Init End-->
 		<!-- Aloha Editor Init-->
-
-		<link class="lift:head" rel="stylesheet" href="/aloha/css/aloha.css" type="text/css">
+		<link class="lift:head" rel="stylesheet" href="/aloha/css/aloha.css"
+			type="text/css">
 		<script class="lift:head" src="/aloha/lib/require.js"></script>
 		<script class="lift:head" type="text/javascript">
 			var editorCount = 3;
@@ -93,7 +92,7 @@
 		                        extra/htmlsource">
 			
 		</script>
-		<script type="text/javascript">
+		<script class="lift:head" type="text/javascript">
 			window.codeEditors = new Object();
 	
 			Aloha.ready(function() {
@@ -126,25 +125,23 @@
 			<span class="separator">|</span>
 			<button id="btnAddHTML"></button>
 			<button id="btnDel"></button>
-			<span class="separator">|</span>		
+			<span class="separator">|</span>
 			<button id="publish" onclick="$('#next').click();"></button>
 		</div>
 		<div id="composer-area" class="sortable">
-				<!-- Form for the whole post -->
+			<!-- Form for the whole post -->
 			<form action="#">
 				<div class="lift:post_form" id="editor_form_wrapper">
 					<br>
 					<h2>
 						<input type="text" id="post_title" required="required"
 							class="field-content title-field" name="title"
-							placeholder="Post Title" value=""></input>
+							placeholder="Post Title"></input>
 					</h2>
 					<br> <br>
-					<div id="editor-sort">
-
-					</div>
+					<div id="editor-sort"></div>
 					<div>
-						<button hidden="true" id="next" value="Submit" type="button" class="btn">
+						<button id="next" value="Submit" type="button" class="btn">
 							<Lift:Loc>Finish</Lift:Loc>
 						</button>
 					</div>

@@ -1,0 +1,9 @@
+help
+update
+help
+sbt
+sbt package
+package
+exit
+package-war
+exit
