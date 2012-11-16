@@ -306,6 +306,10 @@ body a {
 	background: -o-linear-gradient(top, #C5CCC2, #DBDBDB);
 	border-bottom: 1px solid #C4C4C4;
 }
+.github_repo_row_header tr th{
+	padding: 5px 0 5px 0;
+text-align: center;
+}
 
 .github_repo_row_header a{
 	display: inline-block;
@@ -324,33 +328,20 @@ body a {
 
 #github_repo_list_wrapper {
 	padding: 15px;
+	width:100%;
 }
 .github_repo_row .github_repo_name_wrapper{
 	position: relative;
 }
-.github_repo_row > div{
-	height: 100%;
-	display: inline-block;
-	width:33%;
-}
-.github_repo_row .github_repo_date_wrapper{
-}
-.github_repo_row .github_repo_last_commit_wrapper{
-}
 .github_repo_row .github_repo_name_wrapper .github_repo_name_link{
 	color: #6C90AD;
 	font-size: 14px;
-	position: absolute;
-	top: 6px;
-	left: 30px;
 }
 .github_repo_row .github_repo_name_wrapper .github_repo_name_icon{
 	width: 20px;
 	height: 20px;
 	border: 1px solid #6C90AD;
-	position: absolute;
-	top: 3px;
-	left: 3px;
+	vertical-align: top;
 }
 .cssmenu {
 }
