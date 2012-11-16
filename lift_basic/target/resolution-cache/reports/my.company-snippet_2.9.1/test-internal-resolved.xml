@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="my.company"
+		module="snippet_2.9.1"
+		revision="0.1-SNAPSHOT"
+		conf="test-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
+		date="20121115202335"/>
+	<dependencies>
+		<module organisation="ch.qos.logback" name="logback-classic">
+			<revision name="0.9.26" status="release" pubdate="20101020174135" resolver="public" artresolver="public" homepage="http://logback.qos.ch" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="35">
+				<license name="Eclipse Public License - v 1.0" url="http://www.eclipse.org/legal/epl-v10.html"/>
+				<license name="GNU Lesser General Public License" url="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"/>
+				<metadata-artifact status="successful" details="" size="11583" time="334" location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-classic\ivy-0.9.26.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-classic\ivy-0.9.26.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/ch/qos/logback/logback-classic/0.9.26/logback-classic-0.9.26.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="0.9.26" rev-constraint-default="0.9.26" rev-constraint-dynamic="0.9.26" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="logback-classic" type="jar" ext="jar" status="successful" details="" size="243484" time="412" location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-classic\jars\logback-classic-0.9.26.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/ch/qos/logback/logback-classic/0.9.26/logback-classic-0.9.26.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="ch.qos.logback" name="logback-core">
+			<revision name="0.9.26" status="release" pubdate="20101020174043" resolver="public" artresolver="public" homepage="http://logback.qos.ch" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="36">
+				<license name="Eclipse Public License - v 1.0" url="http://www.eclipse.org/legal/epl-v10.html"/>
+				<license name="GNU Lesser General Public License" url="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"/>
+				<metadata-artifact status="successful" details="" size="5007" time="828" location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-core\ivy-0.9.26.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-core\ivy-0.9.26.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/ch/qos/logback/logback-core/0.9.26/logback-core-0.9.26.pom"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="0.9.26" rev-constraint-default="0.9.26" rev-constraint-dynamic="0.9.26" callerrev="0.9.26"/>
+				<artifacts>
+					<artifact name="logback-core" type="jar" ext="jar" status="successful" details="" size="301051" time="491" location="C:\Users\howard\.ivy2\cache\ch.qos.logback\logback-core\jars\logback-core-0.9.26.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/ch/qos/logback/logback-core/0.9.26/logback-core-0.9.26.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-mapper_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101080426" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="31">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2956" time="508" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-mapper_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-mapper_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-mapper_2.9.1/2.4/lift-mapper_2.9.1-2.4.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="lift-mapper_2.9.1" type="jar" ext="jar" status="successful" details="" size="1485503" time="2079" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-mapper_2.9.1\jars\lift-mapper_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-mapper_2.9.1/2.4/lift-mapper_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-proto_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101080025" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="32">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2335" time="322" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-proto_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-proto_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-proto_2.9.1/2.4/lift-proto_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-mapper_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-proto_2.9.1" type="jar" ext="jar" status="successful" details="" size="243029" time="874" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-proto_2.9.1\jars\lift-proto_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-proto_2.9.1/2.4/lift-proto_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.derby" name="derby">
+			<revision name="10.7.1.1" status="release" pubdate="20101214111424" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="34">
+				<metadata-artifact status="successful" details="" size="2612" time="307" location="C:\Users\howard\.ivy2\cache\org.apache.derby\derby\ivy-10.7.1.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.apache.derby\derby\ivy-10.7.1.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/derby/derby/10.7.1.1/derby-10.7.1.1.pom"/>
+				<caller organisation="net.liftweb" name="lift-mapper_2.9.1" conf="default, compile, runtime, master" rev="10.7.1.1" rev-constraint-default="10.7.1.1" rev-constraint-dynamic="10.7.1.1" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="derby" type="jar" ext="jar" status="successful" details="" size="2635657" time="4608" location="C:\Users\howard\.ivy2\cache\org.apache.derby\derby\jars\derby-10.7.1.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/derby/derby/10.7.1.1/derby-10.7.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.h2database" name="h2">
+			<revision name="1.2.147" status="release" pubdate="20101121124116" resolver="public" artresolver="public" homepage="http://www.h2database.com" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, master(*), runtime, compile(*), runtime(*), master" position="33">
+				<license name="The H2 License, Version 1.0" url="http://h2database.com/html/license.html"/>
+				<metadata-artifact status="successful" details="" size="670" time="239" location="C:\Users\howard\.ivy2\cache\com.h2database\h2\ivy-1.2.147.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\com.h2database\h2\ivy-1.2.147.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/h2database/h2/1.2.147/h2-1.2.147.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="1.2.147" rev-constraint-default="1.2.147" rev-constraint-dynamic="1.2.147" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="net.liftweb" name="lift-mapper_2.9.1" conf="default, compile, runtime, master" rev="1.2.147" rev-constraint-default="1.2.147" rev-constraint-dynamic="1.2.147" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="h2" type="jar" ext="jar" status="successful" details="" size="1217057" time="1576" location="C:\Users\howard\.ivy2\cache\com.h2database\h2\jars\h2-1.2.147.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/h2database/h2/1.2.147/h2-1.2.147.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-widgets_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120112132227" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="30">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2753" time="349" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-widgets_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-widgets_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-widgets_2.9.1/2.4/lift-widgets_2.9.1-2.4.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="lift-widgets_2.9.1" type="jar" ext="jar" status="successful" details="" size="576902" time="1097" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-widgets_2.9.1\jars\lift-widgets_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-widgets_2.9.1/2.4/lift-widgets_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-textile_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120112132132" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="default, compile, runtime, master" position="29">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2339" time="392" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-textile_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-textile_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-textile_2.9.1/2.4/lift-textile_2.9.1-2.4.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="lift-textile_2.9.1" type="jar" ext="jar" status="successful" details="" size="670087" time="1646" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-textile_2.9.1\jars\lift-textile_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-textile_2.9.1/2.4/lift-textile_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-wizard_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101080757" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="default, compile, runtime, master" position="27">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2545" time="330" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-wizard_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-wizard_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-wizard_2.9.1/2.4/lift-wizard_2.9.1-2.4.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="lift-wizard_2.9.1" type="jar" ext="jar" status="successful" details="" size="94747" time="876" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-wizard_2.9.1\jars\lift-wizard_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-wizard_2.9.1/2.4/lift-wizard_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-db_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101080013" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="28">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2743" time="393" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-db_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-db_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-db_2.9.1/2.4/lift-db_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-mapper_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-wizard_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-db_2.9.1" type="jar" ext="jar" status="successful" details="" size="316393" time="669" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-db_2.9.1\jars\lift-db_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-db_2.9.1/2.4/lift-db_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="mysql" name="mysql-connector-java">
+			<revision name="5.1.21" status="release" pubdate="20120621094202" resolver="public" artresolver="public" homepage="http://dev.mysql.com/usingmysql/java/" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="26">
+				<license name="The GNU General Public License, Version 2" url="http://www.gnu.org/licenses/gpl.txt"/>
+				<metadata-artifact status="successful" details="" size="1263" time="120" location="C:\Users\howard\.ivy2\cache\mysql\mysql-connector-java\ivy-5.1.21.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\mysql\mysql-connector-java\ivy-5.1.21.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="5.1.21" rev-constraint-default="5.1.21" rev-constraint-dynamic="5.1.21" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="mysql-connector-java" type="jar" ext="jar" status="successful" details="" size="827942" time="1182" location="C:\Users\howard\.ivy2\cache\mysql\mysql-connector-java\jars\mysql-connector-java-5.1.21.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftmodules" name="omniauth_2.9.1">
+			<revision name="2.4-0.5" status="release" pubdate="20120116120813" resolver="Omniauth repo" artresolver="Omniauth repo" homepage="" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="1">
+				<metadata-artifact status="successful" details="" size="2214" time="188" location="C:\Users\howard\.ivy2\cache\net.liftmodules\omniauth_2.9.1\ivy-2.4-0.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftmodules\omniauth_2.9.1\ivy-2.4-0.5.xml.original" origin-is-local="false" origin-location="https://repository-liftmodules.forge.cloudbees.com/release/net/liftmodules/omniauth_2.9.1/2.4-0.5/omniauth_2.9.1-2.4-0.5.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4-0.5" rev-constraint-default="2.4-0.5" rev-constraint-dynamic="2.4-0.5" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="omniauth_2.9.1" type="jar" ext="jar" status="successful" details="" size="140675" time="805" location="C:\Users\howard\.ivy2\cache\net.liftmodules\omniauth_2.9.1\jars\omniauth_2.9.1-2.4-0.5.jar">
+						<origin-location is-local="false" location="https://repository-liftmodules.forge.cloudbees.com/release/net/liftmodules/omniauth_2.9.1/2.4-0.5/omniauth_2.9.1-2.4-0.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-http-json_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151105" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="24">
+				<metadata-artifact status="successful" details="" size="1814" time="344" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http-json_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http-json_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-http-json_2.9.1/0.8.5/dispatch-http-json_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="2.4-0.5"/>
+				<artifacts>
+					<artifact name="dispatch-http-json_2.9.1" type="jar" ext="jar" status="successful" details="" size="6322" time="254" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http-json_2.9.1\jars\dispatch-http-json_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-http-json_2.9.1/0.8.5/dispatch-http-json_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-json_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151042" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="25">
+				<metadata-artifact status="successful" details="" size="1373" time="353" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-json_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-json_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-json_2.9.1/0.8.5/dispatch-json_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.databinder" name="dispatch-http-json_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<artifacts>
+					<artifact name="dispatch-json_2.9.1" type="jar" ext="jar" status="successful" details="" size="100934" time="438" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-json_2.9.1\jars\dispatch-json_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-json_2.9.1/0.8.5/dispatch-json_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-oauth_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151109" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="23">
+				<metadata-artifact status="successful" details="" size="1810" time="415" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-oauth_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-oauth_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-oauth_2.9.1/0.8.5/dispatch-oauth_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="2.4-0.5"/>
+				<artifacts>
+					<artifact name="dispatch-oauth_2.9.1" type="jar" ext="jar" status="successful" details="" size="35423" time="589" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-oauth_2.9.1\jars\dispatch-oauth_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-oauth_2.9.1/0.8.5/dispatch-oauth_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-http_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151100" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="21">
+				<metadata-artifact status="successful" details="" size="1812" time="268" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-http_2.9.1/0.8.5/dispatch-http_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="2.4-0.5"/>
+				<caller organisation="net.databinder" name="dispatch-oauth_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<artifacts>
+					<artifact name="dispatch-http_2.9.1" type="jar" ext="jar" status="successful" details="" size="27281" time="268" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-http_2.9.1\jars\dispatch-http_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-http_2.9.1/0.8.5/dispatch-http_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-futures_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151036" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="22">
+				<metadata-artifact status="successful" details="" size="1376" time="412" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-futures_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-futures_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-futures_2.9.1/0.8.5/dispatch-futures_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<artifacts>
+					<artifact name="dispatch-futures_2.9.1" type="jar" ext="jar" status="successful" details="" size="13184" time="199" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-futures_2.9.1\jars\dispatch-futures_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-futures_2.9.1/0.8.5/dispatch-futures_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-core_2.9.1">
+			<revision name="0.8.5" status="release" pubdate="20110831151054" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="17">
+				<metadata-artifact status="successful" details="" size="1373" time="363" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-core_2.9.1\ivy-0.8.5.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-core_2.9.1\ivy-0.8.5.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-core_2.9.1/0.8.5/dispatch-core_2.9.1-0.8.5.pom"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="2.4-0.5"/>
+				<caller organisation="net.databinder" name="dispatch-oauth_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-http-json_2.9.1" conf="compile, runtime" rev="0.8.5" rev-constraint-default="0.8.5" rev-constraint-dynamic="0.8.5" callerrev="0.8.5"/>
+				<artifacts>
+					<artifact name="dispatch-core_2.9.1" type="jar" ext="jar" status="successful" details="" size="114149" time="236" location="C:\Users\howard\.ivy2\cache\net.databinder\dispatch-core_2.9.1\jars\dispatch-core_2.9.1-0.8.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-core_2.9.1/0.8.5/dispatch-core_2.9.1-0.8.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.httpcomponents" name="httpclient">
+			<revision name="4.1" status="release" pubdate="20110117151802" resolver="public" artresolver="public" homepage="http://hc.apache.org/httpcomponents-client" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="18">
+				<metadata-artifact status="successful" details="" size="6035" time="135" location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpclient\ivy-4.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpclient\ivy-4.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.1/httpclient-4.1.pom"/>
+				<caller organisation="net.databinder" name="dispatch-core_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-oauth_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-json_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-futures_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-http-json_2.9.1" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="0.8.5"/>
+				<artifacts>
+					<artifact name="httpclient" type="jar" ext="jar" status="successful" details="" size="349959" time="539" location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpclient\jars\httpclient-4.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.1/httpclient-4.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-logging" name="commons-logging">
+			<revision name="1.1.1" status="release" pubdate="20071126152410" resolver="public" artresolver="public" homepage="http://commons.apache.org/logging" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="20">
+				<metadata-artifact status="successful" details="" size="18365" time="117" location="C:\Users\howard\.ivy2\cache\commons-logging\commons-logging\ivy-1.1.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\commons-logging\commons-logging\ivy-1.1.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="4.1"/>
+				<artifacts>
+					<artifact name="commons-logging" type="jar" ext="jar" status="successful" details="" size="60686" time="204" location="C:\Users\howard\.ivy2\cache\commons-logging\commons-logging\jars\commons-logging-1.1.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.httpcomponents" name="httpcore">
+			<revision name="4.1" status="release" pubdate="20101113141134" resolver="public" artresolver="public" homepage="http://hc.apache.org/httpcomponents-core-ga/" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="19">
+				<metadata-artifact status="successful" details="" size="8358" time="150" location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpcore\ivy-4.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpcore\ivy-4.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.pom"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="4.1" rev-constraint-default="4.1" rev-constraint-dynamic="4.1" callerrev="4.1"/>
+				<artifacts>
+					<artifact name="httpcore" type="jar" ext="jar" status="successful" details="" size="181041" time="361" location="C:\Users\howard\.ivy2\cache\org.apache.httpcomponents\httpcore\jars\httpcore-4.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-webkit_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101075252" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, master(*), runtime, compile(*), runtime(*), master" position="2">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="3631" time="131" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-webkit_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-webkit_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-webkit_2.9.1/2.4/lift-webkit_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4-0.5"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="net.liftweb" name="lift-widgets_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-proto_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-wizard_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-webkit_2.9.1" type="jar" ext="jar" status="successful" details="" size="5260061" time="8083" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-webkit_2.9.1\jars\lift-webkit_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-webkit_2.9.1/2.4/lift-webkit_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-util_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101074142" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="4">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="3781" time="501" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-util_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-util_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-util_2.9.1/2.4/lift-util_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-webkit_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-db_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-textile_2.9.1" conf="default, compile, runtime, master" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-util_2.9.1" type="jar" ext="jar" status="successful" details="" size="1658399" time="2063" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-util_2.9.1\jars\lift-util_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-util_2.9.1/2.4/lift-util_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-json_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101073738" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="13">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2544" time="137" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-json_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-json_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-json_2.9.1/2.4/lift-json_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-json_2.9.1" type="jar" ext="jar" status="successful" details="" size="450627" time="1233" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-json_2.9.1\jars\lift-json_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-json_2.9.1/2.4/lift-json_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scalap">
+			<revision name="2.9.1" status="release" pubdate="20110831044129" resolver="public" artresolver="public" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="15">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
+			"/>
+				<metadata-artifact status="successful" details="" size="1515" time="171" location="C:\Users\howard\.ivy2\cache\org.scala-lang\scalap\ivy-2.9.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.scala-lang\scalap\ivy-2.9.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.9.1/scalap-2.9.1.pom"/>
+				<caller organisation="net.liftweb" name="lift-json_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="scalap" type="jar" ext="jar" status="successful" details="" size="841814" time="2451" location="C:\Users\howard\.ivy2\cache\org.scala-lang\scalap\jars\scalap-2.9.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.9.1/scalap-2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.thoughtworks.paranamer" name="paranamer">
+			<revision name="2.3" status="release" pubdate="20101019091431" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="14">
+				<metadata-artifact status="successful" details="" size="1591" time="142" location="C:\Users\howard\.ivy2\cache\com.thoughtworks.paranamer\paranamer\ivy-2.3.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\com.thoughtworks.paranamer\paranamer\ivy-2.3.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.3/paranamer-2.3.pom"/>
+				<caller organisation="net.liftweb" name="lift-json_2.9.1" conf="compile, runtime" rev="2.3" rev-constraint-default="2.3" rev-constraint-dynamic="2.3" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="paranamer" type="jar" ext="jar" status="successful" details="" size="29555" time="167" location="C:\Users\howard\.ivy2\cache\com.thoughtworks.paranamer\paranamer\jars\paranamer-2.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.3/paranamer-2.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-actor_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101073745" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="10">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2335" time="206" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-actor_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-actor_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-actor_2.9.1/2.4/lift-actor_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-actor_2.9.1" type="jar" ext="jar" status="successful" details="" size="85997" time="575" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-actor_2.9.1\jars\lift-actor_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-actor_2.9.1/2.4/lift-actor_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.liftweb" name="lift-common_2.9.1">
+			<revision name="2.4" status="release" pubdate="20120101073428" resolver="public" artresolver="public" homepage="http://www.liftweb.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="11">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2742" time="467" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-common_2.9.1\ivy-2.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-common_2.9.1\ivy-2.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/liftweb/lift-common_2.9.1/2.4/lift-common_2.9.1-2.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-actor_2.9.1" conf="compile, runtime" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="lift-common_2.9.1" type="jar" ext="jar" status="successful" details="" size="181822" time="497" location="C:\Users\howard\.ivy2\cache\net.liftweb\lift-common_2.9.1\jars\lift-common_2.9.1-2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/liftweb/lift-common_2.9.1/2.4/lift-common_2.9.1-2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.6.4" status="release" pubdate="20111031184538" resolver="public" artresolver="public" homepage="http://www.slf4j.org" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="12">
+				<metadata-artifact status="successful" details="" size="2689" time="91" location="C:\Users\howard\.ivy2\cache\org.slf4j\slf4j-api\ivy-1.6.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.slf4j\slf4j-api\ivy-1.6.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-common_2.9.1" conf="compile, runtime" rev="1.6.4" rev-constraint-default="1.6.4" rev-constraint-dynamic="1.6.4" callerrev="2.4"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="0.9.26"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="successful" details="" size="25962" time="171" location="C:\Users\howard\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.6.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.6.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="-1">
+				<evicted-by rev="1.6.4"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="0.9.26"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="1.6.2" status="release" pubdate="20100913190700" resolver="public" artresolver="public" homepage="http://joda-time.sourceforge.net" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="9">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="13994" time="240" location="C:\Users\howard\.ivy2\cache\joda-time\joda-time\ivy-1.6.2.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\joda-time\joda-time\ivy-1.6.2.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/joda-time/joda-time/1.6.2/joda-time-1.6.2.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="1.6.2" rev-constraint-default="1.6.2" rev-constraint-dynamic="1.6.2" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="successful" details="" size="543044" time="887" location="C:\Users\howard\.ivy2\cache\joda-time\joda-time\jars\joda-time-1.6.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.mail" name="mail">
+			<revision name="1.4.4" status="release" pubdate="20110127145123" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="7">
+				<metadata-artifact status="successful" details="" size="4712" time="188" location="C:\Users\howard\.ivy2\cache\javax.mail\mail\ivy-1.4.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\javax.mail\mail\ivy-1.4.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/javax/mail/mail/1.4.4/mail-1.4.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="1.4.4" rev-constraint-default="1.4.4" rev-constraint-dynamic="1.4.4" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="mail" type="jar" ext="jar" status="successful" details="" size="494924" time="844" location="C:\Users\howard\.ivy2\cache\javax.mail\mail\jars\mail-1.4.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/javax/mail/mail/1.4.4/mail-1.4.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.activation" name="activation">
+			<revision name="1.1" status="release" pubdate="20060502194829" resolver="public" artresolver="public" homepage="http://java.sun.com/products/javabeans/jaf/index.jsp" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="8">
+				<license name="Common Development and Distribution License (CDDL) v1.0" url="https://glassfish.dev.java.net/public/CDDLv1.0.html"/>
+				<metadata-artifact status="successful" details="" size="1058" time="79" location="C:\Users\howard\.ivy2\cache\javax.activation\activation\ivy-1.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\javax.activation\activation\ivy-1.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/javax/activation/activation/1.1/activation-1.1.pom"/>
+				<caller organisation="javax.mail" name="mail" conf="compile, runtime" rev="1.1" rev-constraint-default="1.1" rev-constraint-dynamic="1.1" callerrev="1.4.4"/>
+				<artifacts>
+					<artifact name="activation" type="jar" ext="jar" status="successful" details="" size="62983" time="232" location="C:\Users\howard\.ivy2\cache\javax.activation\activation\jars\activation-1.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/javax/activation/activation/1.1/activation-1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="nu.validator.htmlparser" name="htmlparser">
+			<revision name="1.2.1" status="release" pubdate="20100225012156" resolver="public" artresolver="public" homepage="http://about.validator.nu/htmlparser/" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="6">
+				<license name="The MIT License" url="http://www.opensource.org/licenses/mit-license.php"/>
+				<license name="The (New) BSD License" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="successful" details="" size="4668" time="392" location="C:\Users\howard\.ivy2\cache\nu.validator.htmlparser\htmlparser\ivy-1.2.1.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\nu.validator.htmlparser\htmlparser\ivy-1.2.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/nu/validator/htmlparser/htmlparser/1.2.1/htmlparser-1.2.1.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="1.2.1" rev-constraint-default="1.2.1" rev-constraint-dynamic="1.2.1" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="htmlparser" type="jar" ext="jar" status="successful" details="" size="267673" time="625" location="C:\Users\howard\.ivy2\cache\nu.validator.htmlparser\htmlparser\jars\htmlparser-1.2.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/nu/validator/htmlparser/htmlparser/1.2.1/htmlparser-1.2.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-codec" name="commons-codec">
+			<revision name="1.4" status="release" pubdate="20090809172217" resolver="public" artresolver="public" homepage="http://commons.apache.org/codec/" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="5">
+				<metadata-artifact status="successful" details="" size="10494" time="208" location="C:\Users\howard\.ivy2\cache\commons-codec\commons-codec\ivy-1.4.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\commons-codec\commons-codec\ivy-1.4.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/commons-codec/commons-codec/1.4/commons-codec-1.4.pom"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="1.4" rev-constraint-default="1.4" rev-constraint-dynamic="1.4" callerrev="2.4"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="1.4" rev-constraint-default="1.4" rev-constraint-dynamic="1.4" callerrev="4.1"/>
+				<artifacts>
+					<artifact name="commons-codec" type="jar" ext="jar" status="successful" details="" size="58160" time="181" location="C:\Users\howard\.ivy2\cache\commons-codec\commons-codec\jars\commons-codec-1.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-codec/commons-codec/1.4/commons-codec-1.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mortbay.jetty" name="jetty">
+			<revision name="6.1.26" status="release" pubdate="20101110164054" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="37">
+				<metadata-artifact status="successful" details="" size="6259" time="900" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty\ivy-6.1.26.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty\ivy-6.1.26.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/mortbay/jetty/jetty/6.1.26/jetty-6.1.26.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="6.1.26" rev-constraint-default="6.1.26" rev-constraint-dynamic="6.1.26" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="jetty" type="jar" ext="jar" status="successful" details="" size="539912" time="638" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty\jars\jetty-6.1.26.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/mortbay/jetty/jetty/6.1.26/jetty-6.1.26.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mortbay.jetty" name="jetty-util">
+			<revision name="6.1.26" status="release" pubdate="20101110163810" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="38">
+				<metadata-artifact status="successful" details="" size="3876" time="116" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty-util\ivy-6.1.26.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty-util\ivy-6.1.26.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.pom"/>
+				<caller organisation="org.mortbay.jetty" name="jetty" conf="default, compile, runtime, master" rev="6.1.26" rev-constraint-default="6.1.26" rev-constraint-dynamic="6.1.26" callerrev="6.1.26"/>
+				<artifacts>
+					<artifact name="jetty-util" type="jar" ext="jar" status="successful" details="" size="177131" time="466" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\jetty-util\jars\jetty-util-6.1.26.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mortbay.jetty" name="servlet-api">
+			<revision name="2.5-20081211" status="release" pubdate="20081211123400" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="39">
+				<metadata-artifact status="successful" details="" size="2677" time="709" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\servlet-api\ivy-2.5-20081211.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\servlet-api\ivy-2.5-20081211.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.pom"/>
+				<caller organisation="org.mortbay.jetty" name="jetty" conf="default, compile, runtime, master" rev="2.5-20081211" rev-constraint-default="2.5-20081211" rev-constraint-dynamic="2.5-20081211" callerrev="6.1.26"/>
+				<artifacts>
+					<artifact name="servlet-api" type="jar" ext="jar" status="successful" details="" size="134133" time="440" location="C:\Users\howard\.ivy2\cache\org.mortbay.jetty\servlet-api\jars\servlet-api-2.5-20081211.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.testing" name="specs_2.9.1">
+			<revision name="1.6.9" status="release" pubdate="20110902021351" resolver="public" artresolver="public" homepage="http://code.google.com/p/specs/" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="41">
+				<license name="MIT License" url="http://www.opensource.org/licenses/mit-license.php"/>
+				<metadata-artifact status="successful" details="" size="13285" time="243" location="C:\Users\howard\.ivy2\cache\org.scala-tools.testing\specs_2.9.1\ivy-1.6.9.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\org.scala-tools.testing\specs_2.9.1\ivy-1.6.9.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-tools/testing/specs_2.9.1/1.6.9/specs_2.9.1-1.6.9.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="1.6.9" rev-constraint-default="1.6.9" rev-constraint-dynamic="1.6.9" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="specs_2.9.1" type="jar" ext="jar" status="successful" details="" size="2894790" time="3270" location="C:\Users\howard\.ivy2\cache\org.scala-tools.testing\specs_2.9.1\jars\specs_2.9.1-1.6.9.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-tools/testing/specs_2.9.1/1.6.9/specs_2.9.1-1.6.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="junit" name="junit">
+			<revision name="4.7" status="release" pubdate="20090812115407" resolver="public" artresolver="public" homepage="http://junit.org" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="40">
+				<license name="Common Public License Version 1.0" url="http://www.opensource.org/licenses/cpl1.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1206" time="147" location="C:\Users\howard\.ivy2\cache\junit\junit\ivy-4.7.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\junit\junit\ivy-4.7.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/junit/junit/4.7/junit-4.7.pom"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="4.7" rev-constraint-default="4.7" rev-constraint-dynamic="4.7" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="junit" type="jar" ext="jar" status="successful" details="" size="232354" time="458" location="C:\Users\howard\.ivy2\cache\junit\junit\jars\junit-4.7.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/junit/junit/4.7/junit-4.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-compiler">
+			<revision name="2.9.1" status="release" pubdate="20110831044108" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="16">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2635" time="0" location="C:\Users\howard\.ivy2\cache\org.scala-lang\scala-compiler\ivy-2.9.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1.pom"/>
+				<caller organisation="org.scala-lang" name="scalap" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.9.1"/>
+				<caller organisation="org.scala-tools.testing" name="specs_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="1.6.9"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-fileupload" name="commons-fileupload">
+			<revision name="1.2.2" status="release" pubdate="20100729164112" resolver="public" artresolver="public" homepage="http://commons.apache.org/fileupload/" downloaded="true" searched="true" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="3">
+				<metadata-artifact status="successful" details="" size="8863" time="126" location="C:\Users\howard\.ivy2\cache\commons-fileupload\commons-fileupload\ivy-1.2.2.xml" searched="true" original-local-location="C:\Users\howard\.ivy2\cache\commons-fileupload\commons-fileupload\ivy-1.2.2.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.pom"/>
+				<caller organisation="net.liftweb" name="lift-webkit_2.9.1" conf="compile, runtime" rev="1.2.2" rev-constraint-default="1.2.2" rev-constraint-dynamic="1.2.2" callerrev="2.4"/>
+				<artifacts>
+					<artifact name="commons-fileupload" type="jar" ext="jar" status="successful" details="" size="59590" time="194" location="C:\Users\howard\.ivy2\cache\commons-fileupload\commons-fileupload\jars\commons-fileupload-1.2.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.9.1" status="release" pubdate="20110831043953" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, master(*), compile(*), runtime, runtime(*), master" position="0">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2349" time="0" location="C:\Users\howard\.ivy2\cache\org.scala-lang\scala-library\ivy-2.9.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.pom"/>
+				<caller organisation="net.liftweb" name="lift-common_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-json_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftmodules" name="omniauth_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4-0.5"/>
+				<caller organisation="net.databinder" name="dispatch-core_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<caller organisation="net.liftweb" name="lift-proto_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.9.1"/>
+				<caller organisation="net.liftweb" name="lift-mapper_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-util_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="my.company" name="snippet_2.9.1" conf="test-internal, test, optional, compile, provided, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="net.liftweb" name="lift-widgets_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-webkit_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-actor_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-oauth_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<caller organisation="org.scala-tools.testing" name="specs_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="1.6.9"/>
+				<caller organisation="net.liftweb" name="lift-db_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.liftweb" name="lift-textile_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.databinder" name="dispatch-json_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<caller organisation="net.databinder" name="dispatch-futures_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<caller organisation="net.liftweb" name="lift-wizard_2.9.1" conf="default, compile, runtime, master" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="2.4"/>
+				<caller organisation="net.databinder" name="dispatch-http-json_2.9.1" conf="compile, runtime" rev="2.9.1" rev-constraint-default="2.9.1" rev-constraint-dynamic="2.9.1" callerrev="0.8.5"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

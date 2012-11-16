@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>Home</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	id="jquery">
+</script>
+
+</head>
+<body class="lift:content_id=main">
+	<div id="main" class="lift:surround?with=default;at=content">
+
+		<lift:embed what="/templates-hidden/PopularTag">
+		</lift:embed>
+		
+		<lift:embed what="/templates-hidden/PostWrapper">
+		</lift:embed>
+		
+		<lift:bind-at name="other-footer">
+			<P>Footer from main index file</P>
+		</lift:bind-at>
+	</div>
+</body>
+</html>
+

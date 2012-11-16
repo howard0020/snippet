@@ -158,7 +158,7 @@ class Boot {
   def initDB {
     if (!DB.jndiJdbcConnAvailable_?) {
       val vendor = new StandardDBVendor(
-        SiteConsts.DB_DRIVER, SiteConsts.DB_URL,
+        SiteConsts.DB_DRIVER, SiteConsts.getDBUrl,
         Full(SiteConsts.DB_USER), Full(SiteConsts.DB_PASSWORD))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)

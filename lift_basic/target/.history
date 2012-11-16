@@ -7,3 +7,8 @@ package
 exit
 package-war
 exit
+update
+exit
+update
+compile
+package-war

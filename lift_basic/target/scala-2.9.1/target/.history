@@ -1,0 +1,40 @@
+update
+update-classifiers
+exit
+package-bin
+exit
+update
+version
+compile
+ecplise
+eclipse
+exit
+update
+exit
+update
+exit
+update
+exit
+comple
+compile
+exit
+update
+eclipse with-source=ture
+eclipse with-source=true
+version
+help
+settings
+sbt-binary-version
+sbt-verion
+sbt-plugin
+sbt-resolver
+exit
+update
+sbt ~jetty -run
+package=
+sbt-binary-version
+inspect test:full-classpath
+reload
+inspect test:full-classpath
+inspect name
+exit

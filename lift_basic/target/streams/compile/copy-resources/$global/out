@@ -1,5 +1,5 @@
 [0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(D:\GitRepo\snippet\lift_basic\src\main\resources\books.txt,D:\GitRepo\snippet\lift_basic\target\scala-2.9.1\classes\books.txt)[0m
-[0m[[0mdebug[0m] [0m	(D:\GitRepo\snippet\lift_basic\src\main\resources\props,D:\GitRepo\snippet\lift_basic\target\scala-2.9.1\classes\props)[0m
-[0m[[0mdebug[0m] [0m	(D:\GitRepo\snippet\lift_basic\src\main\resources\rebel.xml,D:\GitRepo\snippet\lift_basic\target\scala-2.9.1\classes\rebel.xml)[0m
-[0m[[0mdebug[0m] [0m	(D:\GitRepo\snippet\lift_basic\src\main\resources\props\default.props,D:\GitRepo\snippet\lift_basic\target\scala-2.9.1\classes\props\default.props)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\howard\workspace_scala\snippet\lift_basic\src\main\resources\books.txt,C:\Users\howard\workspace_scala\snippet\lift_basic\target\scala-2.9.1\classes\books.txt)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\howard\workspace_scala\snippet\lift_basic\src\main\resources\props,C:\Users\howard\workspace_scala\snippet\lift_basic\target\scala-2.9.1\classes\props)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\howard\workspace_scala\snippet\lift_basic\src\main\resources\rebel.xml,C:\Users\howard\workspace_scala\snippet\lift_basic\target\scala-2.9.1\classes\rebel.xml)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\howard\workspace_scala\snippet\lift_basic\src\main\resources\props\default.props,C:\Users\howard\workspace_scala\snippet\lift_basic\target\scala-2.9.1\classes\props\default.props)[0m

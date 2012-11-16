@@ -1,0 +1,45 @@
+<lift:surround with="default" at="content">
+	<div style="overflow: hidden">
+		<div style="float: left; width: 200px; margin: 10px;">
+			<ol>
+				<li>Add Button will add posts with the following titles to the
+					database. Every post will have empty content. I don't how to
+					generate posts with tags and contents of different types</li>
+				<li>Delete Button will delete all posts in your database. It
+					won't attempt to delete posts' contents. Please help address this.
+					There is a dependency between post and table of content. 
+					For now, deleting a post will cause the post author's table of content to be destroyed.
+					Constant deletions is slow.</li>
+			</ol>
+			<lift:db>
+				<database:addposts></database:addposts>
+				<database:deleteposts></database:deleteposts>
+				<database:numposts></database:numposts>
+				<database:addpost></database:addpost>
+			</lift:db>
+		</div>
+		<div style="float: left; padding: 10px; border-left: 1px solid gray">
+			<style class="lift:head">
+ol {
+	list-style-type: decimal;
+	margin-left: 20px;
+}
+
+li {
+	color: gray
+}
+
+a {
+	text-decoration: none;
+	color: gray
+}
+</style>
+			<h2>Book Titles</h2>
+			<lift:db.posts>
+			<ol>
+				<li>book name</li>
+			</ol>
+			</lift:db.posts>
+		</div>
+	</div>
+</lift:surround>
