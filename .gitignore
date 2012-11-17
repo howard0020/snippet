@@ -3,3 +3,6 @@
 lib_managed
 *.cache
 target/
+bin/
+*.classpath
+*.project

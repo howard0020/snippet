@@ -10,6 +10,8 @@ retrieveManaged := true
  
 seq(webSettings :_*)
 
+EclipseKeys.withSource := true
+
 resolvers ++= Seq(
 	"Omniauth repo" at "https://repository-liftmodules.forge.cloudbees.com/release",
 	 "Java.net Maven2 Repository" at "http://download.java.net/maven/2/",
@@ -32,7 +34,7 @@ libraryDependencies ++= {
 	           "mysql" % "mysql-connector-java" % "5.1.21",
                "net.liftweb" %% "lift-textile" % liftVersion % "compile->default",
                "net.liftweb" %% "lift-widgets" % liftVersion % "compile",
-               "org.mortbay.jetty" % "jetty" % "6.1.26" % "container",
+               "org.mortbay.jetty" % "jetty" % "6.1.26" % "container,test",
                "junit" % "junit" % "4.7" % "test",
                "ch.qos.logback" % "logback-classic" % "0.9.26",
                "org.scala-tools.testing" %% "specs" % "1.6.9" % "test",
