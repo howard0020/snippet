@@ -14,6 +14,7 @@ db.hostname=localhost
 db.dbname=websolut_snippet
 
 // general urls
+base_url=
 login_url=http://localhost:8080/user_mgt/login
 index_url=http://localhost:8080
 editPost_url=http://localhost:8080/compose/edit/

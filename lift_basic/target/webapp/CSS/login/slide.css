@@ -1,239 +1,0 @@
-/*
-Name: Sliding Login Panel with jQuery 1.3.2
-Author: Jeremie Tisseau
-Author URI: http://web-kreation.com/
-Date: March 26, 2009
-Version: 1.0
-
-	Copyright 2009 Jeremie Tisseau
-	"Sliding Login Panel with jQuery 1.3.2" is distributed under the GNU General Public License version 3:
-	http://www.gnu.org/licenses/gpl-3.0.html
-*/
-
-/***** clearfix *****/
-.slide_clear {clear: both;height: 0;line-height: 0;}
-.slide_clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-.slide_clearfix {display: inline-block;}
-/* Hides from IE-mac \*/
-* html .slide_clearfix {height: 1%;}
-.slide_clearfix {display: block;}
-/* End hide from IE-mac */
-.slide_clearfix {height: 1%;}
-.slide_clearfix {display: block;}
-
-/* Panel Tab/button */
-.slide_tab {
-  	background: url(/images/tab_b.png) repeat-x 0 0;
-	height: 42px;
-	position: relative;
-    top: 0;
-    z-index: 999;
-}
-
-.slide_tab ul.slide_login {
-	display: block;
-	position: relative;
-  	float: right;
-  	clear: right;
-  	height: 42px;
-	width: auto;
-  	font-weight: bold;
-	line-height: 42px;
-	margin: 0;
-	right: 150px;
-  	color: white;
-  	font-size: 80%;
-	text-align: center;
-}
-
-.slide_tab ul.slide_login li.slide_left {
-  	background: url(/images/tab_l.png) no-repeat left 0;
-  	height: 42px;
-	width: 30px;
-	padding: 0;
-	margin: 0;
-  	display: block;
-	float: left;
-}
-
-.slide_tab ul.slide_login li.slide_right {
-  	background: url(/images/tab_r.png) no-repeat left 0;
-  	height: 42px;
-	width: 30px;
-	padding: 0;
-	margin: 0;
-  	display: block;
-	float: left;
-}
-
-.slide_tab ul.slide_login li {
- 	text-align: left;
-  	padding: 0 6px;
-	display: block;
-	float: left;
-	height: 42px;
-  	background: url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/tab_m.png) repeat-x 0 0;
-}
-
-.slide_tab ul.slide_login li a {
-	color: #15ADFF;
-}
-
-.slide_tab ul.slide_login li a:hover {
-	color: white;
-}
-
-.slide_tab .sep {color:#414141}
-
-.slide_tab a.open, .slide_tab a.close {
-	height: 20px;
-	line-height: 20px !important;
-	padding-left: 30px !important;
-	cursor: pointer;
-	display: block;
-	width: 100px;
-	position: relative;
-	top: 11px;
-}
-
-.slide_tab a.open {background: url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_open.png) no-repeat left 0;}
-.slide_tab a.close {background: url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_close.png) no-repeat left 0;}
-.slide_tab a:hover.slide_open {background: url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_open.png) no-repeat left -19px;}
-.slide_tab a:hover.slide_close {background: url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_close.png) no-repeat left -19px;}
-
-/* sliding panel */
-#slide_toppanel {
-    position: absolute;   /*Panel will overlap  content */
-    /*position: relative;*/   /*Panel will "push" the content down */
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#slide_panel {
-	width: 100%;
-	height: 270px;
-	color: #999999;
-	background: #272727;
-	overflow: hidden;
-	position: relative;
-	z-index: 3;
-	display: none;
-}
-
-#slide_panel h1 {
-	font-size: 1.6em;
-	padding: 5px 0 10px;
-	margin: 0;
-	color: white;
-}
-
-#slide_panel h2{
-	font-size: 1.2em;
-	padding: 10px 0 5px;
-	margin: 0;
-	color: white;
-}
-
-#slide_panel p {
-	margin: 5px 0;
-	padding: 0;
-}
-
-#slide_panel a {
-	text-decoration: none;
-	color: #15ADFF;
-}
-
-#slide_panel a:hover {
-	color: white;
-}
-
-#slide_panel a-lost-pwd {
-	display: block;
-	float: left;
-}
-
-#slide_panel .slide_content {
-	width: 960px;
-	margin: 0 auto;
-	padding-top: 15px;
-	text-align: left;
-	font-size: 0.85em;
-}
-
-#slide_panel .slide_content .left {
-	width: 280px;
-	float: left;
-	padding: 0 15px;
-	border-left: 1px solid #333;
-}
-
-#slide_panel .slide_content .right {
-	border-right: 1px solid #333;
-}
-
-#slide_panel .slide_content form {
-	margin: 0 0 10px 0;
-}
-
-#slide_panel .slide_content label {
-	float: left;
-	padding-top: 8px;
-	clear: both;
-	width: 280px;
-	display: block;
-}
-
-#slide_panel .slide_content input.field {
-	border: 1px #1A1A1A solid;
-	background: #414141;
-	margin-right: 5px;
-	margin-top: 4px;
-	width: 200px;
-	color: white;
-	height: 16px;
-}
-
-#slide_panel .slide_content input:focus.field {
-	background: #545454;
-}
-
-/* BUTTONS */
-/* Login and Register buttons */
-#slide_panel .slide_content input.bt_login,
-#slide_panel .slide_content input.bt_register {
-	display: block;
-	float: left;
-	clear: left;
-	height: 24px;
-	text-align: center;
-	cursor: pointer;
-	border: none;
-	font-weight: bold;
-	margin: 10px 0;
-}
-
-#slide_panel .slide_content input.bt_login {
-	width: 74px;
-	background: transparent url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_login.png) no-repeat 0 0;
-}
-
-#slide_panel .slide_content input.bt_register {
-	width: 94px;
-	color: white;
-	background: transparent url(/imagesbt_close.pngbt_login.pngbt_open.pngbt_register.pngtab_b.pngtab_l.pngtab_m.pngtab_r.png/bt_register.png) no-repeat 0 0;
-}
-
-#slide_panel .lost-pwd {
-	display: block;
-	float:left;
-	clear: right;
-	padding: 15px 5px 0;
-	font-size: 0.95em;
-	text-decoration: underline;
-}
-
