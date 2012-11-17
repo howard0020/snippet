@@ -1,4 +1,4 @@
-name := "snippet"
+name := "snippet_temp"
  
 organization := "my.company"
  
