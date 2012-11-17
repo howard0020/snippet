@@ -1,1 +1,5 @@
 *.class
+*.war
+lib_managed
+*.cache
+target/
