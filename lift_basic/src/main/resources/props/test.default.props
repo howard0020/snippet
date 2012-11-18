@@ -30,7 +30,7 @@ login_url=/user_mgt/login
 editPost_url=/compose/edit/
 
 // general omniauth properties
-omniauth.baseurl=http://localhost:8080/
+omniauth.baseurl=http://snippet-development.elasticbeanstalk.com/
 omniauth.successurl=/
 omniauth.failureurl=/user_mgt/login
 
