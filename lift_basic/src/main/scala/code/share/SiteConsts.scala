@@ -16,6 +16,7 @@ object SiteConsts {
   
   
   // general site wide constants
+  val BASE_URL = Option(System.getProperty("RDS_DB_NAME")).getOrElse(readProp("base_url"))
   val INDEX_URL = readProp("index_url")
   val LOGIN_URL = readProp("login_url")
   val EDITPOST_URL = readProp("editPost_url") 

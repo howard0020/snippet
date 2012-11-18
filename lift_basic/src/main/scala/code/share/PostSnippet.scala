@@ -26,7 +26,7 @@ object PostSnippet {
         ".edit_button" #> renderEditBtn(p) &
         ".post_author_image [src]" #> (p.getAuthor match {
           case Full(author) =>
-            if (author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
+            if (!author.iconURL.isEmpty() && author.iconURL.get.equals("")) "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
             else author.iconURL.get
           case Empty => ""
           case Failure(msg, _, _) => "Error"

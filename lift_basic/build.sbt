@@ -1,4 +1,4 @@
-name := "snippet_temp"
+name := "snippet"
  
 organization := "my.company"
  
@@ -9,6 +9,8 @@ scalaVersion := "2.9.1"
 retrieveManaged := true 
  
 seq(webSettings :_*)
+
+EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
 EclipseKeys.withSource := true
 
