@@ -1,7 +1,7 @@
 package code.snippet
 import code.share.PostSnippet
 import code.model.User
-import code.model.CodeSnippet
+import code.model.Post
 import scala.xml.NodeSeq
 import code.search.SearchEngine
 import net.liftweb.http.js._
@@ -17,8 +17,6 @@ import JsonAST.{ JArray, JValue, JInt, JObject }
 import JsonDSL.{ pair2Assoc, seq2jvalue, string2jvalue }
 import JsonDSL._
 import net.liftweb.mapper.By
-import code.model.User
-import code.model.CodeSnippet
 import code.model.ToCModel
 import net.liftweb.common.{ Full, Empty, Failure }
 import scala.xml.Text

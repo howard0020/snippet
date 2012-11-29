@@ -17,7 +17,7 @@ class Tag extends LongKeyedMapper[Tag] with IdPK
 {
 	def getSingleton = Tag
 	object name extends MappedString(this,100)
-	object posts extends MappedManyToMany(SnippetTags, SnippetTags.tag, SnippetTags.codeSnippet, CodeSnippet)
+	object posts extends MappedManyToMany(SnippetTags, SnippetTags.tag, SnippetTags.posts, Post)
 	
 	def getPosts = {
 	  posts.all

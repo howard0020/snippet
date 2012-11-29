@@ -1,5 +1,5 @@
 package code.share
-import code.model.CodeSnippet
+import code.model.Post
 import net.liftweb.util.Helpers._
 import scala.xml.NodeSeq
 import net.liftweb.common.Full
@@ -19,7 +19,7 @@ import net.liftweb.http.js.JsCommands
 object PostSnippet {
   val profileLink = SiteConsts.INDEX_URL + "/" + "profile"
 
-  def render(posts: List[CodeSnippet]) = {
+  def render(posts: List[Post]) = {
     "#postTemplate *" #> {
     ".post_wrapper" #> (
       (ns: NodeSeq) => (posts.flatMap(p => (
@@ -61,7 +61,7 @@ object PostSnippet {
     }
   }
   
-  private def renderEditBtn(post : CodeSnippet):NodeSeq = {
+  private def renderEditBtn(post : Post):NodeSeq = {
 	  User.currentUser match {
 	    case Full(user) => 
 	      post.getAuthor match{

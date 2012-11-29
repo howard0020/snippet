@@ -6,7 +6,6 @@ import net.liftweb.util._
 import code.model.User
 import Helpers._
 import net.liftweb.common.{Full, Empty, Box}
-import code.model.CodeSnippet
 import net.liftweb.common.Failure
 import net.liftweb.http.SessionVar
 import net.liftweb.http.S

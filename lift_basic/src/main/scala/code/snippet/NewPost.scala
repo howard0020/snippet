@@ -1,6 +1,6 @@
 package code.snippet
 
-import code.model.CodeSnippet
+import code.model.Post
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.http.LiftScreen
@@ -23,7 +23,7 @@ object NewPost extends LiftScreen {
   }
 
   def finish() {
-    val snippet = CodeSnippet.create
+    val snippet = Post.create
     snippet.title.set(title)
     snippet.content.set(content)
     snippet.Author.set(User.currentUser.get.id)

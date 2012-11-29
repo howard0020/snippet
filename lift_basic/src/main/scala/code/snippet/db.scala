@@ -7,7 +7,7 @@ import net.liftweb.http.js.JsCmds.Noop
 import code.model.User
 import net.liftweb.http.S
 import code.share.SiteConsts
-import code.model.CodeSnippet
+import code.model.Post
 import scala.io.Source
 import net.liftweb.http.LiftRules
 import java.io.File
@@ -39,7 +39,7 @@ class db {
       "addposts" -> SHtml.ajaxButton("Add Posts",
         () => {
           for (line <- lines) {
-            val post = CodeSnippet.create
+            val post = Post.create
             post.Author.set(user.id)
             post.title.set(line.trim)
             println("before save")
@@ -50,13 +50,13 @@ class db {
         }),
       "deleteposts" -> SHtml.ajaxButton("Delete All Posts",
         () => {
-          for (p <- CodeSnippet.findAll())
+          for (p <- Post.findAll())
             p.delete_!
           jsUpdatePostCount
         }),
       "numposts" -> {
         <span id="post_count">Number of Posts in db: {
-          CodeSnippet.findAll().length
+          Post.findAll().length
         }</span>
       },
       "addpost" -> SHtml.ajaxButton("Add Single Post",
@@ -64,7 +64,7 @@ class db {
 //          () => Run("$('#post_id').val()"),
 //          (postId:String) => {
           () => {
-            val post = CodeSnippet.create
+            val post = Post.create
             post.Author.set(user.id)
             post.title("post")
             post.save
@@ -73,7 +73,7 @@ class db {
   }
 
   def jsUpdatePostCount = {
-    JsCrVar("postCount", CodeSnippet.findAll.length) &
+    JsCrVar("postCount", Post.findAll.length) &
       Run("""
                   $("#post_count").html("Number of Posts in db: " + postCount);
                   """)

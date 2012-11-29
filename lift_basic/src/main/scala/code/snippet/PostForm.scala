@@ -28,7 +28,7 @@ import net.liftweb.http.js.JE.JsArray
 
 //object PostForm extends LiftScreen{
 //  
-//  object Snippet extends ScreenVar(CodeSnippet.create)
+//  object Snippet extends ScreenVar(Post.create)
 //  
 //  addFields(()=>Snippet.is.content)
 // 
@@ -46,7 +46,7 @@ class PostForm extends Loggable{
 	def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("",sendMessage _,"id"->"snippetTextArea") ++ SHtml.submitButton(() => {})))
 	
     def sendMessage(msg: String) = {
-  	    val snippet = CodeSnippet.create
+  	    val snippet = Post.create
   	    snippet.content.set(msg)
   	    snippet.save
   	    PostServer ! snippet
@@ -54,7 +54,7 @@ class PostForm extends Loggable{
 	
 	val ourFnName = Helpers.nextFuncName
 	//0 if this is a new post
-	var currentEditPost :CodeSnippet =null;
+	var currentEditPost :Post =null;
   /**
    * JavaScript to collect our form data
    */
@@ -97,7 +97,7 @@ class PostForm extends Loggable{
    
   	      var postTitle = ""
 	      S.param("id") match{
-	        case Full(id) => CodeSnippet.findByKey(id.toLong) match{
+	        case Full(id) => Post.findByKey(id.toLong) match{
 	          case Full(post) => {
 	        	  currentEditPost = post
 	        	  postTitle = post.title
@@ -143,7 +143,7 @@ class PostForm extends Loggable{
  		    	   currentEditPost.blocks.save
  		    	   currentEditPost
  		       }else{
- 		    	   CodeSnippet.create.Author(user.id)
+ 		    	   Post.create.Author(user.id)
  		       }
 	 		  tempList.foreach(s => 
 	 		  	s match {

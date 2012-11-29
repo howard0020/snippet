@@ -38,12 +38,12 @@ class ToCModel extends LongKeyedMapper[ToCModel] with ManyToMany with CreatedUpd
     new Tree(this)
   }
 
-  def notifyPostDelete(post: CodeSnippet) = {
+  def notifyPostDelete(post: Post) = {
     tree.moveUpChildren(post.id)
     tree.save
   }
 
-  def notifyPostAdd(post: CodeSnippet) = {
+  def notifyPostAdd(post: Post) = {
     tree.add(post)
     tree.save
 
@@ -66,8 +66,8 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
   def createFor(user: User): ToCModel = {
     val toc = ToCModel.create
 
-    val posts = CodeSnippet.findAll(By(CodeSnippet.Author, user)).map {
-      snippet => CodeSnippetToToCPost(snippet)
+    val posts = Post.findAll(By(Post.Author, user)).map {
+      snippet => PostToToCPost(snippet)
     }
 
     val content: String = write(posts)
@@ -78,14 +78,14 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
   }
 
   // precondition: map idToPost has key tocPost.id
-  private def TocPostToListPosts(tocPost: ToCPost, idToPost: Map[Long, CodeSnippet]): List[CodeSnippet] = {
+  private def TocPostToListPosts(tocPost: ToCPost, idToPost: Map[Long, Post]): List[Post] = {
     var posts = List(idToPost(tocPost.id))
     posts ++ tocPost.children.flatMap(childPost => TocPostToListPosts(childPost, idToPost))
   }
 
   private def userPostIdToPostMap(userId: Long) = {
-    val userPosts = CodeSnippet.findAll(By(CodeSnippet.Author, userId))
-    var idToPost = Map[Long, CodeSnippet]()
+    val userPosts = Post.findAll(By(Post.Author, userId))
+    var idToPost = Map[Long, Post]()
     for (post <- userPosts)
       idToPost += (post.id.toLong -> post)
     idToPost
@@ -95,11 +95,11 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
     ToCPost(-1, "Table Of Content", posts, true)
   }
 
-  implicit def CodeSnippetToToCPost(snippet: CodeSnippet): ToCPost = {
+  implicit def PostToToCPost(snippet: Post): ToCPost = {
     ToCPost(snippet.id, snippet.title, Nil, false)
   }
   // clone post and replace title with most updated titel from database
-  private def updateTitles(posts: List[ToCPost], idToPost: Map[Long, CodeSnippet]): List[ToCPost] = {
+  private def updateTitles(posts: List[ToCPost], idToPost: Map[Long, Post]): List[ToCPost] = {
     for (post <- posts) yield {
       val id = post.id
       val isFolder = post.isFolder

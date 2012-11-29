@@ -1,16 +1,16 @@
 package code.search
-import code.snippet.Post
-import code.model.CodeSnippet
+
+import code.model.Post
 import net.liftweb.mapper.Like
 
 object SearchEngine {
 
-  def searchPostByTitle(queryString:String): List[CodeSnippet] = {
-    CodeSnippet.findAll(Like(CodeSnippet.title, "%" + queryString + "%"))
+  def searchPostByTitle(queryString:String): List[Post] = {
+    Post.findAll(Like(Post.title, "%" + queryString + "%"))
   }
 
-  def searchPostByContent(queryString:String): List[CodeSnippet] = {
-    CodeSnippet.findAll(Like(CodeSnippet.content, "%" + queryString + "%"))
+  def searchPostByContent(queryString:String): List[Post] = {
+    Post.findAll(Like(Post.content, "%" + queryString + "%"))
   }
   
   /**
@@ -18,7 +18,7 @@ object SearchEngine {
    * To Do: Change Query to allow search for both title and content
    * return all posts where the queryString appears either in the post's title or content
    */
-  def searchPost(queryString:String): List[CodeSnippet] = {
+  def searchPost(queryString:String): List[Post] = {
     searchPostByTitle(queryString)
   }
   

@@ -11,7 +11,7 @@ import net.liftweb.util.BindPlus._
 import net.liftweb.http.js._
 import net.liftweb.http.js.JE._
 import code.model.User
-import code.model.CodeSnippet
+import code.model.Post
 import omniauth.Omniauth
 import dispatch._
 import xml.{Text, NodeSeq}
@@ -84,23 +84,23 @@ class C {
 	def snippet2 = "#dddd" #> "hehehe2"
  }
 
-class Post
-{
-	def Content(xhtml : NodeSeq)  = {
-		val user = User.currentUser
-		val posts = user match {
-		  case Full(user) => user.AllPost
-		  case Empty =>  CodeSnippet.findAll()
-		  case Failure(msg,_,_) => List()
-		  
-		}
-		System.out.println("======>"+posts)
-		def bindText(template : NodeSeq) : NodeSeq =
-		{
-		  posts.flatMap{ case (code) => bind("content",template,"text" 
-		      -> scala.xml.Unparsed(code.content.get))}
-		  
-		}
-		bind("content",xhtml,"code"->bindText _)
-	}
-}
+//class Post
+//{
+//	def Content(xhtml : NodeSeq)  = {
+//		val user = User.currentUser
+//		val posts = user match {
+//		  case Full(user) => user.AllPost
+//		  case Empty =>  Post.findAll()
+//		  case Failure(msg,_,_) => List()
+//		  
+//		}
+//		System.out.println("======>"+posts)
+//		def bindText(template : NodeSeq) : NodeSeq =
+//		{
+//		  posts.flatMap{ case (code) => bind("content",template,"text" 
+//		      -> scala.xml.Unparsed(code.content.get))}
+//		  
+//		}
+//		bind("content",xhtml,"code"->bindText _)
+//	}
+//}

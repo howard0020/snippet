@@ -1,7 +1,7 @@
 package code.comet
 
 import scala.xml._
-import code.model.CodeSnippet
+import code.model.Post
 import net.liftweb.actor.LiftActor
 import net.liftweb.http._
 import net.liftweb.json._
@@ -15,7 +15,6 @@ import code.model.Tag
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.mapper.By
-import code.snippet.Post
 import net.liftweb.common.Failure
 import net.liftweb.common.Box
 import code.model.SnippetTags

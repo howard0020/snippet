@@ -1,7 +1,7 @@
 package code.comet
 
 import scala.xml._
-import code.model.CodeSnippet
+import code.model.Post
 import net.liftweb.actor.LiftActor
 import net.liftweb.http._
 import net.liftweb.json._
@@ -15,7 +15,6 @@ import code.model.Tag
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.mapper.By
-import code.snippet.Post
 import net.liftweb.common.Failure
 import net.liftweb.common.Box
 import code.model.SnippetTags
@@ -49,23 +48,23 @@ class PostActor extends CometActor with CometListener {
     
   private var posts = getPosts(Empty)
 
-  def getPosts(tag: Box[Tag]): List[CodeSnippet] = {
+  def getPosts(tag: Box[Tag]): List[Post] = {
     tag match {
       case Full(theTag) => theTag.posts.all.reverse
-      case Empty => CodeSnippet.findAll().reverse
+      case Empty => Post.findAll().reverse
       case Failure(msg, _, _) =>
         S.error(msg)
-        CodeSnippet.findAll().reverse
+        Post.findAll().reverse
     }
   }
 
-  def searchPosts(queryBox: Box[String]): List[CodeSnippet] = {
+  def searchPosts(queryBox: Box[String]): List[Post] = {
     queryBox match {
       case Full(queryString) => SearchEngine.searchPostByTitle(queryString)
-      case Empty => CodeSnippet.findAll()
+      case Empty => Post.findAll()
       case Failure(msg, _, _) =>
         S.error(msg)
-        CodeSnippet.findAll()
+        Post.findAll()
     }
   }
 
@@ -81,7 +80,7 @@ class PostActor extends CometActor with CometListener {
       ++ SHtml.hidden(() => postForm)))
 
   private def postForm = {
-    val snippet = CodeSnippet.create
+    val snippet = Post.create
     snippet.Author.set(User.currentUser match {
       case Full(curUser) => curUser.id
       case Empty => -1
@@ -95,17 +94,17 @@ class PostActor extends CometActor with CometListener {
   }
 
   private def sendMessage(msg: String) = {
-    val snippet = CodeSnippet.create
+    val snippet = Post.create
     snippet.content.set(msg)
     snippet.save
     PostServer ! snippet
   }
 
   override def lowPriority = {
-    case msg: List[CodeSnippet] =>
+    case msg: List[Post] =>
       posts = msg
       reRender(false)
-    case msg: CodeSnippet =>
+    case msg: Post =>
       currTagFilter match {
         case Full(currTag) => 
         //if there is a tag filter check if the new message have this tag
@@ -132,11 +131,11 @@ class PostActor extends CometActor with CometListener {
 }
 
 object PostServer extends LiftActor with ListenerManager {
- // var posts: List[CodeSnippet] = CodeSnippet.findAll().reverse
+ // var posts: List[Post] = Post.findAll().reverse
  // def createUpdate = posts
   def createUpdate = Empty
   override def lowPriority = {
-    case msg: CodeSnippet => {
+    case msg: Post => {
       updateListeners(msg)
     }
   }

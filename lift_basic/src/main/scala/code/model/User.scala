@@ -95,7 +95,7 @@ class User extends MegaProtoUser[User] {
     override def displayName = "Icon URL"
   }
 
-  def AllPost = CodeSnippet.findAll(By(CodeSnippet.Author, this.id))
+  def AllPost = Post.findAll(By(Post.Author, this.id))
 
   def findUser(email: String) = User.find(By(User.email, email))
 
@@ -107,7 +107,7 @@ class User extends MegaProtoUser[User] {
         toc.Author.set(this.id)
         toc.save
         toc
-        /*CodeSnippet.find(By(CodeSnippet.Author, this)) match {
+        /*Post.find(By(Post.Author, this)) match {
           case Empty =>
             val toc = ToCModel.create
             toc.Author.set(this.id)

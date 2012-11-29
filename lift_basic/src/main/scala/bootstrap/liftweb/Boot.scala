@@ -71,7 +71,7 @@ class Boot {
       case RewriteRequest(ParsePath("compose" :: "edit" :: idString :: Nil, _, _, _), _, _) =>
         try {
           val id = idString.toLong
-          CodeSnippet.findByKey(id) match {
+          Post.findByKey(id) match {
             case Full(post) => 
               Console.println("=-===>id:"+idString)
               RewriteResponse("compose" :: "edit" :: Nil, Map("id" -> id.toString))
@@ -139,11 +139,11 @@ class Boot {
       Omniauth.sitemap
 
     val ghMenus = GitHub.sitemap
-    val crudifyCodeSnippet = CodeSnippet.menus
+    val crudifyPost = Post.menus
     val userMenu = User.menus
     val tagMenu = Tag.menus
 
-    menuItems = menuItems ++ ghMenus ++ crudifyCodeSnippet ++ userMenu ++ tagMenu
+    menuItems = menuItems ++ ghMenus ++ crudifyPost ++ userMenu ++ tagMenu
 
     def sitemap = SiteMap(menuItems: _*)
 
@@ -169,7 +169,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, CodeSnippet, Tag, SnippetTags, Block, ToCModel)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, Post, Tag, SnippetTags, Block, ToCModel)
   }
 
   def initStdConfig {

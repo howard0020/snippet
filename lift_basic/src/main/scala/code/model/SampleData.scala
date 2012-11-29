@@ -11,7 +11,7 @@ object SampleData {
   
   def addPosts {
     for(i <- 1 until 15) {
-    	val post = CodeSnippet.create
+    	val post = Post.create
     	post.title.set("Scala " + i)
     	post.content.set("Scala Content " + i)
     	post.Author.set(User.currentUser.get.id)
