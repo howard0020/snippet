@@ -8,26 +8,30 @@
 		<script class="lift:head" id="composeJS" src="/js/compose-post.js"
 			type="text/javascript"></script>
 		<script class="lift:head" src="/js/jquery.tools.validator.min.js"></script>
-		<script class="lift:head" src="/chosen/chosen.jquery.js"></script>
+		<!-- chosen libs -->
+		<script class="lift:head" src="/js-lib/chosen/chosen.jquery.js"></script>
+		<link class="lift:head" rel="stylesheet"
+			href="/js-lib/chosen/chosen.css">
+			<!-- chosen libs -->
 		<!-- Code Mirror Init-->
 		<script class="lift:head" src="/js/codeMirror-modes.js"></script>
 		<link class="lift:head" rel="stylesheet"
-			href="/codemirror/theme/eclipse.css">
-		<script class="lift:head" src="/codemirror/lib/codemirror.js"></script>
+			href="/js-lib/codemirror/theme/eclipse.css">
+		<script class="lift:head" src="/js-lib/codemirror/lib/codemirror.js"></script>
 		<link class="lift:head" rel="stylesheet"
-			href="/codemirror/lib/codemirror.css">
-		<script class="lift:head" src="/codemirror/mode/clike/clike.js"></script>
-		<script class="lift:head" src="/codemirror/lib/util/searchcursor.js"></script>
+			href="/js-lib/codemirror/lib/codemirror.css">
+		<script class="lift:head" src="/js-lib/codemirror/mode/clike/clike.js"></script>
+		<script class="lift:head" src="/js-lib/codemirror/lib/util/searchcursor.js"></script>
 		<script class="lift:head"
-			src="/codemirror/lib/util/match-highlighter.js"></script>
-		<script class="lift:head" src="/codemirror/lib/util/loadmode.js"></script>
+			src="/js-lib/codemirror/lib/util/match-highlighter.js"></script>
+		<script class="lift:head" src="/js-lib/codemirror/lib/util/loadmode.js"></script>
 		<link class="lift:head" rel="stylesheet"
 			href="/CSS/Default/codemirror_default.css">
 		<!-- Code Mirror Init End-->
 		<!-- Aloha Editor Init-->
-		<link class="lift:head" rel="stylesheet" href="/aloha/css/aloha.css"
+		<link class="lift:head" rel="stylesheet" href="/js-lib/aloha/css/aloha.css"
 			type="text/css">
-		<script class="lift:head" src="/aloha/lib/require.js"></script>
+		<script class="lift:head" src="/js-lib/aloha/lib/require.js"></script>
 		<script class="lift:head" type="text/javascript">
 			var editorCount = 3;
 			if (window.Aloha === undefined || window.Aloha === null) {
@@ -74,7 +78,7 @@
 				}
 			}
 		</script>
-		<script class="lift:head" src="/aloha/lib/aloha-full.js"
+		<script class="lift:head" src="/js-lib/aloha/lib/aloha-full.js"
 			data-aloha-plugins="common/ui,
 								common/format,
 		                        common/table,
@@ -142,7 +146,7 @@
 					<br> <br>
 					<div id="editor-sort"></div>
 					<div>
-						<button id="next" value="Submit" type="button" class="btn">
+						<button id="next" value="Submit" type="button" class="btn" hidden="true">
 							<Lift:Loc>Finish</Lift:Loc>
 						</button>
 					</div>

@@ -3,6 +3,7 @@ import org.mortbay.jetty.Server
 import org.mortbay.jetty.webapp.WebAppContext
 import org.mortbay.jetty.nio._
 
+
 object RunWebApp extends App {
   val server = new Server
   val scc = new SelectChannelConnector
@@ -13,7 +14,7 @@ object RunWebApp extends App {
   context.setServer(server)
   context.setContextPath("/")
   context.setWar("src/main/webapp")
-
+  context.setDefaultsDescriptor("src/main/webapp/WEB-INF/webdefault.xml");
   server.addHandler(context)
 
   try {

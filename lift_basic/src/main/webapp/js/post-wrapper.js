@@ -3,7 +3,7 @@ window.codeEditorMap = new Object();
 
 function initCodeBlock(){
 	$('.code-block-fields').each(function() {
-		CodeMirror.modeURL = "../codemirror/mode/%N/%N.js";
+		CodeMirror.modeURL = "../js-lib/codemirror/mode/%N/%N.js";
 	    var $this = $(this),
 	        $code = $this.html(),
 	        $unescaped = $('<div/>').html($code).text();

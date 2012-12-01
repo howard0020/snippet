@@ -82,7 +82,8 @@ function addHTMLBlock(content) {
         	Aloha.jQuery('.WYSIWYG-fields').aloha();
 };
 function addCodeBlock(content,mode) {
-
+			
+			CodeMirror.modeURL = "../js-lib/codemirror/mode/%N/%N.js";
             var num     = editorCount++; // how many "duplicatable" input fields we currently have
             var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
            	//create the html to add
