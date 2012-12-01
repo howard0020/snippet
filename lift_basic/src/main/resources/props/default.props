@@ -6,22 +6,22 @@
 //db.dbname=websolut_snippet
 
 //AWS dev
-db.driver=com.mysql.jdbc.Driver
-db.url=jdbc:mysql://aa1c8zl8slztbrz.c7tohcruq1sa.us-east-1.rds.amazonaws.com:3306/ebdb
-db.user=root
-db.password=52012345
-db.dbname=ebdb
-db.hostname=aa1c8zl8slztbrz.c7tohcruq1sa.us-east-1.rds.amazonaws.com
-db.port=3306
+//db.driver=com.mysql.jdbc.Driver
+//db.url=jdbc:mysql://aa1c8zl8slztbrz.c7tohcruq1sa.us-east-1.rds.amazonaws.com:3306/ebdb
+//db.user=root
+//db.password=52012345
+//db.dbname=ebdb
+//db.hostname=aa1c8zl8slztbrz.c7tohcruq1sa.us-east-1.rds.amazonaws.com
+//db.port=3306
 
 // local db
-//db.driver=com.mysql.jdbc.Driver
-//db.url=jdbc:mysql://localhost:3306/websolut_snippet
-//db.user=root
-//db.password=
-//db.port=3306
-//db.hostname=localhost
-//db.dbname=websolut_snippet
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/websolut_snippet
+db.user=root
+db.password=
+db.port=3306
+db.hostname=localhost
+db.dbname=websolut_snippet
 
 // general urls
 site_domain=http://localhost:8080/

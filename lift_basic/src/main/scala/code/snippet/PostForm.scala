@@ -26,22 +26,6 @@ import code.share.SiteConsts
 import net.liftweb.http.js.JE.JsArray
 
 
-//object PostForm extends LiftScreen{
-//  
-//  object Snippet extends ScreenVar(Post.create)
-//  
-//  addFields(()=>Snippet.is.content)
-// 
-//  
-//def finish(){
-//    Snippet.is.Author(User.currentUser.get)
-//    Snippet.is.save
-//    PostServer ! Snippet.is
-//   // User.currentUser.get.AllPost
-//  //  System.out.print("123123" + User.currentUser.get.AllPost)
-//	  //S.notice("Adding Value: " + keyvalue.value)
-//	}
-//}
 class PostForm extends Loggable{
 	def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("",sendMessage _,"id"->"snippetTextArea") ++ SHtml.submitButton(() => {})))
 	

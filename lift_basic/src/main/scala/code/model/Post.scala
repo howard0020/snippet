@@ -17,10 +17,15 @@ class Post extends LongKeyedMapper[Post] with ManyToMany
   def primaryKeyField = id
   object title extends MappedString(this, 500)
   object id extends MappedLongIndex(this)
+  
   object Author extends MappedLongForeignKey(this, User)
+  
+  
   object content extends MappedTextarea(this, 2048)
   object blocks extends MappedOneToMany(Block, Block.post, OrderBy(Block.id, Ascending))
   object tags extends MappedManyToMany(SnippetTags, SnippetTags.posts, SnippetTags.tag, Tag)
+  object groups extends MappedManyToMany(GroupPosts,GroupPosts.posts,GroupPosts.groups,Group)
+  
 
   def getTags = {
     var str = ""

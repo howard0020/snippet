@@ -100,7 +100,7 @@ class Boot {
   def initSiteMap {
     var menuItems = List(
       Menu.i("Home") / "index" >> LocGroup("General"), // the simple way to declare a menu
-
+      Menu.i("Group") / "group" >> LocGroup("General"),
       Menu.i("Edit post") / "compose" / "edit"
         >> If(
           () => User.loggedIn_?,
@@ -169,7 +169,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, Post, Tag, SnippetTags, Block, ToCModel)
+    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, Post, Tag, SnippetTags, Block, ToCModel,Group,GroupPosts)
   }
 
   def initStdConfig {
