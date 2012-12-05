@@ -30,7 +30,7 @@ class PostForm extends Loggable{
 	def ajaxForm = SHtml.ajaxForm(JsRaw("editor.save();").cmd, (SHtml.textarea("",sendMessage _,"id"->"snippetTextArea") ++ SHtml.submitButton(() => {})))
 	
     def sendMessage(msg: String) = {
-  	    val snippet = Post.create
+  	    val snippet = PostModel.create
   	    snippet.content.set(msg)
   	    snippet.save
   	    PostServer ! snippet
@@ -38,7 +38,7 @@ class PostForm extends Loggable{
 	
 	val ourFnName = Helpers.nextFuncName
 	//0 if this is a new post
-	var currentEditPost :Post =null;
+	var currentEditPost :PostModel =null;
   /**
    * JavaScript to collect our form data
    */
@@ -81,7 +81,7 @@ class PostForm extends Loggable{
    
   	      var postTitle = ""
 	      S.param("id") match{
-	        case Full(id) => Post.findByKey(id.toLong) match{
+	        case Full(id) => PostModel.findByKey(id.toLong) match{
 	          case Full(post) => {
 	        	  currentEditPost = post
 	        	  postTitle = post.title
@@ -115,11 +115,11 @@ class PostForm extends Loggable{
 	  val boxList = Full(x).asA[List[List[String]]]
 	  boxList match { 
 	 		case Full(tempList) =>
- 		      if(User.currentUser.isEmpty){
+ 		      if(UserModel.currentUser.isEmpty){
  		        S.redirectTo(SiteConsts.LOGIN_URL)
  		        return
  		      }
- 		      val user = User.currentUser openTheBox
+ 		      val user = UserModel.currentUser openTheBox
  		       val post = if(currentEditPost != null){
  		         //delete all the blocks and recreate them
  		    	   currentEditPost.blocks.foreach(b => b.delete_!)
@@ -127,18 +127,18 @@ class PostForm extends Loggable{
  		    	   currentEditPost.blocks.save
  		    	   currentEditPost
  		       }else{
- 		    	   Post.create.Author(user.id)
+ 		    	   PostModel.create.Author(user.id)
  		       }
 	 		  tempList.foreach(s => 
 	 		  	s match {
 	 		  	  case "titleField" :: content :: Nil =>
 	 		  	    post.title.set(content)
 	 		  	  case "htmlBlock" :: content :: Nil =>
-	 		  	  	val block = Block.create.post(post.id).content(content)
+	 		  	  	val block = BlockModel.create.post(post.id).content(content)
 	 		  	  	post.blocks += block
 	 		  	  	block.save()
 	 		  	  case "codeBlock" :: meta :: content :: Nil => 
-	 		  	    val block = Block.create.post(post.id).content(content).meta(meta)
+	 		  	    val block = BlockModel.create.post(post.id).content(content).meta(meta)
 	 		  	    post.blocks += block
 	 		  	  	block.save()
 	 		  	  case nil => 

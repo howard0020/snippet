@@ -9,7 +9,7 @@ import sitemap._
 import Loc._
 import mapper._
 import code.model._
-import post._
+import PostModel._
 import omniauth.lib._
 import omniauth.Omniauth
 import http.rest._
@@ -18,6 +18,7 @@ import code.auth.SnippetFacebookProvider
 import code.gh.GitHub
 import code.share.SiteConsts
 import code.auth.GhProvider
+import code.model.post.BlockModel
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -61,7 +62,7 @@ class Boot {
       case RewriteRequest(ParsePath("profile" :: idString :: Nil, _, _, _), _, _) =>
         try {
           val id = idString.toLong
-          User.findByKey(id) match {
+          UserModel.findByKey(id) match {
             case Full(u) => RewriteResponse("profile" :: Nil, Map("id" -> id.toString))
             case _ => RewriteResponse("404" :: Nil)
           }
@@ -71,7 +72,7 @@ class Boot {
       case RewriteRequest(ParsePath("compose" :: "edit" :: idString :: Nil, _, _, _), _, _) =>
         try {
           val id = idString.toLong
-          Post.findByKey(id) match {
+          PostModel.findByKey(id) match {
             case Full(post) => 
               Console.println("=-===>id:"+idString)
               RewriteResponse("compose" :: "edit" :: Nil, Map("id" -> id.toString))
@@ -103,29 +104,29 @@ class Boot {
       Menu.i("Group") / "group" / "new" >> LocGroup("General"),
       Menu.i("Edit post") / "compose" / "edit"
         >> If(
-          () => User.loggedIn_?,
+          () => UserModel.loggedIn_?,
           () => RedirectResponse(SiteConsts.LOGIN_URL))
           >> Hidden,
       Menu.i("New post") / "compose" / "new"
         >> If(
-          () => User.loggedIn_?,
+          () => UserModel.loggedIn_?,
           () => RedirectResponse(SiteConsts.LOGIN_URL))
           >> LocGroup("General"),
-      Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(User.loggedIn_? _, () => RedirectResponse("/login")))),
+      Menu(Loc("profile", "User" / "profile", "profile", Hidden, If(UserModel.loggedIn_? _, () => RedirectResponse("/login")))),
       Menu(Loc("Profile Page", List("profile"), "Profile Page",
         If(
           () =>
             {
               S.param("id") match {
                 case Full(v) => true
-                case Empty => User.loggedIn_?
+                case Empty => UserModel.loggedIn_?
                 case Failure(_, _, _) => false
               }
             },
           () => {
             S.param("id") match {
               case Full(v) => InternalServerErrorResponse()
-              case Empty => User.loggedIn_? match {
+              case Empty => UserModel.loggedIn_? match {
                 case true => InternalServerErrorResponse()
                 case false => RedirectResponse(SiteConsts.LOGIN_URL)
               }
@@ -139,9 +140,9 @@ class Boot {
       Omniauth.sitemap
 
     val ghMenus = GitHub.sitemap
-    val crudifyPost = Post.menus
-    val userMenu = User.menus
-    val tagMenu = Tag.menus
+    val crudifyPost = PostModel.menus
+    val userMenu = UserModel.menus
+    val tagMenu = TagModel.menus
 
     menuItems = menuItems ++ ghMenus ++ crudifyPost ++ userMenu ++ tagMenu
 
@@ -169,7 +170,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User, KeyValuePair, Post, Tag, SnippetTags, Block, ToCModel,Group,GroupPosts)
+    Schemifier.schemify(true, Schemifier.infoF _, UserModel, PostModel, TagModel, SnippetTags, BlockModel, ToCModel,GroupModel,GroupPosts)
   }
 
   def initStdConfig {
@@ -194,7 +195,7 @@ class Boot {
     //LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
 
     // What is the function to test if a user is logged in?
-    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
+    LiftRules.loggedInTest = Full(() => UserModel.loggedIn_?)
 
     // Use HTML5 for rendering
     LiftRules.htmlProperties.default.set((r: Req) =>

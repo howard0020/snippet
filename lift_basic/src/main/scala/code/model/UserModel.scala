@@ -13,7 +13,7 @@ import code.gh.GitHub.GhAuthInfo
 /**
  * The singleton that has methods for accessing the database
  */
-object User extends User with MetaMegaProtoUser[User] {
+object UserModel extends UserModel with MetaMegaProtoUser[UserModel] {
   override def dbTableName = "users" // define the DB table name
   override def screenWrap = Full(<lift:surround with="default" at="content">
                                    <lift:bind/>
@@ -84,8 +84,8 @@ object User extends User with MetaMegaProtoUser[User] {
 /**
  * An O-R mapped "User" class that includes first name, last name, password and we add a "Personal Essay" to it
  */
-class User extends MegaProtoUser[User] {
-  def getSingleton = User // what's the "meta" server
+class UserModel extends MegaProtoUser[UserModel] {
+  def getSingleton = UserModel // what's the "meta" server
 
   object username extends MappedString(this, 32) {
     override def displayName = "User Name"
@@ -95,9 +95,9 @@ class User extends MegaProtoUser[User] {
     override def displayName = "Icon URL"
   }
 
-  def AllPost = Post.findAll(By(Post.Author, this.id))
+  def AllPost = PostModel.findAll(By(PostModel.Author, this.id))
 
-  def findUser(email: String) = User.find(By(User.email, email))
+  def findUser(email: String) = UserModel.find(By(UserModel.email, email))
 
   def toc: ToCModel = {
     ToCModel.find(By(ToCModel.Author, this.id)) match {

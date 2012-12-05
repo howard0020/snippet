@@ -43,31 +43,31 @@ object GitHub {
   def sitemap: List[Menu] = {
     List[Menu](Menu.i("Github") / GH_INDEX_NAME
       >> If(
-        () => User.loggedIn_? && GitHub.signedIn_?,
-        () => User.loggedIn_? match {
+        () => UserModel.loggedIn_? && GitHub.signedIn_?,
+        () => UserModel.loggedIn_? match {
           case false => RedirectResponse(SiteConsts.LOGIN_URL)
           case true => RedirectResponse(GitHub.GH_SIGNIN_URL)
         }),
       Menu(Loc("Github Repo", List("github_repo"), "Github Repo", Hidden,
         If(
-          () => User.loggedIn_? && GitHub.signedIn_?,
-          () => User.loggedIn_? match {
+          () => UserModel.loggedIn_? && GitHub.signedIn_?,
+          () => UserModel.loggedIn_? match {
             case false => RedirectResponse(SiteConsts.LOGIN_URL)
             case true => RedirectResponse(GitHub.GH_SIGNIN_URL)
           }))),
       Menu(Loc("GhSignin", List(GH_DISPATCH, GH_SIGNIN_NAME), "GhSignin", Hidden,
         If(
-          () => User.loggedIn_? && !GitHub.signedIn_?,
+          () => UserModel.loggedIn_? && !GitHub.signedIn_?,
           () =>
-            User.loggedIn_? match {
+            UserModel.loggedIn_? match {
               case false => RedirectResponse(SiteConsts.LOGIN_URL)
               case true => RedirectResponse(GH_INDEX_URL)
             }))),
       Menu(Loc("GhCallback", List(GH_DISPATCH, GH_CALLBACK_NAME), "GhCallback", Hidden,
         If(
-          () => User.loggedIn_? && !GitHub.signedIn_?,
+          () => UserModel.loggedIn_? && !GitHub.signedIn_?,
           () =>
-            User.loggedIn_? match {
+            UserModel.loggedIn_? match {
               case false => RedirectResponse(SiteConsts.LOGIN_URL)
               case true => RedirectResponse(GH_INDEX_URL)
             }))))

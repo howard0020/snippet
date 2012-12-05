@@ -1,13 +1,13 @@
 package code.model.post
 
 import net.liftweb.mapper._
-import code.model.Post
-class Block extends LongKeyedMapper[Block]{
-	def getSingleton = Block
+import code.model.PostModel
+class BlockModel extends LongKeyedMapper[BlockModel]{
+	def getSingleton = BlockModel
 	def primaryKeyField =id
 	object id extends MappedLongIndex(this)
 	object content extends MappedTextarea(this,2048)
-	object post extends MappedLongForeignKey(this,Post)
+	object post extends MappedLongForeignKey(this,PostModel)
 	object meta extends MappedText(this)
 	def contentToJSString = { 
 	  var result = "["
@@ -17,6 +17,6 @@ class Block extends LongKeyedMapper[Block]{
 	  result
 	}
 }
-object Block extends Block with LongKeyedMetaMapper[Block]{
+object BlockModel extends BlockModel with LongKeyedMetaMapper[BlockModel]{
 
 }

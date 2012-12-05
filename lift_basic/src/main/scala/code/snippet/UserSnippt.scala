@@ -3,29 +3,29 @@ package code.snippet
 
 import net.liftweb.util.BindPlus._
 import net.liftweb.util._
-import code.model.User
+import code.model.UserModel
 import Helpers._
 import net.liftweb.common.{Full, Empty, Box}
-import code.model.Post
+import code.model.PostModel
 import net.liftweb.common.Failure
 
 class UserSnippet {
 	
-	def UserName = User.currentUser match {
+	def UserName = UserModel.currentUser match {
 	  case Full(currUser) => currUser.username.get
 	  case Empty =>  ""
 	  case Failure(msg,_,_) => "msg"
 	  case _=>	""
 	}
 	
-  	def UserIcon = User.currentUser match {
+  	def UserIcon = UserModel.currentUser match {
 	  case Full(currUser) => currUser.iconURL.get
 	  case Empty =>  ""
 	  case Failure(msg,_,_) => "msg"
 	  case _=>	""
 	}
   	
-	def CurrentUserNameExpandable =  "#profile_user_name [class]" #> (User.loggedIn_? match{
+	def CurrentUserNameExpandable =  "#profile_user_name [class]" #> (UserModel.loggedIn_? match{
 	  case true => "expand"
 	  case false => "collapse"
 	})
@@ -37,13 +37,13 @@ class UserSnippet {
 	
 	def LogoutMenuItem = ".logout_url [href]"  #> "/user_mgt/logout"
 	
-	def loginForm = User.login
+	def loginForm = UserModel.login
 	
 	def CurrentUserProfile = CurrentUserName  & CurrentUserIcon & CurrentUserUrl  & LogoutMenuItem
 	
-	def loginHtml = User.loginXhtml
+	def loginHtml = UserModel.loginXhtml
 	
-	def signupForm = User.signup;
+	def signupForm = UserModel.signup;
 	
-	def lostpasswordForm = User.lostPassword;
+	def lostpasswordForm = UserModel.lostPassword;
 }

@@ -16,7 +16,7 @@ import net.liftweb.util.Props
 import net.liftweb.sitemap.{Menu, Loc, SiteMap}
 import Loc._
 import omniauth.AuthInfo
-import code.model.User
+import code.model.UserModel
 import net.liftweb.common.Failure
 
 class SnippetFacebookProvider(clientId:String, secret:String) extends FacebookProvider(clientId,secret){
@@ -41,15 +41,15 @@ class SnippetFacebookProvider(clientId:String, secret:String) extends FacebookPr
   
   def setupFacebookUser(user : JValue) = {
     val email = (user \ "email").extract[String]
-    User.findUser(email) match {
-      case Full(oldUser) => User.logUserIn(oldUser)
-      case Empty =>  User.logUserIn(setupNewUser(user)) 
+    UserModel.findUser(email) match {
+      case Full(oldUser) => UserModel.logUserIn(oldUser)
+      case Empty =>  UserModel.logUserIn(setupNewUser(user)) 
       case Failure(msg,_,_) => S.error(msg)
     }
   }
   
   def setupNewUser(user : JValue) = {
-    val newUser = User.create
+    val newUser = UserModel.create
     val email = (user \ "email").extract[String]
     newUser.email.set(email)
     newUser.username.set((user \ "name").extract[String])

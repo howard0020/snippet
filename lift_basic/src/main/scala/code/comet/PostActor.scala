@@ -1,7 +1,7 @@
 package code.comet
 
 import scala.xml._
-import code.model.Post
+import code.model.PostModel
 import net.liftweb.actor.LiftActor
 import net.liftweb.http._
 import net.liftweb.json._
@@ -11,15 +11,15 @@ import net.liftweb.http.js.JE._
 import JsCmds._
 import scala.xml.NodeSeq
 import Helpers._
-import code.model.Tag
+import code.model.TagModel
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.mapper.By
 import net.liftweb.common.Failure
 import net.liftweb.common.Box
 import code.model.SnippetTags
-import code.model.User
-import code.model.post.Block
+import code.model.UserModel
+import code.model.post.BlockModel
 import scala.xml.Attribute
 import scala.Null
 import code.search.SearchQuery
@@ -30,7 +30,7 @@ class PostActor extends CometActor with CometListener {
 
   implicit val formats = net.liftweb.json.DefaultFormats
 
-  private var currTagFilter: Box[Tag] = Empty
+  private var currTagFilter: Box[TagModel] = Empty
 
   //for new post
   private var content = ""
@@ -48,23 +48,23 @@ class PostActor extends CometActor with CometListener {
     
   private var posts = getPosts(Empty)
 
-  def getPosts(tag: Box[Tag]): List[Post] = {
+  def getPosts(tag: Box[TagModel]): List[PostModel] = {
     tag match {
       case Full(theTag) => theTag.posts.all.reverse
-      case Empty => Post.findAll().reverse
+      case Empty => PostModel.findAll().reverse
       case Failure(msg, _, _) =>
         S.error(msg)
-        Post.findAll().reverse
+        PostModel.findAll().reverse
     }
   }
 
-  def searchPosts(queryBox: Box[String]): List[Post] = {
+  def searchPosts(queryBox: Box[String]): List[PostModel] = {
     queryBox match {
       case Full(queryString) => SearchEngine.searchPostByTitle(queryString)
-      case Empty => Post.findAll()
+      case Empty => PostModel.findAll()
       case Failure(msg, _, _) =>
         S.error(msg)
-        Post.findAll()
+        PostModel.findAll()
     }
   }
 
@@ -80,31 +80,31 @@ class PostActor extends CometActor with CometListener {
       ++ SHtml.hidden(() => postForm)))
 
   private def postForm = {
-    val snippet = Post.create
-    snippet.Author.set(User.currentUser match {
+    val post = PostModel.create
+    post.Author.set(UserModel.currentUser match {
       case Full(curUser) => curUser.id
       case Empty => -1
       case Failure(msg, _, _) => -1
     })
-    snippet.content.set(content)
-    snippet.title.set(title)
-    snippet.tags ++= Tag.getTagList(tags)
-    snippet.save
-    PostServer ! snippet
+    post.content.set(content)
+    post.title.set(title)
+    post.tags ++= TagModel.getTagList(tags)
+    post.save
+    PostServer ! post
   }
 
   private def sendMessage(msg: String) = {
-    val snippet = Post.create
+    val snippet = PostModel.create
     snippet.content.set(msg)
     snippet.save
     PostServer ! snippet
   }
 
   override def lowPriority = {
-    case msg: List[Post] =>
+    case msg: List[PostModel] =>
       posts = msg
       reRender(false)
-    case msg: Post =>
+    case msg: PostModel =>
       currTagFilter match {
         case Full(currTag) => 
         //if there is a tag filter check if the new message have this tag
@@ -117,7 +117,7 @@ class PostActor extends CometActor with CometListener {
         case Failure(msg,_,_) => S.error(msg)
       }
       reRender(false)
-    case msg: Box[Tag] => {
+    case msg: Box[TagModel] => {
       currTagFilter = msg
       posts = getPosts(msg)
       reRender(false)
@@ -135,7 +135,7 @@ object PostServer extends LiftActor with ListenerManager {
  // def createUpdate = posts
   def createUpdate = Empty
   override def lowPriority = {
-    case msg: Post => {
+    case msg: PostModel => {
       updateListeners(msg)
     }
   }

@@ -3,7 +3,7 @@ package code.snippet
 import net.liftweb.util.BindPlus._
 import net.liftweb.util._
 
-import code.model.User
+import code.model.UserModel
 import Helpers._
 import net.liftweb.common.{Full, Empty, Box}
 import net.liftweb.common.Failure
@@ -32,7 +32,7 @@ class Posts {
     }
     val tagStr = tag.openOr("")
     val name = S.attr("name",_.toString)
- 	val tagObj = Tag.find(By(Tag.name,tagStr))
+ 	val tagObj = TagModel.find(By(TagModel.name,tagStr))
  	Console.println("===attr=>"+name.openOr(""))
  	S.session match {
       case Full(session) => session.setupComet("PostActor",name,tagObj)
@@ -67,11 +67,11 @@ class Posts {
 	}
 	
 	def sendTagMsgStr(tag:String) ={
-	  sendTagMsg(Tag.find(By(Tag.name,tag)))
+	  sendTagMsg(TagModel.find(By(TagModel.name,tag)))
 	  Noop
 	}  
 	  
-	def sendTagMsg(tag:Box[Tag]):Unit ={
+	def sendTagMsg(tag:Box[TagModel]):Unit ={
 		for(session <- S.session)
 		{
 		  session.sendCometActorMessage("PostActor",Full("PostActor"),tag)

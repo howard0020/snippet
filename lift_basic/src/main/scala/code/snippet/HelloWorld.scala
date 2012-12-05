@@ -10,8 +10,8 @@ import Helpers._
 import net.liftweb.util.BindPlus._
 import net.liftweb.http.js._
 import net.liftweb.http.js.JE._
-import code.model.User
-import code.model.Post
+import code.model.UserModel
+import code.model.PostModel
 import omniauth.Omniauth
 import dispatch._
 import xml.{Text, NodeSeq}

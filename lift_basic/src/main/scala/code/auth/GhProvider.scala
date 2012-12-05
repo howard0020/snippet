@@ -16,7 +16,7 @@ import code.gh.GhUser
 import code.gh.GitHub
 import code.share.SiteConsts
 import net.liftweb.common.Failure
-import code.model.User
+import code.model.UserModel
 
 class GhProvider(clientId: String, secret: String) extends GithubProvider(clientId, secret) {
 
@@ -60,16 +60,16 @@ class GhProvider(clientId: String, secret: String) extends GithubProvider(client
   def loginUser(ghUser: GhUser) = {
     GhAuthInfo(Full(ghUser))
     val email = "xiaoqiangwu2007@gmail.com"
-    User.findUser(email) match {
+    UserModel.findUser(email) match {
       case Full(oldUser) =>
-        User.logUserIn(oldUser)
+        UserModel.logUserIn(oldUser)
       case Empty =>
-        val newUser = User.create
+        val newUser = UserModel.create
         newUser.email.set(email)
         newUser.username.set(ghUser.login)
         newUser.iconURL.set(ghUser.avatar_url)
         newUser.save
-        User.logUserIn(newUser)
+        UserModel.logUserIn(newUser)
       case Failure(msg, _, _) =>
         S.error(msg)
         GitHub.GhAuthInfo(Empty)

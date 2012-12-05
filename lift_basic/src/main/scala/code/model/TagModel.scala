@@ -11,13 +11,13 @@ import scala.collection.mutable.ListBuffer
 import net.liftweb.common.{Empty,Full,Failure,Box}
 
 
-class Tag extends LongKeyedMapper[Tag] with IdPK 
+class TagModel extends LongKeyedMapper[TagModel] with IdPK 
 									with ManyToMany
 									with CreatedUpdated
 {
-	def getSingleton = Tag
+	def getSingleton = TagModel
 	object name extends MappedString(this,100)
-	object posts extends MappedManyToMany(SnippetTags, SnippetTags.tag, SnippetTags.posts, Post)
+	object posts extends MappedManyToMany(SnippetTags, SnippetTags.tag, SnippetTags.posts, PostModel)
 	
 	def getPosts = {
 	  posts.all
@@ -25,8 +25,7 @@ class Tag extends LongKeyedMapper[Tag] with IdPK
 	
 
 }
-object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
-	  override def dbTableName = "Tag"
+object TagModel extends TagModel with LongKeyedMetaMapper[TagModel] with CRUDify[Long, TagModel]{
 	  override def displayName = "Tag"
 	  /*
 	  override def createMenuLocParams: List[Loc.AnyLocParam] =  {
@@ -38,15 +37,15 @@ object Tag extends Tag with LongKeyedMetaMapper[Tag] with CRUDify[Long, Tag]{
 	  override def createMenuName = "New Tag"
 	  */
 	  //get a list of tags from a string
-	  def getTagList(s :String) : List[Tag] = {
-	  val tagList = new ListBuffer[Tag]
+	  def getTagList(s :String) : List[TagModel] = {
+	  val tagList = new ListBuffer[TagModel]
 	  val strs = StringHelpers.roboSplit(s,",")
 	  strs.foreach(s => {
-	    val oldTag = Tag.find(By(Tag.name,s))
+	    val oldTag = TagModel.find(By(TagModel.name,s))
 	    oldTag match {
 	      case Full(tag) => tagList +=tag
 	      case Empty =>{
-	         val tag = Tag.create
+	         val tag = TagModel.create
 	         tag.name.set(s)
 		     tag.save
 		     tagList += tag

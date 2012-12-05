@@ -1,7 +1,7 @@
 package code.snippet
 import code.share.PostSnippet
-import code.model.User
-import code.model.Post
+import code.model.UserModel
+import code.model.PostModel
 import scala.xml.NodeSeq
 import code.search.SearchEngine
 import net.liftweb.http.js._
@@ -30,11 +30,11 @@ import code.share.SiteConsts
 
 class Profile {
 
-  private val profileUser: User = {
+  private val profileUser: UserModel = {
     val userIDString = S.param("id") match {
       case Full(id) => id
-      case Empty => User.loggedIn_? match {
-        case true => User.currentUserId match {
+      case Empty => UserModel.loggedIn_? match {
+        case true => UserModel.currentUserId match {
           case Full(id) => id
           case _ => throw new RuntimeException("Error: fail to retrieve user id.")
         }
@@ -47,7 +47,7 @@ class Profile {
         S.redirectTo(SiteConsts.LOGIN_URL)
     }
     val id = userIDString.toLong
-    User.findByKey(id) match {
+    UserModel.findByKey(id) match {
       case Full(u) => u
       case Empty =>
         throw new RuntimeException("Access control should've prevented this from happening")
@@ -57,10 +57,10 @@ class Profile {
   }
 
   private val isCurrentUserProfile: Boolean = {
-    User.loggedIn_? match {
+    UserModel.loggedIn_? match {
       case false => false
       case true => // user has logged in
-        profileUser.id == User.currentUserId.get.toLong
+        profileUser.id == UserModel.currentUserId.get.toLong
     }
   }
 

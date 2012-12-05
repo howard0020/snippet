@@ -8,23 +8,23 @@ import net.liftweb.sitemap.Loc
 import net.liftweb.common.Full
 import net.liftweb.common.Empty
 import net.liftweb.common.Box
-import code.model.post.Block
+import code.model.post.BlockModel
 
-class Post extends LongKeyedMapper[Post] with ManyToMany
+class PostModel extends LongKeyedMapper[PostModel] with ManyToMany
   with CreatedUpdated
-  with OneToMany[Long, Post] {
-  def getSingleton = Post
+  with OneToMany[Long, PostModel] {
+  def getSingleton = PostModel
   def primaryKeyField = id
   object title extends MappedString(this, 500)
   object id extends MappedLongIndex(this)
   
-  object Author extends MappedLongForeignKey(this, User)
+  object Author extends MappedLongForeignKey(this, UserModel)
   
   
   object content extends MappedTextarea(this, 2048)
-  object blocks extends MappedOneToMany(Block, Block.post, OrderBy(Block.id, Ascending))
-  object tags extends MappedManyToMany(SnippetTags, SnippetTags.posts, SnippetTags.tag, Tag)
-  object groups extends MappedManyToMany(GroupPosts,GroupPosts.posts,GroupPosts.groups,Group)
+  object blocks extends MappedOneToMany(BlockModel, BlockModel.post, OrderBy(BlockModel.id, Ascending))
+  object tags extends MappedManyToMany(SnippetTags, SnippetTags.posts, SnippetTags.tag, TagModel)
+  object groups extends MappedManyToMany(GroupPosts,GroupPosts.posts,GroupPosts.groups,GroupModel)
   
 
   def getTags = {
@@ -33,7 +33,7 @@ class Post extends LongKeyedMapper[Post] with ManyToMany
     str.dropRight(1)
   }
 
-  def getAuthor: Box[User] = User.findByKey(Author.get)
+  def getAuthor: Box[UserModel] = UserModel.findByKey(Author.get)
 
   /*  // before deleting a post, notify appropriate ToCModel that we are about to delete a post
   override def delete_! = {
@@ -50,9 +50,8 @@ class Post extends LongKeyedMapper[Post] with ManyToMany
   //val imgDir = author.iconURL
 
 }
-object Post extends Post with LongKeyedMetaMapper[Post]
-  with CRUDify[Long, Post] {
-  override def dbTableName = "Posts"
+object PostModel extends PostModel with LongKeyedMetaMapper[PostModel]
+  with CRUDify[Long, PostModel] {
   //override def pageWrapper(body: NodeSeq) = <lift:surround with="admin" at="content">{body}</lift:surround>
   //override def calcPrefix = List("admin",_dbTableNameLC)
   override def displayName = "Snippet"
@@ -60,7 +59,7 @@ object Post extends Post with LongKeyedMetaMapper[Post]
   // when a new post is created(inserted into database), this method will be called
   override def afterCreate = createPostCallback _ :: super.afterCreate
 
-  private def createPostCallback(post: Post): Unit = {
+  private def createPostCallback(post: PostModel): Unit = {
     println("before create")
     val toc = post.getAuthor.get.toc
     println("save: " + toc.saved_?)
@@ -69,7 +68,7 @@ object Post extends Post with LongKeyedMetaMapper[Post]
   }
   override def afterDelete = deletePostCallback _ :: super.afterDelete
 
-  private def deletePostCallback(post: Post): Unit = {
+  private def deletePostCallback(post: PostModel): Unit = {
     println("before delete")
     val toc = post.getAuthor.get.toc
     println("save: " + toc.saved_?)

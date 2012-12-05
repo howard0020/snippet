@@ -38,12 +38,12 @@ class ToCModel extends LongKeyedMapper[ToCModel] with ManyToMany with CreatedUpd
     new Tree(this)
   }
 
-  def notifyPostDelete(post: Post) = {
+  def notifyPostDelete(post: PostModel) = {
     tree.moveUpChildren(post.id)
     tree.save
   }
 
-  def notifyPostAdd(post: Post) = {
+  def notifyPostAdd(post: PostModel) = {
     tree.add(post)
     tree.save
 
@@ -63,10 +63,10 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
     toc
   }
 
-  def createFor(user: User): ToCModel = {
+  def createFor(user: UserModel): ToCModel = {
     val toc = ToCModel.create
 
-    val posts = Post.findAll(By(Post.Author, user)).map {
+    val posts = PostModel.findAll(By(PostModel.Author, user)).map {
       snippet => PostToToCPost(snippet)
     }
 
@@ -78,14 +78,14 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
   }
 
   // precondition: map idToPost has key tocPost.id
-  private def TocPostToListPosts(tocPost: ToCPost, idToPost: Map[Long, Post]): List[Post] = {
+  private def TocPostToListPosts(tocPost: ToCPost, idToPost: Map[Long, PostModel]): List[PostModel] = {
     var posts = List(idToPost(tocPost.id))
     posts ++ tocPost.children.flatMap(childPost => TocPostToListPosts(childPost, idToPost))
   }
 
   private def userPostIdToPostMap(userId: Long) = {
-    val userPosts = Post.findAll(By(Post.Author, userId))
-    var idToPost = Map[Long, Post]()
+    val userPosts = PostModel.findAll(By(PostModel.Author, userId))
+    var idToPost = Map[Long, PostModel]()
     for (post <- userPosts)
       idToPost += (post.id.toLong -> post)
     idToPost
@@ -95,11 +95,11 @@ object ToCModel extends ToCModel with LongKeyedMetaMapper[ToCModel] {
     ToCPost(-1, "Table Of Content", posts, true)
   }
 
-  implicit def PostToToCPost(snippet: Post): ToCPost = {
+  implicit def PostToToCPost(snippet: PostModel): ToCPost = {
     ToCPost(snippet.id, snippet.title, Nil, false)
   }
   // clone post and replace title with most updated titel from database
-  private def updateTitles(posts: List[ToCPost], idToPost: Map[Long, Post]): List[ToCPost] = {
+  private def updateTitles(posts: List[ToCPost], idToPost: Map[Long, PostModel]): List[ToCPost] = {
     for (post <- posts) yield {
       val id = post.id
       val isFolder = post.isFolder

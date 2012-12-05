@@ -1,7 +1,6 @@
 package code.view
 import scala.xml.NodeSeq
 import code.gh.Auth
-import code.model.User
 import net.liftweb.common.Full
 import net.liftweb.http.LiftView
 import net.liftweb.http.S

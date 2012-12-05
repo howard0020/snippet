@@ -1,12 +1,12 @@
 package code.snippet
 
-import code.model.Post
+import code.model.PostModel
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.http.LiftScreen
 import net.liftweb.http.S
 import net.liftweb.mapper.By
-import code.model.User
+import code.model.UserModel
 
 object NewPost extends LiftScreen {
   // here are the fields and default values
@@ -23,10 +23,10 @@ object NewPost extends LiftScreen {
   }
 
   def finish() {
-    val snippet = Post.create
+    val snippet = PostModel.create
     snippet.title.set(title)
     snippet.content.set(content)
-    snippet.Author.set(User.currentUser.get.id)
+    snippet.Author.set(UserModel.currentUser.get.id)
     snippet.save
   }
 }
